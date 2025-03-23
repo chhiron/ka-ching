@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/ka-ching/static/css/main.22645f87.css",
-    "main.js": "/ka-ching/static/js/main.25eedb97.js",
-    "static/js/453.33b6e918.chunk.js": "/ka-ching/static/js/453.33b6e918.chunk.js",
-    "index.html": "/ka-ching/index.html",
-    "main.22645f87.css.map": "/ka-ching/static/css/main.22645f87.css.map",
-    "main.25eedb97.js.map": "/ka-ching/static/js/main.25eedb97.js.map",
-    "453.33b6e918.chunk.js.map": "/ka-ching/static/js/453.33b6e918.chunk.js.map"
+    "main.css": "/ka-ching/AboutUsPage/static/css/main.22645f87.css",
+    "main.js": "/ka-ching/AboutUsPage/static/js/main.e68a6c2e.js",
+    "static/js/453.33b6e918.chunk.js": "/ka-ching/AboutUsPage/static/js/453.33b6e918.chunk.js",
+    "index.html": "/ka-ching/AboutUsPage/index.html",
+    "main.22645f87.css.map": "/ka-ching/AboutUsPage/static/css/main.22645f87.css.map",
+    "main.e68a6c2e.js.map": "/ka-ching/AboutUsPage/static/js/main.e68a6c2e.js.map",
+    "453.33b6e918.chunk.js.map": "/ka-ching/AboutUsPage/static/js/453.33b6e918.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.22645f87.css",
-    "static/js/main.25eedb97.js"
+    "static/js/main.e68a6c2e.js"
   ]
 }
