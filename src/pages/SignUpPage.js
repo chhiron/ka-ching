@@ -22,7 +22,6 @@ const SignUpPage = ({ onAccountCreated }) => {
 
   return (
     <div className="container">
-      <h2>Create an Account</h2>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       <form onSubmit={handleSubmit}>
         <div>

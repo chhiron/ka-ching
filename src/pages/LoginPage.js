@@ -20,7 +20,6 @@ const LoginPage = ({ onLogin }) => {
 
   return (
     <div className="container">
-      <h2>Login</h2>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       <form onSubmit={handleSubmit}>
         <div>
