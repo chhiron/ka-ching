@@ -22,7 +22,7 @@ const AboutUsPage = () => {
           <p>Lead Strategist</p>
           {/* LinkedIn logo */}
           <a href="https://www.linkedin.com/in/ananya-agarwal" target="_blank" rel="noopener noreferrer">
-            <img src="linkedin-logo.png" alt="LinkedIn" className="linkedin-logo" />
+            <img src="linkedin-logo.png" alt="LinkedIn" className="linkedin-logo" style={{ width: '40px', height: 'auto', objectFit: 'contain' }}/>
           </a>
         </div>
         <div className="team-member">
@@ -31,7 +31,7 @@ const AboutUsPage = () => {
           <p>Marketing Officer</p>
           {/* LinkedIn logo */}
           <a href="https://www.linkedin.com/in/boo-zhu-en" target="_blank" rel="noopener noreferrer">
-            <img src="linkedin-logo.png" alt="LinkedIn" className="linkedin-logo" />
+            <img src="linkedin-logo.png" alt="LinkedIn" className="linkedin-logo" style={{ width: '40px', height: 'auto', objectFit: 'contain' }}/>
           </a>
         </div>
         <div className="team-member">
@@ -40,7 +40,7 @@ const AboutUsPage = () => {
           <p>Lead Developer</p>
           {/* LinkedIn logo */}
           <a href="https://www.linkedin.com/in/daphne-wong" target="_blank" rel="noopener noreferrer">
-            <img src="linkedin-logo.png" alt="LinkedIn" className="linkedin-logo" />
+            <img src="linkedin-logo.png" alt="LinkedIn" className="linkedin-logo" style={{ width: '40px', height: 'auto', objectFit: 'contain' }}/>
           </a>
         </div>
         <div className="team-member">
@@ -49,7 +49,7 @@ const AboutUsPage = () => {
           <p>Business Development Manager</p>
           {/* LinkedIn logo */}
           <a href="https://www.linkedin.com/in/kenta-takayama" target="_blank" rel="noopener noreferrer">
-            <img src="linkedin-logo.png" alt="LinkedIn" className="linkedin-logo" />
+            <img src="linkedin-logo.png" alt="LinkedIn" className="linkedin-logo" style={{ width: '40px', height: 'auto', objectFit: 'contain' }}/>
           </a>
         </div>
       </div>

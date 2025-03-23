@@ -7,7 +7,7 @@ const Navbar = ({ isLoggedIn }) => {
       {/* Logo section */}
       <div className="logo">
         <a href="https://chhiron.github.io/ka-ching/"  rel="noopener noreferrer">
-          <img src="logo.png" alt="Logo" />
+          <img src="logo.png" alt="Logo"  style={{ width: '180px', height: 'auto', objectFit: 'contain' }}/>
         </a>
       </div>
 
