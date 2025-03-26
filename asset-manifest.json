@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/ka-ching/static/css/main.a90bac75.css",
-    "main.js": "/ka-ching/static/js/main.c743723a.js",
+    "main.css": "/ka-ching/static/css/main.80d58ac8.css",
+    "main.js": "/ka-ching/static/js/main.523b06fd.js",
     "static/js/453.33b6e918.chunk.js": "/ka-ching/static/js/453.33b6e918.chunk.js",
     "index.html": "/ka-ching/index.html",
-    "main.a90bac75.css.map": "/ka-ching/static/css/main.a90bac75.css.map",
-    "main.c743723a.js.map": "/ka-ching/static/js/main.c743723a.js.map",
+    "main.80d58ac8.css.map": "/ka-ching/static/css/main.80d58ac8.css.map",
+    "main.523b06fd.js.map": "/ka-ching/static/js/main.523b06fd.js.map",
     "453.33b6e918.chunk.js.map": "/ka-ching/static/js/453.33b6e918.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a90bac75.css",
-    "static/js/main.c743723a.js"
+    "static/css/main.80d58ac8.css",
+    "static/js/main.523b06fd.js"
   ]
 }
