@@ -1,9 +1,17 @@
-import React, { useEffect, useState, useRef } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { ChevronRight } from 'lucide-react';
-import TypewriterComponent from "./components/typewriter";
-import "./styles.css";
+"use client"
 
+import { useEffect, useState, useRef } from "react"
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom"
+import { ChevronRight, TrendingUp, LineChart, BarChart, PieChart } from "lucide-react"
+import TypewriterComponent from "./components/typewriter"
+import "./styles.css"
+import Login from "./pages/login.js"
+import Signup from "./pages/signup.js"
+import Contact from "./pages/contactus.js"
+import UserProfile from "./components/userprofile.js"
+import "./styles.css"
+
+// Update the Routes section to use our components
 function App() {
   return (
     <Router basename={process.env.PUBLIC_URL}>
@@ -11,206 +19,422 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<div>About Page</div>} />
         <Route path="/courses" element={<div>Courses Page</div>} />
-        <Route path="/blog" element={<div>Blog Page</div>} />
-        <Route path="/login" element={<div>Login Page</div>} />
-        <Route path="/signup" element={<div>Signup Page</div>} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/demo" element={<div>Demo Page</div>} />
         <Route path="/terms" element={<div>Terms Page</div>} />
         <Route path="/privacy" element={<div>Privacy Page</div>} />
       </Routes>
     </Router>
-  );
+  )
 }
 
 function Home() {
-  const [mounted, setMounted] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const aboutSectionRef = useRef(null);
-  const teamMembersRef = useRef(null);
-  const challengeCardsRef = useRef(null);
-  const taglineRef = useRef(null);
+  const [mounted, setMounted] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
+  const [activeTab, setActiveTab] = useState("learn")
+  const aboutSectionRef = useRef(null)
+  const teamMembersRef = useRef(null)
+  const challengeCardsRef = useRef(null)
+  const taglineRef = useRef(null)
+  const featuresRef = useRef(null)
+  const location = useLocation()
+
+  // Scroll to about section if hash is #about
+  useEffect(() => {
+    if (location.hash === "#about" && aboutSectionRef.current) {
+      setTimeout(() => {
+        aboutSectionRef.current.scrollIntoView({ behavior: "smooth" })
+      }, 500)
+    }
+  }, [location, aboutSectionRef])
 
   useEffect(() => {
-    setMounted(true);
+    setMounted(true)
 
     // Set loaded state after a small delay for initial animations
     setTimeout(() => {
-      setIsLoaded(true);
-    }, 300);
+      setIsLoaded(true)
+    }, 300)
 
     // Animation for paragraphs on scroll
     const animateParagraphs = () => {
-      const paragraphs = document.querySelectorAll(".about-us p");
+      const paragraphs = document.querySelectorAll(".about-us p")
 
       paragraphs.forEach((paragraph) => {
-        const paragraphPosition = paragraph.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.2;
+        const paragraphPosition = paragraph.getBoundingClientRect().top
+        const screenPosition = window.innerHeight / 1.2
 
         if (paragraphPosition < screenPosition) {
-          paragraph.classList.add("animate");
+          paragraph.classList.add("animate")
         }
-      });
-    };
+      })
+    }
 
     // Animation for team members on scroll with staggered effect
     const animateTeamMembers = () => {
-      const teamMembers = document.querySelectorAll(".team-member");
+      const teamMembers = document.querySelectorAll(".team-member")
 
       teamMembers.forEach((member, index) => {
-        const memberPosition = member.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.3;
+        const memberPosition = member.getBoundingClientRect().top
+        const screenPosition = window.innerHeight / 1.3
 
         if (memberPosition < screenPosition) {
           setTimeout(() => {
-            member.classList.add("animate");
-          }, index * 150); // Staggered animation
+            member.classList.add("animate")
+          }, index * 150) // Staggered animation
         }
-      });
-    };
+      })
+    }
 
     // Animation for challenge cards with staggered effect
     const animateChallengeCards = () => {
-      const cards = document.querySelectorAll(".challenge-card");
+      const cards = document.querySelectorAll(".challenge-card")
 
       cards.forEach((card, index) => {
-        const cardPosition = card.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.2;
+        const cardPosition = card.getBoundingClientRect().top
+        const screenPosition = window.innerHeight / 1.2
 
         if (cardPosition < screenPosition) {
           setTimeout(() => {
-            card.classList.add("animate");
-          }, index * 150); // Staggered animation
+            card.classList.add("animate")
+          }, index * 150) // Staggered animation
         }
-      });
-    };
+      })
+    }
+
+    // Animation for feature cards with staggered effect
+    const animateFeatureCards = () => {
+      const cards = document.querySelectorAll(".feature-card")
+
+      cards.forEach((card, index) => {
+        const cardPosition = card.getBoundingClientRect().top
+        const screenPosition = window.innerHeight / 1.2
+
+        if (cardPosition < screenPosition) {
+          setTimeout(() => {
+            card.classList.add("animate")
+          }, index * 150) // Staggered animation
+        }
+      })
+    }
 
     // Animation for tagline
     const animateTagline = () => {
-      const tagline = document.querySelector(".tagline");
+      const tagline = document.querySelector(".tagline")
       if (tagline) {
-        const taglinePosition = tagline.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.2;
+        const taglinePosition = tagline.getBoundingClientRect().top
+        const screenPosition = window.innerHeight / 1.2
 
         if (taglinePosition < screenPosition) {
-          tagline.classList.add("animate");
+          tagline.classList.add("animate")
         }
       }
-    };
+    }
 
     // Add background elements
     const addBackgroundElements = () => {
-      const aboutUs = document.querySelector(".about-us");
+      const aboutUs = document.querySelector(".about-us")
 
       if (aboutUs) {
-        const bgElement1 = document.createElement("div");
-        bgElement1.classList.add("bg-element", "bg-element-1");
+        const bgElement1 = document.createElement("div")
+        bgElement1.classList.add("bg-element", "bg-element-1")
 
-        const bgElement2 = document.createElement("div");
-        bgElement2.classList.add("bg-element", "bg-element-2");
+        const bgElement2 = document.createElement("div")
+        bgElement2.classList.add("bg-element", "bg-element-2")
 
-        aboutUs.appendChild(bgElement1);
-        aboutUs.appendChild(bgElement2);
+        aboutUs.appendChild(bgElement1)
+        aboutUs.appendChild(bgElement2)
       }
-    };
+    }
 
     // Add section dividers
     const addSectionDividers = () => {
-      const headers = document.querySelectorAll(".about-header");
+      const headers = document.querySelectorAll(".about-header")
 
       headers.forEach((header, index) => {
         if (index > 0) {
-          const divider = document.createElement("div");
-          divider.classList.add("section-divider");
-          header.parentNode?.insertBefore(divider, header);
+          const divider = document.createElement("div")
+          divider.classList.add("section-divider")
+          header.parentNode?.insertBefore(divider, header)
         }
-      });
-    };
+      })
+    }
 
     // Add highlight spans to specific words
     const addHighlights = () => {
-      const paragraphs = document.querySelectorAll(".about-us p");
-      const highlightWords = ["investing", "adventure", "fun", "accessible", "interactive", "journey", "grow", "thrive"];
+      const paragraphs = document.querySelectorAll(".about-us p")
+      const highlightWords = ["investing", "adventure", "fun", "accessible", "interactive", "journey", "grow", "thrive"]
 
       paragraphs.forEach((paragraph) => {
         highlightWords.forEach((word) => {
-          const regex = new RegExp(`\\b${word}\\b`, "gi");
-          paragraph.innerHTML = paragraph.innerHTML.replace(regex, (match) => `<span class="highlight">${match}</span>`);
-        });
-      });
-    };
+          const regex = new RegExp(`\\b${word}\\b`, "gi")
+          paragraph.innerHTML = paragraph.innerHTML.replace(regex, (match) => `<span class="highlight">${match}</span>`)
+        })
+      })
+    }
 
     // Add highlight spans to headline words
     const addHeadlineHighlights = () => {
-      const headlines = document.querySelectorAll(".headline, .tagline h2");
-      const highlightWords = ["REMOTE", "HYBRID", "ON-SITE", "DAILY", "SMOOTHER", "ALL IN ONE"];
+      const headlines = document.querySelectorAll(".headline, .tagline h2")
+      const highlightWords = ["REMOTE", "HYBRID", "ON-SITE", "DAILY", "SMOOTHER", "ALL IN ONE"]
 
       headlines.forEach((headline) => {
         highlightWords.forEach((word) => {
-          const regex = new RegExp(`\\b${word}\\b`, "gi");
-          headline.innerHTML = headline.innerHTML.replace(regex, (match) => `<span class="highlight">${match}</span>`);
-        });
-      });
-    };
+          const regex = new RegExp(`\\b${word}\\b`, "gi")
+          headline.innerHTML = headline.innerHTML.replace(regex, (match) => `<span class="highlight">${match}</span>`)
+        })
+      })
+    }
 
     // Interactive team member effects
     const addTeamInteractions = () => {
-      const teamMembers = document.querySelectorAll(".team-member");
+      const teamMembers = document.querySelectorAll(".team-member")
 
       teamMembers.forEach((member) => {
         // Random rotation on hover
         member.addEventListener("mouseenter", () => {
-          const randomRotation = Math.random() * 3 - 1.5; // Between -1.5 and 1.5 degrees
-          const element = member;
-          element.style.transform = `translateY(-15px) scale(1.03) rotate(${randomRotation}deg)`;
-        });
+          const randomRotation = Math.random() * 3 - 1.5 // Between -1.5 and 1.5 degrees
+          const element = member
+          element.style.transform = `translateY(-15px) scale(1.03) rotate(${randomRotation}deg)`
+        })
 
         member.addEventListener("mouseleave", () => {
-          const element = member;
-          element.style.transform = "";
-        });
-      });
-    };
+          const element = member
+          element.style.transform = ""
+        })
+      })
+    }
+
+    // Parallax scroll effect
+    const handleParallaxScroll = () => {
+      const parallaxElements = document.querySelectorAll(".parallax")
+
+      parallaxElements.forEach((element) => {
+        const speed = element.getAttribute("data-speed") || 0.5
+        const yPos = -(window.scrollY * speed)
+        element.style.transform = `translateY(${yPos}px)`
+      })
+    }
 
     // Header scroll effect
     const handleScroll = () => {
-      const header = document.querySelector("header");
+      const header = document.querySelector("header")
       if (header) {
         if (window.scrollY > 50) {
-          header.classList.add("scrolled");
+          header.classList.add("scrolled")
         } else {
-          header.classList.remove("scrolled");
+          header.classList.remove("scrolled")
         }
       }
 
       // Run all animations on scroll
-      animateParagraphs();
-      animateTeamMembers();
-      animateChallengeCards();
-      animateTagline();
-    };
+      animateParagraphs()
+      animateTeamMembers()
+      animateChallengeCards()
+      animateFeatureCards()
+      animateTagline()
+      handleParallaxScroll()
+
+      // Animate count-up numbers
+      const countElements = document.querySelectorAll(".count-up")
+      countElements.forEach((element) => {
+        const elementPosition = element.getBoundingClientRect().top
+        const screenPosition = window.innerHeight / 1.2
+
+        if (elementPosition < screenPosition && !element.classList.contains("counted")) {
+          element.classList.add("counted")
+          const target = Number.parseInt(element.getAttribute("data-target") || "0")
+          const duration = 2000 // ms
+          const start = Number.parseInt(element.textContent || "0")
+          const increment = target / (duration / 16)
+          let current = start
+
+          const updateCount = () => {
+            current += increment
+            if (current < target) {
+              element.textContent = Math.floor(current).toString()
+              requestAnimationFrame(updateCount)
+            } else {
+              element.textContent = target.toString()
+            }
+          }
+
+          updateCount()
+        }
+      })
+    }
 
     // Initialize everything
-    addBackgroundElements();
-    addSectionDividers();
-    addHighlights();
-    addHeadlineHighlights();
-    addTeamInteractions();
+    addBackgroundElements()
+    addSectionDividers()
+    addHighlights()
+    addHeadlineHighlights()
+    addTeamInteractions()
 
     // Run once on load
-    animateParagraphs();
-    animateTeamMembers();
-    animateChallengeCards();
-    animateTagline();
+    animateParagraphs()
+    animateTeamMembers()
+    animateChallengeCards()
+    animateFeatureCards()
+    animateTagline()
 
     // Add scroll event listener
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll)
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [])
 
-  if (!mounted) return null;
+  // Initialize and update the trading chart
+  useEffect(() => {
+    if (isLoaded) {
+      initTradingChart()
+    }
+  }, [isLoaded, activeTab])
+
+  const initTradingChart = () => {
+    const chartCanvas = document.getElementById("tradingChart")
+    if (!chartCanvas) return
+
+    const ctx = chartCanvas.getContext("2d")
+    if (!ctx) return
+
+    // Clear previous chart
+    ctx.clearRect(0, 0, chartCanvas.width, chartCanvas.height)
+
+    // Chart dimensions
+    const width = chartCanvas.width
+    const height = chartCanvas.height
+    const padding = 40
+
+    // Generate random data
+    const dataPoints = 50
+    const data = []
+    let value = 100
+
+    for (let i = 0; i < dataPoints; i++) {
+      value += Math.random() * 10 - 5
+      value = Math.max(50, Math.min(150, value)) // Keep within bounds
+      data.push(value)
+    }
+
+    // Draw axes
+    ctx.beginPath()
+    ctx.strokeStyle = "#5a7d53"
+    ctx.lineWidth = 2
+
+    // X-axis
+    ctx.moveTo(padding, height - padding)
+    ctx.lineTo(width - padding, height - padding)
+
+    // Y-axis
+    ctx.moveTo(padding, padding)
+    ctx.lineTo(padding, height - padding)
+    ctx.stroke()
+
+    // Draw labels
+    ctx.fillStyle = "#5a7d53"
+    ctx.font = "12px Arial"
+
+    // X-axis labels
+    for (let i = 0; i < 5; i++) {
+      const x = padding + (i * (width - 2 * padding)) / 4
+      ctx.fillText(`Day ${i * 10}`, x, height - padding + 20)
+    }
+
+    // Y-axis labels
+    for (let i = 0; i < 5; i++) {
+      const y = height - padding - (i * (height - 2 * padding)) / 4
+      ctx.fillText(`$${50 + i * 25}`, padding - 30, y)
+    }
+
+    // Draw data line
+    ctx.beginPath()
+    ctx.strokeStyle = "#06D6A0"
+    ctx.lineWidth = 3
+
+    for (let i = 0; i < data.length; i++) {
+      const x = padding + (i * (width - 2 * padding)) / (dataPoints - 1)
+      const y = height - padding - ((data[i] - 50) * (height - 2 * padding)) / 100
+
+      if (i === 0) {
+        ctx.moveTo(x, y)
+      } else {
+        ctx.lineTo(x, y)
+      }
+    }
+
+    ctx.stroke()
+
+    // Add gradient under the line
+    const gradient = ctx.createLinearGradient(0, 0, 0, height)
+    gradient.addColorStop(0, "rgba(6, 214, 160, 0.3)")
+    gradient.addColorStop(1, "rgba(6, 214, 160, 0)")
+
+    ctx.beginPath()
+    ctx.fillStyle = gradient
+
+    // Start at the bottom left
+    ctx.moveTo(padding, height - padding)
+
+    // Draw the line again
+    for (let i = 0; i < data.length; i++) {
+      const x = padding + (i * (width - 2 * padding)) / (dataPoints - 1)
+      const y = height - padding - ((data[i] - 50) * (height - 2 * padding)) / 100
+      ctx.lineTo(x, y)
+    }
+
+    // Complete the path to the bottom right
+    ctx.lineTo(width - padding, height - padding)
+    ctx.closePath()
+    ctx.fill()
+
+    // Make chart interactive
+    let isDragging = false
+    let lastX = 0
+    let lastY = 0
+
+    chartCanvas.addEventListener("mousedown", (e) => {
+      isDragging = true
+      lastX = e.clientX
+      lastY = e.clientY
+      chartCanvas.style.cursor = "grabbing"
+    })
+
+    window.addEventListener("mouseup", () => {
+      isDragging = false
+      chartCanvas.style.cursor = "grab"
+    })
+
+    chartCanvas.addEventListener("mousemove", (e) => {
+      if (!isDragging) return
+
+      const deltaX = e.clientX - lastX
+      const deltaY = e.clientY - lastY
+
+      // Update the chart based on drag (simplified for demo)
+      // In a real app, you'd adjust the data range or zoom level
+
+      // For demo, we'll just shift the data slightly
+      if (Math.abs(deltaX) > 5) {
+        data.shift()
+        value += deltaX > 0 ? 2 : -2
+        value = Math.max(50, Math.min(150, value))
+        data.push(value)
+
+        // Redraw the chart
+        initTradingChart()
+      }
+
+      lastX = e.clientX
+      lastY = e.clientY
+    })
+  }
+
+  if (!mounted) return null
 
   return (
     <div className="flex flex-col min-h-screen bg-[#f9f9f0]">
@@ -230,12 +454,13 @@ function Home() {
 
           <div className="hidden md:flex space-x-1">
             <NavLink to="/" label="Home" active={true} />
-            <NavLink to="/about" label="About Us" />
+            <NavLink to="/#about" label="About Us" />
             <NavLink to="/courses" label="Courses" />
-            <NavLink to="/blog" label="Blog" />
+            <NavLink to="/contact" label="Contact Us" />
           </div>
 
-          <div>
+          <div className="flex items-center space-x-4">
+            <UserProfile />
             <Link
               to="/login"
               className="bg-[#5a7d53] hover:bg-transparent hover:text-[#5a7d53] text-white font-sarala font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 border-2 border-[#5a7d53]"
@@ -256,7 +481,7 @@ function Home() {
       <section className="container mx-auto px-4 py-16 md:py-24 flex flex-col md:flex-row items-center">
         <div className="w-full md:w-1/2 md:pr-12">
           <h1 className="font-silkscreen text-4xl md:text-6xl font-bold leading-tight mb-4">
-            <span className="text-[#5a7d53]">KA</span>
+            <span className="text-[#5a7d53]">KA-</span>
             <span className="text-[#f0d878] drop-shadow-md">CHING</span>
           </h1>
           <h2 className="font-sarala text-xl md:text-2xl text-[#5a7d53] font-bold mb-4">
@@ -290,16 +515,16 @@ function Home() {
               className="absolute top-0 left-[-100%] w-full h-full bg-white/20 transition-all duration-700 ease-in-out"
               style={{ transform: "skewX(-15deg)" }}
               onMouseEnter={(e) => {
-                const target = e.target;
-                target.style.left = "100%";
+                const target = e.target
+                target.style.left = "100%"
               }}
             ></span>
           </Link>
         </div>
         <div className="w-full md:w-1/2 mb-10 md:mb-0 mt-10 md:mt-0">
-          <div className="relative" style={{ animation: "float 6s ease-in-out infinite" }}>
+          <div className="relative parallax" data-speed="0.1" style={{ animation: "float 6s ease-in-out infinite" }}>
             <img
-              src={`${process.env.PUBLIC_URL}/placeholder.svg`}
+              src="investment-pic-1.png"
               alt="Investment Illustration"
               width={600}
               height={500}
@@ -310,8 +535,18 @@ function Home() {
       </section>
 
       {/* Headline Section */}
-      <section className="bg-white py-16 md:py-24">
-        <div className="container mx-auto px-4">
+      <section className="bg-white py-16 md:py-24 relative overflow-hidden">
+        {/* Decorative elements */}
+        <div
+          className="absolute top-[-50px] right-[-50px] w-[200px] h-[200px] rounded-full bg-[#f0d878] opacity-10 parallax"
+          data-speed="0.2"
+        ></div>
+        <div
+          className="absolute bottom-[-100px] left-[-100px] w-[300px] h-[300px] rounded-full bg-[#5a7d53] opacity-10 parallax"
+          data-speed="0.3"
+        ></div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <h2 className="font-silkscreen text-3xl md:text-4xl text-center font-bold text-[#333333] mb-16 leading-tight headline">
             BEGINNERS JUGGLING STOCKS, BONDS, AND CRYPTO FACE <span className="text-[#B5A642]">DAILY</span> CHALLENGES:
           </h2>
@@ -349,6 +584,7 @@ function Home() {
 
       {/* About Us Section */}
       <div
+        id="about"
         className={`about-us container mx-auto px-4 py-16 md:py-24 ${isLoaded ? "loaded" : ""}`}
         ref={aboutSectionRef}
       >
@@ -356,15 +592,17 @@ function Home() {
           <div className="accent-line mx-auto"></div>
           <h1 className="font-silkscreen text-3xl md:text-4xl font-bold text-[#5a7d53]">WHO WE ARE</h1>
         </div>
-        <p className="sarala-regular text-lg text-center max-w-3xl mx-auto mb-6 opacity-0 transform translate-y-5">
+        <p className="sarala-regular text-gray-800 text-center max-w-3xl mx-auto mb-6 opacity-0 transform translate-y-5" text-lg>
+
+
           Welcome to Ka-Ching, where we make investing feel like an adventure!
         </p>
-        <p className="sarala-regular text-lg text-center max-w-3xl mx-auto mb-6 opacity-0 transform translate-y-5">
+        <p className="sarala-regular text-gray-800 text-center max-w-3xl mx-auto mb-6 opacity-0 transform translate-y-5" text-lg>
           We're a passionate team of four NUS students, united by one mission: to demystify investing and make it
           simple, fun, and accessible for everyone. Our platform offers interactive lessons, placement tests, and
           resources to guide you through your investment journey.
         </p>
-        <p className="sarala-regular text-lg text-center max-w-3xl mx-auto mb-12 opacity-0 transform translate-y-5">
+        <p className="sarala-regular text-gray-800 text-center max-w-3xl mx-auto mb-6 opacity-0 transform translate-y-5" text-lg>
           Get started by signing up or logging in!
         </p>
 
@@ -374,15 +612,15 @@ function Home() {
             OUR <span className="highlight">MISSION</span>
           </h1>
         </div>
-        <p className="sarala-regular text-lg text-center max-w-3xl mx-auto mb-6 opacity-0 transform translate-y-5">
+        <p className="sarala-regular text-gray-800 text-center max-w-3xl mx-auto mb-6 opacity-0 transform translate-y-5" text-lg>
           At Ka-Ching, we're all about making investing fun, easy, and accessible for everyone!
         </p>
-        <p className="sarala-regular text-lg text-center max-w-3xl mx-auto mb-6 opacity-0 transform translate-y-5">
+        <p className="sarala-regular text-gray-800 text-center max-w-3xl mx-auto mb-6 opacity-0 transform translate-y-5" text-lg>
           Our mission is to break down the intimidating world of stocks and finance and turn it into an exciting journey
           where you get to learn, grow, and thrive. No more confusing jargon—just simple, interactive lessons that help
           you master the art of investing at your own pace.
         </p>
-        <p className="sarala-regular text-lg text-center max-w-3xl mx-auto mb-12 opacity-0 transform translate-y-5">
+        <p className="sarala-regular text-gray-800 text-center max-w-3xl mx-auto mb-6 opacity-0 transform translate-y-5" text-lg>
           We believe that anyone can be a savvy investor, and we're here to show you how. Whether you're just starting
           out or you're ready to take your knowledge to the next level, Ka-Ching is your go-to place for all things
           investment. Let's make your money work for you, the fun way!
@@ -394,7 +632,7 @@ function Home() {
             MEET THE <span className="highlight">TEAM</span>
           </h1>
         </div>
-        <p className="sarala-regular text-lg text-center max-w-3xl mx-auto mb-12 opacity-0 transform translate-y-5">
+        <p className="sarala-regular text-gray-800 text-center max-w-3xl mx-auto mb-6 opacity-0 transform translate-y-5" text-lg>
           Ka-Ching is not just a group of individuals — we're a collaborative force with a shared goal.
         </p>
 
@@ -418,7 +656,7 @@ function Home() {
               className="social-link inline-block"
             >
               <img
-                src={`${process.env.PUBLIC_URL}/placeholder.svg`}
+                src="linkedin-logo.png"
                 alt="LinkedIn"
                 width={40}
                 height={40}
@@ -446,7 +684,7 @@ function Home() {
               className="social-link inline-block"
             >
               <img
-                src='linkedin-logo.png'
+                src="linkedin-logo.png"
                 alt="LinkedIn"
                 width={40}
                 height={40}
@@ -458,7 +696,7 @@ function Home() {
           <div className="team-member bg-white p-8 rounded-xl shadow-md text-center transform transition-all duration-500 opacity-0 translate-y-8 border-2 border-transparent hover:border-[#f0d878]">
             <div className="member-image w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-3 border-[#5a7d53] p-1">
               <img
-                src='linkedin-logo.png'
+                src={`${process.env.PUBLIC_URL}/placeholder.svg`}
                 alt="Daphne Wong"
                 width={128}
                 height={128}
@@ -474,7 +712,7 @@ function Home() {
               className="social-link inline-block"
             >
               <img
-                src='linkedin-logo.png'
+                src="linkedin-logo.png"
                 alt="LinkedIn"
                 width={40}
                 height={40}
@@ -502,7 +740,7 @@ function Home() {
               className="social-link inline-block"
             >
               <img
-                src='linkedin-logo.png'
+                src="linkedin-logo.png"
                 width={40}
                 height={40}
                 className="linkedin-logo transition-all duration-300 hover:scale-110"
@@ -513,7 +751,17 @@ function Home() {
       </div>
 
       {/* Features Section */}
-      <section className="container mx-auto px-4 py-16 md:py-24">
+      <section className="container mx-auto px-4 py-16 md:py-24 relative" ref={featuresRef}>
+        {/* Decorative elements */}
+        <div
+          className="absolute top-[20%] right-[5%] w-[150px] h-[150px] rounded-full bg-[#f0d878] opacity-10 parallax"
+          data-speed="0.15"
+        ></div>
+        <div
+          className="absolute bottom-[10%] left-[5%] w-[200px] h-[200px] rounded-full bg-[#5a7d53] opacity-10 parallax"
+          data-speed="0.25"
+        ></div>
+
         <div className="text-center mb-12">
           <div className="accent-line mx-auto"></div>
           <h2 className="font-silkscreen text-3xl md:text-4xl font-bold text-[#5a7d53] mb-4">MEET KA-CHING!</h2>
@@ -524,20 +772,70 @@ function Home() {
         </div>
 
         <div className="mt-12">
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <button className="tab-btn active px-6 py-3 rounded-full border-2 border-[#5a7d53] text-[#5a7d53] font-sarala font-bold hover:bg-[#5a7d53] hover:text-white transition-all duration-300">
-              Learn
-            </button>
-            <button className="tab-btn px-6 py-3 rounded-full border-2 border-[#5a7d53] text-[#5a7d53] font-sarala font-bold hover:bg-[#5a7d53] hover:text-white transition-all duration-300">
-              Practice
-            </button>
-            <button className="tab-btn px-6 py-3 rounded-full border-2 border-[#5a7d53] text-[#5a7d53] font-sarala font-bold hover:bg-[#5a7d53] hover:text-white transition-all duration-300">
-              Track
-            </button>
-            <button className="tab-btn px-6 py-3 rounded-full border-2 border-[#5a7d53] text-[#5a7d53] font-sarala font-bold hover:bg-[#5a7d53] hover:text-white transition-all duration-300">
-              Community
-            </button>
+          {/* Feature cards instead of buttons */}
+        
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <div
+              className={`feature-card bg-white p-6 rounded-xl shadow-md transform transition-all duration-500 cursor-pointer ${activeTab === "learn" ? "border-2 border-[#5a7d53]" : "border border-gray-200 hover:border-[#5a7d53] hover:shadow-lg hover:translate-y-0 hover:opacity-100"}`}
+              onClick={() => setActiveTab("learn")}
+            >
+              <div className="flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-full bg-[#f0f9f4] flex items-center justify-center">
+                  <LineChart className="w-6 h-6 text-[#5a7d53]" />
+                </div>
+              </div>
+              <h3 className="font-silkscreen text-lg font-bold text-center text-[#5a7d53] mb-2">Learn</h3>
+              <p className="text-gray-600 text-center text-sm">
+                Interactive courses designed to make investing concepts easy to understand
+              </p>
+            </div>
+
+            <div
+              className={`feature-card bg-white p-6 rounded-xl shadow-md transform transition-all duration-500 cursor-pointer ${activeTab === "practice" ? "border-2 border-[#5a7d53]" : "border border-gray-200 hover:border-[#5a7d53] hover:shadow-lg hover:translate-y-0 hover:opacity-100"}`}
+              onClick={() => setActiveTab("practice")}
+            >
+              <div className="flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-full bg-[#f0f9f4] flex items-center justify-center">
+                  <TrendingUp className="w-6 h-6 text-[#5a7d53]" />
+                </div>
+              </div>
+              <h3 className="font-silkscreen text-lg font-bold text-center text-[#5a7d53] mb-2">Practice</h3>
+              <p className="text-gray-600 text-center text-sm">
+                Risk-free simulations to apply what you've learned in real-world scenarios
+              </p>
+            </div>
+
+            <div
+              className={`feature-card bg-white p-6 rounded-xl shadow-md transform transition-all duration-500 cursor-pointer ${activeTab === "track" ? "border-2 border-[#5a7d53]" : "border border-gray-200 hover:border-[#5a7d53] hover:shadow-lg hover:translate-y-0 hover:opacity-100"}`}
+              onClick={() => setActiveTab("track")}
+            >
+              <div className="flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-full bg-[#f0f9f4] flex items-center justify-center">
+                  <BarChart className="w-6 h-6 text-[#5a7d53]" />
+                </div>
+              </div>
+              <h3 className="font-silkscreen text-lg font-bold text-center text-[#5a7d53] mb-2">Track</h3>
+              <p className="text-gray-600 text-center text-sm">
+                Monitor your progress and portfolio performance with intuitive tools
+              </p>
+            </div>
+
+            <div
+              className={`feature-card bg-white p-6 rounded-xl shadow-md transform transition-all duration-500 cursor-pointer ${activeTab === "community" ? "border-2 border-[#5a7d53]" : "border border-gray-200 hover:border-[#5a7d53] hover:shadow-lg hover:translate-y-0 hover:opacity-100"}`}
+              onClick={() => setActiveTab("community")}
+            >
+              <div className="flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-full bg-[#f0f9f4] flex items-center justify-center">
+                  <PieChart className="w-6 h-6 text-[#5a7d53]" />
+                </div>
+              </div>
+              <h3 className="font-silkscreen text-lg font-bold text-center text-[#5a7d53] mb-2">Community</h3>
+              <p className="text-gray-600 text-center text-sm">
+                Connect with fellow investors to share insights and learn together
+              </p>
+            </div>
           </div>
+
 
           <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
             <div className="tab-pane active p-8 md:p-12">
@@ -564,13 +862,14 @@ function Home() {
                   </ul>
                 </div>
                 <div className="w-full md:w-1/2">
-                  <img
-                    src={`${process.env.PUBLIC_URL}/placeholder.svg`}
-                    alt="Interactive Learning"
-                    width={500}
-                    height={400}
-                    className="rounded-xl shadow-md w-full h-auto"
-                  />
+                  {/* Interactive trading chart */}
+                  <div className="relative bg-white rounded-xl shadow-md p-4 overflow-hidden">
+                    <h4 className="text-lg font-bold text-[#5a7d53] mb-2">Interactive Stock Chart</h4>
+                    <p className="text-sm text-gray-600 mb-4">Drag to explore and analyze market trends</p>
+                    <div className="chart-container" style={{ cursor: "grab" }}>
+                      <canvas id="tradingChart" width="500" height="300" className="w-full h-auto"></canvas>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -579,8 +878,21 @@ function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-[#f9f9f0] to-[#f0f9f4] py-16 md:py-24">
-        <div className="container mx-auto px-4 text-center">
+      <section className="bg-gradient-to-r from-[#f9f9f0] to-[#f0f9f4] py-16 md:py-24 relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute w-full h-full top-0 left-0 overflow-hidden z-0">
+          <div className="absolute top-[10%] left-[5%] w-[100px] h-[100px] rounded-full bg-[#5a7d53] opacity-10 animate-float"></div>
+          <div
+            className="absolute top-[30%] right-[10%] w-[150px] h-[150px] rounded-full bg-[#f0d878] opacity-10 animate-float"
+            style={{ animationDelay: "1s" }}
+          ></div>
+          <div
+            className="absolute bottom-[20%] left-[20%] w-[120px] h-[120px] rounded-full bg-[#06D6A0] opacity-10 animate-float"
+            style={{ animationDelay: "2s" }}
+          ></div>
+        </div>
+
+        <div className="container mx-auto px-4 text-center relative z-10">
           <h2 className="font-silkscreen text-3xl md:text-4xl font-bold text-[#5a7d53] mb-6">
             START YOUR INVESTMENT JOURNEY TODAY
           </h2>
@@ -590,7 +902,7 @@ function Home() {
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             <Link
               to="/signup"
-              className="bg-[#06D6A0] hover:bg-transparent hover:text-[#06D6A0] text-white font-sarala font-bold py-  hover:bg-transparent hover:text-[#06D6A0] text-white font-sarala font-bold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg border-2 border-[#06D6A0]"
+              className="bg-[#06D6A0] hover:bg-transparent hover:text-[#06D6A0] text-white font-sarala font-bold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg border-2 border-[#06D6A0]"
             >
               GET STARTED FOR FREE
             </Link>
@@ -608,7 +920,7 @@ function Home() {
                 className="block text-4xl md:text-5xl font-silkscreen font-bold text-[#5a7d53] mb-2 count-up"
                 data-target="10000"
               >
-                4
+                7
               </span>
               <span className="font-sarala text-gray-600">Active Users</span>
             </div>
@@ -659,7 +971,7 @@ function Home() {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/about" className="hover:text-[#f0d878] transition-colors">
+                    <Link to="/#about" className="hover:text-[#f0d878] transition-colors">
                       About Us
                     </Link>
                   </li>
@@ -669,8 +981,8 @@ function Home() {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/blog" className="hover:text-[#f0d878] transition-colors">
-                      Blog
+                    <Link to="/contact" className="hover:text-[#f0d878] transition-colors">
+                      Contact Us
                     </Link>
                   </li>
                 </ul>
@@ -697,7 +1009,7 @@ function Home() {
                 <ul className="space-y-2">
                   <li>
                     <a href="mailto:ask.kaching@gmail.com" className="hover:text-[#f0d878] transition-colors">
-                      info@ka-ching.com
+                      ask.kaching@gmail.com
                     </a>
                   </li>
                   <li>
@@ -714,7 +1026,7 @@ function Home() {
         </div>
       </footer>
     </div>
-  );
+  )
 }
 
 function NavLink({ to, label, active = false }) {
@@ -727,8 +1039,14 @@ function NavLink({ to, label, active = false }) {
     >
       {label}
     </Link>
-  );
+  )
 }
 
-export default App;
+export default App
+
+
+
+
+
+
 
