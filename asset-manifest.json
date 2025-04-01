@@ -1,15 +1,16 @@
 {
   "files": {
     "main.css": "/ka-ching/static/css/main.7fa9171d.css",
-    "main.js": "/ka-ching/static/js/main.a58c5892.js",
+    "main.js": "/ka-ching/static/js/main.8ce0afd5.js",
     "static/js/453.33b6e918.chunk.js": "/ka-ching/static/js/453.33b6e918.chunk.js",
+    "static/media/investment-pic-1.png": "/ka-ching/static/media/investment-pic-1.dea5ffd42a28d610c966.png",
     "index.html": "/ka-ching/index.html",
     "main.7fa9171d.css.map": "/ka-ching/static/css/main.7fa9171d.css.map",
-    "main.a58c5892.js.map": "/ka-ching/static/js/main.a58c5892.js.map",
+    "main.8ce0afd5.js.map": "/ka-ching/static/js/main.8ce0afd5.js.map",
     "453.33b6e918.chunk.js.map": "/ka-ching/static/js/453.33b6e918.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7fa9171d.css",
-    "static/js/main.a58c5892.js"
+    "static/js/main.8ce0afd5.js"
   ]
 }
