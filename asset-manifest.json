@@ -1,16 +1,18 @@
 {
   "files": {
     "main.css": "/ka-ching/static/css/main.7fa9171d.css",
-    "main.js": "/ka-ching/static/js/main.8ce0afd5.js",
+    "main.js": "/ka-ching/static/js/main.ad5cfb34.js",
     "static/js/453.33b6e918.chunk.js": "/ka-ching/static/js/453.33b6e918.chunk.js",
+    "static/media/ananya.png": "/ka-ching/static/media/ananya.05e30cb5b31e57aa578d.png",
     "static/media/investment-pic-1.png": "/ka-ching/static/media/investment-pic-1.dea5ffd42a28d610c966.png",
+    "static/media/linkedin-logo.png": "/ka-ching/static/media/linkedin-logo.6892b3ae328c7a1e055f.png",
     "index.html": "/ka-ching/index.html",
     "main.7fa9171d.css.map": "/ka-ching/static/css/main.7fa9171d.css.map",
-    "main.8ce0afd5.js.map": "/ka-ching/static/js/main.8ce0afd5.js.map",
+    "main.ad5cfb34.js.map": "/ka-ching/static/js/main.ad5cfb34.js.map",
     "453.33b6e918.chunk.js.map": "/ka-ching/static/js/453.33b6e918.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7fa9171d.css",
-    "static/js/main.8ce0afd5.js"
+    "static/js/main.ad5cfb34.js"
   ]
 }
