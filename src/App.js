@@ -1,30 +1,36 @@
 "use client"
 
 import { useEffect, useState, useRef } from "react"
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate } from "react-router-dom"
 import { ChevronRight, TrendingUp, LineChart, BarChart, PieChart } from "lucide-react"
 import TypewriterComponent from "./components/typewriter"
 import "./styles.css"
 import Login from "./pages/login.js"
 import Signup from "./pages/signup.js"
 import Contact from "./pages/contactus.js"
+import Courses from "./pages/courses.js"
+import CourseContent from "./pages/coursecontent.js"
 import UserProfile from "./components/userprofile.js"
+import Terms from "./pages/terms.js"
+import Privacy from "./pages/privacy.js"
 import "./styles.css"
 
 // Update the Routes section to use our components
+
 function App() {
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<div>About Page</div>} />
-        <Route path="/courses" element={<div>Courses Page</div>} />
+        <Route path="/courses" element={<Courses />} />
+        <Route path="/course-content" element={<CourseContent />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/demo" element={<div>Demo Page</div>} />
-        <Route path="/terms" element={<div>Terms Page</div>} />
-        <Route path="/privacy" element={<div>Privacy Page</div>} />
+        // <Route path="/demo" element={<div>Demo Page</div>} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/privacy" element={<Privacy />} />
       </Routes>
     </Router>
   )
@@ -33,6 +39,7 @@ function App() {
 function Home() {
   const [mounted, setMounted] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [activeTab, setActiveTab] = useState("learn")
   const aboutSectionRef = useRef(null)
   const teamMembersRef = useRef(null)
@@ -40,6 +47,32 @@ function Home() {
   const taglineRef = useRef(null)
   const featuresRef = useRef(null)
   const location = useLocation()
+  const scrollProgressRef = useRef(null)
+  const navigate = useNavigate()
+
+  // Check login status
+  useEffect(() => {
+    const checkLoginStatus = () => {
+      const user = localStorage.getItem("kaChingCurrentUser")
+      setIsLoggedIn(!!user)
+    }
+
+    checkLoginStatus()
+    // Set up event listener for storage changes
+    window.addEventListener("storage", checkLoginStatus)
+
+    return () => {
+      window.removeEventListener("storage", checkLoginStatus)
+    }
+  }, [])
+
+  // Handle logout
+  const handleLogout = () => {
+    localStorage.removeItem("kaChingCurrentUser")
+    setIsLoggedIn(false)
+    // Dispatch storage event to notify other components
+    window.dispatchEvent(new Event("storage"))
+  }
 
   // Scroll to about section if hash is #about
   useEffect(() => {
@@ -453,20 +486,23 @@ function Home() {
           </div>
 
           <div className="hidden md:flex space-x-1">
-            <NavLink to="/" label="Home" active={true} />
-            <NavLink to="/#about" label="About Us" />
-            <NavLink to="/courses" label="Courses" />
-            <NavLink to="/contact" label="Contact Us" />
+            <NavLink to="/" label="Home" active={location.pathname === "/"} />
+            <NavLink to="/#about" label="About Us" active={location.hash === "#about"} />
+            {isLoggedIn && <NavLink to="/courses" label="Courses" active={location.pathname === "/courses"} />}
+            <NavLink to="/contact" label="Contact Us" active={location.pathname === "/contact"} />
           </div>
 
           <div className="flex items-center space-x-4">
-            <UserProfile />
-            <Link
-              to="/login"
-              className="bg-[#5a7d53] hover:bg-transparent hover:text-[#5a7d53] text-white font-sarala font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 border-2 border-[#5a7d53]"
-            >
-              Login
-            </Link>
+            {isLoggedIn ? (
+              <UserProfile />
+            ) : (
+              <Link
+                to="/login"
+                className="bg-[#5a7d53] hover:bg-transparent hover:text-[#5a7d53] text-white font-sarala font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 border-2 border-[#5a7d53]"
+              >
+                Login
+              </Link>
+            )}
           </div>
 
           <div className="md:hidden flex flex-col gap-1.5 cursor-pointer">
@@ -592,17 +628,24 @@ function Home() {
           <div className="accent-line mx-auto"></div>
           <h1 className="font-silkscreen text-3xl md:text-4xl font-bold text-[#5a7d53]">WHO WE ARE</h1>
         </div>
-        <p className="sarala-regular text-gray-800 text-center max-w-3xl mx-auto mb-6 opacity-0 transform translate-y-5" text-lg>
-
-
+        <p
+          className="sarala-regular text-gray-800 text-center max-w-3xl mx-auto mb-6 opacity-0 transform translate-y-5"
+          text-lg
+        >
           Welcome to Ka-Ching, where we make investing feel like an adventure!
         </p>
-        <p className="sarala-regular text-gray-800 text-center max-w-3xl mx-auto mb-6 opacity-0 transform translate-y-5" text-lg>
+        <p
+          className="sarala-regular text-gray-800 text-center max-w-3xl mx-auto mb-6 opacity-0 transform translate-y-5"
+          text-lg
+        >
           We're a passionate team of four NUS students, united by one mission: to demystify investing and make it
           simple, fun, and accessible for everyone. Our platform offers interactive lessons, placement tests, and
           resources to guide you through your investment journey.
         </p>
-        <p className="sarala-regular text-gray-800 text-center max-w-3xl mx-auto mb-6 opacity-0 transform translate-y-5" text-lg>
+        <p
+          className="sarala-regular text-gray-800 text-center max-w-3xl mx-auto mb-6 opacity-0 transform translate-y-5"
+          text-lg
+        >
           Get started by signing up or logging in!
         </p>
 
@@ -612,15 +655,24 @@ function Home() {
             OUR <span className="highlight">MISSION</span>
           </h1>
         </div>
-        <p className="sarala-regular text-gray-800 text-center max-w-3xl mx-auto mb-6 opacity-0 transform translate-y-5" text-lg>
+        <p
+          className="sarala-regular text-gray-800 text-center max-w-3xl mx-auto mb-6 opacity-0 transform translate-y-5"
+          text-lg
+        >
           At Ka-Ching, we're all about making investing fun, easy, and accessible for everyone!
         </p>
-        <p className="sarala-regular text-gray-800 text-center max-w-3xl mx-auto mb-6 opacity-0 transform translate-y-5" text-lg>
+        <p
+          className="sarala-regular text-gray-800 text-center max-w-3xl mx-auto mb-6 opacity-0 transform translate-y-5"
+          text-lg
+        >
           Our mission is to break down the intimidating world of stocks and finance and turn it into an exciting journey
           where you get to learn, grow, and thrive. No more confusing jargon—just simple, interactive lessons that help
           you master the art of investing at your own pace.
         </p>
-        <p className="sarala-regular text-gray-800 text-center max-w-3xl mx-auto mb-6 opacity-0 transform translate-y-5" text-lg>
+        <p
+          className="sarala-regular text-gray-800 text-center max-w-3xl mx-auto mb-6 opacity-0 transform translate-y-5"
+          text-lg
+        >
           We believe that anyone can be a savvy investor, and we're here to show you how. Whether you're just starting
           out or you're ready to take your knowledge to the next level, Ka-Ching is your go-to place for all things
           investment. Let's make your money work for you, the fun way!
@@ -632,7 +684,10 @@ function Home() {
             MEET THE <span className="highlight">TEAM</span>
           </h1>
         </div>
-        <p className="sarala-regular text-gray-800 text-center max-w-3xl mx-auto mb-6 opacity-0 transform translate-y-5" text-lg>
+        <p
+          className="sarala-regular text-gray-800 text-center max-w-3xl mx-auto mb-6 opacity-0 transform translate-y-5"
+          text-lg
+        >
           Ka-Ching is not just a group of individuals — we're a collaborative force with a shared goal.
         </p>
 
@@ -640,7 +695,7 @@ function Home() {
           <div className="team-member bg-white p-8 rounded-xl shadow-md text-center transform transition-all duration-500 opacity-0 translate-y-8 border-2 border-transparent hover:border-[#f0d878]">
             <div className="member-image w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-3 border-[#5a7d53] p-1">
               <img
-                src={`${process.env.PUBLIC_URL}/placeholder.svg`}
+                src="ananya.png"
                 alt="Ananya Agarwal"
                 width={128}
                 height={128}
@@ -668,7 +723,7 @@ function Home() {
           <div className="team-member bg-white p-8 rounded-xl shadow-md text-center transform transition-all duration-500 opacity-0 translate-y-8 border-2 border-transparent hover:border-[#f0d878]">
             <div className="member-image w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-3 border-[#5a7d53] p-1">
               <img
-                src={`${process.env.PUBLIC_URL}/placeholder.svg`}
+                src="zhuen.png"
                 alt="Boo Zhu En"
                 width={128}
                 height={128}
@@ -696,7 +751,7 @@ function Home() {
           <div className="team-member bg-white p-8 rounded-xl shadow-md text-center transform transition-all duration-500 opacity-0 translate-y-8 border-2 border-transparent hover:border-[#f0d878]">
             <div className="member-image w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-3 border-[#5a7d53] p-1">
               <img
-                src={`${process.env.PUBLIC_URL}/placeholder.svg`}
+                src="daphne.png"
                 alt="Daphne Wong"
                 width={128}
                 height={128}
@@ -724,7 +779,7 @@ function Home() {
           <div className="team-member bg-white p-8 rounded-xl shadow-md text-center transform transition-all duration-500 opacity-0 translate-y-8 border-2 border-transparent hover:border-[#f0d878]">
             <div className="member-image w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-3 border-[#5a7d53] p-1">
               <img
-                src={`${process.env.PUBLIC_URL}/placeholder.svg`}
+                src="kenta.png"
                 alt="Kenta Takayama"
                 width={128}
                 height={128}
@@ -750,8 +805,79 @@ function Home() {
         </div>
       </div>
 
+      <div className="about-header text-center mb-4 mt-8">
+        <div className="accent-line mx-auto"></div>
+        <h1 className="font-silkscreen text-3xl md:text-4xl font-bold text-[#5a7d53]">
+          WHAT OUR <span className="highlight">USERS</span> SAY
+        </h1>
+      </div>
+      <p className="sarala-regular text-gray-800 text-center max-w-3xl mx-auto mb-12 opacity-0 transform translate-y-5" text-lg>
+        Hear from our community about their experience with Ka-Ching
+      </p>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
+        <div className="team-member bg-white p-4 rounded-xl shadow-md transform transition-all duration-500 opacity-0 translate-y-8 border-2 border-transparent hover:border-[#f0d878] max-w-xs mx-auto text-center">
+          <div className="flex flex-col items-center mb-4">
+            <div className="w-16 h-16 rounded-full overflow-hidden mb-4 border-2 border-[#5a7d53]">
+              <img
+                src="user3.png"
+                alt="Goh Kai Feng"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div>
+              <h4 className="font-sarala font-bold text-lg">Goh Kai Feng</h4>
+              <p className="font-sarala text-gray-600 text-sm">25 years old</p>
+            </div>
+          </div>
+          <p className="font-sarala text-gray-700 italic text-sm">
+            "Ka-Ching made investing feel accessible, something I always found intimidating. Thanks to the clear,
+            beginner-friendly lessons, I now feel confident enough to open my first trading account!"
+          </p>
+        </div>
+
+        <div className="team-member bg-white p-4 rounded-xl shadow-md transform transition-all duration-500 opacity-0 translate-y-8 border-2 border-transparent hover:border-[#f0d878] max-w-xs mx-auto text-center">
+          <div className="flex flex-col items-center mb-4">
+            <div className="w-16 h-16 rounded-full overflow-hidden mb-4 border-2 border-[#5a7d53]">
+              <img src="user2.png" alt="blank" className="w-full h-full object-cover" />
+            </div>
+            <div>
+              <h4 className="font-sarala font-bold text-lg">Aleisya Fuad</h4>
+              <p className="font-sarala text-gray-600 text-sm">23 years old</p>
+            </div>
+          </div>
+          <p className="font-sarala text-gray-700 italic text-sm">
+            "As a young trader, I always wanted to learn both fundamental and technical analysis but was overwhelmed by
+            the jargon. Ka-Ching broke it down in a way I could understand, and now I feel much more confident in my
+            knowledge."
+          </p>
+        </div>
+
+        <div className="team-member bg-white p-4 rounded-xl shadow-md transform transition-all duration-500 opacity-0 translate-y-8 border-2 border-transparent hover:border-[#f0d878] max-w-xs mx-auto text-center">
+          <div className="flex flex-col items-center mb-4">
+            <div className="w-16 h-16 rounded-full overflow-hidden mb-4 border-2 border-[#5a7d53]">
+              <img
+                src="user1.png"
+                alt="blank"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div>
+              <h4 className="font-sarala font-bold text-lg">Rachel Ong</h4>
+              <p className="font-sarala text-gray-600 text-sm">27 years old</p>
+            </div>
+          </div>
+          <p className="font-sarala text-gray-700 italic text-sm">
+            "I love how Ka-Ching breaks down investing into easy-to-digest lessons. The quizzes made it even more
+            engaging and helped me truly grasp the basics."
+          </p>
+        </div>
+      </div>
+
+
+
       {/* Features Section */}
-      <section className="container mx-auto px-4 py-16 md:py-24 relative" ref={featuresRef}>
+      <section className="container mx-auto px-4 py-6 md:py-16 relative" ref={featuresRef}>
         {/* Decorative elements */}
         <div
           className="absolute top-[20%] right-[5%] w-[150px] h-[150px] rounded-full bg-[#f0d878] opacity-10 parallax"
@@ -773,7 +899,7 @@ function Home() {
 
         <div className="mt-12">
           {/* Feature cards instead of buttons */}
-        
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             <div
               className={`feature-card bg-white p-6 rounded-xl shadow-md transform transition-all duration-500 cursor-pointer ${activeTab === "learn" ? "border-2 border-[#5a7d53]" : "border border-gray-200 hover:border-[#5a7d53] hover:shadow-lg hover:translate-y-0 hover:opacity-100"}`}
@@ -836,7 +962,6 @@ function Home() {
             </div>
           </div>
 
-
           <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
             <div className="tab-pane active p-8 md:p-12">
               <div className="flex flex-col md:flex-row items-center gap-8">
@@ -865,7 +990,6 @@ function Home() {
                   {/* Interactive trading chart */}
                   <div className="relative bg-white rounded-xl shadow-md p-4 overflow-hidden">
                     <h4 className="text-lg font-bold text-[#5a7d53] mb-2">Interactive Stock Chart</h4>
-                    <p className="text-sm text-gray-600 mb-4">Drag to explore and analyze market trends</p>
                     <div className="chart-container" style={{ cursor: "grab" }}>
                       <canvas id="tradingChart" width="500" height="300" className="w-full h-auto"></canvas>
                     </div>
@@ -1043,10 +1167,4 @@ function NavLink({ to, label, active = false }) {
 }
 
 export default App
-
-
-
-
-
-
 

@@ -22,7 +22,7 @@ const UserProfile = () => {
     localStorage.removeItem("kaChingCurrentUser")
     setUser(null)
     setIsDropdownOpen(false)
-    navigate("/login")
+    navigate("/")
   }
 
   if (!user) return null
