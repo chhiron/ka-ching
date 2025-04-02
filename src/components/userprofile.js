@@ -20,8 +20,9 @@ const UserProfile = () => {
   const handleLogout = () => {
     // Remove user from localStorage
     localStorage.removeItem("kaChingCurrentUser")
-    setUser(null)
-    setIsDropdownOpen(false)
+    window.dispatchEvent(new Event("storage"))
+    window.dispatchEvent(new Event("user-logout"))
+
     navigate("/")
   }
 

@@ -61,8 +61,14 @@ function Home() {
     // Set up event listener for storage changes
     window.addEventListener("storage", checkLoginStatus)
 
+    const handleLogoutEvent = () => {
+      checkLoginStatus()
+    }
+    window.addEventListener("user-logout", handleLogoutEvent)
+
     return () => {
       window.removeEventListener("storage", checkLoginStatus)
+      window.removeEventListener("user-logout", handleLogoutEvent)
     }
   }, [])
 
@@ -486,7 +492,7 @@ function Home() {
           </div>
 
           <div className="hidden md:flex space-x-1">
-            <NavLink to="/" label="Home" active={location.pathname === "/"} />
+            <NavLink to="/" label="Home" active={location.pathname === "/" && !location.hash} />
             <NavLink to="/#about" label="About Us" active={location.hash === "#about"} />
             {isLoggedIn && <NavLink to="/courses" label="Courses" active={location.pathname === "/courses"} />}
             <NavLink to="/contact" label="Contact Us" active={location.pathname === "/contact"} />
@@ -560,7 +566,7 @@ function Home() {
         <div className="w-full md:w-1/2 mb-10 md:mb-0 mt-10 md:mt-0">
           <div className="relative parallax" data-speed="0.1" style={{ animation: "float 6s ease-in-out infinite" }}>
             <img
-              src="investment-pic-1.png"
+              src={require("./investment-pic-1.png")}
               alt="Investment Illustration"
               width={600}
               height={500}
@@ -695,7 +701,7 @@ function Home() {
           <div className="team-member bg-white p-8 rounded-xl shadow-md text-center transform transition-all duration-500 opacity-0 translate-y-8 border-2 border-transparent hover:border-[#f0d878]">
             <div className="member-image w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-3 border-[#5a7d53] p-1">
               <img
-                src="ananya.png"
+                src={require("./ananya.png")}
                 alt="Ananya Agarwal"
                 width={128}
                 height={128}
@@ -711,7 +717,7 @@ function Home() {
               className="social-link inline-block"
             >
               <img
-                src="linkedin-logo.png"
+                src={require("./linkedin-logo.png")}
                 alt="LinkedIn"
                 width={40}
                 height={40}
@@ -723,7 +729,7 @@ function Home() {
           <div className="team-member bg-white p-8 rounded-xl shadow-md text-center transform transition-all duration-500 opacity-0 translate-y-8 border-2 border-transparent hover:border-[#f0d878]">
             <div className="member-image w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-3 border-[#5a7d53] p-1">
               <img
-                src="zhuen.png"
+                src={require("./zhuen.png")}
                 alt="Boo Zhu En"
                 width={128}
                 height={128}
@@ -739,7 +745,7 @@ function Home() {
               className="social-link inline-block"
             >
               <img
-                src="linkedin-logo.png"
+                src={require("./linkedin-logo.png")}
                 alt="LinkedIn"
                 width={40}
                 height={40}
@@ -751,7 +757,7 @@ function Home() {
           <div className="team-member bg-white p-8 rounded-xl shadow-md text-center transform transition-all duration-500 opacity-0 translate-y-8 border-2 border-transparent hover:border-[#f0d878]">
             <div className="member-image w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-3 border-[#5a7d53] p-1">
               <img
-                src="daphne.png"
+                src={require("./daphne.png")}
                 alt="Daphne Wong"
                 width={128}
                 height={128}
@@ -767,7 +773,7 @@ function Home() {
               className="social-link inline-block"
             >
               <img
-                src="linkedin-logo.png"
+                src={require("./linkedin-logo.png")}
                 alt="LinkedIn"
                 width={40}
                 height={40}
@@ -779,7 +785,7 @@ function Home() {
           <div className="team-member bg-white p-8 rounded-xl shadow-md text-center transform transition-all duration-500 opacity-0 translate-y-8 border-2 border-transparent hover:border-[#f0d878]">
             <div className="member-image w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-3 border-[#5a7d53] p-1">
               <img
-                src="kenta.png"
+                src={require("./kenta.png")}
                 alt="Kenta Takayama"
                 width={128}
                 height={128}
@@ -795,7 +801,7 @@ function Home() {
               className="social-link inline-block"
             >
               <img
-                src="linkedin-logo.png"
+                src={require("./linkedin-logo.png")}
                 width={40}
                 height={40}
                 className="linkedin-logo transition-all duration-300 hover:scale-110"
@@ -820,7 +826,7 @@ function Home() {
           <div className="flex flex-col items-center mb-4">
             <div className="w-16 h-16 rounded-full overflow-hidden mb-4 border-2 border-[#5a7d53]">
               <img
-                src="user3.png"
+                src={require("./user3.png")}
                 alt="Goh Kai Feng"
                 className="w-full h-full object-cover"
               />
@@ -839,7 +845,7 @@ function Home() {
         <div className="team-member bg-white p-4 rounded-xl shadow-md transform transition-all duration-500 opacity-0 translate-y-8 border-2 border-transparent hover:border-[#f0d878] max-w-xs mx-auto text-center">
           <div className="flex flex-col items-center mb-4">
             <div className="w-16 h-16 rounded-full overflow-hidden mb-4 border-2 border-[#5a7d53]">
-              <img src="user2.png" alt="blank" className="w-full h-full object-cover" />
+              <img src={require("./user2.png")} alt="blank" className="w-full h-full object-cover" />
             </div>
             <div>
               <h4 className="font-sarala font-bold text-lg">Aleisya Fuad</h4>
@@ -857,7 +863,7 @@ function Home() {
           <div className="flex flex-col items-center mb-4">
             <div className="w-16 h-16 rounded-full overflow-hidden mb-4 border-2 border-[#5a7d53]">
               <img
-                src="user1.png"
+                src={require("./user1.png")}
                 alt="blank"
                 className="w-full h-full object-cover"
               />
@@ -1154,9 +1160,20 @@ function Home() {
 }
 
 function NavLink({ to, label, active = false }) {
+
+  const handleClick = (e) => {
+    if (to === "/") {
+      e.preventDefault()
+      window.scrollTo({ top: 0, behavior: "smooth" })
+      // Still update the URL to "/" without the hash
+      window.history.pushState({}, "", "/")
+    }
+  }
+
   return (
     <Link
       to={to}
+      onClick={handleClick}
       className={`font-sarala font-bold px-4 py-2 rounded-md transition-all duration-300 ${
         active ? "text-[#5a7d53] bg-[#f0f9f4]" : "text-gray-600 hover:text-[#5a7d53] hover:bg-[#f0f9f4]"
       }`}

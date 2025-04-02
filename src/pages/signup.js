@@ -95,16 +95,19 @@ const Signup = () => {
     // Save to localStorage
     localStorage.setItem("kaChingUsers", JSON.stringify([...existingUsers, newUser]))
 
+    // Set the current user in localStorage to log them in
+    localStorage.setItem("kaChingCurrentUser", JSON.stringify(newUser))
+
     // Show success message
     setFormMessage({
       type: "success",
-      message: "Account created successfully! Redirecting to login...",
+      message: "Account created successfully! Redirecting to courses...",
     })
 
-    // Redirect to login after a delay
+    // Redirect to courses page after a delay
     setTimeout(() => {
-      navigate("/login")
-    }, 2000)
+      navigate("/courses")
+    }, 1500)
   }
 
   return (
@@ -244,5 +247,4 @@ const Signup = () => {
 }
 
 export default Signup
-
 
