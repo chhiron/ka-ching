@@ -922,7 +922,6 @@ const CourseContent = () => {
         },
       ],
     },
-    // Other steps remain unchanged
     {
       id: 2,
       title: "Fundamental Analysis",
@@ -954,9 +953,24 @@ const CourseContent = () => {
   const handleCompleteModule = () => {
     // Only allow progression if score is 80% or above
     if (quizScore >= 80) {
-      if (!completedSteps.includes(currentStep)) {
-        setCompletedSteps([...completedSteps, currentStep])
+      // Mark this module as completed in localStorage
+      const savedProgress = localStorage.getItem("courseProgress")
+      const progress = savedProgress
+        ? JSON.parse(savedProgress)
+        : {
+            currentStep: 1,
+            currentModule: 1,
+            completedModules: {},
+          }
+
+      // Mark this module as completed
+      progress.completedModules = {
+        ...progress.completedModules,
+        [`${currentStep}.${currentModule}`]: true,
       }
+
+      // Save updated progress
+      localStorage.setItem("courseProgress", JSON.stringify(progress))
 
       // Get the current step data
       const currentStepData = steps[currentStep - 1]
@@ -972,17 +986,15 @@ const CourseContent = () => {
         navigate(`/course-content?step=${currentStep}&module=${currentModule + 1}`)
       } else {
         // If we've completed all modules in this step, move to the next step
-
         if (currentStep < steps.length) {
           setCurrentStep(currentStep + 1)
           setCurrentModule(1)
           setCurrentContentIndex(0)
           setShowQuiz(false)
 
-        // Navigate to the next step
+          // Navigate to the next step
           navigate(`/course-content?step=${currentStep + 1}&module=1`)
         }
-        
       }
     } else {
       // Show tooltip with message
@@ -1036,6 +1048,12 @@ const CourseContent = () => {
         ...progress.completedModules,
         [`${currentStep}.${currentModule}`]: true,
       }
+
+      // Also store the quiz score
+      if (!progress.quizScores) {
+        progress.quizScores = {}
+      }
+      progress.quizScores[`${currentStep}.${currentModule}`] = score
 
       // Save updated progress
       localStorage.setItem("courseProgress", JSON.stringify(progress))
@@ -1170,194 +1188,200 @@ const CourseContent = () => {
 
           {showQuiz ? (
             <div className="max-w-3xl mx-auto animate-fadeInOnce">
-              {quizCompleted ? (
-                <div className="text-center py-8" ref={confettiRef}>
-                  <div
-                    className={`w-24 h-24 ${quizScore >= 80 ? "bg-[#5a7d53]" : "bg-[#e07a5f]"} rounded-full flex items-center justify-center mx-auto mb-6 animate-bounce`}
-                  >
-                    {quizScore >= 80 ? (
-                      <Award className="w-12 h-12 text-white" />
-                    ) : (
-                      <AlertTriangle className="w-12 h-12 text-white" />
-                    )}
-                  </div>
-                  <h2 className="text-2xl font-bold text-[#5a7d53] mb-4">Quiz Completed!</h2>
-
-                  <div className="mb-8">
-                    <div className="w-48 h-48 mx-auto relative">
-                      <svg viewBox="0 0 100 100" className="w-full h-full">
-                        <circle cx="50" cy="50" r="45" fill="none" stroke="#e6e6e6" strokeWidth="10" />
-                        <circle
-                          cx="50"
-                          cy="50"
-                          r="45"
-                          fill="none"
-                          stroke={quizScore >= 80 ? "#5a7d53" : "#e07a5f"}
-                          strokeWidth="10"
-                          strokeDasharray="283"
-                          strokeDashoffset={283 - (283 * quizScore) / 100}
-                          transform="rotate(-90 50 50)"
-                          className="animate-scoreReveal"
-                        />
-                      </svg>
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-4xl font-bold animate-fadeIn">{quizScore}%</span>
-                      </div>
-                    </div>
-                    <p className="text-gray-600 mt-4 animate-fadeIn">
-                      {quizScore >= 80
-                        ? "Congratulations! You've mastered this module and unlocked the next section."
-                        : "You need to score at least 80% to unlock the next section. Review the material and try again."}
-                    </p>
-
-                    {/* Passing threshold indicator */}
-                    <div className="mt-6 flex items-center justify-center space-x-2">
-                      <div className="h-1 w-16 bg-gray-200 rounded-full"></div>
-                      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 text-gray-700 text-xs font-bold">
-                        80%
-                      </div>
-                      <div className="h-1 w-16 bg-gray-200 rounded-full"></div>
-                    </div>
-                    <p className="text-xs text-gray-500 mt-1">Passing Threshold</p>
-                  </div>
-
-                  <div className="flex justify-center space-x-4">
-                    <button
-                      onClick={resetQuiz}
-                      className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-6 rounded-lg transition-colors transform hover:scale-105"
-                    >
-                      Retake Quiz
-                    </button>
-                    <button
-                      onClick={handleCompleteModule}
-                      className={`bg-[#5a7d53] text-white font-bold py-2 px-6 rounded-lg transition-colors transform hover:scale-105 relative ${quizScore >= 80 ? "hover:bg-[#4a6a45]" : "opacity-50 cursor-not-allowed"}`}
-                    >
-                      Continue to Next Section
-                      {showTooltip && quizScore < 80 && (
-                        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 bg-red-500 text-white text-xs rounded py-1 px-2 animate-fadeIn">
-                          You need 80% to unlock the next section!
-                          <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-red-500"></div>
-                        </div>
-                      )}
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                <div>
-                  <div className="flex justify-between items-center mb-6">
-                    <h2 className="text-2xl font-bold text-[#5a7d53]">Module Quiz</h2>
-                    <span className="text-gray-500">
-                      Question {currentQuestionIndex + 1} of {currentQuiz.length}
-                    </span>
-                  </div>
-
-                  {/* Progress bar with animation */}
-                  <div className="w-full h-2 bg-gray-200 rounded-full mb-6 overflow-hidden">
+              <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
+                {" "}
+                {/* Added card for quiz */}
+                {quizCompleted ? (
+                  <div className="text-center py-8" ref={confettiRef}>
                     <div
-                      className="h-full bg-[#5a7d53] rounded-full transition-all duration-500 ease-out"
-                      style={{ width: `${((currentQuestionIndex + 1) / currentQuiz.length) * 100}%` }}
-                    ></div>
-                  </div>
+                      className={`w-24 h-24 ${quizScore >= 80 ? "bg-[#5a7d53]" : "bg-[#e07a5f]"} rounded-full flex items-center justify-center mx-auto mb-6 animate-bounce`}
+                    >
+                      {quizScore >= 80 ? (
+                        <Award className="w-12 h-12 text-white" />
+                      ) : (
+                        <AlertTriangle className="w-12 h-12 text-white" />
+                      )}
+                    </div>
+                    <h2 className="text-2xl font-bold text-[#5a7d53] mb-4">Quiz Completed!</h2>
 
-                  {/* Question navigation */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {currentQuiz.map((_, index) => (
+                    <div className="mb-8">
+                      <div className="w-48 h-48 mx-auto relative">
+                        <svg viewBox="0 0 100 100" className="w-full h-full">
+                          <circle cx="50" cy="50" r="45" fill="none" stroke="#e6e6e6" strokeWidth="10" />
+                          <circle
+                            cx="50"
+                            cy="50"
+                            r="45"
+                            fill="none"
+                            stroke={quizScore >= 80 ? "#5a7d53" : "#e07a5f"}
+                            strokeWidth="10"
+                            strokeDasharray="283"
+                            strokeDashoffset={283 - (283 * quizScore) / 100}
+                            transform="rotate(-90 50 50)"
+                            className="animate-scoreReveal"
+                          />
+                        </svg>
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <span className="text-4xl font-bold animate-fadeIn">{quizScore}%</span>
+                        </div>
+                      </div>
+                      <p className="text-gray-600 mt-4 animate-fadeIn">
+                        {quizScore >= 80
+                          ? "Congratulations! You've mastered this module. Your score has been saved, and you won't need to retake this quiz."
+                          : "You need to score at least 80% to unlock the next section. Review the material and try again."}
+                      </p>
+
+                      {/* Passing threshold indicator */}
+                      <div className="mt-6 flex items-center justify-center space-x-2">
+                        <div className="h-1 w-16 bg-gray-200 rounded-full"></div>
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 text-gray-700 text-xs font-bold">
+                          80%
+                        </div>
+                        <div className="h-1 w-16 bg-gray-200 rounded-full"></div>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-1">Passing Threshold</p>
+                    </div>
+
+                    <div className="flex justify-center space-x-4">
+                      {quizScore < 80 && (
+                        <button
+                          onClick={resetQuiz}
+                          className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-6 rounded-lg transition-colors transform hover:scale-105"
+                        >
+                          Retake Quiz
+                        </button>
+                      )}
                       <button
-                        key={index}
-                        onClick={() => goToQuestion(index)}
-                        className={`w-8 h-8 rounded-full flex items-center justify-center font-medium transition-all duration-300 transform ${
-                          currentQuestionIndex === index
-                            ? "bg-[#5a7d53] text-white scale-110"
-                            : selectedAnswers[index] !== undefined
-                              ? "bg-[#f0d878] text-[#5a7d53] hover:scale-110"
-                              : "bg-gray-200 text-gray-700 hover:bg-gray-300 hover:scale-110"
+                        onClick={handleCompleteModule}
+                        className={`bg-[#5a7d53] text-white font-bold py-2 px-6 rounded-lg transition-colors transform hover:scale-105 relative ${quizScore >= 80 ? "hover:bg-[#4a6a45]" : "opacity-50 cursor-not-allowed"}`}
+                      >
+                        {quizScore >= 80 ? "Continue to Next Module" : "Continue"}
+                        {showTooltip && quizScore < 80 && (
+                          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 bg-red-500 text-white text-xs rounded py-1 px-2 animate-fadeIn">
+                            You need 80% to unlock the next section!
+                            <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-red-500"></div>
+                          </div>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <div>
+                    <div className="flex justify-between items-center mb-6">
+                      <h2 className="text-2xl font-bold text-[#5a7d53]">Module Quiz</h2>
+                      <span className="text-gray-500">
+                        Question {currentQuestionIndex + 1} of {currentQuiz.length}
+                      </span>
+                    </div>
+
+                    {/* Progress bar with animation */}
+                    <div className="w-full h-2 bg-gray-200 rounded-full mb-6 overflow-hidden">
+                      <div
+                        className="h-full bg-[#5a7d53] rounded-full transition-all duration-500 ease-out"
+                        style={{ width: `${((currentQuestionIndex + 1) / currentQuiz.length) * 100}%` }}
+                      ></div>
+                    </div>
+
+                    {/* Question navigation */}
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {currentQuiz.map((_, index) => (
+                        <button
+                          key={index}
+                          onClick={() => goToQuestion(index)}
+                          className={`w-8 h-8 rounded-full flex items-center justify-center font-medium transition-all duration-300 transform ${
+                            currentQuestionIndex === index
+                              ? "bg-[#5a7d53] text-white scale-110"
+                              : selectedAnswers[index] !== undefined
+                                ? "bg-[#f0d878] text-[#5a7d53] hover:scale-110"
+                                : "bg-gray-200 text-gray-700 hover:bg-gray-300 hover:scale-110"
+                          }`}
+                        >
+                          {index + 1}
+                        </button>
+                      ))}
+                    </div>
+
+                    {currentQuiz && currentQuiz.length > 0 ? (
+                      <div className="bg-[#f0f9f4] p-6 rounded-lg mb-8 shadow-md">
+                        <div className="flex items-start mb-6">
+                          <HelpCircle className="w-6 h-6 text-[#5a7d53] mr-3 mt-1 flex-shrink-0" />
+                          <h3 className="text-xl font-bold text-[#5a7d53]">
+                            {currentQuiz[currentQuestionIndex]?.question || "Loading question..."}
+                          </h3>
+                        </div>
+
+                        <div className="space-y-3 mt-6">
+                          {currentQuiz[currentQuestionIndex]?.options.map((option, index) => {
+                            const isSelected = selectedAnswers[currentQuestionIndex] === index
+                            return (
+                              <button
+                                key={index}
+                                onClick={() => handleAnswerSelect(currentQuestionIndex, index)}
+                                className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-300 ${
+                                  isSelected
+                                    ? "border-[#5a7d53] bg-[#f0f9f4] transform scale-105 shadow-md"
+                                    : "border-gray-200 hover:border-[#5a7d53] hover:shadow-sm"
+                                }`}
+                              >
+                                <div className="flex items-center">
+                                  <div
+                                    className={`w-6 h-6 rounded-full flex items-center justify-center mr-3 transition-colors ${
+                                      isSelected ? "bg-[#5a7d53] text-white" : "bg-gray-200 text-gray-700"
+                                    }`}
+                                  >
+                                    {String.fromCharCode(65 + index)}
+                                  </div>
+                                  <span>{option}</span>
+                                </div>
+                              </button>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="text-center py-8">
+                        <p className="text-gray-600">No quiz questions available for this module yet.</p>
+                        <button
+                          onClick={() => setShowQuiz(false)}
+                          className="mt-4 bg-[#5a7d53] text-white font-bold py-2 px-6 rounded-lg transition-all duration-300 hover:bg-[#4a6a45] transform hover:scale-105"
+                        >
+                          Return to Content
+                        </button>
+                      </div>
+                    )}
+
+                    <div className="flex justify-between">
+                      <button
+                        onClick={goToPreviousQuestion}
+                        disabled={currentQuestionIndex === 0}
+                        className={`flex items-center bg-gray-200 text-gray-800 font-bold py-2 px-6 rounded-lg transition-all duration-300 ${
+                          currentQuestionIndex === 0
+                            ? "opacity-50 cursor-not-allowed"
+                            : "hover:bg-gray-300 transform hover:scale-105"
                         }`}
                       >
-                        {index + 1}
+                        <ArrowLeft className="mr-1" /> Previous
                       </button>
-                    ))}
-                  </div>
 
-                  {currentQuiz && currentQuiz.length > 0 ? (
-                    <div className="bg-[#f0f9f4] p-6 rounded-lg mb-8 shadow-md">
-                      <div className="flex items-start mb-6">
-                        <HelpCircle className="w-6 h-6 text-[#5a7d53] mr-3 mt-1 flex-shrink-0" />
-                        <h3 className="text-xl font-bold text-[#5a7d53]">
-                          {currentQuiz[currentQuestionIndex]?.question || "Loading question..."}
-                        </h3>
-                      </div>
-
-                      <div className="space-y-3 mt-6">
-                        {currentQuiz[currentQuestionIndex]?.options.map((option, index) => {
-                          const isSelected = selectedAnswers[currentQuestionIndex] === index
-                          return (
-                            <button
-                              key={index}
-                              onClick={() => handleAnswerSelect(currentQuestionIndex, index)}
-                              className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-300 ${
-                                isSelected
-                                  ? "border-[#5a7d53] bg-[#f0f9f4] transform scale-105 shadow-md"
-                                  : "border-gray-200 hover:border-[#5a7d53] hover:shadow-sm"
-                              }`}
-                            >
-                              <div className="flex items-center">
-                                <div
-                                  className={`w-6 h-6 rounded-full flex items-center justify-center mr-3 transition-colors ${
-                                    isSelected ? "bg-[#5a7d53] text-white" : "bg-gray-200 text-gray-700"
-                                  }`}
-                                >
-                                  {String.fromCharCode(65 + index)}
-                                </div>
-                                <span>{option}</span>
-                              </div>
-                            </button>
-                          )
-                        })}
-                      </div>
+                      {currentQuestionIndex < currentQuiz.length - 1 ? (
+                        <button
+                          onClick={goToNextQuestion}
+                          className="flex items-center bg-[#5a7d53] text-white font-bold py-2 px-6 rounded-lg transition-all duration-300 hover:bg-[#4a6a45] transform hover:scale-105"
+                        >
+                          Next <ArrowRight className="ml-1" />
+                        </button>
+                      ) : (
+                        <button
+                          onClick={handleCompleteQuiz}
+                          className="flex items-center bg-[#5a7d53] text-white font-bold py-2 px-6 rounded-lg transition-all duration-300 hover:bg-[#4a6a45] transform hover:scale-105"
+                        >
+                          Complete Quiz <ChevronRight className="ml-1" />
+                        </button>
+                      )}
                     </div>
-                  ) : (
-                    <div className="text-center py-8">
-                      <p className="text-gray-600">No quiz questions available for this module yet.</p>
-                      <button
-                        onClick={() => setShowQuiz(false)}
-                        className="mt-4 bg-[#5a7d53] text-white font-bold py-2 px-6 rounded-lg transition-all duration-300 hover:bg-[#4a6a45] transform hover:scale-105"
-                      >
-                        Return to Content
-                      </button>
-                    </div>
-                  )}
-
-                  <div className="flex justify-between">
-                    <button
-                      onClick={goToPreviousQuestion}
-                      disabled={currentQuestionIndex === 0}
-                      className={`flex items-center bg-gray-200 text-gray-800 font-bold py-2 px-6 rounded-lg transition-all duration-300 ${
-                        currentQuestionIndex === 0
-                          ? "opacity-50 cursor-not-allowed"
-                          : "hover:bg-gray-300 transform hover:scale-105"
-                      }`}
-                    >
-                      <ArrowLeft className="mr-1" /> Previous
-                    </button>
-
-                    {currentQuestionIndex < currentQuiz.length - 1 ? (
-                      <button
-                        onClick={goToNextQuestion}
-                        className="flex items-center bg-[#5a7d53] text-white font-bold py-2 px-6 rounded-lg transition-all duration-300 hover:bg-[#4a6a45] transform hover:scale-105"
-                      >
-                        Next <ArrowRight className="ml-1" />
-                      </button>
-                    ) : (
-                      <button
-                        onClick={handleCompleteQuiz}
-                        className="flex items-center bg-[#5a7d53] text-white font-bold py-2 px-6 rounded-lg transition-all duration-300 hover:bg-[#4a6a45] transform hover:scale-105"
-                      >
-                        Complete Quiz <ChevronRight className="ml-1" />
-                      </button>
-                    )}
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           ) : (
             <div className="animate-fadeInOnce">

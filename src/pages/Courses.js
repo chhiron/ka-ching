@@ -40,6 +40,7 @@ const Courses = () => {
             currentStep: 1,
             currentModule: 1,
             completedModules: {},
+            quizScores: {},
           }),
         )
       }
@@ -69,10 +70,12 @@ const Courses = () => {
         {
           id: 1,
           title: "What is the Stock Market?",
+          duration: "3 mins",
         },
         {
           id: 2,
           title: "Types of Stocks",
+          duration: "3 mins",
         },
       ],
     },
@@ -126,6 +129,18 @@ const Courses = () => {
   // Check if a specific module is completed
   const isModuleCompleted = (sectionId, moduleId) => {
     return !!completedModules[`${sectionId}.${moduleId}`]
+  }
+
+  // Add a new function to get quiz score if available
+  const getQuizScore = (sectionId, moduleId) => {
+    const savedProgress = localStorage.getItem("courseProgress")
+    if (savedProgress) {
+      const progress = JSON.parse(savedProgress)
+      if (progress.quizScores && progress.quizScores[`${sectionId}.${moduleId}`]) {
+        return progress.quizScores[`${sectionId}.${moduleId}`]
+      }
+    }
+    return null
   }
 
   const handleStepClick = (stepId, moduleId = 1) => {
@@ -375,14 +390,31 @@ const Courses = () => {
                                   <h4 className="font-bold text-lg text-[#5a7d53]">
                                     {section.id}.{module.id}: {module.title}
                                   </h4>
+                                  <p className="text-gray-600 text-sm mt-1">
+                                    {module.duration && <span className="font-medium">{module.duration}</span>}
+                                  </p>
                                   <p className="text-gray-600 text-sm mt-2">
-                                    {moduleCompleted
-                                      ? "You've completed this module!"
-                                      : isCurrentModule
-                                        ? "You're currently on this module."
-                                        : isLocked
-                                          ? "Complete previous modules to unlock."
-                                          : "Ready to start!"}
+                                    {moduleCompleted ? (
+                                      <span className="flex items-center text-[#85bb65]">
+                                        <svg
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          className="h-4 w-4 mr-1"
+                                          fill="none"
+                                          viewBox="0 0 24 24"
+                                          stroke="currentColor"
+                                          strokeWidth={2}
+                                        >
+                                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                        Completed! Quiz score: {getQuizScore(section.id, module.id) || "Passed"}
+                                      </span>
+                                    ) : isCurrentModule ? (
+                                      "You're currently on this module."
+                                    ) : isLocked ? (
+                                      "Complete previous modules to unlock."
+                                    ) : (
+                                      "Ready to start!"
+                                    )}
                                   </p>
 
                                   {!isLocked && (
