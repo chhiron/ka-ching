@@ -2,6 +2,16 @@
 
 import { useState, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
+import {
+  BookOpen,
+  CheckCircle,
+  Award,
+  LockIcon as LockClosed,
+  ChevronDown,
+  ChevronUp,
+  FileText,
+  RotateCcw,
+} from "lucide-react"
 
 const Courses = () => {
   const navigate = useNavigate()
@@ -9,9 +19,11 @@ const Courses = () => {
   const [currentStep, setCurrentStep] = useState(1)
   const [currentModule, setCurrentModule] = useState(1)
   const [completedModules, setCompletedModules] = useState({})
+  const [completedQuizzes, setCompletedQuizzes] = useState({})
   const pathRef = useRef(null)
   const [expandedSection, setExpandedSection] = useState(null)
   const [currentModuleIndex, setCurrentModuleIndex] = useState(0)
+  const [quizAnswers, setQuizAnswers] = useState({})
 
   // Check if user is logged in
   useEffect(() => {
@@ -28,11 +40,15 @@ const Courses = () => {
         setCurrentStep(progress.currentStep || 1)
         setCurrentModule(progress.currentModule || 1)
         setCompletedModules(progress.completedModules || {})
+        setCompletedQuizzes(progress.completedQuizzes || {})
+        setQuizAnswers(progress.quizAnswers || {})
       } else {
         // Initialize progress for new users
         setCurrentStep(1)
         setCurrentModule(1)
         setCompletedModules({})
+        setCompletedQuizzes({})
+        setQuizAnswers({})
         // Save initial progress to localStorage
         localStorage.setItem(
           "courseProgress",
@@ -40,7 +56,9 @@ const Courses = () => {
             currentStep: 1,
             currentModule: 1,
             completedModules: {},
+            completedQuizzes: {},
             quizScores: {},
+            quizAnswers: {},
           }),
         )
       }
@@ -56,12 +74,14 @@ const Courses = () => {
           currentStep,
           currentModule,
           completedModules,
+          completedQuizzes,
+          quizAnswers,
         }),
       )
     }
-  }, [currentStep, currentModule, completedModules, isLoggedIn])
+  }, [currentStep, currentModule, completedModules, completedQuizzes, quizAnswers, isLoggedIn])
 
-  // Update the steps array to include three main sections with modules
+  // Update the steps array to include three main sections with modules and separate quizzes
   const steps = [
     {
       id: 1,
@@ -71,11 +91,36 @@ const Courses = () => {
           id: 1,
           title: "What is the Stock Market?",
           duration: "3 mins",
+          type: "content",
+        },
+        {
+          id: "1q",
+          title: "Module 1.1: Quiz",
+          type: "quiz",
+          quizType: "mixed",
+          relatedModuleId: 1,
         },
         {
           id: 2,
           title: "Types of Stocks",
           duration: "3 mins",
+          type: "content",
+        },
+        {
+          id: "2q-recall",
+          title: "Module 1.2: Recall Quiz",
+          type: "quiz",
+          quizType: "recall",
+          relatedModuleId: 2,
+          description: "Test your knowledge of stock types and classifications",
+        },
+        {
+          id: "2q-apply",
+          title: "Module 1.2: Application Quiz",
+          type: "quiz",
+          quizType: "application",
+          relatedModuleId: 2,
+          description: "Apply your knowledge to real-world scenarios",
         },
       ],
     },
@@ -86,14 +131,41 @@ const Courses = () => {
         {
           id: 1,
           title: "Understanding Financial Statements",
+          duration: "5 mins",
+          type: "content",
+        },
+        {
+          id: "1q",
+          title: "Financial Statements Quiz",
+          type: "quiz",
+          quizType: "mixed",
+          relatedModuleId: 1,
         },
         {
           id: 2,
           title: "Key Financial Ratios",
+          duration: "4 mins",
+          type: "content",
+        },
+        {
+          id: "2q",
+          title: "Financial Ratios Quiz",
+          type: "quiz",
+          quizType: "mixed",
+          relatedModuleId: 2,
         },
         {
           id: 3,
           title: "Company Valuation",
+          duration: "6 mins",
+          type: "content",
+        },
+        {
+          id: "3q",
+          title: "Company Valuation Quiz",
+          type: "quiz",
+          quizType: "mixed",
+          relatedModuleId: 3,
         },
       ],
     },
@@ -104,26 +176,63 @@ const Courses = () => {
         {
           id: 1,
           title: "Introduction to Technical Analysis",
+          duration: "4 mins",
+          type: "content",
+        },
+        {
+          id: "1q",
+          title: "Technical Analysis Quiz",
+          type: "quiz",
+          quizType: "mixed",
+          relatedModuleId: 1,
         },
         {
           id: 2,
           title: "Chart Patterns and What They Signify",
+          duration: "5 mins",
+          type: "content",
+        },
+        {
+          id: "2q",
+          title: "Chart Patterns Quiz",
+          type: "quiz",
+          quizType: "mixed",
+          relatedModuleId: 2,
         },
         {
           id: 3,
           title: "Technical Indicators",
+          duration: "5 mins",
+          type: "content",
+        },
+        {
+          id: "3q",
+          title: "Technical Indicators Quiz",
+          type: "quiz",
+          quizType: "mixed",
+          relatedModuleId: 3,
         },
       ],
     },
   ]
 
-  // Check if a section is completed (all modules completed)
+  // Check if a section is completed (all modules and quizzes completed)
   const isSectionCompleted = (sectionId) => {
     const section = steps.find((s) => s.id === sectionId)
     if (!section) return false
 
-    // Check if all modules in this section are completed
-    return section.modules.every((module) => completedModules[`${sectionId}.${module.id}`])
+    // Check if all content modules in this section are completed
+    const contentModules = section.modules.filter((m) => m.type === "content")
+    const contentCompleted = contentModules.every((module) => completedModules[`${sectionId}.${module.id}`])
+
+    // Check if all quizzes in this section are completed
+    const quizModules = section.modules.filter((m) => m.type === "quiz")
+    const quizzesCompleted = quizModules.every((module) => {
+      const quizKey = `${sectionId}.${module.relatedModuleId}.${module.quizType || "mixed"}`
+      return completedQuizzes[quizKey]
+    })
+
+    return contentCompleted && quizzesCompleted
   }
 
   // Check if a specific module is completed
@@ -131,13 +240,20 @@ const Courses = () => {
     return !!completedModules[`${sectionId}.${moduleId}`]
   }
 
+  // Check if a specific quiz is completed
+  const isQuizCompleted = (sectionId, moduleId, quizType = "mixed") => {
+    const quizKey = `${sectionId}.${moduleId}.${quizType}`
+    return !!completedQuizzes[quizKey]
+  }
+
   // Add a new function to get quiz score if available
-  const getQuizScore = (sectionId, moduleId) => {
+  const getQuizScore = (sectionId, moduleId, quizType = "mixed") => {
     const savedProgress = localStorage.getItem("courseProgress")
     if (savedProgress) {
       const progress = JSON.parse(savedProgress)
-      if (progress.quizScores && progress.quizScores[`${sectionId}.${moduleId}`]) {
-        return progress.quizScores[`${sectionId}.${moduleId}`]
+      const quizKey = `${sectionId}.${moduleId}.${quizType}`
+      if (progress.quizScores && progress.quizScores[quizKey]) {
+        return progress.quizScores[quizKey]
       }
     }
     return null
@@ -156,12 +272,22 @@ const Courses = () => {
     setCurrentModuleIndex(0) // Reset module index when section is clicked
   }
 
-  const handleModuleClick = (sectionId, moduleId) => {
+  const handleModuleClick = (sectionId, moduleId, moduleType, relatedModuleId, quizType) => {
     // Logic to handle module click (e.g., navigate to module content)
     console.log(`Module ${moduleId} in Section ${sectionId} clicked`)
     setCurrentStep(sectionId)
-    setCurrentModule(moduleId)
-    navigate(`/course-content?step=${sectionId}&module=${moduleId}`)
+
+    if (moduleType === "content") {
+      setCurrentModule(moduleId)
+      navigate(`/course-content?step=${sectionId}&module=${moduleId}&type=content`)
+    } else if (moduleType === "quiz") {
+      setCurrentModule(relatedModuleId)
+      navigate(`/course-content?step=${sectionId}&module=${relatedModuleId}&type=quiz&quizType=${quizType || "mixed"}`)
+    }
+  }
+
+  const handleQuizRetake = (sectionId, moduleId, quizType = "mixed") => {
+    navigate(`/course-content?step=${sectionId}&module=${moduleId}&type=quiz&quizType=${quizType}&mode=retake`)
   }
 
   const toggleSectionExpand = (sectionId) => {
@@ -182,9 +308,43 @@ const Courses = () => {
     const section = steps.find((s) => s.id === sectionId)
     if (!section) return 0
 
-    const completedCount = section.modules.filter((module) => completedModules[`${sectionId}.${module.id}`]).length
+    // Count completed content modules
+    const contentModules = section.modules.filter((m) => m.type === "content")
+    const completedContentCount = contentModules.filter(
+      (module) => completedModules[`${sectionId}.${module.id}`],
+    ).length
 
-    return completedCount
+    // Count completed quizzes
+    const quizModules = section.modules.filter((m) => m.type === "quiz")
+    const completedQuizCount = quizModules.filter((module) => {
+      const quizKey = `${sectionId}.${module.relatedModuleId}.${module.quizType || "mixed"}`
+      return completedQuizzes[quizKey]
+    }).length
+
+    return completedContentCount + completedQuizCount
+  }
+
+  // Check if a module is unlocked (previous module and its quiz are completed)
+  const isModuleUnlocked = (sectionId, moduleIndex) => {
+    const section = steps.find((s) => s.id === sectionId)
+    if (!section) return false
+
+    // First module is always unlocked
+    if (moduleIndex === 0) return true
+
+    const prevModule = section.modules[moduleIndex - 1]
+
+    // If previous item is content, check if it's completed
+    if (prevModule.type === "content") {
+      return isModuleCompleted(sectionId, prevModule.id)
+    }
+
+    // If previous item is quiz, check if it's completed
+    if (prevModule.type === "quiz") {
+      return isQuizCompleted(sectionId, prevModule.relatedModuleId, prevModule.quizType)
+    }
+
+    return false
   }
 
   if (!isLoggedIn) {
@@ -247,7 +407,7 @@ const Courses = () => {
                       Section {section.id}: {section.title}
                     </h2>
                     <p className="text-gray-600 mt-1">
-                      {section.modules.length} modules •{" "}
+                      {section.modules.filter((m) => m.type === "content").length} modules •{" "}
                       {section.id === 1 ? "Beginner" : section.id === 2 ? "Intermediate" : "Advanced"}
                     </p>
 
@@ -315,61 +475,64 @@ const Courses = () => {
                       {/* Module steps */}
                       <div className="relative">
                         {section.modules.map((module, moduleIndex) => {
-                          const moduleCompleted = isModuleCompleted(section.id, module.id)
-                          const isCurrentModule = currentStep === section.id && currentModule === module.id
-                          const isPreviousModuleCompleted =
-                            moduleIndex === 0 || isModuleCompleted(section.id, section.modules[moduleIndex - 1].id)
-                          const isLocked = !moduleCompleted && !isCurrentModule && !isPreviousModuleCompleted
+                          const isContent = module.type === "content"
+                          const isQuiz = module.type === "quiz"
+
+                          const moduleCompleted = isContent
+                            ? isModuleCompleted(section.id, module.id)
+                            : isQuizCompleted(section.id, module.relatedModuleId, module.quizType)
+
+                          const isCurrentModule =
+                            currentStep === section.id &&
+                            (isContent ? currentModule === module.id : currentModule === module.relatedModuleId)
+
+                          const isUnlocked = isModuleUnlocked(section.id, moduleIndex)
+                          const isLocked = !isUnlocked && !moduleCompleted && !isCurrentModule
+
+                          // Get quiz score if it's a completed quiz
+                          const quizScore =
+                            isQuiz && moduleCompleted
+                              ? getQuizScore(section.id, module.relatedModuleId, module.quizType)
+                              : null
 
                           return (
-                            <div key={module.id} className="relative mb-16 flex justify-center">
+                            <div
+                              key={`${module.id}-${module.type}-${module.quizType || ""}`}
+                              className="relative mb-16 flex justify-center"
+                            >
                               {/* Module marker */}
                               <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
                                 <button
-                                  onClick={() => handleModuleClick(section.id, module.id)}
+                                  onClick={() =>
+                                    handleModuleClick(
+                                      section.id,
+                                      module.id,
+                                      module.type,
+                                      module.relatedModuleId,
+                                      module.quizType,
+                                    )
+                                  }
                                   disabled={isLocked}
                                   className={`flex items-center justify-center w-14 h-14 rounded-full border-4 border-white shadow-lg transition-all duration-300 ${
                                     moduleCompleted
-                                      ? "bg-[#85bb65] text-white"
+                                      ? isQuiz
+                                        ? quizScore >= 80
+                                          ? "bg-[#85bb65] text-white"
+                                          : "bg-[#e07a5f] text-white"
+                                        : "bg-[#85bb65] text-white"
                                       : isCurrentModule
                                         ? "bg-[#f0d878] text-[#5a7d53] animate-pulse"
                                         : "bg-white border-2 border-gray-200 text-gray-400"
                                   } ${isLocked ? "cursor-not-allowed" : "hover:scale-110"}`}
                                 >
                                   {moduleCompleted ? (
-                                    <svg
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="h-6 w-6"
-                                      fill="none"
-                                      viewBox="0 0 24 24"
-                                      stroke="currentColor"
-                                    >
-                                      <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="M5 13l4 4L19 7"
-                                      />
-                                    </svg>
+                                    <CheckCircle className="h-6 w-6" />
                                   ) : isLocked ? (
-                                    <svg
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="h-6 w-6"
-                                      fill="none"
-                                      viewBox="0 0 24 24"
-                                      stroke="currentColor"
-                                    >
-                                      <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                                      />
-                                    </svg>
+                                    <LockClosed className="h-6 w-6" />
+                                  ) : isContent ? (
+                                    <BookOpen className="h-6 w-6" />
                                   ) : (
-                                    <span className="text-xl font-bold">
-                                      {section.id}.{module.id}
-                                    </span>
+                                    <FileText className="h-6 w-6" />
                                   )}
                                 </button>
                               </div>
@@ -383,52 +546,103 @@ const Courses = () => {
                                       : isCurrentModule
                                         ? "border-[#f0d878]"
                                         : moduleCompleted
-                                          ? "border-[#85bb65]"
+                                          ? isQuiz && quizScore < 80
+                                            ? "border-[#e07a5f]"
+                                            : "border-[#85bb65]"
                                           : "border-gray-200"
                                   } ${isLocked ? "cursor-not-allowed" : "hover:shadow-lg"}`}
                                 >
-                                  <h4 className="font-bold text-lg text-[#5a7d53]">
-                                    {section.id}.{module.id}: {module.title}
-                                  </h4>
-                                  <p className="text-gray-600 text-sm mt-1">
-                                    {module.duration && <span className="font-medium">{module.duration}</span>}
-                                  </p>
+                                  <div className="flex items-center mb-2">
+                                    {isContent ? (
+                                      <BookOpen className="h-5 w-5 text-[#5a7d53] mr-2" />
+                                    ) : (
+                                      <FileText className="h-5 w-5 text-[#5a7d53] mr-2" />
+                                    )}
+                                    <h4 className="font-bold text-lg text-[#5a7d53]">
+                                      {isContent ? `Module ${section.id}.${module.id}: ${module.title}` : module.title}
+                                    </h4>
+                                  </div>
+
+                                  {isContent && module.duration && (
+                                    <p className="text-gray-600 text-sm mt-1">
+                                      <span className="font-medium">{module.duration}</span>
+                                    </p>
+                                  )}
+
+                                  {isQuiz && module.description && (
+                                    <p className="text-gray-600 text-sm mt-1">{module.description}</p>
+                                  )}
+
                                   <p className="text-gray-600 text-sm mt-2">
                                     {moduleCompleted ? (
                                       <span className="flex items-center text-[#85bb65]">
-                                        <svg
-                                          xmlns="http://www.w3.org/2000/svg"
-                                          className="h-4 w-4 mr-1"
-                                          fill="none"
-                                          viewBox="0 0 24 24"
-                                          stroke="currentColor"
-                                          strokeWidth={2}
-                                        >
-                                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                                        </svg>
-                                        Completed! Quiz score: {getQuizScore(section.id, module.id) || "Passed"}
+                                        <CheckCircle className="h-4 w-4 mr-1" />
+                                        {isQuiz && quizScore ? (
+                                          <span>
+                                            Completed! <span className="font-bold">Score: {quizScore}%</span>
+                                            {quizScore >= 80 ? (
+                                              <span className="ml-1 text-green-600">✓ Passed</span>
+                                            ) : (
+                                              <span className="ml-1 text-red-500">✗ Failed</span>
+                                            )}
+                                          </span>
+                                        ) : (
+                                          "Completed!"
+                                        )}
                                       </span>
                                     ) : isCurrentModule ? (
-                                      "You're currently on this module."
+                                      "You're currently on this step."
                                     ) : isLocked ? (
-                                      "Complete previous modules to unlock."
+                                      "Complete previous steps to unlock."
                                     ) : (
                                       "Ready to start!"
                                     )}
                                   </p>
 
-                                  {!isLocked && (
-                                    <button
-                                      onClick={() => handleModuleClick(section.id, module.id)}
-                                      className={`mt-3 text-sm px-4 py-2 rounded-lg transition-all duration-300 ${
-                                        moduleCompleted
-                                          ? "bg-[#85bb65] text-white hover:bg-[#75a758]"
-                                          : "bg-[#f0d878] text-[#5a7d53] hover:bg-[#e5c960]"
-                                      }`}
-                                    >
-                                      {moduleCompleted ? "Review" : isCurrentModule ? "Continue" : "Start"}
-                                    </button>
+                                  {/* Add a visual score indicator for completed quizzes */}
+                                  {isQuiz && moduleCompleted && quizScore && (
+                                    <div className="mt-2 w-full bg-gray-200 rounded-full h-2.5">
+                                      <div
+                                        className={`h-2.5 rounded-full ${quizScore >= 80 ? "bg-green-600" : "bg-red-500"}`}
+                                        style={{ width: `${quizScore}%` }}
+                                      ></div>
+                                    </div>
                                   )}
+
+                                  <div className="mt-3 flex flex-wrap gap-2">
+                                    {!isLocked && (
+                                      <button
+                                        onClick={() =>
+                                          handleModuleClick(
+                                            section.id,
+                                            module.id,
+                                            module.type,
+                                            module.relatedModuleId,
+                                            module.quizType,
+                                          )
+                                        }
+                                        className={`text-sm px-4 py-2 rounded-lg transition-all duration-300 ${
+                                          moduleCompleted
+                                            ? "bg-[#85bb65] text-white hover:bg-[#75a758]"
+                                            : "bg-[#f0d878] text-[#5a7d53] hover:bg-[#e5c960]"
+                                        }`}
+                                      >
+                                        {moduleCompleted ? "Continue" : isCurrentModule ? "Continue" : "Start"}
+                                      </button>
+                                    )}
+
+                                    {/* Quiz retake option */}
+                                    {isQuiz && moduleCompleted && (
+                                      <button
+                                        onClick={() =>
+                                          handleQuizRetake(section.id, module.relatedModuleId, module.quizType)
+                                        }
+                                        className="text-sm px-4 py-2 rounded-lg bg-purple-100 text-purple-700 hover:bg-purple-200 transition-all duration-300 flex items-center"
+                                      >
+                                        <RotateCcw className="h-4 w-4 mr-1" /> Retake Quiz
+                                      </button>
+                                    )}
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -440,27 +654,14 @@ const Courses = () => {
                           <div className="relative mb-16 flex justify-center">
                             <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
                               <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#f0d878] text-[#5a7d53] border-4 border-white shadow-lg animate-bounce">
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  className="h-8 w-8"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
-                                  />
-                                </svg>
+                                <Award className="h-8 w-8" />
                               </div>
                             </div>
                             <div className="w-3/4 md:w-1/2 mt-8 mx-auto">
                               <div className="bg-white p-4 rounded-xl shadow-md border-2 border-[#f0d878] text-center">
                                 <h4 className="font-bold text-lg text-[#5a7d53]">Section Completed!</h4>
                                 <p className="text-gray-600 text-sm mt-2">
-                                  Congratulations! You've completed all modules in this section.
+                                  Congratulations! You've completed all modules and quizzes in this section.
                                 </p>
                                 {section.id < steps.length && (
                                   <button
@@ -485,18 +686,11 @@ const Courses = () => {
                   className="mt-2 text-[#5a7d53] font-medium flex items-center hover:underline"
                 >
                   {expandedSection === section.id ? "Hide Details" : "Show Details"}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className={`ml-1 h-5 w-5 transform transition-transform ${expandedSection === section.id ? "rotate-180" : ""}`}
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
+                  {expandedSection === section.id ? (
+                    <ChevronUp className="ml-1 h-5 w-5" />
+                  ) : (
+                    <ChevronDown className="ml-1 h-5 w-5" />
+                  )}
                 </button>
               </div>
             )
