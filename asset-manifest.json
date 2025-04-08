@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/ka-ching/static/css/main.cc5b9d7b.css",
-    "main.js": "/ka-ching/static/js/main.ae997aff.js",
+    "main.css": "/ka-ching/static/css/main.4d979083.css",
+    "main.js": "/ka-ching/static/js/main.73dcf1b3.js",
     "static/js/453.33b6e918.chunk.js": "/ka-ching/static/js/453.33b6e918.chunk.js",
     "static/media/ananya.png": "/ka-ching/static/media/ananya.05e30cb5b31e57aa578d.png",
     "static/media/zhuen.png": "/ka-ching/static/media/zhuen.7ee52c556ea0030288e8.png",
@@ -13,12 +13,12 @@
     "static/media/linkedin-logo.png": "/ka-ching/static/media/linkedin-logo.6892b3ae328c7a1e055f.png",
     "static/media/user3.png": "/ka-ching/static/media/user3.31afa19614d2c5be999c.png",
     "index.html": "/ka-ching/index.html",
-    "main.cc5b9d7b.css.map": "/ka-ching/static/css/main.cc5b9d7b.css.map",
-    "main.ae997aff.js.map": "/ka-ching/static/js/main.ae997aff.js.map",
+    "main.4d979083.css.map": "/ka-ching/static/css/main.4d979083.css.map",
+    "main.73dcf1b3.js.map": "/ka-ching/static/js/main.73dcf1b3.js.map",
     "453.33b6e918.chunk.js.map": "/ka-ching/static/js/453.33b6e918.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.cc5b9d7b.css",
-    "static/js/main.ae997aff.js"
+    "static/css/main.4d979083.css",
+    "static/js/main.73dcf1b3.js"
   ]
 }
