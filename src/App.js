@@ -13,6 +13,7 @@ import CourseContent from "./pages/coursecontent.js"
 import UserProfile from "./components/userprofile.js"
 import Terms from "./pages/terms.js"
 import Privacy from "./pages/privacy.js"
+import Pricing from "./pages/pricing.js"
 import "./styles.css"
 
 // Update the Routes section to use our components
@@ -31,6 +32,7 @@ function App() {
         // <Route path="/demo" element={<div>Demo Page</div>} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/privacy" element={<Privacy />} />
+        <Route path="/pricing" element={<Pricing />} />
       </Routes>
     </Router>
   )
@@ -495,6 +497,7 @@ function Home() {
             <NavLink to="/" label="Home" active={location.pathname === "/" && !location.hash} />
             <NavLink to="/#about" label="About Us" active={location.hash === "#about"} />
             {isLoggedIn && <NavLink to="/courses" label="Courses" active={location.pathname === "/courses"} />}
+            <NavLink to="/pricing" label="Pricing" active={location.pathname === "/pricing"} />
             <NavLink to="/contact" label="Contact Us" active={location.pathname === "/contact"} />
           </div>
 

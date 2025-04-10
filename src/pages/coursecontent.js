@@ -44,6 +44,7 @@ const CourseContent = () => {
   const [quickCheckAnswers, setQuickCheckAnswers] = useState({})
   const [quickCheckFeedback, setQuickCheckFeedback] = useState({})
   const [quizScores, setQuizScores] = useState({})
+  const [answerSubmitted, setAnswerSubmitted] = useState(false)
 
   // Parse query parameters
   useEffect(() => {
@@ -440,41 +441,6 @@ const CourseContent = () => {
     ],
     // Section 1, Module 2 - Types of Stocks
     [
-      {
-        title: "Types of Stocks: Overview",
-        content: (
-          <div className="space-y-4">
-            <div className="bg-[#f0f9f4] p-4 rounded-lg mb-4">
-              <h4 className="font-bold text-lg text-[#5a7d53] mb-2">Learning Objectives</h4>
-              <ul className="list-disc pl-5 space-y-1">
-                <li>Distinguish between different categories of stocks and their characteristics</li>
-              </ul>
-            </div>
-
-            <p className="mb-3">
-              Stocks come in various types, each with unique characteristics that appeal to different investor needs and
-              goals. Understanding these differences helps you build a portfolio that aligns with your investment
-              strategy.
-            </p>
-
-            <div className="bg-[#f0f9f4] p-4 rounded-lg mb-4">
-              <h4 className="font-bold text-lg text-[#5a7d53] mb-2">Activities</h4>
-              <ul className="list-disc pl-5 space-y-1">
-                <li>Case studies on specific stocks to highlight differences</li>
-                <li>Drag-and-drop matching exercises for stock categories</li>
-              </ul>
-            </div>
-
-            <div className="mt-6 flex justify-center">
-              <img
-                src="/placeholder.svg?height=200&width=300"
-                alt="Different types of stocks"
-                className="rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-              />
-            </div>
-          </div>
-        ),
-      },
       {
         title: "Common vs. Preferred Stock",
         content: (
@@ -1073,7 +1039,7 @@ const CourseContent = () => {
     ],
   ]
 
-  // Define quiz data for different quiz types
+  // Define quiz data with detailed feedback for each option
   const quizData = {
     // Module 1.1 Quiz
     "1.1.mixed": [
@@ -1086,16 +1052,29 @@ const CourseContent = () => {
           "Calculating potential returns",
         ],
         correctAnswer: 1,
+        feedback: [
+          "While selecting stocks is an important part of the investment process, it's not the first step. Before choosing specific stocks, you need to clarify your financial goals, risk tolerance, and investment strategy to ensure you're making informed decisions.",
+          "Correct! The first step in investment planning is to identify your financial goals. Whether you're saving for retirement, buying a home, or building wealth, knowing your objectives will help shape your investment strategy. This step also helps determine your time horizon, risk tolerance, and the types of investments that align with your goals.",
+          "Opening a brokerage account is an essential part of investing, but it comes after you have defined your financial goals. It's important to have a clear strategy before selecting a platform or account type for your investments.",
+          "While it's important to understand the potential returns of an investment, this step comes after you've identified your goals and chosen an investment strategy. Estimating returns should be based on your specific financial objectives, not the first step in the planning process.",
+        ],
       },
       {
-        question: "How does a longer time horizon typically impact investment strategy?",
+        question:
+          "How does a longer investment time horizon impact the likelihood of an investor experiencing a significant loss?",
         options: [
-          "It requires more conservative investments",
-          "It allows for taking on more investment risk",
-          "It eliminates the need for diversification",
-          "It guarantees higher returns",
+          "The likelihood of a significant loss increases",
+          "The likelihood of a significant loss decreases because of time to recover",
+          "It guarantees no losses at all",
+          "The risk of loss remains constant regardless of time horizon",
         ],
         correctAnswer: 1,
+        feedback: [
+          "This is incorrect. Historically, markets tend to rise over longer periods, and short-term volatility has less impact on long-term performance. A longer time horizon actually reduces the risk of permanent losses.",
+          "Correct! With a longer time horizon, investors have more time to recover from market downturns. Historical data shows that while markets experience short-term volatility, they tend to rise over longer periods. This means the risk of experiencing a permanent loss decreases with time.",
+          "While a longer time horizon reduces risk, it never eliminates it completely. All investments carry some level of risk, and there are no guarantees in investing. Even with a long time horizon, significant market events can impact returns.",
+          "This is incorrect. Time horizon is one of the most important factors in determining investment risk. The longer your time horizon, the more time you have to recover from market downturns, which reduces the likelihood of permanent losses.",
+        ],
       },
       {
         question: "Which are the two primary ways to earn money from stocks?",
@@ -1106,6 +1085,12 @@ const CourseContent = () => {
           "Consulting and analyzing",
         ],
         correctAnswer: 2,
+        feedback: [
+          "Trading is one way to potentially profit from stocks (through capital appreciation), but borrowing is not a method of earning money from stocks. Borrowing actually creates liabilities, not income.",
+          "Saving and lending are general financial concepts but aren't specifically how investors earn money from stocks. Saving refers to setting money aside, while lending typically refers to bonds or loans, not stocks.",
+          "Correct! Investors earn money from stocks in two primary ways: capital appreciation (when the stock price increases) and dividends (when companies distribute a portion of their profits to shareholders). These represent the growth and income components of stock investing, respectively.",
+          "Consulting and analyzing are activities related to the investment process, but they aren't ways that investors earn money directly from their stock investments. These would be services provided to investors, not returns on investment.",
+        ],
       },
       {
         question: "Who are institutional investors?",
@@ -1116,6 +1101,12 @@ const CourseContent = () => {
           "Individual stock traders",
         ],
         correctAnswer: 1,
+        feedback: [
+          "This describes retail investors, not institutional investors. Retail investors are individuals who buy and sell securities for their personal accounts, typically in smaller amounts than institutional investors.",
+          "Correct! Institutional investors are large organizations that invest substantial sums of money in securities and other assets. These include pension funds, mutual funds, insurance companies, endowments, and hedge funds. They often have significant influence in the markets due to the large volume of their trades.",
+          "Company founders may be significant shareholders in their own companies, but they are not considered institutional investors. They are typically classified as insiders or individual investors with concentrated positions.",
+          "Individual stock traders, like retail investors, trade securities for their personal accounts. They are not institutional investors, regardless of how frequently they trade or their level of sophistication.",
+        ],
       },
       {
         question: "What does an Initial Public Offering (IPO) represent?",
@@ -1126,11 +1117,23 @@ const CourseContent = () => {
           "A stock market regulation process",
         ],
         correctAnswer: 2,
+        feedback: [
+          "An internal audit is a company's examination of its own financial records and processes, which is unrelated to an IPO. Internal audits can happen at any time, whether a company is public or private.",
+          "A merger is when two separate companies combine to form a single entity. This is different from an IPO, which involves a single company offering its shares to the public for the first time.",
+          "Correct! An Initial Public Offering (IPO) is the process by which a private company offers shares to the public for the first time. This allows the company to raise capital from public investors and enables its shares to trade on stock exchanges. It's a significant milestone in a company's growth journey.",
+          "While IPOs are regulated processes, they are not themselves regulatory processes. IPOs are subject to regulations set by bodies like the SEC, but the offering itself is a capital-raising event, not a regulatory one.",
+        ],
       },
       {
         question: "Which US stock exchange is known for tech companies?",
         options: ["NYSE", "Dow Jones", "S&P 500", "Nasdaq"],
         correctAnswer: 3,
+        feedback: [
+          "The New York Stock Exchange (NYSE) is the world's largest stock exchange and hosts many large, established companies across various sectors. While some tech companies are listed on the NYSE, it's not specifically known for tech listings.",
+          "The Dow Jones Industrial Average is a stock market index that measures the performance of 30 large companies listed on stock exchanges in the United States. It's not a stock exchange itself, but rather a benchmark index.",
+          "The S&P 500 is an index of 500 large-cap U.S. companies, not a stock exchange. Like the Dow Jones, it's a benchmark used to measure market performance, not a place where stocks are traded.",
+          "Correct! The Nasdaq is known for being home to many technology and growth-oriented companies. It was the world's first electronic stock market and has attracted many tech giants like Apple, Microsoft, Amazon, Google (Alphabet), and Facebook (Meta). It's particularly associated with the technology sector and innovative companies.",
+        ],
       },
       {
         question: "What is the primary role of market makers?",
@@ -1141,6 +1144,12 @@ const CourseContent = () => {
           "To create investment strategies",
         ],
         correctAnswer: 1,
+        feedback: [
+          "Market makers don't set stock prices arbitrarily. Prices are determined by supply and demand in the market. Market makers facilitate trading by providing liquidity and narrowing the bid-ask spread.",
+          "Correct! Market makers ensure smooth and efficient trading by always being ready to buy or sell securities. They provide liquidity to the market by continuously quoting both buy (bid) and sell (ask) prices, which helps narrow the bid-ask spread and makes it easier for investors to execute trades at fair prices.",
+          "Market regulation is the responsibility of government agencies like the Securities and Exchange Commission (SEC) and self-regulatory organizations like FINRA, not market makers. Market makers must follow regulations but don't create or enforce them.",
+          "Creating investment strategies is typically the role of investment advisors, portfolio managers, or individual investors. Market makers focus on facilitating trades and providing liquidity, not on developing investment strategies for clients.",
+        ],
       },
       {
         question: "How do financial goals influence investment choices?",
@@ -1151,6 +1160,12 @@ const CourseContent = () => {
           "They are relevant only for large investors",
         ],
         correctAnswer: 1,
+        feedback: [
+          "This is incorrect. Financial goals have a profound impact on investment choices. They help determine everything from asset allocation to account types and investment vehicles.",
+          "Correct! Financial goals are the foundation of investment planning. They influence which account types are most appropriate (e.g., 401(k), IRA, taxable account), which tax advantages to pursue, how much risk is appropriate, and how to allocate assets. Different goals (retirement, education, home purchase) require different investment approaches.",
+          "While financial goals are important for retirement planning, they impact all types of investing. Short-term goals like saving for a house down payment require different investment strategies than long-term goals like retirement or education funding.",
+          "Financial goals are important for all investors, regardless of portfolio size. In fact, clear goals may be even more critical for smaller investors who have less room for error and need to maximize the efficiency of their investments.",
+        ],
       },
       {
         question: 'What are "listing requirements" in stock exchanges?',
@@ -1161,6 +1176,12 @@ const CourseContent = () => {
           "Trading hour regulations",
         ],
         correctAnswer: 1,
+        feedback: [
+          "Stock exchanges don't impose personal qualifications on individual investors. While brokers may have account minimums or requirements, the exchanges themselves don't restrict who can buy listed securities.",
+          "Correct! Listing requirements are the standards companies must meet to have their shares traded on a particular stock exchange. These typically include minimum market capitalization, share price, number of shareholders, corporate governance standards, and financial reporting requirements. They help ensure that listed companies meet certain quality and transparency standards.",
+          "Stock exchanges don't set minimum investment amounts for investors. Minimum investment amounts might be set by brokers or investment funds, but they're not listing requirements for exchanges.",
+          "Trading hours are set by exchanges but aren't considered listing requirements. Listing requirements refer specifically to the criteria companies must meet to be listed on an exchange, not the operational rules of the exchange itself.",
+        ],
       },
       {
         question: "The primary responsibility of stock market regulators is to:",
@@ -1171,6 +1192,12 @@ const CourseContent = () => {
           "Manage individual investment portfolios",
         ],
         correctAnswer: 2,
+        feedback: [
+          "Regulators don't aim to maximize profits for investors. Their role is to ensure fair, orderly, and efficient markets, not to guarantee returns. Investment performance depends on many factors beyond regulation.",
+          "Regulators don't control or set stock prices. In free markets, prices are determined by supply and demand. Regulators may intervene in cases of market manipulation, but they don't control normal price movements.",
+          "Correct! The primary responsibility of market regulators like the SEC is to maintain fair, orderly, and efficient markets while protecting investors. They do this by enforcing securities laws, requiring disclosure of important information, and preventing fraud and market manipulation.",
+          "Regulators don't manage individual portfolios. That's the role of investment advisors, portfolio managers, or individual investors themselves. Regulators oversee the markets as a whole, not individual investment decisions.",
+        ],
       },
     ],
     // Module 1.2 Recall Quiz
@@ -1184,11 +1211,23 @@ const CourseContent = () => {
           "Higher risk and volatility",
         ],
         correctAnswer: 2,
+        feedback: [
+          "Common stock typically has higher growth potential than preferred stock. Preferred stock is more focused on providing steady income rather than capital appreciation.",
+          "Voting rights are typically a feature of common stock, not preferred stock. Preferred stockholders usually don't have voting rights unless the company fails to pay dividends for a specified period.",
+          "Correct! Preferred stockholders have priority over common stockholders when it comes to receiving dividends. This means that if a company decides to pay dividends, preferred stockholders must be paid before common stockholders receive anything. This priority makes preferred stock more attractive to income-focused investors who want more certainty in their dividend payments.",
+          "Preferred stock typically has lower risk and volatility compared to common stock. It behaves more like a bond in many ways, with more stable prices and predictable income streams.",
+        ],
       },
       {
         question: "Which type of stock is best for investors seeking steady income?",
         options: ["Common stock", "Growth stock", "Preferred stock", "Small-cap stock"],
         correctAnswer: 2,
+        feedback: [
+          "Common stock may provide dividends, but they're not guaranteed and can be reduced or eliminated at the company's discretion. Common stock is generally better for growth than for steady income.",
+          "Growth stocks typically reinvest their profits back into the business rather than paying dividends. They focus on capital appreciation rather than providing current income, making them unsuitable for investors seeking steady income.",
+          "Correct! Preferred stock is specifically designed to provide steady income through regular dividend payments. These dividends are typically fixed and must be paid before any dividends to common stockholders, making preferred stock ideal for income-focused investors like retirees.",
+          "Small-cap stocks are defined by their market capitalization size, not their dividend policy. While some small-cap stocks may pay dividends, they're generally considered growth investments and often have more volatile returns, making them less suitable for those seeking steady income.",
+        ],
       },
       {
         question: "What does market capitalization measure?",
@@ -1199,11 +1238,23 @@ const CourseContent = () => {
           "The number of shares issued by a company",
         ],
         correctAnswer: 2,
+        feedback: [
+          "A company's debt is tracked on its balance sheet and is unrelated to market capitalization. Debt is an important financial metric, but it's not what market cap measures.",
+          "Annual revenue refers to the money a company generates from its business operations in a year. This is different from market capitalization, which reflects the company's overall value as determined by the stock market.",
+          "Correct! Market capitalization (or 'market cap') is calculated by multiplying the current share price by the total number of outstanding shares. It represents the total market value of a company's equity and is a key indicator of a company's size and classification (large-cap, mid-cap, small-cap).",
+          "While the number of shares is used to calculate market capitalization, the share count alone doesn't indicate a company's value. A company could have many shares at a low price or few shares at a high price, resulting in very different market caps.",
+        ],
       },
       {
         question: "A company with a market capitalization of $15 billion would be classified as:",
         options: ["Small-cap", "Mid-cap", "Large-cap", "Growth stock"],
         correctAnswer: 2,
+        feedback: [
+          "Small-cap companies typically have market capitalizations between $250 million and $2 billion. At $15 billion, this company would be well above the small-cap range.",
+          "Mid-cap companies typically have market capitalizations between $2 billion and $10 billion. At $15 billion, this company would exceed the mid-cap range.",
+          "Correct! Large-cap companies are generally defined as having market capitalizations of $10 billion or more. With a market cap of $15 billion, this company falls into the large-cap category, indicating it's a well-established company with significant market presence.",
+          "Growth stock is an investment style, not a market capitalization classification. A company can be both a large-cap and a growth stock, or it could be a large-cap value stock. Market cap and investment style are separate classifications.",
+        ],
       },
       {
         question: "Which of the following is true about large-cap stocks?",
@@ -1214,11 +1265,23 @@ const CourseContent = () => {
           "They have higher growth potential than small-cap stocks",
         ],
         correctAnswer: 1,
+        feedback: [
+          "Large-cap stocks are generally considered less risky than small-cap stocks, not more risky. Their established business models, diversified revenue streams, and greater financial resources typically make them more stable investments.",
+          "Correct! Large-cap stocks represent well-established companies with proven business models, substantial market share, and significant financial resources. These companies have typically been in business for many years and have demonstrated their ability to navigate various economic conditions.",
+          "While many large-cap companies do pay dividends, it's not a universal characteristic. Some large-cap companies, particularly in the technology sector (like Amazon for many years), reinvest their profits rather than paying dividends. Dividend policy is separate from market capitalization.",
+          "Small-cap stocks generally have higher growth potential than large-cap stocks. Large companies have already achieved significant scale, making it harder for them to maintain the same percentage growth rates as smaller companies that are still in earlier stages of their development.",
+        ],
       },
       {
         question: "Which market cap category is best known for stability and lower risk?",
         options: ["Small-cap", "Mid-cap", "Large-cap", "Micro-cap"],
         correctAnswer: 2,
+        feedback: [
+          "Small-cap stocks typically offer higher growth potential but come with higher volatility and risk. They're more sensitive to economic downturns and have fewer resources to weather difficult periods.",
+          "Mid-cap stocks offer a balance between growth and stability, with moderate risk. They're less stable than large-caps but more stable than small-caps.",
+          "Correct! Large-cap stocks are best known for stability and lower risk. These companies typically have established business models, diversified revenue streams, strong balance sheets, and the resources to withstand economic challenges. They tend to be less volatile than smaller companies.",
+          "Micro-cap stocks (companies with market caps below $250 million) are the smallest publicly traded companies and typically carry the highest risk. They often have unproven business models, limited resources, and are highly sensitive to market conditions.",
+        ],
       },
       {
         question: "Which company is most likely to be classified as large-cap?",
@@ -1229,6 +1292,12 @@ const CourseContent = () => {
           "A biotech firm with a $1 billion valuation",
         ],
         correctAnswer: 2,
+        feedback: [
+          "Newly launched startups typically have small market capitalizations, often in the micro-cap or small-cap range. They haven't yet had time to grow to large-cap status, which usually takes years of successful business operations.",
+          "A company with a $500 million market cap would be classified as a small-cap stock, not a large-cap. Large-cap companies have market capitalizations of at least $10 billion.",
+          "Correct! Multinational companies like Microsoft are classic examples of large-cap stocks. Microsoft's market capitalization is well over $1 trillion, making it one of the largest companies in the world. Large-cap companies typically have global operations, established business models, and significant market presence.",
+          "A biotech firm with a $1 billion valuation would be classified as a small-cap stock. While $1 billion is substantial, it falls below the $10 billion threshold typically used to define large-cap companies.",
+        ],
       },
     ],
     // Module 1.2 Application Quiz
@@ -1238,6 +1307,12 @@ const CourseContent = () => {
           "Apple Inc. has a market capitalization of USD 3.34 trillion as of April 2025. Which category does it belong to?",
         options: ["Large Cap", "Small Cap", "Mid Cap", "Growth Stock"],
         correctAnswer: 0,
+        feedback: [
+          "Correct! With a market capitalization of $3.34 trillion, Apple is firmly in the large-cap category. Large-cap stocks are generally defined as having market capitalizations of $10 billion or more, and Apple far exceeds this threshold as one of the largest companies in the world.",
+          "Small-cap companies typically have market capitalizations between $250 million and $2 billion. Apple's $3.34 trillion market cap is over 1,500 times larger than the upper limit for small-caps.",
+          "Mid-cap companies typically have market capitalizations between $2 billion and $10 billion. Apple's $3.34 trillion market cap is over 330 times larger than the upper limit for mid-caps.",
+          "Growth stock is an investment style, not a market capitalization classification. While Apple has shown growth characteristics over its history, the question specifically asks about its market cap category, which is large-cap. A company can be both a large-cap and a growth stock.",
+        ],
       },
       {
         question:
@@ -1249,18 +1324,36 @@ const CourseContent = () => {
           "A technology ETF focused on high-growth companies",
         ],
         correctAnswer: 1,
+        feedback: [
+          "Tesla is a growth-oriented company that reinvests its earnings rather than paying dividends. It doesn't currently pay dividends, making it unsuitable for a retiree seeking income through dividends.",
+          "Correct! Procter & Gamble (P&G) is an excellent choice for income-focused investors like retirees. P&G is a dividend aristocrat, having increased its dividend for over 60 consecutive years. It offers a stable business model, consistent cash flows, and a commitment to returning value to shareholders through dividends.",
+          "Small-cap biotech startups typically don't pay dividends as they reinvest any earnings (if they have any) back into research and development. Many are pre-profit and focus on growth rather than providing shareholder income, making them unsuitable for retirees seeking dividend income.",
+          "Technology ETFs focused on high-growth companies typically have low dividend yields, as growth companies tend to reinvest earnings rather than pay dividends. While these ETFs might offer capital appreciation, they're not designed to provide the steady income stream that the retiree is seeking.",
+        ],
       },
       {
         question:
           "In 2025, a new startup in the AI industry launches an IPO with a market capitalization of $800 million. What classification does this stock fall under?",
         options: ["Large Cap", "Mid Cap", "Small Cap", "Dividend Stock"],
         correctAnswer: 2,
+        feedback: [
+          "Large-cap companies typically have market capitalizations of $10 billion or more. At $800 million, this AI startup falls well below the large-cap threshold.",
+          "Mid-cap companies typically have market capitalizations between $2 billion and $10 billion. At $800 million, this AI startup falls below the mid-cap range.",
+          "Correct! With a market capitalization of $800 million, this AI startup would be classified as a small-cap stock. Small-cap companies typically have market capitalizations between $250 million and $2 billion. Small-caps often offer higher growth potential but come with higher volatility and risk.",
+          "Dividend stock is an investment style based on a company's dividend policy, not a market capitalization classification. As a newly public AI startup, this company is unlikely to pay dividends initially, as most tech startups reinvest earnings for growth rather than paying dividends.",
+        ],
       },
       {
         question:
           "An investor buys shares of NVIDIA, a company known for its rapid innovation and high reinvestment in research and development. NVIDIA does not pay dividends but has seen significant stock price appreciation. What type of stock is this?",
         options: ["Growth Stock", "Value Stock", "Dividend Stock", "Preferred Stock"],
         correctAnswer: 0,
+        feedback: [
+          "Correct! NVIDIA is a classic example of a growth stock. Growth stocks are characterized by companies that reinvest earnings back into the business to fuel expansion, innovation, and market share gains rather than paying dividends. They typically show above-average revenue and earnings growth, and investors buy them primarily for capital appreciation rather than income.",
+          "Value stocks are typically companies trading below what analysts believe is their intrinsic value, often with lower price-to-earnings ratios. NVIDIA, with its high valuation multiples and focus on growth rather than current profitability, doesn't fit the value stock profile.",
+          "Dividend stocks are companies that regularly distribute a portion of their earnings to shareholders. Since NVIDIA doesn't pay dividends and instead reinvests in R&D, it's not a dividend stock.",
+          "Preferred stock is a specific class of stock that typically pays fixed dividends and has priority over common stock for dividend payments and asset distribution. The question refers to NVIDIA's common stock, not a preferred stock offering.",
+        ],
       },
       {
         question:
@@ -1272,6 +1365,12 @@ const CourseContent = () => {
           "A biotech company in clinical trial phases",
         ],
         correctAnswer: 0,
+        feedback: [
+          "Correct! Microsoft is an excellent choice for a cautious investor seeking lower risk, steady dividends, and strong brand recognition. As a large-cap technology company with diverse revenue streams, strong cash flow, and a history of dividend payments, Microsoft offers stability while still providing growth potential. Its established market position and strong brand recognition further reduce risk.",
+          "A newly listed e-commerce startup would be inappropriate for a cautious investor. New companies have unproven business models, no dividend history, and typically experience high volatility. They lack the brand recognition and stability the investor is seeking.",
+          "High-growth cryptocurrency mining companies are highly speculative investments with extreme volatility. They typically don't pay dividends, have uncertain business models dependent on cryptocurrency prices, and would be completely unsuitable for a cautious investor seeking stability.",
+          "Biotech companies in clinical trial phases are highly speculative investments. Their success depends on clinical outcomes that are difficult to predict, they typically don't pay dividends, and they can experience dramatic price swings based on trial results. This would be inappropriate for a cautious investor.",
+        ],
       },
       {
         question:
@@ -1283,6 +1382,12 @@ const CourseContent = () => {
           "A bond investor",
         ],
         correctAnswer: 1,
+        feedback: [
+          "Investors seeking steady income typically look for stocks that pay regular dividends. Since Tesla doesn't pay dividends, it wouldn't meet the needs of income-focused investors.",
+          "Correct! Tesla is best suited for risk-tolerant investors seeking high growth. Its volatile price movements, lack of dividends, and focus on reinvesting for future growth make it appropriate for investors who can tolerate significant price swings and have a long-term growth perspective. These investors prioritize capital appreciation over current income or stability.",
+          "Retirees typically prioritize capital preservation, income generation, and lower volatility. Tesla's high volatility and lack of dividends make it poorly suited for most retirees looking for stability in their portfolios.",
+          "Bond investors typically seek fixed income and capital preservation. Tesla stock, with its high volatility, growth orientation, and lack of income, has characteristics almost completely opposite to bonds. It would be inappropriate for a typical bond investor's objectives.",
+        ],
       },
     ],
   }
@@ -1326,30 +1431,6 @@ const CourseContent = () => {
   // Get the content after defining currentModuleData
   const currentQuiz = currentModuleData.quiz
   const currentContent = Array.isArray(currentModuleData.contentSections) ? currentModuleData.contentSections : []
-
-  // Debug the content selection
-  console.log("Current step:", currentStep)
-  console.log("Current module:", currentModule)
-  console.log(
-    "Module content structure:",
-    moduleContent.map((section) => (Array.isArray(section) ? section.length : "not array")),
-  )
-  console.log("Current module data:", currentModuleData)
-  console.log("Current content array:", currentContent)
-
-  // Debug the content selection
-  console.log(`Loading content for Section ${currentStep}, Module ${currentModule}`)
-  console.log(`Content array index: ${currentStep - 1}`)
-  console.log(`Module array index: ${currentModule - 1}`)
-
-  // Fix: If we're looking at module 1.2 (Types of Stocks), make sure we get the right content
-  if (currentStep === 1 && currentModule === 2) {
-    // Explicitly use the second array (index 1) in the first section's content (index 0)
-    const typesOfStocksContent = moduleContent[0][1]
-    if (typesOfStocksContent && typesOfStocksContent.length > 0) {
-      console.log("Loading Types of Stocks content")
-    }
-  }
 
   // Check if a module is completed
   const isModuleCompleted = (sectionId, moduleId) => {
@@ -1418,6 +1499,8 @@ const CourseContent = () => {
       ...selectedAnswers,
       [questionIndex]: answerIndex,
     })
+
+    setAnswerSubmitted(true)
   }
 
   const calculateScore = () => {
@@ -1468,9 +1551,6 @@ const CourseContent = () => {
     }
 
     progress.completedQuizzes[quizKey] = true
-    progress.completedQuizzes = {}
-
-    progress.completedQuizzes[quizKey] = true
 
     // Always store the quiz score, regardless of pass/fail
     if (!progress.quizScores) {
@@ -1506,21 +1586,28 @@ const CourseContent = () => {
     setSelectedAnswers({})
     setQuizCompleted(false)
     setQuizScore(0)
+    setAnswerSubmitted(false)
   }
 
   const goToQuestion = (index) => {
     setCurrentQuestionIndex(index)
+    // Keep answerSubmitted state if an answer was already selected for this question
+    setAnswerSubmitted(selectedAnswers[index] !== undefined)
   }
 
   const goToPreviousQuestion = () => {
     if (currentQuestionIndex > 0) {
-      setCurrentQuestionIndex(currentQuestionIndex - 1)
+      const newIndex = currentQuestionIndex - 1
+      setCurrentQuestionIndex(newIndex)
+      setAnswerSubmitted(selectedAnswers[newIndex] !== undefined)
     }
   }
 
   const goToNextQuestion = () => {
     if (currentQuestionIndex < currentQuiz.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1)
+      const newIndex = currentQuestionIndex + 1
+      setCurrentQuestionIndex(newIndex)
+      setAnswerSubmitted(selectedAnswers[newIndex] !== undefined)
     }
   }
 
@@ -1597,12 +1684,64 @@ const CourseContent = () => {
     return <div className="min-h-screen flex items-center justify-center">Loading...</div>
   }
 
-  console.log("DETAILED DEBUG INFO:")
-  console.log("Current step:", currentStep)
-  console.log("Current module:", currentModule)
-  console.log("Module content for step 1:", moduleContent[0])
-  console.log("Module content for step 1, module 1:", moduleContent[0])
-  console.log("Current content array:", currentContent)
+  const goToNextModule = () => {
+    // Navigate to the next module or section
+    if (currentModule < moduleContent[currentStep - 1]?.length) {
+      // Go to next module in current section
+      navigate(`/course-content?step=${currentStep}&module=${currentModule + 1}&type=content`)
+    } else if (currentStep < moduleContent.length) {
+      // Go to first module in next section
+      navigate(`/course-content?step=${currentStep + 1}&module=1&type=content`)
+    } else {
+      // If we're at the last module of the last section, go back to courses
+      navigate("/courses")
+    }
+  }
+
+  const handleGoToNext = () => {
+    if (contentType === "content") {
+      if (currentContentIndex < moduleContent[currentModuleIndex].length - 1) {
+        setCurrentContentIndex(currentContentIndex + 1)
+      } else {
+        // Mark the current module as completed
+        const moduleKey = `${currentStep}.${currentModule}`
+        const updatedCompletedModules = {
+          ...completedModules,
+          [moduleKey]: true,
+        }
+        setCompletedModules(updatedCompletedModules)
+
+        // Save to localStorage
+        const savedProgress = localStorage.getItem("courseProgress")
+        const progress = savedProgress ? JSON.parse(savedProgress) : {}
+        progress.completedModules = updatedCompletedModules
+        localStorage.setItem("courseProgress", JSON.stringify(progress))
+
+        // Direct to the appropriate quiz based on the current module
+        if (currentStep === 1 && currentModule === 1) {
+          navigate(`/course-content?module=${currentModule}&step=${currentStep}&type=quiz&quizType=mixed&mode=normal`)
+          setContentType("quiz")
+          setShowQuiz(true)
+          return
+        } else if (currentStep === 1 && currentModule === 2) {
+          navigate(`/course-content?module=${currentModule}&step=${currentStep}&type=quiz&quizType=recall&mode=normal`)
+          setContentType("quiz")
+          setShowQuiz(true)
+        } else if (moduleContent[currentModuleIndex].length > 0) {
+          navigate(`/course-content?module=${currentModule}&step=${currentStep}&type=quiz&quizType=mixed&mode=normal`)
+          setContentType("quiz")
+          setShowQuiz(true)
+        } else {
+          goToNextModule()
+        }
+      }
+    } else if (contentType === "quiz") {
+      // Handle quiz completion and navigation
+      if (quizCompleted) {
+        goToNextModule()
+      }
+    }
+  }
 
   return (
     <div className="min-h-screen bg-[#f9f7f2] overflow-x-hidden">
@@ -1739,7 +1878,6 @@ const CourseContent = () => {
                       )}
                     </div>
                     <h2 className="text-2xl font-bold text-[#5a7d53] mb-4">Quiz Completed!</h2>
-
                     <div className="mb-8">
                       <div className="w-48 h-48 mx-auto relative">
                         <svg viewBox="0 0 100 100" className="w-full h-full">
@@ -1859,27 +1997,63 @@ const CourseContent = () => {
                         <div className="space-y-3 mt-6">
                           {currentQuiz[currentQuestionIndex]?.options.map((option, index) => {
                             const isSelected = selectedAnswers[currentQuestionIndex] === index
+                            const isCorrect = currentQuiz[currentQuestionIndex]?.correctAnswer === index
+
                             return (
-                              <button
-                                key={index}
-                                onClick={() => handleAnswerSelect(currentQuestionIndex, index)}
-                                className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-300 ${
-                                  isSelected
-                                    ? "border-[#5a7d53] bg-[#f0f9f4] transform scale-105 shadow-md"
-                                    : "border-gray-200 hover:border-[#5a7d53] hover:shadow-sm"
-                                }`}
-                              >
-                                <div className="flex items-center">
-                                  <div
-                                    className={`w-6 h-6 rounded-full flex items-center justify-center mr-3 transition-colors ${
-                                      isSelected ? "bg-[#5a7d53] text-white" : "bg-gray-200 text-gray-700"
-                                    }`}
-                                  >
-                                    {String.fromCharCode(65 + index)}
+                              <div key={index} className="mb-4">
+                                <button
+                                  onClick={() => handleAnswerSelect(currentQuestionIndex, index)}
+                                  className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-300 ${
+                                    isSelected
+                                      ? isCorrect
+                                        ? "border-green-500 bg-green-50"
+                                        : "border-red-500 bg-red-50"
+                                      : answerSubmitted
+                                        ? "border-gray-200 opacity-70"
+                                        : "border-gray-200 hover:border-[#5a7d53] hover:shadow-sm"
+                                  }`}
+                                  disabled={answerSubmitted}
+                                >
+                                  <div className="flex items-center">
+                                    <div
+                                      className={`w-6 h-6 rounded-full flex items-center justify-center mr-3 transition-colors ${
+                                        isSelected
+                                          ? isCorrect
+                                            ? "bg-green-500 text-white"
+                                            : "bg-red-500 text-white"
+                                          : answerSubmitted && isCorrect
+                                            ? "bg-green-500 text-white"
+                                            : "bg-gray-200 text-gray-700"
+                                      }`}
+                                    >
+                                      {String.fromCharCode(65 + index)}
+                                    </div>
+                                    <span>{option}</span>
+                                    {isSelected &&
+                                      (isCorrect ? (
+                                        <CheckCircle className="h-5 w-5 text-green-500 ml-2" />
+                                      ) : (
+                                        <XCircle className="h-5 w-5 text-red-500 ml-2" />
+                                      ))}
+                                    {!isSelected && answerSubmitted && isCorrect && (
+                                      <CheckCircle className="h-5 w-5 text-green-500 ml-2" />
+                                    )}
                                   </div>
-                                  <span>{option}</span>
-                                </div>
-                              </button>
+
+                                  {/* Show feedback inline when an answer is submitted */}
+                                  {answerSubmitted && currentQuiz[currentQuestionIndex]?.feedback && (
+                                    <div className="mt-2 text-sm">
+                                      <p
+                                        className={`${
+                                          isCorrect ? "text-green-700" : isSelected ? "text-red-700" : "text-gray-600"
+                                        }`}
+                                      >
+                                        {currentQuiz[currentQuestionIndex].feedback[index]}
+                                      </p>
+                                    </div>
+                                  )}
+                                </button>
+                              </div>
                             )
                           })}
                         </div>
@@ -1997,8 +2171,14 @@ const CourseContent = () => {
                         {isModuleCompleted(currentStep, currentModule) ? (
                           <button
                             onClick={() => {
-                              // Navigate to next module or next section
-                              if (currentModule < moduleContent[currentStep - 1].length) {
+                              // For module 1.1, go to the module 1.1 quiz
+                              if (currentStep === 1 && currentModule === 1) {
+                                navigate(
+                                  `/course-content?step=${currentStep}&module=${currentModule}&type=quiz&quizType=mixed&mode=normal`,
+                                )
+                              }
+                              // Otherwise, navigate to next module or next section
+                              else if (currentModule < moduleContent[currentStep - 1].length) {
                                 navigate(`/course-content?step=${currentStep}&module=${currentModule + 1}&type=content`)
                               } else if (currentStep < moduleContent.length) {
                                 navigate(`/course-content?step=${currentStep + 1}&module=1&type=content`)
@@ -2066,4 +2246,3 @@ const CourseContent = () => {
 }
 
 export default CourseContent
-

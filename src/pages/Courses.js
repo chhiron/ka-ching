@@ -12,6 +12,7 @@ import {
   FileText,
   RotateCcw,
 } from "lucide-react"
+import Leaderboard from "../components/Leaderboard" // Import the Leaderboard component
 
 const Courses = () => {
   const navigate = useNavigate()
@@ -332,6 +333,35 @@ const Courses = () => {
     // First module is always unlocked
     if (moduleIndex === 0) return true
 
+    // For module 1.1 quiz (index 1 in section 1), check if module 1.1 content is completed
+    if (sectionId === 1 && moduleIndex === 1) {
+      return isModuleCompleted(1, 1)
+    }
+
+    // For module 1.2, check if module 1.1 and its quiz are completed with score >= 80%
+    if (sectionId === 1 && moduleIndex === 2) {
+      // Module 1.2
+      const module1Completed = isModuleCompleted(1, 1)
+      const quiz1Completed = isQuizCompleted(1, 1, "mixed")
+      const quiz1Score = getQuizScore(1, 1, "mixed")
+      return module1Completed && quiz1Completed && quiz1Score >= 80
+    }
+
+    // For module 1.2 recall quiz, check if module 1.2 is completed
+    if (sectionId === 1 && moduleIndex === 3) {
+      // Module 1.2 recall quiz
+      return isModuleCompleted(1, 2)
+    }
+
+    // For module 1.2 application quiz, check if module 1.2 recall quiz is completed with score >= 80%
+    if (sectionId === 1 && moduleIndex === 4) {
+      // Module 1.2 application quiz
+      const recallQuizCompleted = isQuizCompleted(1, 2, "recall")
+      const recallQuizScore = getQuizScore(1, 2, "recall")
+      return recallQuizCompleted && recallQuizScore >= 80
+    }
+
+    // Default behavior for other modules - check if previous module is completed
     const prevModule = section.modules[moduleIndex - 1]
 
     // If previous item is content, check if it's completed
@@ -342,6 +372,88 @@ const Courses = () => {
     // If previous item is quiz, check if it's completed
     if (prevModule.type === "quiz") {
       return isQuizCompleted(sectionId, prevModule.relatedModuleId, prevModule.quizType)
+    }
+
+    return false
+  }
+
+  // Update the isNextStep function to correctly identify the next step in the learning path
+
+  // Replace the existing isNextStep function with this improved version:
+  const isNextStep = (sectionId, moduleIndex) => {
+    const section = steps.find((s) => s.id === sectionId)
+    if (!section) return false
+
+    // If this is the first module and it's not completed, it's the next step
+    if (moduleIndex === 0 && !isModuleCompleted(sectionId, section.modules[0].id)) {
+      return true
+    }
+
+    // For module 1.1 quiz (index 1 in section 1), check if module 1.1 content is completed but quiz isn't
+    if (sectionId === 1 && moduleIndex === 1) {
+      const module1Completed = isModuleCompleted(1, 1)
+      const quiz1Completed = isQuizCompleted(1, 1, "mixed")
+      return module1Completed && !quiz1Completed
+    }
+
+    // For module 1.2 (index 2 in section 1), check if module 1.1 and its quiz are completed with score >= 80%
+    if (sectionId === 1 && moduleIndex === 2) {
+      const module1Completed = isModuleCompleted(1, 1)
+      const quiz1Completed = isQuizCompleted(1, 1, "mixed")
+      const quiz1Score = getQuizScore(1, 1, "mixed")
+      return module1Completed && quiz1Completed && quiz1Score >= 80 && !isModuleCompleted(1, 2)
+    }
+
+    // For module 1.2 recall quiz (index 3 in section 1), check if module 1.2 is completed but quiz isn't
+    if (sectionId === 1 && moduleIndex === 3) {
+      const module2Completed = isModuleCompleted(1, 2)
+      const quiz2RecallCompleted = isQuizCompleted(1, 2, "recall")
+      return module2Completed && !quiz2RecallCompleted
+    }
+
+    // For module 1.2 application quiz (index 4 in section 1), check if recall quiz is completed with score >= 80%
+    if (sectionId === 1 && moduleIndex === 4) {
+      const recallQuizCompleted = isQuizCompleted(1, 2, "recall")
+      const recallQuizScore = getQuizScore(1, 2, "recall")
+      const applicationQuizCompleted = isQuizCompleted(1, 2, "application")
+      return recallQuizCompleted && recallQuizScore >= 80 && !applicationQuizCompleted
+    }
+
+    // For other sections, handle the same pattern
+    if (sectionId > 1) {
+      // For first content module in a section
+      if (moduleIndex === 0) {
+        return !isModuleCompleted(sectionId, section.modules[0].id)
+      }
+
+      // For quiz after content module
+      if (moduleIndex % 2 === 1) {
+        // Odd indices are quizzes in sections 2 and 3
+        const relatedContentIndex = moduleIndex - 1
+        const contentModule = section.modules[relatedContentIndex]
+        if (contentModule && contentModule.type === "content") {
+          const contentCompleted = isModuleCompleted(sectionId, contentModule.id)
+          const quizCompleted = isQuizCompleted(
+            sectionId,
+            contentModule.id,
+            section.modules[moduleIndex].quizType || "mixed",
+          )
+          return contentCompleted && !quizCompleted
+        }
+      }
+
+      // For content module after quiz
+      if (moduleIndex % 2 === 0 && moduleIndex > 0) {
+        // Even indices > 0 are content modules in sections 2 and 3
+        const prevQuizIndex = moduleIndex - 1
+        const prevQuiz = section.modules[prevQuizIndex]
+        if (prevQuiz && prevQuiz.type === "quiz") {
+          const prevContentModule = section.modules[moduleIndex - 2]
+          const quizCompleted = isQuizCompleted(sectionId, prevContentModule.id, prevQuiz.quizType || "mixed")
+          const contentCompleted = isModuleCompleted(sectionId, section.modules[moduleIndex].id)
+          return quizCompleted && !contentCompleted
+        }
+      }
     }
 
     return false
@@ -388,313 +500,357 @@ const Courses = () => {
         </div>
       </div>
 
-      {/* Course Sections */}
+      {/* Main content with two-column layout */}
       <div className="container mx-auto px-4 py-8 relative z-10">
-        <div className="max-w-4xl mx-auto">
-          {steps.map((section, index) => {
-            const sectionCompleted = isSectionCompleted(section.id)
-            const progressCount = getSectionProgress(section.id)
-            const progressPercent = (progressCount / section.modules.length) * 100
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Left column - Course Sections */}
+          <div className="lg:w-3/4">
+            {steps.map((section, index) => {
+              const sectionCompleted = isSectionCompleted(section.id)
+              const progressCount = getSectionProgress(section.id)
+              const progressPercent = (progressCount / section.modules.length) * 100
 
-            return (
-              <div
-                key={section.id}
-                className="bg-white rounded-xl shadow-lg p-6 mb-8 transform transition-all duration-500 hover:shadow-xl"
-              >
-                <div className="flex justify-between items-center mb-6">
-                  <div>
-                    <h2 className="text-2xl font-bold text-[#5a7d53]">
-                      Section {section.id}: {section.title}
-                    </h2>
-                    <p className="text-gray-600 mt-1">
-                      {section.modules.filter((m) => m.type === "content").length} modules •{" "}
-                      {section.id === 1 ? "Beginner" : section.id === 2 ? "Intermediate" : "Advanced"}
-                    </p>
+              return (
+                <div
+                  key={section.id}
+                  className="bg-white rounded-xl shadow-lg p-6 mb-8 transform transition-all duration-500 hover:shadow-xl"
+                >
+                  <div className="flex justify-between items-center mb-6">
+                    <div>
+                      <h2 className="text-2xl font-bold text-[#5a7d53]">
+                        Section {section.id}: {section.title}
+                      </h2>
+                      <p className="text-gray-600 mt-1">
+                        {section.modules.filter((m) => m.type === "content").length} modules •{" "}
+                        {section.id === 1 ? "Beginner" : section.id === 2 ? "Intermediate" : "Advanced"}
+                      </p>
 
-                    {/* Progress bar */}
-                    {progressCount > 0 && !sectionCompleted && (
-                      <div className="mt-2">
-                        <div className="flex items-center">
-                          <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
-                            <div
-                              className="h-full bg-[#85bb65] rounded-full"
-                              style={{ width: `${progressPercent}%` }}
-                            ></div>
+                      {/* Progress bar */}
+                      {progressCount > 0 && !sectionCompleted && (
+                        <div className="mt-2">
+                          <div className="flex items-center">
+                            <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                              <div
+                                className="h-full bg-[#85bb65] rounded-full"
+                                style={{ width: `${progressPercent}%` }}
+                              ></div>
+                            </div>
+                            <span className="ml-2 text-xs text-gray-600">
+                              {progressCount}/{section.modules.length}
+                            </span>
                           </div>
-                          <span className="ml-2 text-xs text-gray-600">
-                            {progressCount}/{section.modules.length}
-                          </span>
                         </div>
-                      </div>
-                    )}
+                      )}
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      {sectionCompleted && (
+                        <span className="bg-green-100 text-green-800 text-xs font-medium px-3 py-1 rounded-full flex items-center">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-4 w-4 mr-1"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                          Completed
+                        </span>
+                      )}
+                      <button
+                        onClick={() => handleSectionClick(section.id)}
+                        className="bg-[#f0d878] hover:bg-[#e5c960] text-[#5a7d53] font-bold py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105"
+                      >
+                        {sectionCompleted ? "Review" : progressCount > 0 ? "Continue" : "Start"}
+                      </button>
+                    </div>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    {sectionCompleted && (
-                      <span className="bg-green-100 text-green-800 text-xs font-medium px-3 py-1 rounded-full flex items-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-4 w-4 mr-1"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        Completed
-                      </span>
-                    )}
-                    <button
-                      onClick={() => handleSectionClick(section.id)}
-                      className="bg-[#f0d878] hover:bg-[#e5c960] text-[#5a7d53] font-bold py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105"
-                    >
-                      {sectionCompleted ? "Review" : progressCount > 0 ? "Continue" : "Start"}
-                    </button>
-                  </div>
-                </div>
 
-                {/* Show modules as a learning path when section is expanded */}
-                {expandedSection === section.id && (
-                  <div className="mt-6 pt-6 border-t border-gray-200 animate-fadeIn">
-                    <h3 className="text-xl font-bold text-[#5a7d53] mb-6">Learning Path</h3>
+                  {/* Show modules as a learning path when section is expanded */}
+                  {expandedSection === section.id && (
+                    <div className="mt-6 pt-6 border-t border-gray-200 animate-fadeIn">
+                      <h3 className="text-xl font-bold text-[#5a7d53] mb-6">Learning Path</h3>
 
-                    <div className="relative py-8">
-                      {/* Vertical path line */}
-                      <div className="absolute left-1/2 top-0 bottom-0 w-2 bg-gray-200 transform -translate-x-1/2 rounded-full"></div>
+                      <div className="relative py-8">
+                        {/* Vertical path line */}
+                        <div className="absolute left-1/2 top-0 bottom-0 w-2 bg-gray-200 transform -translate-x-1/2 rounded-full"></div>
 
-                      {/* Progress overlay */}
-                      <div
-                        className="absolute left-1/2 top-0 w-2 bg-[#85bb65] transform -translate-x-1/2 rounded-full transition-all duration-700 ease-in-out"
-                        style={{
-                          height: `${Math.min(100, (progressCount / section.modules.length) * 100)}%`,
-                        }}
-                      ></div>
+                        {/* Progress overlay */}
+                        <div
+                          className="absolute left-1/2 top-0 w-2 bg-[#85bb65] transform -translate-x-1/2 rounded-full transition-all duration-700 ease-in-out"
+                          style={{
+                            height: `${Math.min(100, (progressCount / section.modules.length) * 100)}%`,
+                          }}
+                        ></div>
 
-                      {/* Module steps */}
-                      <div className="relative">
-                        {section.modules.map((module, moduleIndex) => {
-                          const isContent = module.type === "content"
-                          const isQuiz = module.type === "quiz"
+                        {/* Module steps */}
+                        <div className="relative">
+                          {section.modules.map((module, moduleIndex) => {
+                            const isContent = module.type === "content"
+                            const isQuiz = module.type === "quiz"
 
-                          const moduleCompleted = isContent
-                            ? isModuleCompleted(section.id, module.id)
-                            : isQuizCompleted(section.id, module.relatedModuleId, module.quizType)
+                            const moduleCompleted = isContent
+                              ? isModuleCompleted(section.id, module.id)
+                              : isQuizCompleted(section.id, module.relatedModuleId, module.quizType)
 
-                          const isCurrentModule =
-                            currentStep === section.id &&
-                            (isContent ? currentModule === module.id : currentModule === module.relatedModuleId)
+                            const isCurrentModule =
+                              currentStep === section.id &&
+                              (isContent ? currentModule === module.id : currentModule === module.relatedModuleId)
 
-                          const isUnlocked = isModuleUnlocked(section.id, moduleIndex)
-                          const isLocked = !isUnlocked && !moduleCompleted && !isCurrentModule
+                            const isUnlocked = isModuleUnlocked(section.id, moduleIndex)
+                            const isLocked = !isUnlocked && !moduleCompleted && !isCurrentModule
+                            const isNext = isNextStep(section.id, moduleIndex)
 
-                          // Get quiz score if it's a completed quiz
-                          const quizScore =
-                            isQuiz && moduleCompleted
-                              ? getQuizScore(section.id, module.relatedModuleId, module.quizType)
-                              : null
+                            // Get quiz score if it's a completed quiz
+                            const quizScore =
+                              isQuiz && moduleCompleted
+                                ? getQuizScore(section.id, module.relatedModuleId, module.quizType)
+                                : null
 
-                          return (
-                            <div
-                              key={`${module.id}-${module.type}-${module.quizType || ""}`}
-                              className="relative mb-16 flex justify-center"
-                            >
-                              {/* Module marker */}
-                              <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
-                                <button
-                                  onClick={() =>
-                                    handleModuleClick(
-                                      section.id,
-                                      module.id,
-                                      module.type,
-                                      module.relatedModuleId,
-                                      module.quizType,
-                                    )
-                                  }
-                                  disabled={isLocked}
-                                  className={`flex items-center justify-center w-14 h-14 rounded-full border-4 border-white shadow-lg transition-all duration-300 ${
-                                    moduleCompleted
-                                      ? isQuiz
-                                        ? quizScore >= 80
-                                          ? "bg-[#85bb65] text-white"
-                                          : "bg-[#e07a5f] text-white"
-                                        : "bg-[#85bb65] text-white"
-                                      : isCurrentModule
-                                        ? "bg-[#f0d878] text-[#5a7d53] animate-pulse"
-                                        : "bg-white border-2 border-gray-200 text-gray-400"
-                                  } ${isLocked ? "cursor-not-allowed" : "hover:scale-110"}`}
-                                >
-                                  {moduleCompleted ? (
-                                    <CheckCircle className="h-6 w-6" />
-                                  ) : isLocked ? (
-                                    <LockClosed className="h-6 w-6" />
-                                  ) : isContent ? (
-                                    <BookOpen className="h-6 w-6" />
-                                  ) : (
-                                    <FileText className="h-6 w-6" />
-                                  )}
-                                </button>
-                              </div>
-
-                              {/* Module content card */}
-                              <div className={`w-3/4 md:w-1/2 mt-8 ${moduleIndex % 2 === 0 ? "ml-auto" : "mr-auto"}`}>
-                                <div
-                                  className={`bg-white p-4 rounded-xl shadow-md border-2 transition-all duration-300 ${
-                                    isLocked
-                                      ? "border-gray-200 opacity-60"
-                                      : isCurrentModule
-                                        ? "border-[#f0d878]"
-                                        : moduleCompleted
-                                          ? isQuiz && quizScore < 80
-                                            ? "border-[#e07a5f]"
-                                            : "border-[#85bb65]"
-                                          : "border-gray-200"
-                                  } ${isLocked ? "cursor-not-allowed" : "hover:shadow-lg"}`}
-                                >
-                                  <div className="flex items-center mb-2">
-                                    {isContent ? (
-                                      <BookOpen className="h-5 w-5 text-[#5a7d53] mr-2" />
-                                    ) : (
-                                      <FileText className="h-5 w-5 text-[#5a7d53] mr-2" />
-                                    )}
-                                    <h4 className="font-bold text-lg text-[#5a7d53]">
-                                      {isContent ? `Module ${section.id}.${module.id}: ${module.title}` : module.title}
-                                    </h4>
-                                  </div>
-
-                                  {isContent && module.duration && (
-                                    <p className="text-gray-600 text-sm mt-1">
-                                      <span className="font-medium">{module.duration}</span>
-                                    </p>
-                                  )}
-
-                                  {isQuiz && module.description && (
-                                    <p className="text-gray-600 text-sm mt-1">{module.description}</p>
-                                  )}
-
-                                  <p className="text-gray-600 text-sm mt-2">
+                            return (
+                              <div
+                                key={`${module.id}-${module.type}-${module.quizType || ""}`}
+                                className="relative mb-16 flex justify-center"
+                              >
+                                {/* Module marker */}
+                                <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
+                                  <button
+                                    onClick={() => {
+                                      if (isQuiz && moduleCompleted) {
+                                        handleQuizRetake(section.id, module.relatedModuleId, module.quizType)
+                                      } else if (!isLocked) {
+                                        handleModuleClick(
+                                          section.id,
+                                          module.id,
+                                          module.type,
+                                          module.relatedModuleId,
+                                          module.quizType,
+                                        )
+                                      }
+                                    }}
+                                    disabled={isLocked}
+                                    className={`flex items-center justify-center w-14 h-14 rounded-full border-4 border-white shadow-lg transition-all duration-300 ${
+                                      moduleCompleted
+                                        ? isQuiz
+                                          ? quizScore >= 80
+                                            ? "bg-[#85bb65] text-white"
+                                            : "bg-[#e07a5f] text-white"
+                                          : "bg-[#85bb65] text-white"
+                                        : isCurrentModule || isNext
+                                          ? "bg-[#f0d878] text-[#5a7d53] animate-pulse"
+                                          : "bg-white border-2 border-gray-200 text-gray-400"
+                                    } ${isLocked ? "cursor-not-allowed" : "hover:scale-110"}`}
+                                  >
                                     {moduleCompleted ? (
-                                      <span className="flex items-center text-[#85bb65]">
-                                        <CheckCircle className="h-4 w-4 mr-1" />
-                                        {isQuiz && quizScore ? (
-                                          <span>
-                                            Completed! <span className="font-bold">Score: {quizScore}%</span>
-                                            {quizScore >= 80 ? (
-                                              <span className="ml-1 text-green-600">✓ Passed</span>
-                                            ) : (
-                                              <span className="ml-1 text-red-500">✗ Failed</span>
-                                            )}
-                                          </span>
+                                      isQuiz ? (
+                                        quizScore >= 80 ? (
+                                          <CheckCircle className="h-6 w-6" />
                                         ) : (
-                                          "Completed!"
-                                        )}
-                                      </span>
-                                    ) : isCurrentModule ? (
-                                      "You're currently on this step."
+                                          <RotateCcw className="h-6 w-6" />
+                                        )
+                                      ) : (
+                                        <CheckCircle className="h-6 w-6" />
+                                      )
                                     ) : isLocked ? (
-                                      "Complete previous steps to unlock."
+                                      <LockClosed className="h-6 w-6" />
+                                    ) : isContent ? (
+                                      <BookOpen className="h-6 w-6" />
                                     ) : (
-                                      "Ready to start!"
+                                      <FileText className="h-6 w-6" />
                                     )}
-                                  </p>
+                                  </button>
+                                </div>
 
-                                  {/* Add a visual score indicator for completed quizzes */}
-                                  {isQuiz && moduleCompleted && quizScore && (
-                                    <div className="mt-2 w-full bg-gray-200 rounded-full h-2.5">
-                                      <div
-                                        className={`h-2.5 rounded-full ${quizScore >= 80 ? "bg-green-600" : "bg-red-500"}`}
-                                        style={{ width: `${quizScore}%` }}
-                                      ></div>
+                                {/* Module content card */}
+                                <div className={`w-3/4 md:w-1/2 mt-8 ${moduleIndex % 2 === 0 ? "ml-auto" : "mr-auto"}`}>
+                                  <div
+                                    className={`bg-white p-4 rounded-xl shadow-md border-2 transition-all duration-300 ${
+                                      isLocked
+                                        ? "border-gray-200 opacity-60"
+                                        : isCurrentModule || isNext
+                                          ? "border-[#f0d878]"
+                                          : moduleCompleted
+                                            ? isQuiz && quizScore < 80
+                                              ? "border-[#e07a5f]"
+                                              : "border-[#85bb65]"
+                                            : "border-gray-200"
+                                    } ${isLocked ? "cursor-not-allowed" : "hover:shadow-lg"}`}
+                                  >
+                                    <div className="flex items-center mb-2">
+                                      {isContent ? (
+                                        <BookOpen className="h-5 w-5 text-[#5a7d53] mr-2" />
+                                      ) : (
+                                        <FileText className="h-5 w-5 text-[#5a7d53] mr-2" />
+                                      )}
+                                      <h4 className="font-bold text-lg text-[#5a7d53]">
+                                        {isContent
+                                          ? `Module ${section.id}.${module.id}: ${module.title}`
+                                          : module.title}
+                                      </h4>
                                     </div>
-                                  )}
 
-                                  <div className="mt-3 flex flex-wrap gap-2">
-                                    {!isLocked && (
-                                      <button
-                                        onClick={() =>
-                                          handleModuleClick(
-                                            section.id,
-                                            module.id,
-                                            module.type,
-                                            module.relatedModuleId,
-                                            module.quizType,
-                                          )
-                                        }
-                                        className={`text-sm px-4 py-2 rounded-lg transition-all duration-300 ${
-                                          moduleCompleted
-                                            ? "bg-[#85bb65] text-white hover:bg-[#75a758]"
-                                            : "bg-[#f0d878] text-[#5a7d53] hover:bg-[#e5c960]"
-                                        }`}
-                                      >
-                                        {moduleCompleted ? "Continue" : isCurrentModule ? "Continue" : "Start"}
-                                      </button>
+                                    {isContent && module.duration && (
+                                      <p className="text-gray-600 text-sm mt-1">
+                                        <span className="font-medium">{module.duration}</span>
+                                      </p>
                                     )}
 
-                                    {/* Quiz retake option */}
-                                    {isQuiz && moduleCompleted && (
-                                      <button
-                                        onClick={() =>
-                                          handleQuizRetake(section.id, module.relatedModuleId, module.quizType)
-                                        }
-                                        className="text-sm px-4 py-2 rounded-lg bg-purple-100 text-purple-700 hover:bg-purple-200 transition-all duration-300 flex items-center"
-                                      >
-                                        <RotateCcw className="h-4 w-4 mr-1" /> Retake Quiz
-                                      </button>
+                                    {isQuiz && module.description && (
+                                      <p className="text-gray-600 text-sm mt-1">{module.description}</p>
                                     )}
+
+                                    <p className="text-gray-600 text-sm mt-2">
+                                      {moduleCompleted ? (
+                                        <span className="flex items-center text-[#85bb65]">
+                                          <CheckCircle className="h-4 w-4 mr-1" />
+                                          {isQuiz && quizScore ? (
+                                            <span>
+                                              Completed! <span className="font-bold">Score: {quizScore}%</span>
+                                              {quizScore >= 80 ? (
+                                                <span className="ml-1 text-green-600">✓ Passed</span>
+                                              ) : (
+                                                <span className="ml-1 text-red-500">✗ Failed</span>
+                                              )}
+                                            </span>
+                                          ) : (
+                                            "Completed!"
+                                          )}
+                                        </span>
+                                      ) : isCurrentModule ? (
+                                        "You're currently on this step."
+                                      ) : isLocked ? (
+                                        "Complete previous steps to unlock."
+                                      ) : (
+                                        "Ready to start!"
+                                      )}
+                                    </p>
+
+                                    {/* Add a visual score indicator for completed quizzes */}
+                                    {isQuiz && moduleCompleted && quizScore && (
+                                      <div className="mt-2 w-full bg-gray-200 rounded-full h-2.5">
+                                        <div
+                                          className={`h-2.5 rounded-full ${quizScore >= 80 ? "bg-green-600" : "bg-red-500"}`}
+                                          style={{ width: `${quizScore}%` }}
+                                        ></div>
+                                      </div>
+                                    )}
+
+                                    <div className="mt-3 flex flex-wrap gap-2">
+                                      {!isLocked && (
+                                        <>
+                                          {/* For content modules, show Start/Continue button */}
+                                          {isContent && (
+                                            <button
+                                              onClick={() =>
+                                                handleModuleClick(
+                                                  section.id,
+                                                  module.id,
+                                                  module.type,
+                                                  module.relatedModuleId,
+                                                  module.quizType,
+                                                )
+                                              }
+                                              className={`text-sm px-4 py-2 rounded-lg transition-all duration-300 ${
+                                                moduleCompleted
+                                                  ? "bg-[#85bb65] text-white hover:bg-[#75a758]"
+                                                  : "bg-[#f0d878] text-[#5a7d53] hover:bg-[#e5c960]"
+                                              }`}
+                                            >
+                                              {moduleCompleted ? "Review" : isCurrentModule ? "Continue" : "Start"}
+                                            </button>
+                                          )}
+
+                                          {/* For quizzes, only show Retake Quiz if completed */}
+                                          {isQuiz && moduleCompleted && (
+                                            <button
+                                              onClick={() =>
+                                                handleQuizRetake(section.id, module.relatedModuleId, module.quizType)
+                                              }
+                                              className="text-sm px-4 py-2 rounded-lg bg-purple-100 text-purple-700 hover:bg-purple-200 transition-all duration-300 flex items-center"
+                                            >
+                                              <RotateCcw className="h-4 w-4 mr-1" /> Retake Quiz
+                                            </button>
+                                          )}
+
+                                          {/* For quizzes that aren't completed, show Take Quiz button */}
+                                          {isQuiz && !moduleCompleted && (
+                                            <button
+                                              onClick={() =>
+                                                handleModuleClick(
+                                                  section.id,
+                                                  module.id,
+                                                  module.type,
+                                                  module.relatedModuleId,
+                                                  module.quizType,
+                                                )
+                                              }
+                                              className="text-sm px-4 py-2 rounded-lg bg-[#f0d878] text-[#5a7d53] hover:bg-[#e5c960] transition-all duration-300"
+                                            >
+                                              Take Quiz
+                                            </button>
+                                          )}
+                                        </>
+                                      )}
+                                    </div>
                                   </div>
                                 </div>
                               </div>
-                            </div>
-                          )
-                        })}
+                            )
+                          })}
 
-                        {/* Trophy at the end - only show if all modules are completed */}
-                        {sectionCompleted && (
-                          <div className="relative mb-16 flex justify-center">
-                            <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
-                              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#f0d878] text-[#5a7d53] border-4 border-white shadow-lg animate-bounce">
-                                <Award className="h-8 w-8" />
+                          {/* Trophy at the end - only show if all modules are completed */}
+                          {sectionCompleted && (
+                            <div className="relative mb-16 flex justify-center">
+                              <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
+                                <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#f0d878] text-[#5a7d53] border-4 border-white shadow-lg animate-bounce">
+                                  <Award className="h-8 w-8" />
+                                </div>
+                              </div>
+                              <div className="w-3/4 md:w-1/2 mt-8 mx-auto">
+                                <div className="bg-white p-4 rounded-xl shadow-md border-2 border-[#f0d878] text-center">
+                                  <h4 className="font-bold text-lg text-[#5a7d53]">Section Completed!</h4>
+                                  <p className="text-gray-600 text-sm mt-2">
+                                    Congratulations! You've completed all modules and quizzes in this section.
+                                  </p>
+                                  {section.id < steps.length && (
+                                    <button
+                                      onClick={() => handleSectionComplete(section.id)}
+                                      className="mt-3 bg-[#5a7d53] text-white text-sm px-4 py-2 rounded-lg hover:bg-[#4a6a45] transition-all duration-300"
+                                    >
+                                      Continue to Next Section
+                                    </button>
+                                  )}
+                                </div>
                               </div>
                             </div>
-                            <div className="w-3/4 md:w-1/2 mt-8 mx-auto">
-                              <div className="bg-white p-4 rounded-xl shadow-md border-2 border-[#f0d878] text-center">
-                                <h4 className="font-bold text-lg text-[#5a7d53]">Section Completed!</h4>
-                                <p className="text-gray-600 text-sm mt-2">
-                                  Congratulations! You've completed all modules and quizzes in this section.
-                                </p>
-                                {section.id < steps.length && (
-                                  <button
-                                    onClick={() => handleSectionComplete(section.id)}
-                                    className="mt-3 bg-[#5a7d53] text-white text-sm px-4 py-2 rounded-lg hover:bg-[#4a6a45] transition-all duration-300"
-                                  >
-                                    Continue to Next Section
-                                  </button>
-                                )}
-                              </div>
-                            </div>
-                          </div>
-                        )}
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )}
-
-                {/* Toggle button to expand/collapse section details */}
-                <button
-                  onClick={() => toggleSectionExpand(section.id)}
-                  className="mt-2 text-[#5a7d53] font-medium flex items-center hover:underline"
-                >
-                  {expandedSection === section.id ? "Hide Details" : "Show Details"}
-                  {expandedSection === section.id ? (
-                    <ChevronUp className="ml-1 h-5 w-5" />
-                  ) : (
-                    <ChevronDown className="ml-1 h-5 w-5" />
                   )}
-                </button>
-              </div>
-            )
-          })}
+
+                  {/* Toggle button to expand/collapse section details */}
+                  <button
+                    onClick={() => toggleSectionExpand(section.id)}
+                    className="mt-2 text-[#5a7d53] font-medium flex items-center hover:underline"
+                  >
+                    {expandedSection === section.id ? "Hide Details" : "Show Details"}
+                    {expandedSection === section.id ? (
+                      <ChevronUp className="ml-1 h-5 w-5" />
+                    ) : (
+                      <ChevronDown className="ml-1 h-5 w-5" />
+                    )}
+                  </button>
+                </div>
+              )
+            })}
+          </div>
+
+          {/* Right column - Leaderboard */}
+          <div className="lg:w-1/4 space-y-6">{isLoggedIn && <Leaderboard />}</div>
         </div>
       </div>
 
@@ -714,4 +870,3 @@ const Courses = () => {
 }
 
 export default Courses
-
