@@ -1,16 +1,24 @@
 {
   "files": {
-    "main.css": "/ka-ching/static/css/main.00b3b1f7.css",
-    "main.js": "/ka-ching/static/js/main.71f77b8c.js",
+    "main.css": "/ka-ching/static/css/main.6a123e4e.css",
+    "main.js": "/ka-ching/static/js/main.8b244037.js",
     "static/js/453.33b6e918.chunk.js": "/ka-ching/static/js/453.33b6e918.chunk.js",
+    "static/media/daphne.png": "/ka-ching/static/media/daphne.60a4d69d99e94ece0519.png",
+    "static/media/ananya.png": "/ka-ching/static/media/ananya.05e30cb5b31e57aa578d.png",
+    "static/media/zhuen.png": "/ka-ching/static/media/zhuen.7ee52c556ea0030288e8.png",
+    "static/media/kenta.png": "/ka-ching/static/media/kenta.de4feadb2256ac1b86b8.png",
     "static/media/investment-pic-1.png": "/ka-ching/static/media/investment-pic-1.dea5ffd42a28d610c966.png",
+    "static/media/user1.png": "/ka-ching/static/media/user1.1f741a4ae27b9125e351.png",
+    "static/media/user2.png": "/ka-ching/static/media/user2.3d61618ffaaec810a677.png",
+    "static/media/linkedin-logo.png": "/ka-ching/static/media/linkedin-logo.6892b3ae328c7a1e055f.png",
+    "static/media/user3.png": "/ka-ching/static/media/user3.31afa19614d2c5be999c.png",
     "index.html": "/ka-ching/index.html",
-    "main.00b3b1f7.css.map": "/ka-ching/static/css/main.00b3b1f7.css.map",
-    "main.71f77b8c.js.map": "/ka-ching/static/js/main.71f77b8c.js.map",
+    "main.6a123e4e.css.map": "/ka-ching/static/css/main.6a123e4e.css.map",
+    "main.8b244037.js.map": "/ka-ching/static/js/main.8b244037.js.map",
     "453.33b6e918.chunk.js.map": "/ka-ching/static/js/453.33b6e918.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.00b3b1f7.css",
-    "static/js/main.71f77b8c.js"
+    "static/css/main.6a123e4e.css",
+    "static/js/main.8b244037.js"
   ]
 }
