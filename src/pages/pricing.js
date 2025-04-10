@@ -35,8 +35,8 @@ const Pricing = () => {
       paid: "Unlimited Investment Simulations",
     },
     community: {
-      free: "Read-only Community Access",
-      paid: "Full Community Access",
+      free: "Community Access with Experts",
+      paid: "Community Access with Experts",
     },
     support: {
       standard: "Priority Support",
@@ -64,7 +64,7 @@ const Pricing = () => {
         hearts: { text: featureTexts.hearts.free, included: false },
         tracking: { text: featureTexts.tracking.free, included: true },
         simulations: { text: featureTexts.simulations.free, included: true },
-        community: { text: featureTexts.community.free, included: true },
+        community: { text: featureTexts.community.free, included: false },
         support: { text: featureTexts.support.standard, included: false },
       },
     },

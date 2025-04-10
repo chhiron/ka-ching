@@ -6,7 +6,6 @@ import {
   MessageSquare,
   Users,
   TrendingUp,
-  Award,
   CheckCircle,
   Clock,
   Star,
@@ -19,10 +18,12 @@ import {
   AlertCircle,
   Zap,
   BarChart2,
-  DollarSign,
   PieChart,
   Shield,
+  X,
+  Send,
 } from "lucide-react"
+import Leaderboard from "../components/Leaderboard"
 
 const Community = () => {
   const navigate = useNavigate()
@@ -36,8 +37,16 @@ const Community = () => {
   const [searchQuery, setSearchQuery] = useState("")
   const [showCategoryDropdown, setShowCategoryDropdown] = useState(false)
   const [showSortDropdown, setShowSortDropdown] = useState(false)
+  const [showAskQuestionModal, setShowAskQuestionModal] = useState(false)
+  const [newQuestion, setNewQuestion] = useState({
+    title: "",
+    content: "",
+    category: "general",
+    tags: [],
+  })
+  const [newTag, setNewTag] = useState("")
 
-  // Check if user is logged in and has premium account
+  // Check if user is logged in
   useEffect(() => {
     const user = localStorage.getItem("kaChingCurrentUser")
     if (user) {
@@ -47,22 +56,43 @@ const Community = () => {
       const userObj = JSON.parse(user)
       // This is just for demo - in a real app, you'd check the user's subscription status
       setIsPremium(userObj.email?.includes("premium") || Math.random() > 0.5)
+    } else {
+      // Redirect to login if not logged in
+      navigate("/login")
     }
-  }, [])
+  }, [navigate])
+
+  // If not logged in, show loading or redirect
+  if (!isLoggedIn) {
+    return (
+      <div className="min-h-screen bg-[#f9f7f2] flex items-center justify-center">
+        <div className="bg-white p-8 rounded-xl shadow-lg text-center max-w-md">
+          <AlertCircle className="h-16 w-16 text-[#5a7d53] mx-auto mb-4" />
+          <h2 className="text-2xl font-bold text-[#5a7d53] mb-4">Login Required</h2>
+          <p className="text-gray-600 mb-6">Please log in to access the Expert Community.</p>
+          <button
+            onClick={() => navigate("/login")}
+            className="px-6 py-3 bg-[#5a7d53] text-white font-bold rounded-lg hover:bg-[#4a6a45] transition-colors"
+          >
+            Log In
+          </button>
+        </div>
+      </div>
+    )
+  }
 
   // Mock data for questions
   const questions = [
     {
       id: 1,
       user: {
-        name: "Michael Chen",
-        avatar: "👨‍💼",
+        name: "Kenta",
+        avatar: "💰",
         isPremium: true,
       },
-      title: "What are the key differences between ETFs and index funds for long-term investing?",
+      title: "What’s the main difference between ETFs and stocks?",
       content:
-        "I'm looking to build a long-term portfolio and I'm trying to decide between ETFs and index funds. What are the main differences in terms of tax efficiency, expense ratios, and trading flexibility?",
-      category: "etfs",
+        "Hello, I’m new to investing and confused. ETFs are listed like stocks, but are they basically the same thing?",
       timestamp: "2 hours ago",
       votes: 42,
       status: "answered",
@@ -70,7 +100,7 @@ const Community = () => {
         {
           id: 101,
           expert: {
-            name: "Sarah Johnson, CFA",
+            name: "Sarah Koh, CFA",
             avatar: "👩‍💼",
             title: "Senior Portfolio Manager",
             experience: "15+ years",
@@ -78,41 +108,41 @@ const Community = () => {
             verified: true,
           },
           content:
-            "Great question, Michael. The main differences between ETFs and index funds are:\n\n1. **Trading flexibility**: ETFs trade throughout the day like stocks, while index funds trade once at the end of the day.\n\n2. **Minimum investment**: ETFs can be purchased for the price of a single share, while index funds often have minimum investments of $1,000-$3,000.\n\n3. **Tax efficiency**: ETFs are typically more tax-efficient due to their creation/redemption process, which minimizes capital gains distributions.\n\n4. **Expense ratios**: Both can have low expense ratios, but ETFs often edge out index funds slightly.\n\n5. **Automatic investments**: Index funds make it easier to set up automatic investments and dividend reinvestment.\n\nFor long-term investing, both are excellent choices. If you're making regular contributions and don't need intraday trading, index funds might be simpler. If tax efficiency and lower investment minimums are priorities, ETFs might be better.",
+            "Great question, Kenta! While both trade on exchanges, ETFs are baskets of assets — like stocks, bonds, or commodities — whereas individual stocks represent ownership in a single company. ETFs offer built-in diversification, while stocks don’t.",
           timestamp: "1 hour ago",
           votes: 28,
           comments: [
             {
               id: 1001,
-              user: "Alex T.",
-              content: "Would you recommend Vanguard or Fidelity for someone just starting with ETFs?",
+              user: "Ananya",
+              content: "If I hold a stock and it pays dividends, do ETFs do the same?",
               timestamp: "45 minutes ago",
             },
             {
               id: 1002,
               expert: {
-                name: "Sarah Johnson, CFA",
+                name: "Sarah Koh, CFA",
                 isExpert: true,
               },
               content:
-                "Both are excellent choices with low fees. Vanguard is known for their ETF innovation, while Fidelity offers some zero-fee index funds. I'd compare the specific ETFs you're interested in rather than just the provider.",
+                "Yes, many ETFs do pay dividends! If the assets within the ETF (like dividend-paying stocks) distribute dividends, those are usually passed on to ETF holders. Just check if the ETF is an accumulating (reinvests dividends) or distributing (pays them out) type.",
               timestamp: "30 minutes ago",
             },
           ],
         },
       ],
-      tags: ["ETFs", "Index Funds", "Investing Basics", "Portfolio Management"],
+      tags: ["ETFs", "Stocks", "Investing Basics", "Portfolio Management"],
     },
     {
       id: 2,
       user: {
-        name: "Jennifer Wu",
-        avatar: "👩‍🦰",
+        name: "Zhu En",
+        avatar: "🦄",
         isPremium: true,
       },
-      title: "How should I evaluate the sustainability of a company's dividend yield?",
+      title: "What does it mean when a stock is 'overvalued' or 'undervalued'?",
       content:
-        "I'm attracted to stocks with high dividend yields, but I know that sometimes a high yield can be a warning sign. What metrics and factors should I look at to determine if a dividend is sustainable in the long term?",
+        "I often hear analysts say a stock is overvalued or undervalued. What exactly does that mean, and how do they determine this?",
       category: "stocks",
       timestamp: "5 hours ago",
       votes: 37,
@@ -121,7 +151,7 @@ const Community = () => {
         {
           id: 201,
           expert: {
-            name: "David Patel, MBA",
+            name: "David Lee, MBA",
             avatar: "👨‍🦱",
             title: "Dividend Investment Strategist",
             experience: "12+ years",
@@ -129,22 +159,20 @@ const Community = () => {
             verified: true,
           },
           content:
-            "Jennifer, you're right to be cautious about high yields. Here are the key metrics to evaluate dividend sustainability:\n\n1. **Payout Ratio**: The percentage of earnings paid as dividends. For most industries, a payout ratio below 60% is sustainable, though utilities and REITs can sustain higher ratios.\n\n2. **Dividend Coverage Ratio**: Earnings per share divided by dividends per share. A ratio above 2 is generally safe.\n\n3. **Free Cash Flow**: Dividends should be comfortably covered by free cash flow, not just accounting earnings.\n\n4. **Dividend Growth History**: Companies with consistent dividend increases (especially Dividend Aristocrats with 25+ years of increases) typically have sustainable policies.\n\n5. **Debt Levels**: High debt can threaten dividend sustainability during downturns. Look at Debt-to-EBITDA ratios.\n\n6. **Industry Trends**: Consider whether the company's industry is growing, stable, or declining.\n\nA sudden spike in yield is often due to a falling share price, which could signal problems. Always investigate why a yield is unusually high compared to industry peers.",
-          timestamp: "3 hours ago",
-          votes: 31,
+            "Hi Zhu En. A stock is considered overvalued when it's trading above its estimated worth based on fundamentals, and undervalued when it's below that value. Analysts assess this using metrics like the P/E ratio (price vs. earnings), the PEG ratio (which factors in growth), discounted cash flow (DCF) models, and book value comparisons. These tools aren’t exact, but they help investors gauge whether a stock’s price fairly reflects its underlying performance.",
           comments: [],
         },
       ],
-      tags: ["Dividends", "Stock Analysis", "Income Investing", "Yield"],
+      tags: ["Stock Valuation", "Stock Analysis"],
     },
     {
       id: 3,
       user: {
-        name: "Robert Kim",
-        avatar: "🧔",
+        name: "Jason",
+        avatar: "🧠",
         isPremium: true,
       },
-      title: "What's the optimal allocation between growth and value ETFs in the current market?",
+      title: "What is the significance of the Sharpe Ratio in evaluating ETFs?",
       content:
         "With the recent market volatility, I'm reconsidering my portfolio allocation. Should I be shifting more toward value ETFs or maintaining exposure to growth? What factors should guide this decision?",
       category: "etfs",
@@ -155,7 +183,7 @@ const Community = () => {
         {
           id: 301,
           expert: {
-            name: "Marcus Williams, PhD",
+            name: "Goh Zhen Kai, PhD",
             avatar: "👨🏾‍💼",
             title: "Chief Investment Strategist",
             experience: "20+ years",
@@ -163,19 +191,18 @@ const Community = () => {
             verified: true,
           },
           content:
-            "Robert, this is a timely question. The growth vs. value decision should be based on several factors:\n\n1. **Economic Cycle Position**: We appear to be in a late-cycle environment with rising rates, which has historically favored value over growth.\n\n2. **Valuation Spreads**: The valuation gap between growth and value has narrowed but remains above historical averages, suggesting value may still have room to outperform.\n\n3. **Interest Rate Environment**: Rising rates typically pressure growth stock valuations more than value stocks.\n\n4. **Time Horizon**: Longer investment horizons can accommodate more growth exposure despite short-term volatility.\n\n5. **Sector Exposures**: Consider the sector tilts that come with growth vs. value (tech in growth; financials and energy in value).\n\nFor most investors, I recommend maintaining exposure to both styles but perhaps tilting 60/40 in favor of value in the current environment. This provides downside protection while maintaining exposure to potential innovation-driven returns.\n\nConsider ETFs like VOOV/VOOG or IVE/IVW to implement this strategy efficiently.",
-          timestamp: "20 hours ago",
+            "Jason, this is a timely question. The Sharpe Ratio is a key measure used to assess an ETF's risk-adjusted returns, indicating how much excess return an ETF generates per unit of risk (volatility). A higher Sharpe ratio generally means the ETF is providing more return for each unit of risk, while a lower ratio suggests the opposite. For instance, a Sharpe ratio above 1 is considered good, showing that the ETF is delivering a decent return relative to its risk. Conversely, a ratio below 1 often indicates subpar performance. When comparing ETFs, aim for a higher Sharpe ratio compared to similar funds, but also consider market conditions, as volatility can affect the ratio. While useful, the Sharpe ratio should be used alongside other metrics like drawdowns and volatility to get a fuller understanding of an ETF’s risk-adjusted performance.",
           votes: 24,
           comments: [],
         },
       ],
-      tags: ["ETFs", "Asset Allocation", "Growth Investing", "Value Investing"],
+      tags: ["ETFs", "Risk-Adjusted Return", "Portfolio Management"],
     },
     {
       id: 4,
       user: {
-        name: "Sophia Rodriguez",
-        avatar: "👩",
+        name: "Pak",
+        avatar: "🍄",
         isPremium: true,
       },
       title: "How do factor ETFs perform during different market cycles?",
@@ -186,13 +213,13 @@ const Community = () => {
       votes: 23,
       status: "open",
       answers: [],
-      tags: ["ETFs", "Factor Investing", "Market Cycles", "Smart Beta"],
+      tags: ["ETFs", "Factor Investing", "Market Cycles", "Smart Beta", "Market Trends"],
     },
     {
       id: 5,
       user: {
-        name: "Thomas Lee",
-        avatar: "👨‍🦲",
+        name: "Ananya",
+        avatar: "🤖",
         isPremium: true,
       },
       title: "What metrics best indicate a stock is undervalued in today's market?",
@@ -206,7 +233,7 @@ const Community = () => {
         {
           id: 501,
           expert: {
-            name: "Elena Vasquez, CFA",
+            name: "Elaine Teo, CFA",
             avatar: "👩‍🦱",
             title: "Value Investment Analyst",
             experience: "18+ years",
@@ -214,19 +241,19 @@ const Community = () => {
             verified: true,
           },
           content:
-            "Thomas, great question. While P/E is useful, it has limitations in today's market. Here are more comprehensive metrics for identifying undervalued stocks:\n\n1. **EV/EBITDA**: Enterprise Value to EBITDA provides a capital structure-neutral valuation that's harder to manipulate than P/E.\n\n2. **Price to Free Cash Flow**: Often more reliable than earnings-based metrics as it's harder to manipulate cash flow.\n\n3. **PEG Ratio**: P/E divided by growth rate contextualizes valuation with growth expectations.\n\n4. **Return on Invested Capital (ROIC)**: Identifies companies efficiently allocating capital to generate returns above their cost of capital.\n\n5. **Discounted Cash Flow (DCF)**: Though complex, DCF remains the gold standard for intrinsic value estimation.\n\n6. **Price to Book with ROE Filter**: Combining P/B with high ROE can identify quality companies at reasonable prices.\n\n7. **Relative EV/Sales**: Useful for comparing companies in the same industry, especially for unprofitable growth companies.\n\nIn today's market, I particularly recommend focusing on free cash flow yield and ROIC. Companies with strong cash generation and efficient capital allocation tend to outperform regardless of market conditions.\n\nAlways compare these metrics to industry averages and the company's own historical values for context.",
+            "Great question, Ananya. While the P/E ratio is a common starting point, it's important to use a broader set of metrics to identify undervalued stocks in today’s market. Key indicators include EV/EBITDA, which provides a valuation neutral to capital structure, and Price to Free Cash Flow, as it focuses on the company's ability to generate actual cash, reducing the risk of manipulation. The PEG Ratio helps adjust the P/E by factoring in growth expectations, while Return on Invested Capital (ROIC) highlights companies efficiently allocating capital. Discounted Cash Flow (DCF) remains the gold standard for estimating intrinsic value, though it requires more effort. Additionally, Price to Book with ROE Filter can identify quality stocks at reasonable prices, and Relative EV/Sales is useful for comparing unprofitable companies in the same sector. In today’s volatile market, I recommend focusing on free cash flow yield and ROIC, as companies with strong cash generation and efficient capital allocation are more likely to thrive. Always compare these metrics to industry averages and historical performance for proper context.",
           timestamp: "2 days ago",
           votes: 38,
           comments: [],
         },
       ],
-      tags: ["Stock Analysis", "Valuation", "Value Investing", "Fundamental Analysis"],
+      tags: ["Stock Valuation", "Equity Valuation", "Investment Metrics", "Fundamental Analysis"],
     },
     {
       id: 6,
       user: {
-        name: "James Wilson",
-        avatar: "👨‍🦰",
+        name: "Zhu En",
+        avatar: "🦄",
         isPremium: true,
       },
       title: "How should retail investors approach thematic ETFs focused on emerging technologies?",
@@ -248,25 +275,25 @@ const Community = () => {
             verified: true,
           },
           content:
-            "James, thematic ETFs can be exciting but require careful consideration. Here's my framework for evaluating them:\n\n1. **Position Sizing**: Thematic ETFs are best used as satellite positions (5-15% of portfolio) rather than core holdings due to their concentration risk.\n\n2. **Evaluation Criteria**:\n   - **Expense Ratio**: Many thematic ETFs charge 0.5-0.75%, significantly higher than broad market ETFs.\n   - **Underlying Holdings**: Check for concentration in a few names and overlap with your existing holdings.\n   - **Methodology**: Understand how stocks are selected and weighted.\n   - **AUM and Liquidity**: Smaller thematic ETFs risk closure if they don't gather sufficient assets.\n\n3. **Time Horizon**: Thematic investing requires patience—5+ year horizons are appropriate as technologies move through adoption cycles.\n\n4. **Diversification Within Themes**: Consider whether the ETF provides true diversification across the theme or is concentrated in a few large players.\n\n5. **Fundamental Backdrop**: Assess whether the theme has sustainable growth drivers or is just capturing temporary hype.\n\nFor most investors, I recommend building your core portfolio with low-cost broad market ETFs (70-80% of assets) and then adding select thematic ETFs for exposure to specific long-term trends you believe in.\n\nRemember that many disruptive technologies take longer to mature than initially expected, so patience is essential.",
+            "Zhu En, thematic ETFs, such as those focused on AI or clean energy, can be exciting but should be approached with caution. Given their concentration risk, they are best used as satellite positions (5-15% of your portfolio) rather than core holdings. When evaluating these ETFs, focus on factors like expense ratio, which can be higher than broad market ETFs, and underlying holdings, ensuring they don’t overlap too much with your current positions. Pay attention to the methodology of stock selection, and assess AUM and liquidity, as smaller funds may be at risk of closure. Thematic investing requires a longer time horizon (5+ years) as these technologies develop. Lastly, evaluate the fundamental growth drivers behind the theme to ensure it’s not just a passing trend. A solid strategy is to build your core portfolio with low-cost broad market ETFs (70-80% of your assets) and add thematic ETFs to target specific long-term trends. Patience is key as disruptive technologies often take longer to mature than anticipated.",
           timestamp: "3 days ago",
           votes: 27,
           comments: [],
         },
       ],
-      tags: ["ETFs", "Thematic Investing", "Technology", "Portfolio Construction"],
+      tags: ["ETFs", "Thematic Investing", "Investment Strategy", "Portfolio Construction"],
     },
     {
       id: 7,
       user: {
-        name: "Emma Davis",
+        name: "Daphne",
         avatar: "👱‍♀️",
         isPremium: true,
       },
-      title: "What's the most tax-efficient way to rebalance a taxable investment portfolio?",
+      title: "What is the significance of volume in stock price movements?",
       content:
-        "I need to rebalance my portfolio that's held in a taxable account, but I'm concerned about triggering capital gains taxes. What strategies can I use to rebalance while minimizing the tax impact?",
-      category: "portfolio",
+        "How important is trading volume when analyzing stock price movements? Can volume indicate potential trend changes or reversals?",
+      category: "stocks",
       timestamp: "5 days ago",
       votes: 39,
       status: "answered",
@@ -274,7 +301,7 @@ const Community = () => {
         {
           id: 701,
           expert: {
-            name: "Jonathan Taylor, CPA, CFP",
+            name: "Jonathan Wong, CPA, CFP",
             avatar: "👨‍💼",
             title: "Tax-Efficient Investing Specialist",
             experience: "22+ years",
@@ -282,19 +309,19 @@ const Community = () => {
             verified: true,
           },
           content:
-            "Emma, tax-efficient rebalancing is indeed important for taxable accounts. Here are strategies to minimize tax impact:\n\n1. **Direct New Contributions**: The simplest approach is to direct new investments to underweight assets rather than selling overweight ones.\n\n2. **Tax-Loss Harvesting**: Identify positions with unrealized losses and sell them to offset gains from selling overweight positions.\n\n3. **Asset Location**: Hold tax-inefficient assets in tax-advantaged accounts and use those for more frequent rebalancing.\n\n4. **Charitable Giving**: Donate appreciated securities to charity instead of selling them (if you're charitably inclined).\n\n5. **Specific Lot Identification**: When selling, specify lots with the highest cost basis to minimize gains.\n\n6. **Threshold Rebalancing**: Only rebalance when allocations drift beyond predetermined thresholds (e.g., 5% from targets) rather than on a fixed schedule.\n\n7. **Tax-Aware Withdrawal Strategy**: If you're withdrawing from the portfolio, take from overweight assets first.\n\n8. **ETF Rebalancing**: Consider using ETFs that can rebalance internally without distributing capital gains.\n\nFor most investors, I recommend a combination of directing new contributions and threshold rebalancing as the primary strategies, with tax-loss harvesting as opportunities arise.\n\nRemember that investment considerations should generally take precedence over tax considerations—don't avoid necessary rebalancing entirely just to avoid taxes.",
+            "Hi Daphne, volume is crucial in technical analysis because it provides insight into the strength of a price movement. A price increase with high volume suggests that the trend is strong and likely to continue. Conversely, a price increase with low volume may indicate that the trend lacks conviction and could reverse. Similarly, declining price with high volume can signal a selling climax, suggesting a potential reversal to the upside. Volume also helps confirm breakout patterns. A breakout through a key level of resistance with increasing volume indicates that the move is likely to be sustainable, whereas a breakout on low volume may suggest a false signal.",
           timestamp: "4 days ago",
           votes: 33,
           comments: [],
         },
       ],
-      tags: ["Tax Planning", "Portfolio Management", "Rebalancing", "Capital Gains"],
+      tags: ["Stocks", "Market Analysis", "Technical Analysis", "Price Movements"],
     },
     {
       id: 8,
       user: {
-        name: "Daniel Park",
-        avatar: "👨‍🦱",
+        name: "ET",
+        avatar: "👨🏻",
         isPremium: true,
       },
       title: "How do I evaluate the liquidity risk of corporate bond ETFs?",
@@ -309,49 +336,11 @@ const Community = () => {
     },
   ]
 
-  // Mock data for featured insights
-  const featuredInsights = [
-    {
-      id: 1,
-      title: "The Case for Equal-Weight ETFs in the Current Market",
-      expert: "Dr. Lisa Chen",
-      role: "Head of ETF Research",
-      preview:
-        "Equal-weight ETFs have shown resilience during recent market rotations. Our analysis shows they may offer better risk-adjusted returns in the coming year...",
-      readTime: "5 min read",
-      category: "ETFs",
-      icon: <PieChart className="h-5 w-5 text-purple-500" />,
-    },
-    {
-      id: 2,
-      title: "Navigating Inflation: Sector Rotation Strategies for 2023",
-      expert: "Marcus Williams, PhD",
-      role: "Chief Investment Strategist",
-      preview:
-        "With persistent inflation pressures, certain sectors historically outperform. Our sector rotation framework identifies three key areas poised for outperformance...",
-      readTime: "7 min read",
-      category: "Strategy",
-      icon: <BarChart2 className="h-5 w-5 text-blue-500" />,
-    },
-    {
-      id: 3,
-      title: "Dividend Aristocrats: Quality Over Yield in Uncertain Times",
-      expert: "Elena Vasquez, CFA",
-      role: "Value Investment Analyst",
-      preview:
-        "Our analysis of Dividend Aristocrats shows they've outperformed high-yield stocks by 4.2% annually during economic slowdowns while offering better downside protection...",
-      readTime: "6 min read",
-      category: "Stocks",
-      icon: <DollarSign className="h-5 w-5 text-green-500" />,
-    },
-  ]
-
   // Filter questions based on active tab, category, and search query
   const filteredQuestions = questions.filter((question) => {
     // Filter by tab
     if (activeTab === "open" && question.status !== "open") return false
     if (activeTab === "answered" && question.status !== "answered") return false
-    if (activeTab === "bookmarked" && !bookmarkedQuestions.includes(question.id)) return false
 
     // Filter by category
     if (activeCategory !== "all" && question.category !== activeCategory) return false
@@ -408,13 +397,44 @@ const Community = () => {
       return
     }
 
-    if (!isPremium) {
-      navigate("/pricing")
-      return
-    }
+    setShowAskQuestionModal(true)
+  }
 
-    // In a real app, you would show a form to ask a question
-    alert("This would open a form to ask your question to our financial experts.")
+  const handleAddTag = (e) => {
+    e.preventDefault()
+    if (newTag.trim() && !newQuestion.tags.includes(newTag.trim())) {
+      setNewQuestion({
+        ...newQuestion,
+        tags: [...newQuestion.tags, newTag.trim()],
+      })
+      setNewTag("")
+    }
+  }
+
+  const handleRemoveTag = (tagToRemove) => {
+    setNewQuestion({
+      ...newQuestion,
+      tags: newQuestion.tags.filter((tag) => tag !== tagToRemove),
+    })
+  }
+
+  const handleSubmitQuestion = (e) => {
+    e.preventDefault()
+
+    // In a real app, you would send this to your backend
+    console.log("Submitting question:", newQuestion)
+
+    // For demo purposes, we'll just close the modal and show an alert
+    alert("Your question has been submitted and will be reviewed by our experts!")
+
+    // Reset form and close modal
+    setNewQuestion({
+      title: "",
+      content: "",
+      category: "general",
+      tags: [],
+    })
+    setShowAskQuestionModal(false)
   }
 
   const getCategoryIcon = (category) => {
@@ -423,8 +443,6 @@ const Community = () => {
         return <PieChart className="h-4 w-4" />
       case "stocks":
         return <TrendingUp className="h-4 w-4" />
-      case "portfolio":
-        return <BarChart2 className="h-4 w-4" />
       default:
         return <MessageSquare className="h-4 w-4" />
     }
@@ -436,8 +454,6 @@ const Community = () => {
         return "ETFs"
       case "stocks":
         return "Stocks"
-      case "portfolio":
-        return "Portfolio"
       default:
         return "General"
     }
@@ -511,32 +527,11 @@ const Community = () => {
                 </div>
                 <button
                   onClick={handleAskQuestion}
-                  className={`px-6 py-3 rounded-lg font-bold text-white shadow-lg transition-all duration-300 transform hover:scale-105 ${
-                    isPremium ? "bg-[#5a7d53] hover:bg-[#4a6a45]" : "bg-gray-400 hover:bg-gray-500 cursor-not-allowed"
-                  }`}
+                  className="px-6 py-3 rounded-lg font-bold text-white shadow-lg transition-all duration-300 transform hover:scale-105 bg-[#5a7d53] hover:bg-[#4a6a45]"
                 >
                   Ask a Question
                 </button>
               </div>
-
-              {!isPremium && isLoggedIn && (
-                <div className="mt-4 bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-start">
-                  <AlertCircle className="h-5 w-5 text-amber-500 mt-0.5 mr-2 flex-shrink-0" />
-                  <div>
-                    <p className="text-amber-800 font-medium">Premium Feature</p>
-                    <p className="text-amber-700 text-sm mt-1">
-                      Asking questions to our financial experts is a premium feature.{" "}
-                      <button
-                        onClick={() => navigate("/pricing")}
-                        className="text-[#5a7d53] font-medium hover:underline"
-                      >
-                        Upgrade your account
-                      </button>{" "}
-                      to get personalized answers from certified professionals.
-                    </p>
-                  </div>
-                </div>
-              )}
 
               {/* Search and Filters */}
               <div className="mt-6 flex flex-col md:flex-row gap-4">
@@ -700,16 +695,6 @@ const Community = () => {
                 >
                   Answered
                 </button>
-                <button
-                  className={`flex-1 py-3 px-4 text-center font-medium ${
-                    activeTab === "bookmarked"
-                      ? "text-[#5a7d53] border-b-2 border-[#5a7d53]"
-                      : "text-gray-500 hover:text-gray-700"
-                  }`}
-                  onClick={() => setActiveTab("bookmarked")}
-                >
-                  Bookmarked
-                </button>
               </div>
             </div>
 
@@ -722,9 +707,7 @@ const Community = () => {
                   <p className="text-gray-500">
                     {searchQuery
                       ? "No questions match your search criteria. Try a different search term."
-                      : activeTab === "bookmarked"
-                        ? "You haven't bookmarked any questions yet."
-                        : "No questions in this category yet."}
+                      : "No questions in this category yet."}
                   </p>
                 </div>
               ) : (
@@ -914,47 +897,10 @@ const Community = () => {
             </div>
           </div>
 
-          {/* Right Column - Featured Content */}
+          {/* Right Column - Leaderboard */}
           <div className="lg:w-1/3 space-y-6">
-            {/* Expert Insights */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-              <div className="bg-gradient-to-r from-[#5a7d53] to-[#85bb65] p-4">
-                <h3 className="text-white font-bold text-lg flex items-center">
-                  <Award className="h-5 w-5 mr-2" />
-                  Featured Expert Insights
-                </h3>
-              </div>
-              <div className="p-4 space-y-4">
-                {featuredInsights.map((insight) => (
-                  <div
-                    key={insight.id}
-                    className="p-4 border border-gray-100 rounded-lg hover:shadow-md transition-shadow cursor-pointer"
-                  >
-                    <div className="flex items-start">
-                      <div className="mr-3 mt-1">{insight.icon}</div>
-                      <div>
-                        <h4 className="font-bold text-[#5a7d53]">{insight.title}</h4>
-                        <div className="flex items-center text-sm text-gray-600 mt-1">
-                          <span className="font-medium">{insight.expert}</span>
-                          <span className="mx-1">•</span>
-                          <span>{insight.role}</span>
-                        </div>
-                        <p className="text-sm text-gray-700 mt-2 line-clamp-2">{insight.preview}</p>
-                        <div className="flex justify-between items-center mt-3">
-                          <span className="text-xs text-gray-500">{insight.readTime}</span>
-                          <span className="text-xs font-medium px-2 py-0.5 bg-gray-100 rounded-full">
-                            {insight.category}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-                <button className="w-full py-2 text-center text-[#5a7d53] font-medium hover:underline">
-                  View All Expert Insights
-                </button>
-              </div>
-            </div>
+            {/* Leaderboard */}
+            <Leaderboard />
 
             {/* Ask of the Week */}
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
@@ -966,12 +912,12 @@ const Community = () => {
               </div>
               <div className="p-4">
                 <h4 className="font-bold text-lg text-gray-800">
-                  "How should investors position their portfolios for rising interest rates?"
+                  "How does the risk of geopolitical events, like trade wars or conflicts, affect global financial markets?"
                 </h4>
                 <div className="flex items-center mt-2">
-                  <div className="bg-gray-100 rounded-full w-8 h-8 flex items-center justify-center text-lg">👨‍💼</div>
+                  <div className="bg-gray-100 rounded-full w-8 h-8 flex items-center justify-center text-lg">👱‍♀️</div>
                   <div className="ml-2">
-                    <div className="text-sm font-medium">Asked by James W.</div>
+                    <div className="text-sm font-medium">Asked by Daphne</div>
                     <div className="text-xs text-gray-500">Premium Member</div>
                   </div>
                 </div>
@@ -982,15 +928,12 @@ const Community = () => {
                     </div>
                     <div className="ml-2">
                       <div className="text-sm font-medium">Dr. Michael Chen</div>
-                      <div className="text-xs text-gray-500">Chief Economist</div>
+                      <div className="text-xs text-gray-500">Chief Portfolio Manager</div>
                     </div>
                   </div>
                   <p className="text-sm text-gray-700">
-                    "In a rising rate environment, consider shortening duration in your bond portfolio, increasing
-                    allocation to floating rate securities, and focusing on sectors that historically outperform during
-                    rate hikes such as financials and value stocks..."
+                    "Geopolitical events can trigger market volatility by disrupting trade flows, impacting supply chains, and influencing investor sentiment. In response, investors can diversify across geographies and asset classes, hedge with safe-haven assets like gold, and stay informed on potential developments to adjust their portfolios as needed."
                   </p>
-                  <button className="mt-3 text-blue-600 text-sm font-medium hover:underline">Read full answer</button>
                 </div>
               </div>
             </div>
@@ -1010,11 +953,11 @@ const Community = () => {
                     <div className="text-sm text-gray-600">Questions Answered</div>
                   </div>
                   <div className="bg-gray-50 p-3 rounded-lg text-center">
-                    <div className="text-2xl font-bold text-[#5a7d53]">4.2h</div>
+                    <div className="text-2xl font-bold text-[#5a7d53]">2.2h</div>
                     <div className="text-sm text-gray-600">Avg. Response Time</div>
                   </div>
                   <div className="bg-gray-50 p-3 rounded-lg text-center">
-                    <div className="text-2xl font-bold text-[#5a7d53]">42</div>
+                    <div className="text-2xl font-bold text-[#5a7d53]">23</div>
                     <div className="text-sm text-gray-600">Verified Experts</div>
                   </div>
                   <div className="bg-gray-50 p-3 rounded-lg text-center">
@@ -1027,6 +970,120 @@ const Community = () => {
           </div>
         </div>
       </div>
+
+      {/* Ask Question Modal */}
+      {showAskQuestionModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-2xl font-bold text-[#5a7d53]">Ask a Question</h2>
+                <button onClick={() => setShowAskQuestionModal(false)} className="text-gray-500 hover:text-gray-700">
+                  <X className="h-6 w-6" />
+                </button>
+              </div>
+
+              <form onSubmit={handleSubmitQuestion}>
+                <div className="space-y-4">
+                  <div>
+                    <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">
+                      Question Title
+                    </label>
+                    <input
+                      type="text"
+                      id="title"
+                      placeholder="E.g., How do I evaluate ETF expense ratios?"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-[#5a7d53] focus:border-[#5a7d53]"
+                      value={newQuestion.title}
+                      onChange={(e) => setNewQuestion({ ...newQuestion, title: e.target.value })}
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="content" className="block text-sm font-medium text-gray-700 mb-1">
+                      Question Details
+                    </label>
+                    <textarea
+                      id="content"
+                      placeholder="Provide details about your question..."
+                      rows={5}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-[#5a7d53] focus:border-[#5a7d53]"
+                      value={newQuestion.content}
+                      onChange={(e) => setNewQuestion({ ...newQuestion, content: e.target.value })}
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-1">
+                      Category
+                    </label>
+                    <select
+                      id="category"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-[#5a7d53] focus:border-[#5a7d53]"
+                      value={newQuestion.category}
+                      onChange={(e) => setNewQuestion({ ...newQuestion, category: e.target.value })}
+                    >
+                      <option value="general">General</option>
+                      <option value="etfs">ETFs</option>
+                      <option value="stocks">Stocks</option>
+  
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Tags</label>
+                    <div className="flex flex-wrap gap-2 mb-2">
+                      {newQuestion.tags.map((tag, index) => (
+                        <span
+                          key={index}
+                          className="px-2 py-1 bg-gray-100 text-gray-700 text-sm rounded-full flex items-center"
+                        >
+                          {tag}
+                          <button
+                            type="button"
+                            onClick={() => handleRemoveTag(tag)}
+                            className="ml-1 text-gray-500 hover:text-gray-700"
+                          >
+                            <X className="h-3 w-3" />
+                          </button>
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex">
+                      <input
+                        type="text"
+                        placeholder="Add a tag (e.g., Investing, Retirement)"
+                        className="flex-1 px-3 py-2 border border-gray-300 rounded-l-lg focus:ring-[#5a7d53] focus:border-[#5a7d53]"
+                        value={newTag}
+                        onChange={(e) => setNewTag(e.target.value)}
+                      />
+                      <button
+                        type="button"
+                        onClick={handleAddTag}
+                        className="px-4 py-2 bg-gray-100 text-gray-700 rounded-r-lg border border-gray-300 border-l-0 hover:bg-gray-200"
+                      >
+                        Add
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="pt-4">
+                    <button
+                      type="submit"
+                      className="w-full py-3 bg-[#5a7d53] text-white font-bold rounded-lg hover:bg-[#4a6a45] transition-colors flex items-center justify-center"
+                    >
+                      <Send className="h-4 w-4 mr-2" />
+                      Submit Question
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

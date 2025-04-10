@@ -12,7 +12,8 @@ import {
   FileText,
   RotateCcw,
 } from "lucide-react"
-import Leaderboard from "../components/Leaderboard" // Import the Leaderboard component
+import Leaderboard from "../components/Leaderboard"
+import Hearts from "../components/Hearts" // Import the Hearts component
 
 const Courses = () => {
   const navigate = useNavigate()
@@ -81,6 +82,18 @@ const Courses = () => {
       )
     }
   }, [currentStep, currentModule, completedModules, completedQuizzes, quizAnswers, isLoggedIn])
+
+  // Handle heart lost event
+  const handleHeartLost = () => {
+    console.log("Heart lost in courses page")
+    // You can add additional logic here if needed
+  }
+
+  // Handle heart gained event
+  const handleHeartGained = () => {
+    console.log("Heart gained in courses page")
+    // You can add additional logic here if needed
+  }
 
   // Update the steps array to include three main sections with modules and separate quizzes
   const steps = [
@@ -378,8 +391,6 @@ const Courses = () => {
   }
 
   // Update the isNextStep function to correctly identify the next step in the learning path
-
-  // Replace the existing isNextStep function with this improved version:
   const isNextStep = (sectionId, moduleIndex) => {
     const section = steps.find((s) => s.id === sectionId)
     if (!section) return false
@@ -459,11 +470,7 @@ const Courses = () => {
     return false
   }
 
-  if (!isLoggedIn) {
-    return <div className="min-h-screen flex items-center justify-center">Loading...</div>
-  }
 
-  // Replace the entire render return with this updated version
   return (
     <div className="min-h-screen bg-[#f9f7f2] overflow-x-hidden">
       {/* Animated background elements */}
@@ -496,7 +503,9 @@ const Courses = () => {
             Back to Home
           </button>
           <h1 className="text-2xl font-bold absolute left-1/2 transform -translate-x-1/2">Investment Courses</h1>
-          <div className="w-[100px]"></div> {/* Spacer for balance */}
+          <div className="flex items-center space-x-4">
+            <Hearts onHeartLost={handleHeartLost} onHeartGained={handleHeartGained} />
+          </div>
         </div>
       </div>
 

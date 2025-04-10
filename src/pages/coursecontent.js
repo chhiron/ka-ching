@@ -17,6 +17,7 @@ import {
   RotateCcw,
 } from "lucide-react"
 import confetti from "canvas-confetti"
+import Hearts from "../components/Hearts"
 
 const CourseContent = () => {
   const navigate = useNavigate()
@@ -45,6 +46,8 @@ const CourseContent = () => {
   const [quickCheckFeedback, setQuickCheckFeedback] = useState({})
   const [quizScores, setQuizScores] = useState({})
   const [answerSubmitted, setAnswerSubmitted] = useState(false)
+  const [heartsSystem, setHeartsSystem] = useState(true)
+  const heartsRef = useRef(null)
 
   // Parse query parameters
   useEffect(() => {
@@ -142,6 +145,15 @@ const CourseContent = () => {
     }
   }, [quizCompleted, quizScore])
 
+  const handleHeartLost = () => {
+    console.log("Heart lost!")
+  }
+
+  // Handle heart gained event
+  const handleHeartGained = () => {
+    console.log("Heart gained!")
+  }
+
   // Handle quick check answer selection
   const handleQuickCheckAnswer = (questionId, selectedOption) => {
     setQuickCheckAnswers({
@@ -156,6 +168,13 @@ const CourseContent = () => {
       ...quickCheckFeedback,
       [questionId]: isCorrect,
     })
+
+    if (!isCorrect && heartsSystem) {
+      // Use the heartsRef to lose a heart
+      if (heartsRef.current && typeof heartsRef.current.loseHeart === "function") {
+        heartsRef.current.loseHeart()
+      }
+    }
 
     // If correct, show a small confetti effect
     if (isCorrect) {
@@ -1505,12 +1524,24 @@ const CourseContent = () => {
 
   const calculateScore = () => {
     let correctAnswers = 0
+    let incorrectAnswers = 0
 
     Object.entries(selectedAnswers).forEach(([questionIndex, answerIndex]) => {
       if (currentQuiz[Number.parseInt(questionIndex)].correctAnswer === Number.parseInt(answerIndex)) {
         correctAnswers++
+      } else {
+        incorrectAnswers++
       }
     })
+
+    // If hearts system is enabled, lose a heart for each incorrect answer
+    if (heartsSystem && incorrectAnswers > 0) {
+      if (heartsRef.current && typeof heartsRef.current.loseHeart === "function") {
+        for (let i = 0; i < incorrectAnswers; i++) {
+          heartsRef.current.loseHeart()
+        }
+      }
+    }
 
     const score = Math.round((correctAnswers / currentQuiz.length) * 100)
     setQuizScore(score)
@@ -1769,7 +1800,9 @@ const CourseContent = () => {
             Back to Courses
           </button>
           <h1 className="text-2xl font-bold absolute left-1/2 transform -translate-x-1/2">Course Content</h1>
-          <div className="w-[100px]"></div> {/* Spacer for balance */}
+          <div className="flex items-center space-x-4">
+            <Hearts onHeartLost={handleHeartLost} onHeartGained={handleHeartGained} ref={heartsRef} />
+          </div>
         </div>
       </div>
 

@@ -14,6 +14,8 @@ import UserProfile from "./components/userprofile.js"
 import Terms from "./pages/terms.js"
 import Privacy from "./pages/privacy.js"
 import Pricing from "./pages/pricing.js"
+import Community from "./pages/community.js"
+import Practice from "./pages/practice.js"
 import "./styles.css"
 
 // Update the Routes section to use our components
@@ -33,6 +35,8 @@ function App() {
         <Route path="/terms" element={<Terms />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/pricing" element={<Pricing />} />
+        <Route path="/community" element={<Community />} />
+        <Route path="/practice" element={<Practice />} />
       </Routes>
     </Router>
   )
@@ -498,7 +502,9 @@ function Home() {
             <NavLink to="/#about" label="About Us" active={location.hash === "#about"} />
             {isLoggedIn && <NavLink to="/courses" label="Courses" active={location.pathname === "/courses"} />}
             <NavLink to="/pricing" label="Pricing" active={location.pathname === "/pricing"} />
+            {isLoggedIn && <NavLink to="/community" label="Community" active={location.pathname === "/community"} />}
             <NavLink to="/contact" label="Contact Us" active={location.pathname === "/contact"} />
+
           </div>
 
           <div className="flex items-center space-x-4">
@@ -1187,4 +1193,3 @@ function NavLink({ to, label, active = false }) {
 }
 
 export default App
-
