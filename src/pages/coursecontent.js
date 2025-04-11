@@ -298,7 +298,28 @@ const CourseContent = () => {
       {
         title: "Meet the Markets",
         type: "content",
-        content: <div>/* Add your lesson content here */</div>,
+        content:(
+          <div className="space-y-4">
+            <p className="mb-3">
+              Stock markets, also known as stock exchanges, are like an auction house — matching buyers and sellers via online brokers.
+            </p>
+            <p className="mb-3">
+              There are many stock exchanges around the world.
+            </p>
+            <p className="mb-3">
+              The US exchanges <strong>NYSE</strong> and <strong>Nasdaq</strong> are the largest in the world.
+            </p>
+            <p className="mb-3">
+              <strong>Nasdaq:</strong> Known for tech companies (e.g. Apple, Microsoft, and Tesla).
+            </p>
+            <p className="mb-3">
+              <strong>NYSE:</strong> Known for mature, traditional, and industrial companies.
+            </p>
+            <p className="mb-3">
+              <strong>SGX:</strong> Singapore Stock Exchange.
+            </p>
+          </div>
+        ),
       },
       
     ],
@@ -307,7 +328,42 @@ const CourseContent = () => {
       {
         title: "Primary Market",
         type: "content",
-        content: <div>/* Add your lesson content here */</div>,
+        content:(
+          <div className="space-y-4">
+            <p className="mb-3 font-semibold">🟢 What Is It?</p>
+            <p className="mb-3">
+              The <strong>Primary Market</strong> is where new stocks are sold for the first time.
+            </p>
+        
+            <p className="mb-3 font-semibold">💰 Who Gets the Money?</p>
+            <p className="mb-3">
+              When you buy a stock here, <strong>the company gets the money</strong>. You are investing directly into the business.
+            </p>
+        
+            <p className="mb-3 font-semibold">🛍️ Two Ways to Sell Stocks</p>
+            
+            <p className="mb-2 font-medium">1. Public Offering</p>
+            <ul className="list-disc pl-5 space-y-1 mb-4">
+              <li>Anyone (including you!) can buy the stock</li>
+              <li>Comes with more regulation</li>
+              <li>
+                Requires an{" "}
+                <span
+                  title="Initial Public Offering: when a company sells shares to the public for the first time"
+                  className="underline decoration-dotted cursor-help text-blue-600"
+                >
+                  IPO
+                </span>
+              </li>
+            </ul>
+        
+            <p className="mb-2 font-medium">2. Private Offering</p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>Only for wealthy individuals or institutions</li>
+              <li>Fewer rules, faster and cheaper</li>
+            </ul>
+          </div>
+        ),
       },
       
     ],
@@ -316,7 +372,54 @@ const CourseContent = () => {
       {
         title: "Secondary Market",
         type: "content",
-        content: <div>/* Add your lesson content here */</div>,
+        content: (
+          <div>
+            <p><strong>🟢 What Is It?</strong></p>
+            <p>
+              The <strong>Secondary Market</strong> is where existing stocks are bought and sold between investors.
+            </p>
+            <p>🏢 The company doesn’t receive money in these trades.</p>
+        
+            <p><strong>🎟️ A Simple Example</strong></p>
+            <p>
+              Imagine you bought tickets to a concert and can’t go, so you sell them to a friend.
+            </p>
+            <p>
+              That’s like a stock trade in the secondary market. You're not paying the artist again—just reselling the ticket.
+            </p>
+        
+            <p><strong>🔍 Why It Matters</strong></p>
+            <ul>
+              <li>✅ You can buy or sell stocks anytime</li>
+              <li>💲 Helps find the market price of a stock</li>
+              <li>🔁 Keeps the market active and easy to trade in</li>
+            </ul>
+        
+            <p><strong>🛍️ Two Types of Secondary Markets</strong></p>
+        
+            <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap" }}>
+              {/* Dealer Market */}
+              <div style={{ flex: "1", minWidth: "250px", border: "1px solid #ccc", borderRadius: "8px", padding: "1rem" }}>
+                <h4>1. Dealer Market</h4>
+                <ul>
+                  <li>You trade through a middleman called a <strong>market maker</strong></li>
+                  <li>They hold inventory and decide prices</li>
+                  <li><strong>Example:</strong> NASDAQ</li>
+                </ul>
+              </div>
+        
+              {/* Auction Market */}
+              <div style={{ flex: "1", minWidth: "250px", border: "1px solid #ccc", borderRadius: "8px", padding: "1rem" }}>
+                <h4>2. Auction Market</h4>
+                <ul>
+                  <li>Buyers and sellers trade directly</li>
+                  <li>Prices are matched based on highest bid and lowest ask</li>
+                  <li><strong>Example:</strong> NYSE</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        ),
       },
       
     ],
