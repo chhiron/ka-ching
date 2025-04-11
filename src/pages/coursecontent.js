@@ -240,828 +240,126 @@ const CourseContent = () => {
 
   // Content sections for each module
   const moduleContent = [
-    // Section 1, Module 1
+    // SECTION 1
     [
       {
-        title: "Investing Basics",
+        title: "Start with your Why",
+        type: "content",
         content: (
-          <div className="space-y-4">
-            <p className="mb-3">
-              Many beginners focus on what to invest in, but the first step should be identifying <strong>why</strong>{" "}
-              they want to invest.
-            </p>
-            <p className="mb-3">
-              Financial goals drive investment choices, determining the right account type, tax advantages, investment
-              types, and risk allocation.
-            </p>
-            <p className="mb-3">Goals vary: emergency fund, retirement, home down payment, business, etc.</p>
-            <p className="mb-3">
-              Time horizon influences risk tolerance—longer horizons allow for more risk, while shorter ones require
-              conservative strategies.
-            </p>
-            <p>Investment planning follows a top-down approach: define goals first, then select strategies.</p>
-            <div className="mt-6 flex justify-center">
-              <img
-                src="investment-planning-pyramid.png"
-                alt="Investment Planning Pyramid"
-                className="w-120 h-auto rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-              />
-            </div>
-            <p className="text-sm text-gray-500 mt-4">
-              Source: Financial Planning on Marzfoo (https://marzfoo.sg/financial-planning/)
-            </p>
-          </div>
+        <div className="space-y-4">
+          <p className="mb-3">
+            Beginners often focus on what to invest in, but first, identify why.
+          </p>
+          <p className="mb-3">
+            Different goals have different time horizons.
+          </p>
+          <p className="mb-3">
+           Time horizons affect risk tolerance: longer = more risk, shorter = less risk.
+          </p>
+          <p className="mb-3">
+           Different goals also affect liquidity: longer = less liquid, shorter = more liquid
+          </p>
+        </div>
         ),
       },
       {
-        title: "Stocks & the Stock Market",
-        content: (
-          <div className="space-y-4">
-            <p className="mb-3">
-              A stock represents ownership in a company, entitling shareholders to a portion of assets and earnings.
-            </p>
-            <p className="mb-3">
-              Stocks are traded on public exchanges, enabling investors to buy and sell electronically.
-            </p>
-            <h4 className="font-bold text-lg text-[#5a7d53] mt-4 mb-2">Ways to earn money from stocks:</h4>
-            <ul className="list-disc pl-5 space-y-2 mb-3">
-              <li>
-                <strong>Capital Appreciation:</strong> When stock price increases over time.
-              </li>
-              <div className="mt-6 flex justify-center">
-                <img
-                  src="capital-appreciation.png"
-                  alt="capital-appreciation"
-                  className="w-32 h-auto rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-                />
-              </div>
-              <li>
-                <strong>Dividends:</strong> Companies share profits with shareholders in cash or additional stock.
-              </li>
-            </ul>
-            <p>
-              The stock market functions like an auction house, matching buyers and sellers via online brokers. It is
-              also referred to as a stock exchange.
-            </p>
-            <div className="mt-6 flex justify-center">
-              <img
-                src="dividend.png"
-                alt="dividend"
-                className="w-32 h-auto rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-              />
-            </div>
-            <p className="text-sm text-gray-500 mt-4">Sources: Coursera SoFi, Canva</p>
-          </div>
-        ),
+        title: "Quiz: Start with your Why",
+        type: "quiz",
+        quizKey: "1.1", // step.module.contentIndex
+      },
+  
+      {
+        title: "What is a Stock?",
+        type: "content",
+        content: <div>/* Add your lesson content here */</div>,
       },
       {
-        title: "What are stock exchanges?",
-        content: (
-          <div className="space-y-4">
-            <p className="mb-3">
-              This is the marketplace where financial instruments, like stocks, are traded. This is the 'auction house'.
-              There are a couple of types of stock exchanges but the most important and widely used one is the
-              Electronic Stock exchange.
-            </p>
-
-            <h4 className="font-bold text-lg text-[#5a7d53] mt-4 mb-2">The major US Stock exchanges</h4>
-            <p className="mb-3">
-              Why is this important? US Exchanges are some of the largest stock exchanges in the world and widely
-              adopted.
-            </p>
-            <ul className="list-disc pl-5 space-y-2 mb-3">
-              <li>
-                <strong>NYSE:</strong> New York stock exchange, the world's largest equities (a.k.a stock) exchange
-              </li>
-              <li>
-                <strong>Nasdaq:</strong> Known for tech companies like Apple, Microsoft, and Tesla
-              </li>
-            </ul>
-
-            <div className="mt-6 flex justify-center">
-              <img
-                src="stock-exchange.png"
-                alt="stock-exchange"
-                className="w-65 h-auto rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-              />
-            </div>
-
-            <h4 className="font-bold text-lg text-[#5a7d53] mt-4 mb-2">International Exchanges</h4>
-            <ul className="list-disc pl-5 space-y-2 mb-3">
-              <li>
-                <strong>The Shanghai Stock Exchange (SSE):</strong> Investments like stocks, bonds, and mutual funds are
-                traded
-              </li>
-              <li>
-                <strong>London Stock Exchange (LSE):</strong> located in the United Kingdom
-              </li>
-              <li>
-                <strong>Singapore Exchange (SGX):</strong> Singapore's stock exchange
-              </li>
-            </ul>
-
-            <p>
-              Every stock exchange has some rules for which companies they allow to sell in their marketplace. These are
-              called "Listing Requirements".
-            </p>
-
-            <p className="text-sm text-gray-500 mt-4">Sources: Investopedia "Types of Stock Exchanges", Canva</p>
-          </div>
-        ),
+        title: "Quiz: What is a stock",
+        type: "quiz",
+        quizKey: "1.2",
+      },
+  
+      {
+        title: "Meet the Markets",
+        type: "content",
+        content: <div>/* Add your lesson content here */</div>,
       },
       {
-        title: "Key Players in the Stock Market",
-        content: (
-          <div className="space-y-4">
-            <p className="mb-3">Understanding who participates in the market helps you see how trades happen.</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-              <div className="bg-[#f0f9f4] p-4 rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-md">
-                <h4 className="font-bold text-lg text-[#5a7d53] mb-2">👤 Retail Investors</h4>
-                <p>Everyday individuals investing for personal goals 🏡</p>
-              </div>
-              <div className="bg-[#f0f9f4] p-4 rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-md">
-                <h4 className="font-bold text-lg text-[#5a7d53] mb-2">🏛️ Institutional Investors</h4>
-                <p>Large firms managing billions (e.g., mutual funds, hedge funds) 💼</p>
-              </div>
-              <div className="bg-[#f0f9f4] p-4 rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-md">
-                <h4 className="font-bold text-lg text-[#5a7d53] mb-2">🔄 Market Makers</h4>
-                <p>Ensure there are buyers & sellers to keep trading smooth ⚖️</p>
-              </div>
-              <div className="bg-[#f0f9f4] p-4 rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-md">
-                <h4 className="font-bold text-lg text-[#5a7d53] mb-2">📜 Regulators</h4>
-                <p>SEC, FINRA – Keep markets fair and protect investors 🛡️</p>
-              </div>
-            </div>
-            <div className="mt-6 flex justify-center">
-              <img
-                src="key-players.png"
-                alt="key-players"
-                className="w-70 h-auto rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-              />
-            </div>
-            <p className="text-sm text-gray-500 mt-4">Source: SEC.gov, Understanding the Stock Market, Canva</p>
-          </div>
-        ),
+        title: "Quiz: Meet the Markets",
+        type: "quiz",
+        quizKey: "1.3",
       },
       {
-        title: "IPOs Explained",
-        content: (
-          <div className="space-y-4">
-            <p className="mb-3">
-              A company must first go public through an Initial Public Offering (IPO) before its stock can be traded.
-            </p>
-            <h4 className="font-bold text-lg text-[#5a7d53] mt-4 mb-2">🚀 IPO Process Simplified:</h4>
-            <div className="relative">
-              <div className="absolute left-4 top-0 bottom-0 w-1 bg-[#5a7d53]"></div>
-              <div className="space-y-6 ml-10">
-                <div className="relative">
-                  <div className="absolute -left-10 w-8 h-8 rounded-full bg-[#5a7d53] text-white flex items-center justify-center">
-                    1
-                  </div>
-                  <p>A private company decides to go public to raise money.</p>
-                </div>
-                <div className="relative">
-                  <div className="absolute -left-10 w-8 h-8 rounded-full bg-[#5a7d53] text-white flex items-center justify-center">
-                    2
-                  </div>
-                  <p>It works with investment banks to set an initial stock price.</p>
-                </div>
-                <div className="relative">
-                  <div className="absolute -left-10 w-8 h-8 rounded-full bg-[#5a7d53] text-white flex items-center justify-center">
-                    3
-                  </div>
-                  <p>The stock is offered to institutional investors first.</p>
-                </div>
-                <div className="relative">
-                  <div className="absolute -left-10 w-8 h-8 rounded-full bg-[#5a7d53] text-white flex items-center justify-center">
-                    4
-                  </div>
-                  <p>Once trading begins, anyone can buy shares.</p>
-                </div>
-              </div>
-            </div>
-            <div className="mt-6 p-4 bg-[#f0f9f4] rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-md">
-              <h4 className="font-bold text-lg text-[#5a7d53] mb-2">Example: Facebook's 2012 IPO</h4>
-              <p>
-                It started at $38 per share. Despite early struggles, it grew into Meta, now worth hundreds of billions.
-              </p>
-            </div>
-            <div className="mt-6 flex justify-center">
-              <img
-                src="ipo-process.png"
-                alt="IPO Process"
-                className="w-85 h-auto rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-              />
-            </div>
-            <p className="text-sm text-gray-500 mt-4">Source: Investopedia, What Is an IPO?, Canva</p>
-          </div>
-        ),
+        title: "Primary Market",
+        type: "content",
+        content: <div>/* Add your lesson content here */</div>,
+      },
+      {
+        title: "Primary Market",
+        type: "quiz",
+        quizKey: "1.4",
+      },
+  
+      {
+        title: "Secondary Market",
+        type: "content",
+        content: <div>/* Add your lesson content here */</div>,
+      },
+      {
+        title: "Quiz: Secondary Market",
+        type: "quiz",
+        quizKey: "1.5",
+      },
+      {
+        title: "Going Public with IPO",
+        type: "content",
+        content: <div>/* Add your lesson content here */</div>,
+      },
+      {
+        title: "Quiz: Going Public with IPO",
+        type: "quiz",
+        quizKey: "1.6",
       },
     ],
-    // Section 1, Module 2 - Types of Stocks
+  
+    // SECTION 2
     [
       {
-        title: "Common vs. Preferred Stock",
-        content: (
-          <div className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              <div className="bg-white p-6 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg border-l-4 border-[#5a7d53]">
-                <h4 className="font-bold text-xl text-[#5a7d53] mb-3">Common Stock</h4>
-                <p className="mb-3">
-                  <strong>What it is:</strong> The "default" stock type most investors are familiar with.
-                </p>
-                <p className="mb-3">
-                  <strong>Key perks:</strong> Voting rights + growth potential.
-                </p>
-                <p>
-                  <strong>Best for:</strong> Long-term investors betting on company success.
-                </p>
-                <p className="mt-4 text-sm text-gray-600">
-                  Ideal for investors looking for growth. The more successful the company becomes, the greater the
-                  potential for stock price appreciation.
-                </p>
-              </div>
-
-              <div className="bg-white p-6 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg border-l-4 border-[#f0d878]">
-                <h4 className="font-bold text-xl text-[#5a7d53] mb-3">Preferred Stock</h4>
-                <p className="mb-3">
-                  <strong>What it is:</strong> A hybrid (stock + bond-like features).
-                </p>
-                <p className="mb-3">
-                  <strong>Key perks:</strong> Priority dividends + lower risk.
-                </p>
-                <p>
-                  <strong>Best for:</strong> Income seekers who want stability.
-                </p>
-                <p className="mt-4 text-sm text-gray-600">
-                  No voting rights but receives dividends before common stockholders. Better for investors who prefer
-                  steady income rather than seeking long-term growth.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-[#f0f9f4] p-5 rounded-lg">
-              <div className="flex items-start">
-                <div className="bg-[#5a7d53] text-white p-2 rounded-full mr-3 flex-shrink-0">
-                  <span className="text-xl">💡</span>
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg text-[#5a7d53] mb-1">Why it matters</h4>
-                  <p>
-                    Choose common stock for growth potential, preferred stock for steady income. Preferred stocks offer
-                    more stability and lower risk compared to common stocks.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        ),
+        title: "Investment Vehicles",
+        type: "content",
+        content: <div>/* Add your lesson content here */</div>,
       },
       {
-        title: "Quick Check: Voting Rights",
-        content: (
-          <div className="space-y-4">
-            <div className="bg-[#f0d878] bg-opacity-20 p-6 rounded-xl">
-              <h3 className="text-xl font-bold text-[#5a7d53] mb-4">Quick Check</h3>
-
-              <p className="text-lg font-medium mb-4">Which stock type gives shareholders voting rights?</p>
-
-              <div className="space-y-3">
-                {["Common stock", "Preferred stock", "Both", "Neither"].map((option, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleQuickCheckAnswer("common-stock-voting", index)}
-                    className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-300 
-                      ${
-                        quickCheckAnswers["common-stock-voting"] === index
-                          ? quickCheckFeedback["common-stock-voting"]
-                            ? "border-green-500 bg-green-50"
-                            : "border-red-500 bg-red-50"
-                          : "border-gray-200 hover:border-[#5a7d53] hover:shadow-sm"
-                      }`}
-                    disabled={quickCheckFeedback["common-stock-voting"] === true}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span>{option}</span>
-                      {quickCheckAnswers["common-stock-voting"] === index &&
-                        (quickCheckFeedback["common-stock-voting"] ? (
-                          <CheckCircle className="h-5 w-5 text-green-500" />
-                        ) : (
-                          <XCircle className="h-5 w-5 text-red-500" />
-                        ))}
-                    </div>
-                  </button>
-                ))}
-              </div>
-
-              {quickCheckAnswers["common-stock-voting"] !== undefined && !quickCheckFeedback["common-stock-voting"] && (
-                <div className="mt-4 flex justify-center">
-                  <button
-                    onClick={() => resetQuickCheck("common-stock-voting")}
-                    className="bg-[#5a7d53] text-white px-4 py-2 rounded-lg hover:bg-[#4a6a45] transition-colors"
-                  >
-                    Try Again
-                  </button>
-                </div>
-              )}
-
-              {quickCheckFeedback["common-stock-voting"] && (
-                <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
-                  <p className="text-green-800">
-                    <strong>Correct!</strong> Common stock gives shareholders voting rights, allowing them to vote on
-                    important company matters like electing the board of directors.
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-        ),
+        title: "Quiz: Investment Vehicles",
+        type: "quiz",
+        quizKey: "2.1.0",
       },
-      {
-        title: "Quick Check: Dividend Priority",
-        content: (
-          <div className="space-y-4">
-            <div className="bg-[#f0d878] bg-opacity-20 p-6 rounded-xl">
-              <h3 className="text-xl font-bold text-[#5a7d53] mb-4">Quick Check</h3>
-
-              <p className="text-lg font-medium mb-4">Preferred stockholders receive dividends…</p>
-
-              <div className="space-y-3">
-                {[
-                  "After common stockholders",
-                  "Before common stockholders",
-                  "At the same time as common stockholders",
-                  "Only if the company performs well",
-                ].map((option, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleQuickCheckAnswer("preferred-stock-dividends", index)}
-                    className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-300 
-                      ${
-                        quickCheckAnswers["preferred-stock-dividends"] === index
-                          ? quickCheckFeedback["preferred-stock-dividends"]
-                            ? "border-green-500 bg-green-50"
-                            : "border-red-500 bg-red-50"
-                          : "border-gray-200 hover:border-[#5a7d53] hover:shadow-sm"
-                      }`}
-                    disabled={quickCheckFeedback["preferred-stock-dividends"] === true}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span>{option}</span>
-                      {quickCheckAnswers["preferred-stock-dividends"] === index &&
-                        (quickCheckFeedback["preferred-stock-dividends"] ? (
-                          <CheckCircle className="h-5 w-5 text-green-500" />
-                        ) : (
-                          <XCircle className="h-5 w-5 text-red-500" />
-                        ))}
-                    </div>
-                  </button>
-                ))}
-              </div>
-
-              {quickCheckAnswers["preferred-stock-dividends"] !== undefined &&
-                !quickCheckFeedback["preferred-stock-dividends"] && (
-                  <div className="mt-4 flex justify-center">
-                    <button
-                      onClick={() => resetQuickCheck("preferred-stock-dividends")}
-                      className="bg-[#5a7d53] text-white px-4 py-2 rounded-lg hover:bg-[#4a6a45] transition-colors"
-                    >
-                      Try Again
-                    </button>
-                  </div>
-                )}
-
-              {quickCheckFeedback["preferred-stock-dividends"] && (
-                <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
-                  <p className="text-green-800">
-                    <strong>Correct!</strong> Preferred stockholders have priority when it comes to receiving dividends.
-                    This is one of the key advantages of preferred stock for income-focused investors.
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-        ),
-      },
-      {
-        title: "Stock Classifications by Market Capitalization",
-        content: (
-          <div className="space-y-4">
-            <p className="mb-4">
-              <strong>What is Market Capitalization:</strong> It shows how much a company is worth as determined by the
-              total market value of all outstanding shares.
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-              <div className="bg-white p-5 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg border-t-4 border-[#5a7d53]">
-                <h4 className="font-bold text-lg text-[#5a7d53] mb-2">Large-Cap</h4>
-                <p className="font-bold text-gray-700 mb-2">USD 10 billion +</p>
-                <p className="mb-3">
-                  <strong>Traits:</strong> Stable, low risk, established industries
-                </p>
-                <p>
-                  <strong>Examples:</strong> Apple, Microsoft
-                </p>
-              </div>
-
-              <div className="bg-white p-5 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg border-t-4 border-[#85bb65]">
-                <h4 className="font-bold text-lg text-[#5a7d53] mb-2">Mid-Cap</h4>
-                <p className="font-bold text-gray-700 mb-2">USD 2-10 billion</p>
-                <p className="mb-3">
-                  <strong>Traits:</strong> Balance of growth and stability
-                </p>
-                <p>
-                  <strong>Examples:</strong> Regional banks, emerging tech
-                </p>
-              </div>
-
-              <div className="bg-white p-5 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg border-t-4 border-[#f0d878]">
-                <h4 className="font-bold text-lg text-[#5a7d53] mb-2">Small-Cap</h4>
-                <p className="font-bold text-gray-700 mb-2">USD 250 million - 2 Billion</p>
-                <p className="mb-3">
-                  <strong>Traits:</strong> High growth potential but volatile
-                </p>
-                <p>
-                  <strong>Examples:</strong> Niche tech startups
-                </p>
-              </div>
-            </div>
-
-            <p className="mb-4">
-              Small-cap share prices may be volatile but provide greater growth opportunities than large caps. Large-cap
-              stocks are typically from well-established companies in mature industries.
-            </p>
-
-            <div className="bg-[#f0f9f4] p-5 rounded-lg">
-              <div className="flex items-start">
-                <div className="bg-[#5a7d53] text-white p-2 rounded-full mr-3 flex-shrink-0">
-                  <span className="text-xl">💡</span>
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg text-[#5a7d53] mb-1">Why it matters</h4>
-                  <p>
-                    Market capitalization helps investors assess risk. Large-cap stocks are typically safer, while
-                    small-cap stocks offer high growth but come with more risk.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        ),
-      },
-      {
-        title: "Quick Check: Market Capitalization",
-        content: (
-          <div className="space-y-4">
-            <div className="bg-[#f0d878] bg-opacity-20 p-6 rounded-xl">
-              <h3 className="text-xl font-bold text-[#5a7d53] mb-4">Quick Check</h3>
-
-              <p className="text-lg font-medium mb-4">What does market capitalization measure?</p>
-
-              <div className="space-y-3">
-                {[
-                  "A company's total debt",
-                  "The total value of its outstanding shares",
-                  "Annual revenue",
-                  "The number of stocks issued",
-                ].map((option, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleQuickCheckAnswer("market-cap-measure", index)}
-                    className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-300 
-                      ${
-                        quickCheckAnswers["market-cap-measure"] === index
-                          ? quickCheckFeedback["market-cap-measure"]
-                            ? "border-green-500 bg-green-50"
-                            : "border-red-500 bg-red-50"
-                          : "border-gray-200 hover:border-[#5a7d53] hover:shadow-sm"
-                      }`}
-                    disabled={quickCheckFeedback["market-cap-measure"] === true}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span>{option}</span>
-                      {quickCheckAnswers["market-cap-measure"] === index &&
-                        (quickCheckFeedback["market-cap-measure"] ? (
-                          <CheckCircle className="h-5 w-5 text-green-500" />
-                        ) : (
-                          <XCircle className="h-5 w-5 text-red-500" />
-                        ))}
-                    </div>
-                  </button>
-                ))}
-              </div>
-
-              {quickCheckAnswers["market-cap-measure"] !== undefined && !quickCheckFeedback["market-cap-measure"] && (
-                <div className="mt-4 flex justify-center">
-                  <button
-                    onClick={() => resetQuickCheck("market-cap-measure")}
-                    className="bg-[#5a7d53] text-white px-4 py-2 rounded-lg hover:bg-[#4a6a45] transition-colors"
-                  >
-                    Try Again
-                  </button>
-                </div>
-              )}
-
-              {quickCheckFeedback["market-cap-measure"] && (
-                <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
-                  <p className="text-green-800">
-                    <strong>Correct!</strong> Market capitalization is calculated by multiplying the total number of a
-                    company's outstanding shares by the current market price of one share.
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-        ),
-      },
-      {
-        title: "Quick Check: Risk Assessment",
-        content: (
-          <div className="space-y-4">
-            <div className="bg-[#f0d878] bg-opacity-20 p-6 rounded-xl">
-              <h3 className="text-xl font-bold text-[#5a7d53] mb-4">Quick Check</h3>
-
-              <p className="text-lg font-medium mb-4">Which category is generally more stable and lower risk?</p>
-
-              <div className="space-y-3">
-                {["Small-cap", "Large-cap", "Mid-cap", "Growth stocks"].map((option, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleQuickCheckAnswer("large-cap-risk", index)}
-                    className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-300 
-                      ${
-                        quickCheckAnswers["large-cap-risk"] === index
-                          ? quickCheckFeedback["large-cap-risk"]
-                            ? "border-green-500 bg-green-50"
-                            : "border-red-500 bg-red-50"
-                          : "border-gray-200 hover:border-[#5a7d53] hover:shadow-sm"
-                      }`}
-                    disabled={quickCheckFeedback["large-cap-risk"] === true}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span>{option}</span>
-                      {quickCheckAnswers["large-cap-risk"] === index &&
-                        (quickCheckFeedback["large-cap-risk"] ? (
-                          <CheckCircle className="h-5 w-5 text-green-500" />
-                        ) : (
-                          <XCircle className="h-5 w-5 text-red-500" />
-                        ))}
-                    </div>
-                  </button>
-                ))}
-              </div>
-
-              {quickCheckAnswers["large-cap-risk"] !== undefined && !quickCheckFeedback["large-cap-risk"] && (
-                <div className="mt-4 flex justify-center">
-                  <button
-                    onClick={() => resetQuickCheck("large-cap-risk")}
-                    className="bg-[#5a7d53] text-white px-4 py-2 rounded-lg hover:bg-[#4a6a45] transition-colors"
-                  >
-                    Try Again
-                  </button>
-                </div>
-              )}
-
-              {quickCheckFeedback["large-cap-risk"] && (
-                <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
-                  <p className="text-green-800">
-                    <strong>Correct!</strong> Large-cap stocks are generally more stable and lower risk because they
-                    represent well-established companies with proven business models and more resources to weather
-                    economic downturns.
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-        ),
-      },
-      {
-        title: "Investment Styles: How Stocks are Categorized",
-        content: (
-          <div className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-              <div className="bg-white p-5 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg hover:scale-105">
-                <h4 className="font-bold text-lg text-[#5a7d53] mb-3">Value Stocks</h4>
-                <p className="mb-3">
-                  <strong>What:</strong> Undervalued companies expected to grow over time
-                </p>
-                <p>
-                  <strong>Best for:</strong> Patient investors, long-term investment
-                </p>
-                <div className="mt-4 text-center">
-                  <span className="inline-block bg-[#f0f9f4] text-[#5a7d53] px-3 py-1 rounded-full text-sm font-medium">
-                    Bargain hunting
-                  </span>
-                </div>
-              </div>
-
-              <div className="bg-white p-5 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg hover:scale-105">
-                <h4 className="font-bold text-lg text-[#5a7d53] mb-3">Growth Stocks</h4>
-                <p className="mb-3">
-                  <strong>What:</strong> Fast-growing companies that reinvest earnings (e.g., Amazon, Tesla)
-                </p>
-                <p>
-                  <strong>Best for:</strong> Risk-tolerant investors
-                </p>
-                <div className="mt-4 text-center">
-                  <span className="inline-block bg-[#f0f9f4] text-[#5a7d53] px-3 py-1 rounded-full text-sm font-medium">
-                    High reward potential
-                  </span>
-                </div>
-              </div>
-
-              <div className="bg-white p-5 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg hover:scale-105">
-                <h4 className="font-bold text-lg text-[#5a7d53] mb-3">Dividend Stocks</h4>
-                <p className="mb-3">
-                  <strong>What:</strong> Income generators (e.g., utility companies, consumer staples)
-                </p>
-                <p>
-                  <strong>Best for:</strong> Income-seeking investors, retirees
-                </p>
-                <div className="mt-4 text-center">
-                  <span className="inline-block bg-[#f0f9f4] text-[#5a7d53] px-3 py-1 rounded-full text-sm font-medium">
-                    Regular payouts
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <p className="mb-4">
-              Growth stocks don't typically pay dividends but offer high capital appreciation potential. Dividend stocks
-              are usually well-established companies that pay regular dividends.
-            </p>
-
-            <div className="bg-[#f0f9f4] p-5 rounded-lg">
-              <div className="flex items-start">
-                <div className="bg-[#5a7d53] text-white p-2 rounded-full mr-3 flex-shrink-0">
-                  <span className="text-xl">💡</span>
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg text-[#5a7d53] mb-1">Why it matters</h4>
-                  <p>Match stocks to your goals:</p>
-                  <ul className="list-disc pl-5 mt-2">
-                    <li>Value = Long-term bargains</li>
-                    <li>Growth = High-reward bets</li>
-                    <li>Dividend = Reliable income</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        ),
-      },
-      {
-        title: "Quick Check: Income Investing",
-        content: (
-          <div className="space-y-4">
-            <div className="bg-[#f0d878] bg-opacity-20 p-6 rounded-xl">
-              <h3 className="text-xl font-bold text-[#5a7d53] mb-4">Quick Check</h3>
-
-              <p className="text-lg font-medium mb-4">
-                Which stock type is best for investors looking for regular income?
-              </p>
-
-              <div className="space-y-3">
-                {["Growth stock", "Value stock", "Dividend stock", "Small-cap stock"].map((option, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleQuickCheckAnswer("dividend-stock-income", index)}
-                    className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-300 
-                      ${
-                        quickCheckAnswers["dividend-stock-income"] === index
-                          ? quickCheckFeedback["dividend-stock-income"]
-                            ? "border-green-500 bg-green-50"
-                            : "border-red-500 bg-red-50"
-                          : "border-gray-200 hover:border-[#5a7d53] hover:shadow-sm"
-                      }`}
-                    disabled={quickCheckFeedback["dividend-stock-income"] === true}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span>{option}</span>
-                      {quickCheckAnswers["dividend-stock-income"] === index &&
-                        (quickCheckFeedback["dividend-stock-income"] ? (
-                          <CheckCircle className="h-5 w-5 text-green-500" />
-                        ) : (
-                          <XCircle className="h-5 w-5 text-red-500" />
-                        ))}
-                    </div>
-                  </button>
-                ))}
-              </div>
-
-              {quickCheckAnswers["dividend-stock-income"] !== undefined &&
-                !quickCheckFeedback["dividend-stock-income"] && (
-                  <div className="mt-4 flex justify-center">
-                    <button
-                      onClick={() => resetQuickCheck("dividend-stock-income")}
-                      className="bg-[#5a7d53] text-white px-4 py-2 rounded-lg hover:bg-[#4a6a45] transition-colors"
-                    >
-                      Try Again
-                    </button>
-                  </div>
-                )}
-
-              {quickCheckFeedback["dividend-stock-income"] && (
-                <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
-                  <p className="text-green-800">
-                    <strong>Correct!</strong> Dividend stocks are specifically designed to provide regular income to
-                    investors through consistent dividend payments. They're particularly popular among retirees and
-                    income-focused investors.
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-        ),
-      },
-      {
-        title: "Module 1.2 Review",
-        content: (
-          <div className="space-y-4">
-            <div className="bg-[#f0f9f4] p-5 rounded-lg mb-6">
-              <h4 className="font-bold text-xl text-[#5a7d53] mb-3">Key Takeaways</h4>
-              <ul className="list-disc pl-5 space-y-2">
-                <li>
-                  <strong>Common vs. Preferred Stock:</strong> Common stock offers voting rights and growth potential,
-                  while preferred stock provides priority dividends and more stability.
-                </li>
-                <li>
-                  <strong>Market Capitalization:</strong> Large-cap stocks (&gt;$10B) offer stability, while small-cap
-                  stocks ($250M-$2B) provide higher growth potential with more risk.
-                </li>
-                <li>
-                  <strong>Investment Styles:</strong> Value stocks are undervalued with long-term potential, growth
-                  stocks focus on capital appreciation, and dividend stocks generate regular income.
-                </li>
-              </ul>
-            </div>
-
-            <p className="mb-4">
-              Understanding these different stock types and classifications helps you build a diversified portfolio that
-              matches your investment goals, risk tolerance, and time horizon.
-            </p>
-
-            <div className="bg-[#f0d878] bg-opacity-20 p-5 rounded-lg">
-              <div className="flex items-start">
-                <div className="bg-[#f0d878] text-[#5a7d53] p-2 rounded-full mr-3 flex-shrink-0">
-                  <span className="text-xl">📝</span>
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg text-[#5a7d53] mb-1">Ready for the Quiz?</h4>
-                  <p>
-                    Test your knowledge of stock types and classifications with our comprehensive module quiz. The quiz
-                    includes both recall questions to test your memory and application questions to test your
-                    understanding.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        ),
-      },
-    ],
-    // Section 2, Module 1
-    [
-      {
-        title: "Introduction to Investment Vehicles",
-        content: (
-          <div className="space-y-4">
-            <p>Content for Section 2, Module 1, Section 1</p>
-            <div className="mt-6 flex justify-center">
-              <img
-                src="/placeholder.svg?height=200&width=300"
-                alt="Investment Vehicles"
-                className="rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-              />
-            </div>
-          </div>
-        ),
-      },
-    ],
-    // Section 3, Module 1
-    [
-      {
-        title: "Building Your Portfolio",
-        content: (
-          <div className="space-y-4">
-            <p>Content for Section 3, Module 1, Section 1</p>
-            <div className="mt-6 flex justify-center">
-              <img
-                src="/placeholder.svg?height=200&width=300"
-                alt="Portfolio Building"
-                className="rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-              />
-            </div>
-          </div>
-        ),
-      },
+  
+      // Add more sections as needed
     ],
   ]
+  
+  // Quiz data matching quizKey format
+  const quizData = {
+    "1.1.0": [
+      /* Quiz questions for Investing Basics */
+    ],
+    "1.1.1": [
+      /* Quiz questions for Types of Stocks */
+    ],
+    "1.1.2": [
+      /* Quiz questions for Market Cap */
+    ],
+    "2.1.0": [
+      /* Quiz for Investment Vehicles */
+    ],
+  }
+  
 
   // Define quiz data with detailed feedback for each option
-  const quizData = {
+ /* const quizData = {
     // Module 1.1 Quiz
-    "1.1.mixed": [
+    "1.1": [
       {
         question: "What should be the first step in investment planning?",
         options: [
@@ -1410,7 +708,7 @@ const CourseContent = () => {
       },
     ],
   }
-
+    */
   // Get the current quiz based on module and quiz type
   const getCurrentQuiz = () => {
     const quizKey = `${currentStep}.${currentModule}.${quizType}`
