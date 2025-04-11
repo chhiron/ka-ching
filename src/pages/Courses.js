@@ -423,23 +423,21 @@ const Courses = () => {
   
     // Update the isNextStep function to correctly identify the next step in the learning path
     const isNextStep = (sectionId, moduleIndex) => {
-    const section = steps.find((s) => s.id === sectionId)
-    if (!section) return false
-  
-    const modules = section.modules
-    const current = modules[moduleIndex]
-    const prev = modules[moduleIndex - 1]
-    
-    if (!current) return false
-    }
-  
-    // Already completed? Not the next step
-    if (
-      (current.type === "content" && isModuleCompleted(sectionId, current.id)) ||
-      (current.type === "quiz" && isQuizCompleted(sectionId, current.relatedModuleId, current.quizType))
-    ) {
-      return false
-    }
+  const section = steps.find((s) => s.id === sectionId)
+  if (!section) return false
+
+  const modules = section.modules
+  const current = modules[moduleIndex]
+  const prev = modules[moduleIndex - 1]
+  }
+
+  // Already completed? Not the next step
+  if (
+    (current.type === "content" && isModuleCompleted(sectionId, current.id)) ||
+    (current.type === "quiz" && isQuizCompleted(sectionId, current.relatedModuleId, current.quizType))
+  ) {
+    return false
+  }
   
     // First module in the course? It's the next step
     if (moduleIndex === 0) return true
