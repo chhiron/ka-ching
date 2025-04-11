@@ -1252,7 +1252,7 @@ const CourseContent = () => {
     }
   }
 
-  const handleGoToNext = () => {
+  /*const handleGoToNext = () => {
     if (contentType === "content") {
       if (currentContentIndex < moduleContent[currentModuleIndex].length - 1) {
         setCurrentContentIndex(currentContentIndex + 1)
@@ -1295,6 +1295,27 @@ const CourseContent = () => {
         goToNextModule()
       }
     }
+  }
+  */
+  const handleGoToNext = () => {
+    if (contentType === "content") {
+      const moduleKey = `${currentStep}.${currentModule}`
+      const updatedCompletedModules = {
+        ...completedModules,
+        [moduleKey]: true,
+      }
+      setCompletedModules(updatedCompletedModules)
+    
+      const savedProgress = localStorage.getItem("courseProgress")
+      const progress = savedProgress ? JSON.parse(savedProgress) : {}
+      progress.completedModules = updatedCompletedModules
+      localStorage.setItem("courseProgress", JSON.stringify(progress))
+    
+      goToNextModule()
+    }
+    
+    
+
   }
 
   return (
