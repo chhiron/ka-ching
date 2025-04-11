@@ -969,6 +969,7 @@ const CourseContent = () => {
 
   const handleCompleteModule = () => {
     // Mark this module as completed in localStorage
+    
     const savedProgress = localStorage.getItem("courseProgress")
     const progress = savedProgress
       ? JSON.parse(savedProgress)
@@ -989,10 +990,12 @@ const CourseContent = () => {
       }
 
       // Update state
-      setCompletedModules({
-        ...completedModules,
+      setCompletedModules((prev) => ({
+        ...prev,
         [`${currentStep}.${currentModule}`]: true,
-      })
+      }))
+
+      progress.completedModules[`${currentStep}.${currentModule}`] = true
 
       // Navigate to the quiz for this module
       navigate(`/course-content?step=${currentStep}&module=${currentModule}&type=quiz&quizType=${quizType}`)
@@ -1222,14 +1225,13 @@ const CourseContent = () => {
 
   const goToNextModule = () => {
     // Navigate to the next module or section
-    if (currentModule < moduleContent[currentStep - 1]?.length) {
-      // Go to next module in current section
+    const totalModules = moduleContent[currentStep - 1]?.length || 0 // this needs to be fixed
+
+    if (currentModule < totalModules) {
       navigate(`/course-content?step=${currentStep}&module=${currentModule + 1}&type=content`)
     } else if (currentStep < moduleContent.length) {
-      // Go to first module in next section
       navigate(`/course-content?step=${currentStep + 1}&module=1&type=content`)
     } else {
-      // If we're at the last module of the last section, go back to courses
       navigate("/courses")
     }
   }
