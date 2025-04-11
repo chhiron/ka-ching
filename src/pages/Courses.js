@@ -103,13 +103,13 @@ const Courses = () => {
       modules: [
         {
           id: 1,
-          title: "Start with your "Why"", //module 1.1.1
+          title: "Start with your Why", //module 1.1.1
           duration: "3 mins",
           type: "content",
         },
         {
           id: "1q",
-          title: "Start with your "Why": Quiz",
+          title: "Start with your Why: Quiz",
           type: "quiz",
           quizType: "mixed",
           relatedModuleId: 1,
