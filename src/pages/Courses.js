@@ -395,9 +395,11 @@ const Courses = () => {
 
     return completedContentCount + completedQuizCount
   }
+  
+  const isModuleUnlocked = () => true
 
   // Check if a module is unlocked (previous module and its quiz are completed)
-  const isModuleUnlocked = (sectionId, moduleIndex) => {
+  /*const isModuleUnlocked = (sectionId, moduleIndex) => {
     const section = steps.find((s) => s.id === sectionId)
     if (!section) return false
 
@@ -442,11 +444,12 @@ const Courses = () => {
 
     // If previous item is quiz, check if it's completed
     if (prevModule.type === "quiz") {
-      return isQuizCompleted(sectionId, prevModule.relatedModuleId, prevModule.quizType)
+      //return isQuizCompleted(sectionId, prevModule.relatedModuleId, prevModule.quizType)
     }
 
     return false
   }
+    */
 
   // Update the isNextStep function to correctly identify the next step in the learning path
   const isNextStep = (sectionId, moduleIndex) => {
