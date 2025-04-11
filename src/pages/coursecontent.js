@@ -271,7 +271,25 @@ const CourseContent = () => {
       {
         title: "What is a Stock?",
         type: "content",
-        content: <div>/* Add your lesson content here */</div>,
+        content: (
+          <div className="space-y-4">
+            <p className="mb-3">
+              A <span title="Part ownership in a company" className="underline dotted cursor-help">stock</span> is a part ownership in a company.
+            </p>
+            <p className="mb-3">
+              You can earn from stocks through <span title="When a stock increases in value" className="underline dotted cursor-help">capital appreciation</span> or <span title="Earnings paid to shareholders" className="underline dotted cursor-help">dividends</span>.
+            </p>
+            <p className="mb-3 font-semibold">
+              Why do companies sell stock?
+            </p>
+            <p className="mb-3">
+              To raise money and grow their business.
+            </p>
+            <p className="mb-3">
+              Selling shares helps fund things like expansion, research, or paying off debt.
+            </p>
+          </div>
+        ),
       },
       
     ],
