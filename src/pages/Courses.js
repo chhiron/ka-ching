@@ -400,131 +400,65 @@ const Courses = () => {
   const isModuleUnlocked = (sectionId, moduleIndex) => {
     const section = steps.find((s) => s.id === sectionId)
     if (!section) return false
-
-    // First module is always unlocked
+  
+    const current = section.modules[moduleIndex]
+    const prev = section.modules[moduleIndex - 1]
+  
+    // First module in section is always unlocked
     if (moduleIndex === 0) return true
-
-    // For module 1.1 quiz (index 1 in section 1), check if module 1.1 content is completed
-    if (sectionId === 1 && moduleIndex === 1) {
-      return isModuleCompleted(1, 1)
+  
+    if (!current || !prev) return false
+  
+    // If current is a quiz → unlock if related content module is completed
+    if (current.type === "quiz") {
+      return isModuleCompleted(sectionId, current.relatedModuleId)
     }
-
-    // For module 1.2, check if module 1.1 and its quiz are completed with score >= 80%
-    if (sectionId === 1 && moduleIndex === 2) {
-      // Module 1.2
-      const module1Completed = isModuleCompleted(1, 1)
-      const quiz1Completed = isQuizCompleted(1, 1, "mixed")
-      const quiz1Score = getQuizScore(1, 1, "mixed")
-      return module1Completed && quiz1Completed && quiz1Score >= 80
-    }
-
-    // For module 1.2 recall quiz, check if module 1.2 is completed
-    if (sectionId === 1 && moduleIndex === 3) {
-      // Module 1.2 recall quiz
-      return isModuleCompleted(1, 2)
-    }
-
-    // For module 1.2 application quiz, check if module 1.2 recall quiz is completed with score >= 80%
-    if (sectionId === 1 && moduleIndex === 4) {
-      // Module 1.2 application quiz
-      const recallQuizCompleted = isQuizCompleted(1, 2, "recall")
-      const recallQuizScore = getQuizScore(1, 2, "recall")
-      return recallQuizCompleted && recallQuizScore >= 80
-    }
-
-    // Default behavior for other modules - check if previous module is completed
-    const prevModule = section.modules[moduleIndex - 1]
-
-    // If previous item is content, check if it's completed
-    if (prevModule.type === "content") {
-      return isModuleCompleted(sectionId, prevModule.id)
-    }
-
-    // If previous item is quiz, check if it's completed
-    if (prevModule.type === "quiz") {
-      return isQuizCompleted(sectionId, prevModule.relatedModuleId, prevModule.quizType)
-    }
-
-    return false
-  }
-
-  // Update the isNextStep function to correctly identify the next step in the learning path
-  const isNextStep = (sectionId, moduleIndex) => {
+  
+    // If current is content and previous is quiz → unlock if previous quiz is completed and score ≥ 80
+    if (current.type === "content" && prev.type === "quiz") {
+      return (
+  
+  
+    // Update the isNextStep function to correctly identify the next step in the learning path
+    const isNextStep = (sectionId, moduleIndex) => {
     const section = steps.find((s) => s.id === sectionId)
     if (!section) return false
-
-    // If this is the first module and it's not completed, it's the next step
-    if (moduleIndex === 0 && !isModuleCompleted(sectionId, section.modules[0].id)) {
-      return true
+  
+    const modules = section.modules
+    const current = modules[moduleIndex]
+    const prev = modules[moduleIndex - 1]
+  
+    if (!current) return false
+  
+    // Already completed? Not the next step
+    if (
+      (current.type === "content" && isModuleCompleted(sectionId, current.id)) ||
+      (current.type === "quiz" && isQuizCompleted(sectionId, current.relatedModuleId, current.quizType))
+    ) {
+      return false
     }
-
-    // For module 1.1 quiz (index 1 in section 1), check if module 1.1 content is completed but quiz isn't
-    if (sectionId === 1 && moduleIndex === 1) {
-      const module1Completed = isModuleCompleted(1, 1)
-      const quiz1Completed = isQuizCompleted(1, 1, "mixed")
-      return module1Completed && !quiz1Completed
+  
+    // First module in the course? It's the next step
+    if (moduleIndex === 0) return true
+  
+    // If this is a quiz, unlock it when related content is completed
+    if (current.type === "quiz") {
+      return isModuleCompleted(sectionId, current.relatedModuleId)
     }
-
-    // For module 1.2 (index 2 in section 1), check if module 1.1 and its quiz are completed with score >= 80%
-    if (sectionId === 1 && moduleIndex === 2) {
-      const module1Completed = isModuleCompleted(1, 1)
-      const quiz1Completed = isQuizCompleted(1, 1, "mixed")
-      const quiz1Score = getQuizScore(1, 1, "mixed")
-      return module1Completed && quiz1Completed && quiz1Score >= 80 && !isModuleCompleted(1, 2)
+  
+    // If this is a content module, unlock it when previous quiz is passed (score >= 80)
+    if (current.type === "content" && prev && prev.type === "quiz") {
+      const quizPassed =
+        isQuizCompleted(sectionId, prev.relatedModuleId, prev.quizType) &&
+        getQuizScore(sectionId, prev.relatedModuleId, prev.quizType) >= 80
+      return quizPassed
     }
-
-    // For module 1.2 recall quiz (index 3 in section 1), check if module 1.2 is completed but quiz isn't
-    if (sectionId === 1 && moduleIndex === 3) {
-      const module2Completed = isModuleCompleted(1, 2)
-      const quiz2RecallCompleted = isQuizCompleted(1, 2, "recall")
-      return module2Completed && !quiz2RecallCompleted
+  
+    // If this is a content module and previous was content, unlock if previous is completed
+    if (current.type === "content" && prev && prev.type === "content") {
+      return isModuleCompleted(sectionId, prev.id)
     }
-
-    // For module 1.2 application quiz (index 4 in section 1), check if recall quiz is completed with score >= 80%
-    if (sectionId === 1 && moduleIndex === 4) {
-      const recallQuizCompleted = isQuizCompleted(1, 2, "recall")
-      const recallQuizScore = getQuizScore(1, 2, "recall")
-      const applicationQuizCompleted = isQuizCompleted(1, 2, "application")
-      return recallQuizCompleted && recallQuizScore >= 80 && !applicationQuizCompleted
-    }
-
-    // For other sections, handle the same pattern
-    if (sectionId > 1) {
-      // For first content module in a section
-      if (moduleIndex === 0) {
-        return !isModuleCompleted(sectionId, section.modules[0].id)
-      }
-
-      // For quiz after content module
-      if (moduleIndex % 2 === 1) {
-        // Odd indices are quizzes in sections 2 and 3
-        const relatedContentIndex = moduleIndex - 1
-        const contentModule = section.modules[relatedContentIndex]
-        if (contentModule && contentModule.type === "content") {
-          const contentCompleted = isModuleCompleted(sectionId, contentModule.id)
-          const quizCompleted = isQuizCompleted(
-            sectionId,
-            contentModule.id,
-            section.modules[moduleIndex].quizType || "mixed",
-          )
-          return contentCompleted && !quizCompleted
-        }
-      }
-
-      // For content module after quiz
-      if (moduleIndex % 2 === 0 && moduleIndex > 0) {
-        // Even indices > 0 are content modules in sections 2 and 3
-        const prevQuizIndex = moduleIndex - 1
-        const prevQuiz = section.modules[prevQuizIndex]
-        if (prevQuiz && prevQuiz.type === "quiz") {
-          const prevContentModule = section.modules[moduleIndex - 2]
-          const quizCompleted = isQuizCompleted(sectionId, prevContentModule.id, prevQuiz.quizType || "mixed")
-          const contentCompleted = isModuleCompleted(sectionId, section.modules[moduleIndex].id)
-          return quizCompleted && !contentCompleted
-        }
-      }
-    }
-
+  
     return false
   }
 
