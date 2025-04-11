@@ -421,15 +421,15 @@ const Courses = () => {
     }
   
   
-    // Update the isNextStep function to correctly identify the next step in the learning path
-    const isNextStep = (sectionId, moduleIndex) => {
+const isNextStep = (sectionId, moduleIndex) => {
   const section = steps.find((s) => s.id === sectionId)
   if (!section) return false
 
   const modules = section.modules
   const current = modules[moduleIndex]
   const prev = modules[moduleIndex - 1]
-  }
+
+  if (!current) return false
 
   // Already completed? Not the next step
   if (
@@ -438,30 +438,26 @@ const Courses = () => {
   ) {
     return false
   }
-  
-    // First module in the course? It's the next step
-    if (moduleIndex === 0) return true
-  
-    // If this is a quiz, unlock it when related content is completed
-    if (current.type === "quiz") {
-      return isModuleCompleted(sectionId, current.relatedModuleId)
-    }
-  
-    // If this is a content module, unlock it when previous quiz is passed (score >= 80)
-    if (current.type === "content" && prev && prev.type === "quiz") {
-      const quizPassed =
-        isQuizCompleted(sectionId, prev.relatedModuleId, prev.quizType) &&
-        getQuizScore(sectionId, prev.relatedModuleId, prev.quizType) >= 80
-      return quizPassed
-    }
-  
-    // If this is a content module and previous was content, unlock if previous is completed
-    if (current.type === "content" && prev && prev.type === "content") {
-      return isModuleCompleted(sectionId, prev.id)
-    }
-  
-    return false
+
+  if (moduleIndex === 0) return true
+
+  if (current.type === "quiz") {
+    return isModuleCompleted(sectionId, current.relatedModuleId)
   }
+
+  if (current.type === "content" && prev && prev.type === "quiz") {
+    return (
+      isQuizCompleted(sectionId, prev.relatedModuleId, prev.quizType) &&
+      getQuizScore(sectionId, prev.relatedModuleId, prev.quizType) >= 80
+    )
+  }
+
+  if (current.type === "content" && prev && prev.type === "content") {
+    return isModuleCompleted(sectionId, prev.id)
+  }
+
+  return false
+}
 
 
   return (
