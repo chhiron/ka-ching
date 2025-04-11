@@ -263,11 +263,7 @@ const CourseContent = () => {
         ),
       },
 
-      {
-        title: "Quiz: Start with your Why",
-        type: "quiz",
-        quizKey: "1.1", // step.module.contentIndex
-      },
+      
     ],
     // SECTION 1 MODULE 2
     [
@@ -277,11 +273,7 @@ const CourseContent = () => {
         type: "content",
         content: <div>/* Add your lesson content here */</div>,
       },
-      {
-        title: "Quiz: What is a stock",
-        type: "quiz",
-        quizKey: "1.2",
-      },
+      
     ],
     // SECTION 1 MODULE 3
     [
@@ -290,11 +282,7 @@ const CourseContent = () => {
         type: "content",
         content: <div>/* Add your lesson content here */</div>,
       },
-      {
-        title: "Quiz: Meet the Markets",
-        type: "quiz",
-        quizKey: "1.3",
-      },
+      
     ],
     // SECTION 1 MODULE 4
     [
@@ -303,11 +291,7 @@ const CourseContent = () => {
         type: "content",
         content: <div>/* Add your lesson content here */</div>,
       },
-      {
-        title: "Primary Market",
-        type: "quiz",
-        quizKey: "1.4",
-      },
+      
     ],
     // SECTION 1 MODULE 5
     [
@@ -316,11 +300,7 @@ const CourseContent = () => {
         type: "content",
         content: <div>/* Add your lesson content here */</div>,
       },
-      {
-        title: "Quiz: Secondary Market",
-        type: "quiz",
-        quizKey: "1.5",
-      },
+      
     ],
     // SECTION 1 MODULE 5
     [
@@ -329,11 +309,7 @@ const CourseContent = () => {
         type: "content",
         content: <div>/* Add your lesson content here */</div>,
       },
-      {
-        title: "Quiz: Going Public with IPO",
-        type: "quiz",
-        quizKey: "1.6",
-      },
+      
     ],
   
     // SECTION 2 MODULE 1
@@ -346,7 +322,7 @@ const CourseContent = () => {
       {
         title: "Quiz: Investment Vehicles",
         type: "quiz",
-        quizKey: "2.1",
+        quizKey: "2.1.0",
       },
   
       // Add more sections as needed
@@ -356,12 +332,220 @@ const CourseContent = () => {
   // Quiz data matching quizKey format
   const quizData = {
     "1.1": [
+      {
+        
+    question: "What investment strategy best fits a goal of retirement in 30 years?",
+    options: [
+      "Low risk, high liquidity",
+      "Balanced risk, medium liquidity",
+      "Higher risk tolerance, low liquidity",
+      "Short-term savings account",
+    ],
+    correctAnswer: 2,
+    feedback: [
+      "This approach is more suitable for short-term goals. Retirement in 30 years allows for a longer time horizon and more investment risk.",
+      "Balanced risk works well for mid-term goals like college savings, but for a 30-year retirement plan, you can typically afford to take on more risk.",
+      "Correct! A long-term goal like retirement allows for higher risk tolerance and investments that may be less liquid but offer greater growth potential over time.",
+      "A short-term savings account is useful for emergencies or near-future needs—not long-term growth like retirement.",
+    ],
+  },
+  {
+    question: "Which investment strategy fits best for someone buying a house next year?",
+    options: [
+      "Low risk, high liquidity",
+      "Higher risk tolerance, low liquidity",
+      "Balanced risk, medium liquidity",
+      "Investing in real estate stocks",
+    ],
+    correctAnswer: 0,
+    feedback: [
+      "Correct! Since you're planning to use the money in a year, your investment should be easily accessible and low-risk to avoid potential losses.",
+      "This approach is too risky for a short-term goal. There's not enough time to recover from market volatility.",
+      "Balanced risk works better for goals 5–10 years away. In this case, it's safer to prioritize capital preservation.",
+      "Investing in real estate stocks may seem related, but they can be volatile and don't provide the liquidity or safety needed for a short-term goal like buying a house next year.",
+    ],
+  },
+  {
+    question: "You’re saving for your child’s college fund in 10 years. What strategy fits best?",
+    options: [
+      "High risk, low liquidity",
+      "Low risk, high liquidity",
+      "Balanced risk, medium liquidity",
+      "Short-term government bonds",
+    ],
+    correctAnswer: 2,
+    feedback: [
+      "Ten years gives some time to grow, but not enough for very high-risk investments that may fluctuate widely.",
+      "This is better for very short-term or emergency goals. You have more time and can afford moderate risk.",
+      "Correct! A 10-year time horizon allows for a balanced approach—some growth potential, some safety, and moderate liquidity.",
+      "Short-term government bonds are generally lower risk and more appropriate for goals less than 5 years away.",
+    ],
+  },
+  {
+    question: "What strategy is most suitable for building an emergency fund?",
+    options: [
+      "Low risk, high liquidity",
+      "High risk, low liquidity",
+      "Balanced risk, medium liquidity",
+      "Investing in long-term index funds",
+    ],
+    correctAnswer: 0,
+    feedback: [
+      "Correct! Emergency funds need to be safe and accessible, so low risk and high liquidity are key.",
+      "This is too risky and doesn't provide quick access to cash—bad fit for emergencies.",
+      "Balanced risk is still too risky for an emergency fund, which needs to be available immediately and reliably.",
+      "Long-term index funds are great for retirement or wealth-building, but not suitable for emergencies when funds may be needed right away.",
+    ],
+      },
       /* Quiz questions for Investing Basics */
     ],
     "1.2": [
-      /* Quiz questions for Types of Stocks */
+      { question: "Which of these is an example of capital appreciation?",
+        options: [
+          "Company pays you SGD 1 per share",
+          "You sell a stock at a higher price than you bought it",
+          "You receive a dividend from the company",
+          "You hold the stock for over 5 years",
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "This is a dividend, not capital appreciation. Capital appreciation happens when the price of your stock increases.",
+          "Correct! Capital appreciation means the stock's value has increased since you bought it, and you gain by selling at a higher price.",
+          "Dividends are payments from company profits, not appreciation of value.",
+          "Holding for a long time doesn't guarantee capital appreciation. The stock has to increase in value.",
+        ],
+      },
+      {
+        question: "What does owning a stock represent?",
+        options: [
+          "You are lending money to the company",
+          "You own a part of the company",
+          "You’re entitled to guaranteed returns",
+          "You work for the company",
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "That describes a bond. Stocks represent ownership, not a loan.",
+          "Correct! When you own a stock, you're a part-owner (shareholder) of the company.",
+          "There are no guaranteed returns with stocks. Values can fluctuate.",
+          "Owning stock does not mean you’re employed by the company—it just makes you a shareholder.",
+        ],
+      },
+      {
+        question: "What is a dividend?",
+        options: [
+          "A payment to stockholders from the company’s profits",
+          "A type of loan you give to a company when buying stock",
+          "The profit you earn from selling a stock",
+          "A penalty for holding a stock too long",
+        ],
+        correctAnswer: 0,
+        feedback: [
+          "Correct! A dividend is a portion of a company’s profits shared with shareholders, usually in cash or additional shares.",
+          "Stocks are not loans—bonds are. Buying stock makes you a part-owner, not a lender.",
+          "That’s capital appreciation, not a dividend.",
+          "There are no penalties for long-term investing. This is incorrect.",
+        ],
+      },
+      {
+        question: "What is an example of capital appreciation?",
+        options: [
+          "You receive a cash payment from the company",
+          "The value of your stock increases over time",
+          "You receive a bonus stock dividend",
+          "The company announces a share buyback",
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "That’s a dividend, not appreciation.",
+          "Correct! Capital appreciation is when the stock's price rises, increasing the value of your investment.",
+          "Stock dividends are additional shares, not necessarily an increase in value.",
+          "A share buyback can affect stock price, but it's not in itself capital appreciation.",
+        ],
+      },
+      /* Quiz questions for what is a stock */
     ],
     "1.3": [
+      {
+        question: "What is the main function of a stock exchange?",
+        options: [
+          "To create new companies",
+          "To match buyers and sellers of stocks via brokers",
+          "To lend money to investors",
+          "To manage company payroll",
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Stock exchanges don’t create companies—they provide a platform for trading shares of existing companies.",
+          "Correct! Stock exchanges act like auction houses, matching buyers and sellers of stocks through online brokers.",
+          "Stock exchanges don’t lend money. That’s a function of banks or lending institutions.",
+          "Payroll is managed internally by companies, not by the exchange.",
+        ],
+      },
+      {
+        question: "Which of the following are the two largest stock exchanges in the world?",
+        options: [
+          "SGX and SSE",
+          "Nasdaq and NYSE",
+          "LSE and TSX",
+          "ASX and BSE",
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "SGX (Singapore) and SSE (Shanghai) are important, but not the largest globally.",
+          "Correct! Nasdaq and NYSE are the two largest stock exchanges in the world, both based in the US.",
+          "The London and Toronto exchanges are large, but not as large as NYSE and Nasdaq.",
+          "ASX (Australia) and BSE (India) are regional leaders, not global ones.",
+        ],
+      },
+      {
+        question: "Which stock exchange is best known for tech companies like Apple, Microsoft, and Tesla?",
+        options: [
+          "NYSE",
+          "Nasdaq",
+          "SGX",
+          "LSE",
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "NYSE is known for more mature, traditional companies.",
+          "Correct! Nasdaq is home to many major tech companies and is known for being tech-focused.",
+          "SGX is Singapore’s exchange and doesn’t specialize in tech.",
+          "LSE (London Stock Exchange) is a major international exchange but not known for tech dominance.",
+        ],
+      },
+      {
+        question: "What is the NYSE best known for?",
+        options: [
+          "Emerging tech startups",
+          "Singapore-based companies",
+          "Mature, traditional, and industrial companies",
+          "Cryptocurrency trading",
+        ],
+        correctAnswer: 2,
+        feedback: [
+          "Tech startups are more commonly listed on Nasdaq.",
+          "Singapore-based companies are typically listed on SGX.",
+          "Correct! The NYSE is known for listing large, established companies in traditional industries.",
+          "Cryptocurrency trading happens on separate crypto exchanges, not the NYSE.",
+        ],
+      },
+      {
+        question: "Which exchange is based in Singapore?",
+        options: [
+          "Nasdaq",
+          "NYSE",
+          "SGX",
+          "SSE",
+        ],
+        correctAnswer: 2,
+        feedback: [
+          "Nasdaq is based in the United States.",
+          "NYSE is also a US-based exchange.",
+          "Correct! SGX stands for Singapore Exchange and is based in Singapore.",
+          "SSE refers to the Shanghai Stock Exchange in China.",
+        ],
+      },
       /* Quiz questions for Market Cap */
     ],
     "1.4": [
