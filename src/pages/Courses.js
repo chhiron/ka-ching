@@ -187,7 +187,7 @@ const Courses = () => {
         },
         {
           id: "6q",
-          title: "What is a stock: Recall Quiz",
+          title: "Going Public: IPO Recall Quiz",
           type: "quiz",
           quizType: "mixed",
           relatedModuleId: 6,
