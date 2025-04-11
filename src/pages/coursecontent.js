@@ -240,7 +240,7 @@ const CourseContent = () => {
 
   // Content sections for each module
   const moduleContent = [
-    // SECTION 1
+    // SECTION 1 MODULE 1
     [
       {
         title: "Start with your Why",
@@ -262,11 +262,15 @@ const CourseContent = () => {
         </div>
         ),
       },
+
       {
         title: "Quiz: Start with your Why",
         type: "quiz",
         quizKey: "1.1", // step.module.contentIndex
       },
+    ],
+    // SECTION 1 MODULE 2
+    [
   
       {
         title: "What is a Stock?",
@@ -278,7 +282,9 @@ const CourseContent = () => {
         type: "quiz",
         quizKey: "1.2",
       },
-  
+    ],
+    // SECTION 1 MODULE 3
+    [
       {
         title: "Meet the Markets",
         type: "content",
@@ -289,6 +295,9 @@ const CourseContent = () => {
         type: "quiz",
         quizKey: "1.3",
       },
+    ],
+    // SECTION 1 MODULE 4
+    [
       {
         title: "Primary Market",
         type: "content",
@@ -299,7 +308,9 @@ const CourseContent = () => {
         type: "quiz",
         quizKey: "1.4",
       },
-  
+    ],
+    // SECTION 1 MODULE 5
+    [
       {
         title: "Secondary Market",
         type: "content",
@@ -310,6 +321,9 @@ const CourseContent = () => {
         type: "quiz",
         quizKey: "1.5",
       },
+    ],
+    // SECTION 1 MODULE 5
+    [
       {
         title: "Going Public with IPO",
         type: "content",
@@ -322,7 +336,7 @@ const CourseContent = () => {
       },
     ],
   
-    // SECTION 2
+    // SECTION 2 MODULE 1
     [
       {
         title: "Investment Vehicles",
@@ -332,7 +346,7 @@ const CourseContent = () => {
       {
         title: "Quiz: Investment Vehicles",
         type: "quiz",
-        quizKey: "2.1.0",
+        quizKey: "2.1",
       },
   
       // Add more sections as needed
@@ -341,17 +355,26 @@ const CourseContent = () => {
   
   // Quiz data matching quizKey format
   const quizData = {
-    "1.1.0": [
+    "1.1": [
       /* Quiz questions for Investing Basics */
     ],
-    "1.1.1": [
+    "1.2": [
       /* Quiz questions for Types of Stocks */
     ],
-    "1.1.2": [
+    "1.3": [
       /* Quiz questions for Market Cap */
     ],
-    "2.1.0": [
+    "1.4": [
       /* Quiz for Investment Vehicles */
+    ],
+    "1.5": [
+      /* Quiz questions for Investing Basics */
+    ],
+    "1.6": [
+      /* Quiz questions for Investing Basics */
+    ],
+    "2.1": [
+      /* Quiz questions for Investing Basics */
     ],
   }
   
