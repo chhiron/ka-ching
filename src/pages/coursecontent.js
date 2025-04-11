@@ -423,12 +423,186 @@ const CourseContent = () => {
       },
       
     ],
-    // SECTION 1 MODULE 5
+    // SECTION 1 MODULE 6
     [
       {
         title: "Going Public with IPO",
         type: "content",
-        content: <div>/* Add your lesson content here */</div>,
+        content: (
+          <div style={{ border: "1px solid #ccc", borderRadius: "10px", padding: "1.5rem", maxWidth: "600px" }}>
+            <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>🚀 How Companies Sell Stocks</h3>
+            <p style={{ marginBottom: "1rem" }}>
+              To sell stocks, a company must go public via an <strong>IPO</strong> (Initial Public Offering). The process includes:
+            </p>
+            <ol style={{ paddingLeft: "1.2rem", listStyleType: "decimal", lineHeight: "1.6" }}>
+              <li>🏢 A private company decides to go public to raise money.</li>
+              <li>💼 It works with investment banks to set an initial stock price.</li>
+              <li>🏦 The stock is offered to institutional investors first.</li>
+              <li>📈 Once trading begins, anyone can buy shares on the open market.</li>
+            </ol>
+          </div>
+        ),
+      },
+      
+    ],
+
+    //SECTION 1 MODULE 7
+
+    [
+      {
+        title: "Common vs Preferred Stock",
+        type: "content",
+        content: (
+          <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap" }}>
+            {/* Common Stock */}
+            <div style={{ flex: "1", minWidth: "280px", border: "1px solid #ccc", borderRadius: "10px", padding: "1rem" }}>
+              <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "0.5rem" }}>📈 Common Stock</h3>
+              <p><strong>What:</strong> The most typical stock</p>
+              <p>
+                <strong>🎯 Perks:</strong>{" "}
+                <span title="Gives shareholders the ability to vote on major company decisions" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                  Voting rights
+                </span>{" "}
+                and potential for{" "}
+                <span title="When a stock increases in value over time" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                  capital appreciation
+                </span>.
+              </p>
+              <p><strong>👤 Best for:</strong></p>
+              <ul style={{ paddingLeft: "1.2rem", listStyleType: "disc" }}>
+                <li>Long-term investors</li>
+                <li>Those seeking <span title="Increase in the value of your investment over time" style={{ textDecoration: "underline dotted", cursor: "help" }}>capital appreciation</span></li>
+                <li>
+                  <span title="Comfortable with higher price swings and potential losses for long-term gain" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                    Risk-tolerant
+                  </span>{" "}
+                  investors
+                </li>
+              </ul>
+            </div>
+        
+            {/* Preferred Stock */}
+            <div style={{ flex: "1", minWidth: "280px", border: "1px solid #ccc", borderRadius: "10px", padding: "1rem" }}>
+              <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "0.5rem" }}>💰 Preferred Stock</h3>
+              <p><strong>What:</strong> A stock with more{" "}
+                <span title="Regular income payments made to shareholders, like interest" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                  yields
+                </span>{" "}
+                and fewer rights
+              </p>
+              <p>
+                <strong>🎯 Perks:</strong> Priority when it comes to receiving dividends, but no{" "}
+                <span title="No ability to vote on major company matters like mergers or board elections" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                  voting rights
+                </span>.
+              </p>
+              <p><strong>👤 Best for:</strong></p>
+              <ul style={{ paddingLeft: "1.2rem", listStyleType: "disc" }}>
+                <li>Medium to long-term investors</li>
+                <li>Those seeking stable income from dividends</li>
+                <li>
+                  <span title="Prefers steady returns with lower volatility and lower risk" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                    Risk-averse
+                  </span>{" "}
+                  individuals
+                </li>
+              </ul>
+            </div>
+          </div>
+        )        
+        ,
+      },
+      
+    ],
+
+    //SECTION 1 MODULE 8
+    [
+      {
+        title: "Market Capitalization",
+        type: "content",
+        content: (
+          <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
+            {/* Large Cap */}
+            <div style={{ flex: "1", minWidth: "240px", border: "1px solid #ccc", borderRadius: "10px", padding: "1rem" }}>
+              <h4 style={{ fontSize: "1.1rem", fontWeight: "bold", marginBottom: "0.5rem" }}>🏢 Large Cap</h4>
+              <ul style={{ paddingLeft: "1.2rem", listStyleType: "disc" }}>
+                <li>💰 USD 10 billion or more</li>
+                <li>🏛️ Big, stable companies</li>
+                <li>🛡️ Low risk, steady returns</li>
+                <li>🏭 Typically in established industries</li>
+              </ul>
+            </div>
+        
+            {/* Mid Cap */}
+            <div style={{ flex: "1", minWidth: "240px", border: "1px solid #ccc", borderRadius: "10px", padding: "1rem" }}>
+              <h4 style={{ fontSize: "1.1rem", fontWeight: "bold", marginBottom: "0.5rem" }}>📈 Mid Cap</h4>
+              <ul style={{ paddingLeft: "1.2rem", listStyleType: "disc" }}>
+                <li>💵 USD 2 to 10 billion</li>
+                <li>🏢 Medium-sized companies</li>
+                <li>⚖️ Balanced risk and growth</li>
+                <li>🌱 In growth-oriented industries</li>
+              </ul>
+            </div>
+        
+            {/* Small Cap */}
+            <div style={{ flex: "1", minWidth: "240px", border: "1px solid #ccc", borderRadius: "10px", padding: "1rem" }}>
+              <h4 style={{ fontSize: "1.1rem", fontWeight: "bold", marginBottom: "0.5rem" }}>🌟 Small Cap</h4>
+              <ul style={{ paddingLeft: "1.2rem", listStyleType: "disc" }}>
+                <li>💸 USD 250 million – 2 billion</li>
+                <li>🏗️ Smaller companies</li>
+                <li>🎢 Higher risk, higher potential returns</li>
+                <li>🧪 Often in niche or emerging sectors</li>
+              </ul>
+            </div>
+          </div>
+        )
+        ,
+      },
+      
+    ],
+
+    //SECTION 1 MODULE 9
+    [
+      {
+        title: "Market Cap Categories",
+        type: "content",
+        content: (
+          <div style={{ border: "1px solid #ccc", borderRadius: "10px", padding: "1.5rem", maxWidth: "600px" }}>
+            <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>🚀 How Companies Sell Stocks</h3>
+            <p style={{ marginBottom: "1rem" }}>
+              To sell stocks, a company must go public via an <strong>IPO</strong> (Initial Public Offering). The process includes:
+            </p>
+            <ol style={{ paddingLeft: "1.2rem", listStyleType: "decimal", lineHeight: "1.6" }}>
+              <li>🏢 A private company decides to go public to raise money.</li>
+              <li>💼 It works with investment banks to set an initial stock price.</li>
+              <li>🏦 The stock is offered to institutional investors first.</li>
+              <li>📈 Once trading begins, anyone can buy shares on the open market.</li>
+            </ol>
+          </div>
+        ),
+      },
+      
+    ],
+
+    //SECTION 1 MODULE 10
+    [
+      {
+        title: "Divdend, Value, Growth Stocks",
+        type: "content",
+        content: (
+          <div style={{ border: "1px solid #ccc", borderRadius: "10px", padding: "1.5rem", maxWidth: "600px" }}>
+            <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>🚀 How Companies Sell Stocks</h3>
+            <p style={{ marginBottom: "1rem" }}>
+              To sell stocks, a company must go public via an <strong>IPO</strong> (Initial Public Offering). The process includes:
+            </p>
+            <ol style={{ paddingLeft: "1.2rem", listStyleType: "decimal", lineHeight: "1.6" }}>
+              <li>🏢 A private company decides to go public to raise money.</li>
+              <li>💼 It works with investment banks to set an initial stock price.</li>
+              <li>🏦 The stock is offered to institutional investors first.</li>
+              <li>📈 Once trading begins, anyone can buy shares on the open market.</li>
+            </ol>
+          </div>
+        ),
       },
       
     ],
@@ -436,18 +610,103 @@ const CourseContent = () => {
     // SECTION 2 MODULE 1
     [
       {
-        title: "Investment Vehicles",
+        title: "Introduction to Fundamental Analysis I",
         type: "content",
-        content: <div>/* Add your lesson content here */</div>,
-      },
-      {
-        title: "Quiz: Investment Vehicles",
-        type: "quiz",
-        quizKey: "2.1.0",
+        content: (
+          <div style={{ border: "1px solid #ccc", borderRadius: "10px", padding: "1.5rem", maxWidth: "700px" }}>
+            <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>🔍 Fundamental Analysis</h3>
+            <p style={{ marginBottom: "1rem" }}>
+              Fundamental analysis looks at both the{" "}
+              <span title="Financial data such as revenue, profits, and ratios" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                quantitative
+              </span>{" "}
+              (numbers) and{" "}
+              <span title="Non-financial factors like brand strength, leadership, or market trends" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                qualitative
+              </span>{" "}
+              (story) aspects of a company to help investors determine the{" "}
+              <span title="What the stock is actually worth based on its fundamentals, not market price" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                intrinsic value
+              </span>{" "}
+              of a stock — in other words, to decide if the company is worth more than its current price.
+            </p>
+            <p>
+              This approach is best suited for investors with a{" "}
+              <span title="A time horizon typically ranging from several months to years" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                mid-to-long-term
+              </span>{" "}
+              investment horizon.
+            </p>
+          </div>
+        ),
       },
   
-      // Add more sections as needed
+      
     ],
+    //SECTION 2 MODULE 2
+    [
+      {
+        title: "Introduction to Fundamental Analysis II",
+        type: "content",
+        content: (
+          (
+            <div style={{ border: "1px solid #ccc", borderRadius: "10px", padding: "1.5rem", maxWidth: "750px" }}>
+              <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>🧥 Thrift Store Analogy: Understanding Value</h3>
+          
+              <p style={{ marginBottom: "1rem" }}>
+                Think of <strong>Fundamental Analysis</strong> like shopping at a thrift store. You’re not just looking at the price tag—
+                you’re evaluating the item’s <em>quality</em>, <em>brand</em>, and <em>condition</em> to decide if it’s worth more than what the price suggests.
+              </p>
+          
+              <p style={{ marginBottom: "1rem" }}>
+                For example, imagine a vintage leather jacket priced at <strong>$10</strong>. After inspecting it, you realize it’s a
+                high-end brand, in excellent condition, and rare. You’d know this item is{" "}
+                <span title="When something is selling for less than what it's truly worth" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                  undervalued
+                </span>{" "}
+                and likely a great buy.
+              </p>
+          
+              <p style={{ marginBottom: "1rem" }}>
+                Similarly, in the stock market, if the{" "}
+                <span title="What the stock is truly worth based on analysis" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                  fair market value
+                </span>{" "}
+                (or{" "}
+                <span title="Another term for fair market value based on financial fundamentals" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                  intrinsic value
+                </span>
+                ) is higher than the{" "}
+                <span title="The price you see on the stock exchange" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                  market price
+                </span>
+                , the stock is undervalued — and analysts may issue a <strong>buy</strong> recommendation.
+              </p>
+          
+              <p style={{ marginBottom: "1rem" }}>
+                On the other hand, imagine spotting a worn-out t-shirt for <strong>$40</strong> with no brand and little appeal.
+                You’d know it’s{" "}
+                <span title="When something is priced higher than its actual worth" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                  overvalued
+                </span>{" "}
+                and not worth the price. In investing, that would likely lead to a <strong>sell (short)</strong> recommendation.
+              </p>
+          
+              <p style={{ fontStyle: "italic", fontSize: "0.95rem", color: "#555" }}>
+                💡 Note: <strong>Fair market value</strong> is also known as{" "}
+                <span title="The true value of a stock based on analysis of its business fundamentals" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                  intrinsic value
+                </span>
+                .
+              </p>
+            </div>
+          )
+          
+        ),
+      } 
+    ],
+    //Add more sections as needed
+
   ]
   
   // Quiz data matching quizKey format
@@ -670,16 +929,586 @@ const CourseContent = () => {
       /* Quiz questions for Market Cap */
     ],
     "1.4.mixed": [
-      /* Quiz for Investment Vehicles */
+      {
+        question: "What is the Primary Market?",
+        options: [
+          "Where existing stocks are traded between investors",
+          "Where new stocks are sold for the first time",
+          "Where dividends are distributed"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "That's the Secondary Market, not the Primary Market.",
+          "Correct! The Primary Market is where new stocks are issued and sold for the first time.",
+          "Dividends are part of company profits, not how stocks are initially sold."
+        ]
+      },
+      {
+        question: "Who receives the money when you buy a stock in the Primary Market?",
+        options: [
+          "Another investor",
+          "The government",
+          "The company issuing the stock"
+        ],
+        correctAnswer: 2,
+        feedback: [
+          "That happens in the Secondary Market, not the Primary.",
+          "Governments don’t receive stock sale proceeds unless it's a public enterprise IPO.",
+          "Correct! In the Primary Market, the money goes directly to the company."
+        ]
+      },
+
+      {
+        question: "What does a public offering allow?",
+        options: [
+          "Only private investors can buy the stock",
+          "Anyone can buy the stock",
+          "Only institutions can trade the stock"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "You're thinking of a private offering — not public.",
+          "Correct! Public offerings are open to everyone, including individual investors.",
+          "This applies to private offerings, not public ones."
+        ]
+      },    
+      {
+        question: "What is one requirement for a public offering?",
+        options: [
+          "IPO (Initial Public Offering)",
+          "SEC exemption",
+          "Dividend declaration"
+        ],
+        correctAnswer: 0,
+        feedback: [
+          "Correct! A public offering requires an IPO to be launched.",
+          "That's more typical of private offerings, which avoid some SEC steps.",
+          "Dividends aren't required for stock offerings."
+        ]
+      },
+      {
+        question: "Which is true about private offerings?",
+        options: [
+          "Open to all investors",
+          "Faster and has fewer rules",
+          "Requires an IPO"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "That describes a public offering, not private.",
+          "Correct! Private offerings are typically quicker and less regulated.",
+          "Private offerings don't require IPOs — that's for public offerings."
+        ]
+      }
+      
+      
+      
     ],
     "1.5.mixed": [
-      /* Quiz questions for Investing Basics */
+      {
+        question: "What is the Secondary Market?",
+        options: [
+          "Where new stocks are issued for the first time",
+          "Where stocks are bought and sold between investors",
+          "Where companies raise money directly"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "That's the Primary Market, not the Secondary Market.",
+          "Correct! The Secondary Market is where investors trade existing stocks with each other.",
+          "In the Secondary Market, the company doesn't receive money — investors trade with one another."
+        ]
+      },
+      {
+        question: "Who receives the money when a stock is traded in the Secondary Market?",
+        options: [
+          "The company",
+          "An investor selling the stock",
+          "The stock exchange"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "That only happens in the Primary Market.",
+          "Correct! In the Secondary Market, the seller — another investor — receives the money.",
+          "Exchanges charge fees but do not receive the trade amount."
+        ]
+      },
+      {
+        question: "What is a key function of the Secondary Market?",
+        options: [
+          "Determining the stock’s market price",
+          "Helping companies issue shares",
+          "Providing dividend schedules"
+        ],
+        correctAnswer: 0,
+        feedback: [
+          "Correct! Ongoing trading helps determine what investors are willing to pay — the market price.",
+          "That happens in the Primary Market during issuance.",
+          "Dividends are decided by companies, not market structure."
+        ]
+      },
+      {
+        question: "How is an Auction Market different from a Dealer Market?",
+        options: [
+          "An aution market involves trading through a middleman",
+          "In an auction market, buyers and sellers trade directly",
+          "In an auction market, prices are set by the company"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "That's how Dealer Markets work (via market makers).",
+          "Correct! In Auction Markets like the NYSE, buyers and sellers are matched directly.",
+          "Prices are determined by the market — not the company."
+        ]
+      }           
+
+      
     ],
     "1.6.mixed": [
-      /* Quiz questions for Investing Basics */
+      {
+        question: "What does a company need to do to sell stocks?",
+        options: [
+          "Open a bank account",
+          "Go public via an IPO",
+          "Buy other companies"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Opening a bank account is not part of the stock offering process.",
+          "Correct! A company must go public through an IPO to sell its shares to the public.",
+          "Buying other companies is unrelated to going public or selling shares."
+        ]
+      },
+      {
+        question: "What does a company need to do to sell stocks?",
+        options: [
+          "Open a bank account",
+          "Go public via an IPO",
+          "Buy other companies"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Opening a bank account is not part of the stock offering process.",
+          "Correct! A company must go public through an IPO to sell its shares to the public.",
+          "Buying other companies is unrelated to going public or selling shares."
+        ]
+      },
+      {
+        question: "Who is offered the stock first during an IPO?",
+        options: [
+          "Anyone who wants to buy it",
+          "Institutional investors",
+          "Local government"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Public investors can buy after trading opens, but institutional investors get first access.",
+          "Correct! Institutional investors are typically offered shares first in an IPO.",
+          "Local governments aren’t involved in the distribution of stock during an IPO."
+        ]
+      },
+      {
+        question: "What is the main reason a company decides to go public?",
+        options: [
+          "To make its products more popular",
+          "To avoid paying taxes",
+          "To raise money"
+        ],
+        correctAnswer: 2,
+        feedback: [
+          "Going public may increase visibility, but the main goal is funding.",
+          "Companies still pay taxes after going public.",
+          "Correct! The primary reason for going public is to raise capital for growth."
+        ]
+      }
+        
     ],
-    "2.1.0": [
-      /* Quiz questions for Investing Basics */
+    "1.7.mixed": [
+      {
+        question: "What is the key perk of Common Stock?",
+        options: [
+          "Priority dividends",
+          "Voting rights and potential for growth",
+          "Guaranteed fixed returns",
+          "No voting rights"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "That’s a perk of Preferred Stock, not Common Stock.",
+          "Correct! Common stockholders usually have voting rights and the potential for capital appreciation.",
+          "Common Stock doesn't offer fixed returns — returns depend on performance.",
+          "Incorrect. Common stock usually comes with voting rights."
+        ]
+      },
+      {
+        question: "Who is Preferred Stock best suited for?",
+        options: [
+          "Long-term investors looking for growth",
+          "Investors seeking more stable income through dividends",
+          "Those looking to vote on company decisions",
+          "Short-term traders looking for quick profits"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Preferred Stock is better for income than long-term growth.",
+          "Correct! It offers steady dividend income and is ideal for stability-focused investors.",
+          "Preferred Stock usually doesn’t come with voting rights.",
+          "Preferred Stock is not meant for short-term trading or speculation."
+        ]
+      },
+      {
+        question: "What is the main difference between Common Stock and Preferred Stock?",
+        options: [
+          "Preferred Stock gives voting rights, Common Stock does not",
+          "Preferred Stock offers priority in dividends, Common Stock does not",
+          "Common Stock guarantees fixed income",
+          "Preferred Stock is riskier than Common Stock"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Common Stock has voting rights, not Preferred.",
+          "Correct! Preferred shareholders receive dividends before Common shareholders.",
+          "There’s no fixed income in Common Stock — it depends on company performance.",
+          "Preferred Stock is typically less risky because of steady dividend payments."
+        ]
+      },
+      {
+        question: "Which of the following is true about the time horizon of Preferred Stock?",
+        options: [
+          "Preferred Stock is best for short-term investors",
+          "Preferred Stock is best for medium to long-term investors seeking stability",
+          "Preferred Stock is only for day traders",
+          "Preferred Stock has no time horizon"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Preferred Stock is not designed for short-term gains.",
+          "Correct! It suits medium to long-term investors who value steady income and lower volatility.",
+          "Preferred Stock is not used for day trading — it’s not volatile enough.",
+          "All investments have a time horizon depending on the goal. This is too vague to be true."
+        ]
+      },
+      {
+        question: "Who would benefit most from investing in Common Stock?",
+        options: [
+          "Someone looking for immediate income",
+          "Someone wanting to vote on company decisions and accept more risk for potential growth",
+          "Someone avoiding risk and seeking stable returns",
+          "Someone seeking fixed, regular payouts"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Immediate income is more aligned with Preferred Stock.",
+          "Correct! Common Stock appeals to investors willing to take on more risk in exchange for growth and voting rights.",
+          "Common Stock is not for risk-averse investors — it’s more volatile.",
+          "That’s the domain of Preferred Stock, not Common."
+        ]
+      }
+      
+    ],
+    "1.8.mixed": [
+      {
+        question: "What does market capitalization measure?",
+        options: [
+          "The company's revenue",
+          "The value of all outstanding shares",
+          "The company's net income"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Revenue is important, but market cap is based on share price and shares outstanding.",
+          "Correct! Market cap is the total value of a company’s outstanding shares (share price × number of shares).",
+          "Net income relates to company profitability, not its total market value."
+        ]
+      },
+      {
+        question: "If a company has 1 million shares at $50 each, what's its market cap?",
+        options: [
+          "$50 million",
+          "$1 million",
+          "$5 million"
+        ],
+        correctAnswer: 0,
+        feedback: [
+          "Correct! 1 million shares × $50 = $50 million market cap.",
+          "That would be the case if shares were $1 each — not $50.",
+          "That math doesn’t add up — double-check your multiplication."
+        ]
+      },
+      {
+        question: "Market capitalization helps investors understand:",
+        options: [
+          "Product quality",
+          "Company size & risk",
+          "Employee salaries"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Product quality is subjective and not part of market cap calculation.",
+          "Correct! Market cap indicates how big a company is, and larger firms are often seen as less risky.",
+          "Salaries aren't related to a company's market cap directly."
+        ]
+      },
+      {
+        question: "A company’s stock price goes up. What happens to its market cap?",
+        options: [
+          "It depends on revenue",
+          "It goes down",
+          "It increases"
+        ],
+        correctAnswer: 2,
+        feedback: [
+          "Revenue doesn’t directly impact market cap — share price does.",
+          "That’s the opposite — market cap rises when share price rises.",
+          "Correct! Market cap increases because it’s calculated as share price × number of shares."
+        ]
+      },
+      
+    ],
+    "1.9.mixed": [
+      {
+        question: "Small cap stocks are always safer.",
+        options: [
+          "True",
+          "False"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Small cap stocks are generally riskier due to higher volatility and less predictable performance.",
+          "Correct! Small cap stocks often come with higher risk — they can grow fast, but also swing wildly in value."
+        ]
+      },
+      {
+        question: "Small cap has over USD 10 billion market cap.",
+        options: [
+          "True",
+          "False"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "That describes large cap — not small cap. Small caps are typically under $2 billion.",
+          "Correct! Small caps are usually between $250 million and $2 billion, not over $10 billion."
+        ]
+      },
+      {
+        question: "If you’re someone who avoids risk in investment, what category of stock might you pick?",
+        options: [
+          "Large cap stock",
+          "Small cap stock"
+        ],
+        correctAnswer: 0,
+        feedback: [
+          "Correct! Large cap stocks are usually more stable and less volatile — great for risk-averse investors.",
+          "Small caps tend to be riskier and more volatile, which doesn’t suit a conservative strategy."
+        ]
+      },
+      {
+        question: "Company A makes plant-based dog food and has a market cap of $500 million. What category of market capitalization does it fall into?",
+        options: [
+          "Small Cap",
+          "Large Cap",
+          "Mid Cap"
+        ],
+        correctAnswer: 0,
+        feedback: [
+          "Correct! $500 million falls in the small cap range ($250M–$2B).",
+          "Large cap starts at $10 billion and above — this company is much smaller.",
+          "Mid cap is typically $2–10 billion, which is still above this company's value."
+        ]
+      },
+      {
+        question: "If you’re someone who is seeking growth in value of stock and can accept volatility of stock prices, what category of stock might you pick?",
+        options: [
+          "Large cap",
+          "Small Cap"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Large cap stocks are stable but generally offer slower growth.",
+          "Correct! Small caps are more volatile but can offer high growth potential."
+        ]
+      }
+      
+      
+    ],
+    "1.10.mixed": [
+      {
+        question: "Which stock type usually pays regular income?",
+        options: [
+          "Value",
+          "Growth",
+          "Dividend"
+        ],
+        correctAnswer: 2,
+        feedback: [
+          "Value stocks can sometimes pay dividends, but not always regularly.",
+          "Growth stocks usually reinvest profits instead of paying income.",
+          "Correct! Dividend stocks are known for providing regular income to shareholders."
+        ]
+      },
+      {
+        question: "Which stock type has the highest risk and growth potential?",
+        options: [
+          "Value",
+          "Growth",
+          "Dividend"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Value stocks are considered more stable and less volatile.",
+          "Correct! Growth stocks aim for rapid expansion and often carry higher risk.",
+          "Dividend stocks prioritize income, not aggressive growth."
+        ]
+      },
+      {
+        question: "You want long-term bargains and are okay waiting. Choose:",
+        options: [
+          "Growth",
+          "Dividend",
+          "Value"
+        ],
+        correctAnswer: 2,
+        feedback: [
+          "Growth stocks are priced for potential, not for bargain-hunting.",
+          "Dividend stocks focus on income, not undervalued opportunities.",
+          "Correct! Value stocks are often undervalued and good for long-term investors willing to wait."
+        ]
+      },
+      {
+        question: "This stock reinvests earnings and skips dividends.",
+        options: [
+          "Growth",
+          "Dividend",
+          "Value"
+        ],
+        correctAnswer: 0,
+        feedback: [
+          "Correct! Growth stocks typically reinvest profits to fuel expansion instead of paying dividends.",
+          "Dividend stocks distribute profits rather than reinvesting them.",
+          "Value stocks may pay dividends, but reinvestment isn’t their defining trait."
+        ]
+      },
+      {
+        question: "Which is best for someone needing steady income now?",
+        options: [
+          "Growth",
+          "Dividend",
+          "Value"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Growth stocks don’t usually offer income — they’re about future potential.",
+          "Correct! Dividend stocks provide regular payouts — ideal for income-focused investors.",
+          "Value stocks might pay dividends, but income isn’t their core purpose."
+        ]
+      }      
+      
+    ],
+    "2.1.mixed": [
+      {
+        question: "What does Fundamental Analysis consist of? (You may choose more than one option.)",
+        options: [
+          "Quantitative Analysis",
+          "Qualitative Analysis",
+          "Technical Analysis"
+        ],
+        correctAnswer: [0, 1],
+        hint: (
+          <span title="Fundamental analysis is like inspecting items at a thrift shop to decide their true worth. For stocks, it means scrutinizing a company's financial health, management quality, and market position to see if the stock price really reflects its value." style={{ textDecoration: "underline dotted", cursor: "help" }}>
+            💡 Hint: Think of fundamental analysis like evaluating a hidden gem at a thrift store.
+          </span>
+        ),
+        feedback: {
+          correct: "Fundamental analysis includes both quantitative aspects, like financial statements and ratios, and qualitative aspects, such as management quality and industry position. This comprehensive approach provides a deeper understanding of a company's overall health and potential.",
+          incorrect: [
+            "While quantitative analysis of financial data is a crucial part of fundamental analysis, relying solely on this ignores the qualitative factors like management effectiveness and industry conditions, which are equally important.",
+            "Qualitative analysis helps in understanding the company's strategic positioning, but without financial metrics like earnings and debt, the analysis is incomplete.",
+            "Technical analysis is a separate discipline that focuses on price trends and trading volumes, not business fundamentals."
+          ]
+        }
+      },
+
+      {
+        question: "What does Fundamental Analysis help you determine?",
+        options: [
+          "The popularity of the stock on social media",
+          "The intrinsic value of a stock",
+          "The short-term volatility of the stock",
+          "The CEO's performance"
+        ],
+        correctAnswer: 1,
+        hint: (
+          <span title="Fundamental analysis helps you assess whether a stock’s price reflects its true business value." style={{ textDecoration: "underline dotted", cursor: "help" }}>
+            💡 Hint: Think long-term value, not short-term hype.
+          </span>
+        ),
+        feedback: [
+          "The number of times a stock is mentioned on social media doesn’t reflect its financial worth or business fundamentals.",
+          "Correct! Fundamental analysis helps determine a stock's intrinsic value — what it's actually worth based on company performance.",
+          "Short-term volatility refers to quick price fluctuations, which is typically the focus of technical analysis, not fundamental.",
+          "A CEO is important, but fundamental analysis goes far beyond one person — it covers earnings, debt, and overall company outlook."
+        ]
+      },
+
+      {
+        question: "If the fair market value exceeds the market price, is the stock undervalued or overvalued?",
+        options: ["Undervalued", "Overvalued"],
+        correctAnswer: 0,
+        hint: (
+          <span title="Fair market value is what a stock is actually worth. Market price is what it's selling for. If something is worth more than the price, it's undervalued." style={{ textDecoration: "underline dotted", cursor: "help" }}>
+            💡 Hint: Think of a high-quality jacket at a low thrift price.
+          </span>
+        ),
+        feedback: [
+          "Correct! If a stock is priced lower than its fair market value, it's a good deal — it's undervalued.",
+          "Overvalued would mean the stock costs more than it's worth. If the market price is lower than the fair value, it's actually undervalued."
+        ]
+      },
+
+      {
+        question: "If a stock is overvalued, should you exercise a buy or short decision?",
+        options: ["Buy", "Short"],
+        correctAnswer: 1,
+        feedback: [
+          "Buying an overvalued stock means paying more than it’s worth — it’s risky and may lead to losses when the price corrects.",
+          "Correct! If a stock is overvalued, shorting may be profitable if you expect its price to fall to reflect its true value."
+        ]
+      }     
+    ],
+    "2.2.mixed": [
+      {
+        question: "If the market price exceeds the fair market value, is the stock undervalued or overvalued?",
+        options: [
+          "Undervalued",
+          "Overvalued"
+        ],
+        correctAnswer: 1,
+        hint: (
+          <span title="Fair market value = what the item is usually worth. Market price = current selling price. Undervalued = priced below its real worth. Overvalued = priced above its real worth." style={{ textDecoration: "underline dotted", cursor: "help" }}>
+            📌 Hint: Hover to review key definitions
+          </span>
+        ),
+        feedback: [
+          // Incorrect: User chooses "Undervalued"
+          "Undervalued would mean that the stock is priced below its real value, which is not the case here. The term doesn't apply when the stock's price is higher than its intrinsic value, which indicates an overvaluation, not undervaluation.",
+          // Correct: User chooses "Overvalued"
+          "Correct! This option correctly states that the stock price is higher than what the company's financial health and market position justify. When investors pay more than the fair market value, they may not get a return that matches their investment."
+        ]
+      },
+      {
+        question: "If a stock is undervalued, should you exercise a buy or short decision?",
+        options: [
+          "Buy",
+          "Short"
+        ],
+        correctAnswer: 0,
+        feedback: [
+          // Correct answer: Buy
+          "Correct! Buying undervalued stocks is generally seen as a good investment because you’re purchasing something for less than its true value.",
+          // Incorrect answer: Short
+          "Shorting a stock is betting on its price decrease, but if a stock is undervalued, it means it's priced below its true value, suggesting it will likely increase. Shorting an undervalued stock risks losses if its price corrects upward to reflect its intrinsic value. Thus, shorting is not advisable for undervalued stocks."
+        ]
+      }
     ],
   }
   
