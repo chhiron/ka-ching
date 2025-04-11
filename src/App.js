@@ -22,7 +22,8 @@ import "./styles.css"
 
 function App() {
   return (
-    <Router>
+    //<Router> // use this for vercel
+    <Router basename={process.env.PUBLIC_URL}> // use this for github io
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<div>About Page</div>} />
