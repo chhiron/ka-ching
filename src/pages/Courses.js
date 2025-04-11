@@ -1,5 +1,5 @@
 "use client"
-
+import { useLocation } from "react-router-dom"
 import { useState, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import {
@@ -26,6 +26,7 @@ const Courses = () => {
   const [expandedSection, setExpandedSection] = useState(null)
   const [currentModuleIndex, setCurrentModuleIndex] = useState(0)
   const [quizAnswers, setQuizAnswers] = useState({})
+  const location = useLocation()
 
   // Check if user is logged in
   useEffect(() => {
@@ -65,7 +66,7 @@ const Courses = () => {
         )
       }
     }
-  }, [navigate])
+  }, [location])
 
   // Save progress when it changes
   useEffect(() => {
