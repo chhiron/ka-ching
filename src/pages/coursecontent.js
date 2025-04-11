@@ -1063,14 +1063,7 @@ const CourseContent = () => {
 
   const currentModuleData = {
     ...currentStepData.modules[0],
-    contentSections:
-      currentStep === 1
-        ? currentModule === 1
-          ? moduleContent[0]
-          : moduleContent[1]
-        : moduleContent[currentStep - 1]
-          ? moduleContent[currentStep - 1][currentModule - 1] || []
-          : [],
+    contentSections: moduleContent[currentStep - 1]?.[currentModule - 1] || [],
   }
 
   // Get the content after defining currentModuleData
