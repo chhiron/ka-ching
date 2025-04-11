@@ -1000,22 +1000,33 @@ const CourseContent = () => {
       // Navigate to the quiz for this module
       navigate(`/course-content?step=${currentStep}&module=${currentModule}&type=quiz&quizType=${quizType}`)
     } else if (contentType === "quiz" && quizScore >= 80) {
-      // If quiz is passed, mark it as completed
       const quizKey = `${currentStep}.${currentModule}.${quizType}`
+      const moduleKey = `${currentStep}.${currentModule}`
+    
       progress.completedQuizzes = {
         ...progress.completedQuizzes,
         [quizKey]: true,
       }
-
-      // Update state
+    
+      progress.completedModules = {
+        ...progress.completedModules,
+        [moduleKey]: true,
+      }
+    
       setCompletedQuizzes({
         ...completedQuizzes,
         [quizKey]: true,
       })
-
+    
+      setCompletedModules({
+        ...completedModules,
+        [moduleKey]: true,
+      })
+    
       // Navigate back to courses
       navigate(`/courses`)
     }
+    
 
     // Save updated progress
     localStorage.setItem("courseProgress", JSON.stringify(progress))
