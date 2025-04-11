@@ -13,7 +13,7 @@ import {
   RotateCcw,
 } from "lucide-react"
 import Leaderboard from "../components/Leaderboard"
-import Hearts from "../components/hearts" // Import the Hearts component
+import Hearts from "../components/Hearts" // Import the Hearts component
 
 const Courses = () => {
   const navigate = useNavigate()
