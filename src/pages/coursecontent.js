@@ -331,7 +331,7 @@ const CourseContent = () => {
   
   // Quiz data matching quizKey format
   const quizData = {
-    "1.1": [
+    "1.1.mixed": [
       {
         
     question: "What investment strategy best fits a goal of retirement in 30 years?",
@@ -399,7 +399,7 @@ const CourseContent = () => {
       },
       /* Quiz questions for Investing Basics */
     ],
-    "1.2": [
+    "1.2.mixed": [
       { question: "Which of these is an example of capital appreciation?",
         options: [
           "Company pays you SGD 1 per share",
@@ -465,7 +465,7 @@ const CourseContent = () => {
       },
       /* Quiz questions for what is a stock */
     ],
-    "1.3": [
+    "1.3.mixed": [
       {
         question: "What is the main function of a stock exchange?",
         options: [
@@ -548,16 +548,16 @@ const CourseContent = () => {
       },
       /* Quiz questions for Market Cap */
     ],
-    "1.4": [
+    "1.4.mixed": [
       /* Quiz for Investment Vehicles */
     ],
-    "1.5": [
+    "1.5.mixed": [
       /* Quiz questions for Investing Basics */
     ],
-    "1.6": [
+    "1.6.mixed": [
       /* Quiz questions for Investing Basics */
     ],
-    "2.1": [
+    "2.1.0": [
       /* Quiz questions for Investing Basics */
     ],
   }
