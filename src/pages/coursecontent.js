@@ -1223,13 +1223,18 @@ const CourseContent = () => {
     return <div className="min-h-screen flex items-center justify-center">Loading...</div>
   }
 
+  const stepModuleCounts = {
+  1: 6,
+  2: 1,
+ }
+
   const goToNextModule = () => {
     // Navigate to the next module or section
-    const totalModules = moduleContent[currentStep - 1]?.length || 0 // this needs to be fixed
+    const totalModules = stepModuleCounts[currentStep] || 0
 
     if (currentModule < totalModules) {
       navigate(`/course-content?step=${currentStep}&module=${currentModule + 1}&type=content`)
-    } else if (currentStep < moduleContent.length) {
+    } else if (currentStep < Object.keys(stepModuleCounts).length) {
       navigate(`/course-content?step=${currentStep + 1}&module=1&type=content`)
     } else {
       navigate("/courses")
