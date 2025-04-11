@@ -416,7 +416,9 @@ const Courses = () => {
   
     // If current is content and previous is quiz → unlock if previous quiz is completed and score ≥ 80
     if (current.type === "content" && prev.type === "quiz") {
-      return (
+     return isQuizCompleted(sectionId, prev.relatedModuleId, prev.quizType) && 
+         getQuizScore(sectionId, prev.relatedModuleId, prev.quizType) >= 80;
+    }
   
   
     // Update the isNextStep function to correctly identify the next step in the learning path
