@@ -429,8 +429,9 @@ const Courses = () => {
     const modules = section.modules
     const current = modules[moduleIndex]
     const prev = modules[moduleIndex - 1]
-  
+    
     if (!current) return false
+    }
   
     // Already completed? Not the next step
     if (
