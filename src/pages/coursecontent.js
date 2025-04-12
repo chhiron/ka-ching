@@ -240,828 +240,1283 @@ const CourseContent = () => {
 
   // Content sections for each module
   const moduleContent = [
-    // Section 1, Module 1
+    // SECTION 1 MODULE 1
     [
       {
-        title: "Investing Basics",
+        title: "Start with your Why",
+        type: "content",
         content: (
-          <div className="space-y-4">
-            <p className="mb-3">
-              Many beginners focus on what to invest in, but the first step should be identifying <strong>why</strong>{" "}
-              they want to invest.
-            </p>
-            <p className="mb-3">
-              Financial goals drive investment choices, determining the right account type, tax advantages, investment
-              types, and risk allocation.
-            </p>
-            <p className="mb-3">Goals vary: emergency fund, retirement, home down payment, business, etc.</p>
-            <p className="mb-3">
-              Time horizon influences risk tolerance—longer horizons allow for more risk, while shorter ones require
-              conservative strategies.
-            </p>
-            <p>Investment planning follows a top-down approach: define goals first, then select strategies.</p>
-            <div className="mt-6 flex justify-center">
-              <img
-                src="investment-planning-pyramid.png"
-                alt="Investment Planning Pyramid"
-                className="w-120 h-auto rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-              />
-            </div>
-            <p className="text-sm text-gray-500 mt-4">
-              Source: Financial Planning on Marzfoo (https://marzfoo.sg/financial-planning/)
-            </p>
-          </div>
+        <div className="space-y-4">
+          <p className="mb-3">
+            Beginners often focus on what to invest in, but first, identify why.
+          </p>
+          <p className="mb-3">
+            Different goals have different time horizons.
+          </p>
+          <p className="mb-3">
+           Time horizons affect risk tolerance: longer = more risk, shorter = less risk.
+          </p>
+          <p className="mb-3">
+           Different goals also affect liquidity: longer = less liquid, shorter = more liquid
+          </p>
+        </div>
         ),
       },
-      {
-        title: "Stocks & the Stock Market",
-        content: (
-          <div className="space-y-4">
-            <p className="mb-3">
-              A stock represents ownership in a company, entitling shareholders to a portion of assets and earnings.
-            </p>
-            <p className="mb-3">
-              Stocks are traded on public exchanges, enabling investors to buy and sell electronically.
-            </p>
-            <h4 className="font-bold text-lg text-[#5a7d53] mt-4 mb-2">Ways to earn money from stocks:</h4>
-            <ul className="list-disc pl-5 space-y-2 mb-3">
-              <li>
-                <strong>Capital Appreciation:</strong> When stock price increases over time.
-              </li>
-              <div className="mt-6 flex justify-center">
-                <img
-                  src="capital-appreciation.png"
-                  alt="capital-appreciation"
-                  className="w-32 h-auto rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-                />
-              </div>
-              <li>
-                <strong>Dividends:</strong> Companies share profits with shareholders in cash or additional stock.
-              </li>
-            </ul>
-            <p>
-              The stock market functions like an auction house, matching buyers and sellers via online brokers. It is
-              also referred to as a stock exchange.
-            </p>
-            <div className="mt-6 flex justify-center">
-              <img
-                src="dividend.png"
-                alt="dividend"
-                className="w-32 h-auto rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-              />
-            </div>
-            <p className="text-sm text-gray-500 mt-4">Sources: Coursera SoFi, Canva</p>
-          </div>
-        ),
-      },
-      {
-        title: "What are stock exchanges?",
-        content: (
-          <div className="space-y-4">
-            <p className="mb-3">
-              This is the marketplace where financial instruments, like stocks, are traded. This is the 'auction house'.
-              There are a couple of types of stock exchanges but the most important and widely used one is the
-              Electronic Stock exchange.
-            </p>
 
-            <h4 className="font-bold text-lg text-[#5a7d53] mt-4 mb-2">The major US Stock exchanges</h4>
-            <p className="mb-3">
-              Why is this important? US Exchanges are some of the largest stock exchanges in the world and widely
-              adopted.
-            </p>
-            <ul className="list-disc pl-5 space-y-2 mb-3">
-              <li>
-                <strong>NYSE:</strong> New York stock exchange, the world's largest equities (a.k.a stock) exchange
-              </li>
-              <li>
-                <strong>Nasdaq:</strong> Known for tech companies like Apple, Microsoft, and Tesla
-              </li>
-            </ul>
-
-            <div className="mt-6 flex justify-center">
-              <img
-                src="stock-exchange.png"
-                alt="stock-exchange"
-                className="w-65 h-auto rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-              />
-            </div>
-
-            <h4 className="font-bold text-lg text-[#5a7d53] mt-4 mb-2">International Exchanges</h4>
-            <ul className="list-disc pl-5 space-y-2 mb-3">
-              <li>
-                <strong>The Shanghai Stock Exchange (SSE):</strong> Investments like stocks, bonds, and mutual funds are
-                traded
-              </li>
-              <li>
-                <strong>London Stock Exchange (LSE):</strong> located in the United Kingdom
-              </li>
-              <li>
-                <strong>Singapore Exchange (SGX):</strong> Singapore's stock exchange
-              </li>
-            </ul>
-
-            <p>
-              Every stock exchange has some rules for which companies they allow to sell in their marketplace. These are
-              called "Listing Requirements".
-            </p>
-
-            <p className="text-sm text-gray-500 mt-4">Sources: Investopedia "Types of Stock Exchanges", Canva</p>
-          </div>
-        ),
-      },
-      {
-        title: "Key Players in the Stock Market",
-        content: (
-          <div className="space-y-4">
-            <p className="mb-3">Understanding who participates in the market helps you see how trades happen.</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-              <div className="bg-[#f0f9f4] p-4 rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-md">
-                <h4 className="font-bold text-lg text-[#5a7d53] mb-2">👤 Retail Investors</h4>
-                <p>Everyday individuals investing for personal goals 🏡</p>
-              </div>
-              <div className="bg-[#f0f9f4] p-4 rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-md">
-                <h4 className="font-bold text-lg text-[#5a7d53] mb-2">🏛️ Institutional Investors</h4>
-                <p>Large firms managing billions (e.g., mutual funds, hedge funds) 💼</p>
-              </div>
-              <div className="bg-[#f0f9f4] p-4 rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-md">
-                <h4 className="font-bold text-lg text-[#5a7d53] mb-2">🔄 Market Makers</h4>
-                <p>Ensure there are buyers & sellers to keep trading smooth ⚖️</p>
-              </div>
-              <div className="bg-[#f0f9f4] p-4 rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-md">
-                <h4 className="font-bold text-lg text-[#5a7d53] mb-2">📜 Regulators</h4>
-                <p>SEC, FINRA – Keep markets fair and protect investors 🛡️</p>
-              </div>
-            </div>
-            <div className="mt-6 flex justify-center">
-              <img
-                src="key-players.png"
-                alt="key-players"
-                className="w-70 h-auto rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-              />
-            </div>
-            <p className="text-sm text-gray-500 mt-4">Source: SEC.gov, Understanding the Stock Market, Canva</p>
-          </div>
-        ),
-      },
-      {
-        title: "IPOs Explained",
-        content: (
-          <div className="space-y-4">
-            <p className="mb-3">
-              A company must first go public through an Initial Public Offering (IPO) before its stock can be traded.
-            </p>
-            <h4 className="font-bold text-lg text-[#5a7d53] mt-4 mb-2">🚀 IPO Process Simplified:</h4>
-            <div className="relative">
-              <div className="absolute left-4 top-0 bottom-0 w-1 bg-[#5a7d53]"></div>
-              <div className="space-y-6 ml-10">
-                <div className="relative">
-                  <div className="absolute -left-10 w-8 h-8 rounded-full bg-[#5a7d53] text-white flex items-center justify-center">
-                    1
-                  </div>
-                  <p>A private company decides to go public to raise money.</p>
-                </div>
-                <div className="relative">
-                  <div className="absolute -left-10 w-8 h-8 rounded-full bg-[#5a7d53] text-white flex items-center justify-center">
-                    2
-                  </div>
-                  <p>It works with investment banks to set an initial stock price.</p>
-                </div>
-                <div className="relative">
-                  <div className="absolute -left-10 w-8 h-8 rounded-full bg-[#5a7d53] text-white flex items-center justify-center">
-                    3
-                  </div>
-                  <p>The stock is offered to institutional investors first.</p>
-                </div>
-                <div className="relative">
-                  <div className="absolute -left-10 w-8 h-8 rounded-full bg-[#5a7d53] text-white flex items-center justify-center">
-                    4
-                  </div>
-                  <p>Once trading begins, anyone can buy shares.</p>
-                </div>
-              </div>
-            </div>
-            <div className="mt-6 p-4 bg-[#f0f9f4] rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-md">
-              <h4 className="font-bold text-lg text-[#5a7d53] mb-2">Example: Facebook's 2012 IPO</h4>
-              <p>
-                It started at $38 per share. Despite early struggles, it grew into Meta, now worth hundreds of billions.
-              </p>
-            </div>
-            <div className="mt-6 flex justify-center">
-              <img
-                src="ipo-process.png"
-                alt="IPO Process"
-                className="w-85 h-auto rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-              />
-            </div>
-            <p className="text-sm text-gray-500 mt-4">Source: Investopedia, What Is an IPO?, Canva</p>
-          </div>
-        ),
-      },
+      
     ],
-    // Section 1, Module 2 - Types of Stocks
+    // SECTION 1 MODULE 2
+    [
+  
+      {
+        title: "What is a Stock?",
+        type: "content",
+        content: (
+          <div className="space-y-4">
+            <p className="mb-3">
+              A <span title="Part ownership in a company" className="underline dotted cursor-help">stock</span> is a part ownership in a company.
+            </p>
+            <p className="mb-3">
+              You can earn from stocks through <span title="When a stock increases in value" className="underline dotted cursor-help">capital appreciation</span> or <span title="Earnings paid to shareholders" className="underline dotted cursor-help">dividends</span>.
+            </p>
+            <p className="mb-3 font-semibold">
+              Why do companies sell stock?
+            </p>
+            <p className="mb-3">
+              To raise money and grow their business.
+            </p>
+            <p className="mb-3">
+              Selling shares helps fund things like expansion, research, or paying off debt.
+            </p>
+          </div>
+        ),
+      },
+      
+    ],
+    // SECTION 1 MODULE 3
     [
       {
-        title: "Common vs. Preferred Stock",
-        content: (
+        title: "Meet the Markets",
+        type: "content",
+        content:(
           <div className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              <div className="bg-white p-6 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg border-l-4 border-[#5a7d53]">
-                <h4 className="font-bold text-xl text-[#5a7d53] mb-3">Common Stock</h4>
-                <p className="mb-3">
-                  <strong>What it is:</strong> The "default" stock type most investors are familiar with.
-                </p>
-                <p className="mb-3">
-                  <strong>Key perks:</strong> Voting rights + growth potential.
-                </p>
-                <p>
-                  <strong>Best for:</strong> Long-term investors betting on company success.
-                </p>
-                <p className="mt-4 text-sm text-gray-600">
-                  Ideal for investors looking for growth. The more successful the company becomes, the greater the
-                  potential for stock price appreciation.
-                </p>
-              </div>
-
-              <div className="bg-white p-6 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg border-l-4 border-[#f0d878]">
-                <h4 className="font-bold text-xl text-[#5a7d53] mb-3">Preferred Stock</h4>
-                <p className="mb-3">
-                  <strong>What it is:</strong> A hybrid (stock + bond-like features).
-                </p>
-                <p className="mb-3">
-                  <strong>Key perks:</strong> Priority dividends + lower risk.
-                </p>
-                <p>
-                  <strong>Best for:</strong> Income seekers who want stability.
-                </p>
-                <p className="mt-4 text-sm text-gray-600">
-                  No voting rights but receives dividends before common stockholders. Better for investors who prefer
-                  steady income rather than seeking long-term growth.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-[#f0f9f4] p-5 rounded-lg">
-              <div className="flex items-start">
-                <div className="bg-[#5a7d53] text-white p-2 rounded-full mr-3 flex-shrink-0">
-                  <span className="text-xl">💡</span>
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg text-[#5a7d53] mb-1">Why it matters</h4>
-                  <p>
-                    Choose common stock for growth potential, preferred stock for steady income. Preferred stocks offer
-                    more stability and lower risk compared to common stocks.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        ),
-      },
-      {
-        title: "Quick Check: Voting Rights",
-        content: (
-          <div className="space-y-4">
-            <div className="bg-[#f0d878] bg-opacity-20 p-6 rounded-xl">
-              <h3 className="text-xl font-bold text-[#5a7d53] mb-4">Quick Check</h3>
-
-              <p className="text-lg font-medium mb-4">Which stock type gives shareholders voting rights?</p>
-
-              <div className="space-y-3">
-                {["Common stock", "Preferred stock", "Both", "Neither"].map((option, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleQuickCheckAnswer("common-stock-voting", index)}
-                    className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-300 
-                      ${
-                        quickCheckAnswers["common-stock-voting"] === index
-                          ? quickCheckFeedback["common-stock-voting"]
-                            ? "border-green-500 bg-green-50"
-                            : "border-red-500 bg-red-50"
-                          : "border-gray-200 hover:border-[#5a7d53] hover:shadow-sm"
-                      }`}
-                    disabled={quickCheckFeedback["common-stock-voting"] === true}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span>{option}</span>
-                      {quickCheckAnswers["common-stock-voting"] === index &&
-                        (quickCheckFeedback["common-stock-voting"] ? (
-                          <CheckCircle className="h-5 w-5 text-green-500" />
-                        ) : (
-                          <XCircle className="h-5 w-5 text-red-500" />
-                        ))}
-                    </div>
-                  </button>
-                ))}
-              </div>
-
-              {quickCheckAnswers["common-stock-voting"] !== undefined && !quickCheckFeedback["common-stock-voting"] && (
-                <div className="mt-4 flex justify-center">
-                  <button
-                    onClick={() => resetQuickCheck("common-stock-voting")}
-                    className="bg-[#5a7d53] text-white px-4 py-2 rounded-lg hover:bg-[#4a6a45] transition-colors"
-                  >
-                    Try Again
-                  </button>
-                </div>
-              )}
-
-              {quickCheckFeedback["common-stock-voting"] && (
-                <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
-                  <p className="text-green-800">
-                    <strong>Correct!</strong> Common stock gives shareholders voting rights, allowing them to vote on
-                    important company matters like electing the board of directors.
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-        ),
-      },
-      {
-        title: "Quick Check: Dividend Priority",
-        content: (
-          <div className="space-y-4">
-            <div className="bg-[#f0d878] bg-opacity-20 p-6 rounded-xl">
-              <h3 className="text-xl font-bold text-[#5a7d53] mb-4">Quick Check</h3>
-
-              <p className="text-lg font-medium mb-4">Preferred stockholders receive dividends…</p>
-
-              <div className="space-y-3">
-                {[
-                  "After common stockholders",
-                  "Before common stockholders",
-                  "At the same time as common stockholders",
-                  "Only if the company performs well",
-                ].map((option, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleQuickCheckAnswer("preferred-stock-dividends", index)}
-                    className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-300 
-                      ${
-                        quickCheckAnswers["preferred-stock-dividends"] === index
-                          ? quickCheckFeedback["preferred-stock-dividends"]
-                            ? "border-green-500 bg-green-50"
-                            : "border-red-500 bg-red-50"
-                          : "border-gray-200 hover:border-[#5a7d53] hover:shadow-sm"
-                      }`}
-                    disabled={quickCheckFeedback["preferred-stock-dividends"] === true}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span>{option}</span>
-                      {quickCheckAnswers["preferred-stock-dividends"] === index &&
-                        (quickCheckFeedback["preferred-stock-dividends"] ? (
-                          <CheckCircle className="h-5 w-5 text-green-500" />
-                        ) : (
-                          <XCircle className="h-5 w-5 text-red-500" />
-                        ))}
-                    </div>
-                  </button>
-                ))}
-              </div>
-
-              {quickCheckAnswers["preferred-stock-dividends"] !== undefined &&
-                !quickCheckFeedback["preferred-stock-dividends"] && (
-                  <div className="mt-4 flex justify-center">
-                    <button
-                      onClick={() => resetQuickCheck("preferred-stock-dividends")}
-                      className="bg-[#5a7d53] text-white px-4 py-2 rounded-lg hover:bg-[#4a6a45] transition-colors"
-                    >
-                      Try Again
-                    </button>
-                  </div>
-                )}
-
-              {quickCheckFeedback["preferred-stock-dividends"] && (
-                <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
-                  <p className="text-green-800">
-                    <strong>Correct!</strong> Preferred stockholders have priority when it comes to receiving dividends.
-                    This is one of the key advantages of preferred stock for income-focused investors.
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-        ),
-      },
-      {
-        title: "Stock Classifications by Market Capitalization",
-        content: (
-          <div className="space-y-4">
-            <p className="mb-4">
-              <strong>What is Market Capitalization:</strong> It shows how much a company is worth as determined by the
-              total market value of all outstanding shares.
+            <p className="mb-3">
+              Stock markets, also known as stock exchanges, are like an auction house — matching buyers and sellers via online brokers.
             </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-              <div className="bg-white p-5 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg border-t-4 border-[#5a7d53]">
-                <h4 className="font-bold text-lg text-[#5a7d53] mb-2">Large-Cap</h4>
-                <p className="font-bold text-gray-700 mb-2">USD 10 billion +</p>
-                <p className="mb-3">
-                  <strong>Traits:</strong> Stable, low risk, established industries
-                </p>
-                <p>
-                  <strong>Examples:</strong> Apple, Microsoft
-                </p>
-              </div>
-
-              <div className="bg-white p-5 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg border-t-4 border-[#85bb65]">
-                <h4 className="font-bold text-lg text-[#5a7d53] mb-2">Mid-Cap</h4>
-                <p className="font-bold text-gray-700 mb-2">USD 2-10 billion</p>
-                <p className="mb-3">
-                  <strong>Traits:</strong> Balance of growth and stability
-                </p>
-                <p>
-                  <strong>Examples:</strong> Regional banks, emerging tech
-                </p>
-              </div>
-
-              <div className="bg-white p-5 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg border-t-4 border-[#f0d878]">
-                <h4 className="font-bold text-lg text-[#5a7d53] mb-2">Small-Cap</h4>
-                <p className="font-bold text-gray-700 mb-2">USD 250 million - 2 Billion</p>
-                <p className="mb-3">
-                  <strong>Traits:</strong> High growth potential but volatile
-                </p>
-                <p>
-                  <strong>Examples:</strong> Niche tech startups
-                </p>
-              </div>
-            </div>
-
-            <p className="mb-4">
-              Small-cap share prices may be volatile but provide greater growth opportunities than large caps. Large-cap
-              stocks are typically from well-established companies in mature industries.
+            <p className="mb-3">
+              There are many stock exchanges around the world.
             </p>
-
-            <div className="bg-[#f0f9f4] p-5 rounded-lg">
-              <div className="flex items-start">
-                <div className="bg-[#5a7d53] text-white p-2 rounded-full mr-3 flex-shrink-0">
-                  <span className="text-xl">💡</span>
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg text-[#5a7d53] mb-1">Why it matters</h4>
-                  <p>
-                    Market capitalization helps investors assess risk. Large-cap stocks are typically safer, while
-                    small-cap stocks offer high growth but come with more risk.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        ),
-      },
-      {
-        title: "Quick Check: Market Capitalization",
-        content: (
-          <div className="space-y-4">
-            <div className="bg-[#f0d878] bg-opacity-20 p-6 rounded-xl">
-              <h3 className="text-xl font-bold text-[#5a7d53] mb-4">Quick Check</h3>
-
-              <p className="text-lg font-medium mb-4">What does market capitalization measure?</p>
-
-              <div className="space-y-3">
-                {[
-                  "A company's total debt",
-                  "The total value of its outstanding shares",
-                  "Annual revenue",
-                  "The number of stocks issued",
-                ].map((option, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleQuickCheckAnswer("market-cap-measure", index)}
-                    className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-300 
-                      ${
-                        quickCheckAnswers["market-cap-measure"] === index
-                          ? quickCheckFeedback["market-cap-measure"]
-                            ? "border-green-500 bg-green-50"
-                            : "border-red-500 bg-red-50"
-                          : "border-gray-200 hover:border-[#5a7d53] hover:shadow-sm"
-                      }`}
-                    disabled={quickCheckFeedback["market-cap-measure"] === true}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span>{option}</span>
-                      {quickCheckAnswers["market-cap-measure"] === index &&
-                        (quickCheckFeedback["market-cap-measure"] ? (
-                          <CheckCircle className="h-5 w-5 text-green-500" />
-                        ) : (
-                          <XCircle className="h-5 w-5 text-red-500" />
-                        ))}
-                    </div>
-                  </button>
-                ))}
-              </div>
-
-              {quickCheckAnswers["market-cap-measure"] !== undefined && !quickCheckFeedback["market-cap-measure"] && (
-                <div className="mt-4 flex justify-center">
-                  <button
-                    onClick={() => resetQuickCheck("market-cap-measure")}
-                    className="bg-[#5a7d53] text-white px-4 py-2 rounded-lg hover:bg-[#4a6a45] transition-colors"
-                  >
-                    Try Again
-                  </button>
-                </div>
-              )}
-
-              {quickCheckFeedback["market-cap-measure"] && (
-                <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
-                  <p className="text-green-800">
-                    <strong>Correct!</strong> Market capitalization is calculated by multiplying the total number of a
-                    company's outstanding shares by the current market price of one share.
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-        ),
-      },
-      {
-        title: "Quick Check: Risk Assessment",
-        content: (
-          <div className="space-y-4">
-            <div className="bg-[#f0d878] bg-opacity-20 p-6 rounded-xl">
-              <h3 className="text-xl font-bold text-[#5a7d53] mb-4">Quick Check</h3>
-
-              <p className="text-lg font-medium mb-4">Which category is generally more stable and lower risk?</p>
-
-              <div className="space-y-3">
-                {["Small-cap", "Large-cap", "Mid-cap", "Growth stocks"].map((option, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleQuickCheckAnswer("large-cap-risk", index)}
-                    className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-300 
-                      ${
-                        quickCheckAnswers["large-cap-risk"] === index
-                          ? quickCheckFeedback["large-cap-risk"]
-                            ? "border-green-500 bg-green-50"
-                            : "border-red-500 bg-red-50"
-                          : "border-gray-200 hover:border-[#5a7d53] hover:shadow-sm"
-                      }`}
-                    disabled={quickCheckFeedback["large-cap-risk"] === true}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span>{option}</span>
-                      {quickCheckAnswers["large-cap-risk"] === index &&
-                        (quickCheckFeedback["large-cap-risk"] ? (
-                          <CheckCircle className="h-5 w-5 text-green-500" />
-                        ) : (
-                          <XCircle className="h-5 w-5 text-red-500" />
-                        ))}
-                    </div>
-                  </button>
-                ))}
-              </div>
-
-              {quickCheckAnswers["large-cap-risk"] !== undefined && !quickCheckFeedback["large-cap-risk"] && (
-                <div className="mt-4 flex justify-center">
-                  <button
-                    onClick={() => resetQuickCheck("large-cap-risk")}
-                    className="bg-[#5a7d53] text-white px-4 py-2 rounded-lg hover:bg-[#4a6a45] transition-colors"
-                  >
-                    Try Again
-                  </button>
-                </div>
-              )}
-
-              {quickCheckFeedback["large-cap-risk"] && (
-                <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
-                  <p className="text-green-800">
-                    <strong>Correct!</strong> Large-cap stocks are generally more stable and lower risk because they
-                    represent well-established companies with proven business models and more resources to weather
-                    economic downturns.
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-        ),
-      },
-      {
-        title: "Investment Styles: How Stocks are Categorized",
-        content: (
-          <div className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-              <div className="bg-white p-5 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg hover:scale-105">
-                <h4 className="font-bold text-lg text-[#5a7d53] mb-3">Value Stocks</h4>
-                <p className="mb-3">
-                  <strong>What:</strong> Undervalued companies expected to grow over time
-                </p>
-                <p>
-                  <strong>Best for:</strong> Patient investors, long-term investment
-                </p>
-                <div className="mt-4 text-center">
-                  <span className="inline-block bg-[#f0f9f4] text-[#5a7d53] px-3 py-1 rounded-full text-sm font-medium">
-                    Bargain hunting
-                  </span>
-                </div>
-              </div>
-
-              <div className="bg-white p-5 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg hover:scale-105">
-                <h4 className="font-bold text-lg text-[#5a7d53] mb-3">Growth Stocks</h4>
-                <p className="mb-3">
-                  <strong>What:</strong> Fast-growing companies that reinvest earnings (e.g., Amazon, Tesla)
-                </p>
-                <p>
-                  <strong>Best for:</strong> Risk-tolerant investors
-                </p>
-                <div className="mt-4 text-center">
-                  <span className="inline-block bg-[#f0f9f4] text-[#5a7d53] px-3 py-1 rounded-full text-sm font-medium">
-                    High reward potential
-                  </span>
-                </div>
-              </div>
-
-              <div className="bg-white p-5 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg hover:scale-105">
-                <h4 className="font-bold text-lg text-[#5a7d53] mb-3">Dividend Stocks</h4>
-                <p className="mb-3">
-                  <strong>What:</strong> Income generators (e.g., utility companies, consumer staples)
-                </p>
-                <p>
-                  <strong>Best for:</strong> Income-seeking investors, retirees
-                </p>
-                <div className="mt-4 text-center">
-                  <span className="inline-block bg-[#f0f9f4] text-[#5a7d53] px-3 py-1 rounded-full text-sm font-medium">
-                    Regular payouts
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <p className="mb-4">
-              Growth stocks don't typically pay dividends but offer high capital appreciation potential. Dividend stocks
-              are usually well-established companies that pay regular dividends.
+            <p className="mb-3">
+              The US exchanges <strong>NYSE</strong> and <strong>Nasdaq</strong> are the largest in the world.
             </p>
-
-            <div className="bg-[#f0f9f4] p-5 rounded-lg">
-              <div className="flex items-start">
-                <div className="bg-[#5a7d53] text-white p-2 rounded-full mr-3 flex-shrink-0">
-                  <span className="text-xl">💡</span>
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg text-[#5a7d53] mb-1">Why it matters</h4>
-                  <p>Match stocks to your goals:</p>
-                  <ul className="list-disc pl-5 mt-2">
-                    <li>Value = Long-term bargains</li>
-                    <li>Growth = High-reward bets</li>
-                    <li>Dividend = Reliable income</li>
-                  </ul>
-                </div>
+            <p className="mb-3">
+              <strong>Nasdaq:</strong> Known for tech companies (e.g. Apple, Microsoft, and Tesla).
+            </p>
+            <p className="mb-3">
+              <strong>NYSE:</strong> Known for mature, traditional, and industrial companies.
+            </p>
+            <p className="mb-3">
+              <strong>SGX:</strong> Singapore Stock Exchange.
+            </p>
+          </div>
+        ),
+      },
+      
+    ],
+    // SECTION 1 MODULE 4
+    [
+      {
+        title: "Primary Market",
+        type: "content",
+        content:(
+          <div className="space-y-4">
+            <p className="mb-3 font-semibold">🟢 What Is It?</p>
+            <p className="mb-3">
+              The <strong>Primary Market</strong> is where new stocks are sold for the first time.
+            </p>
+        
+            <p className="mb-3 font-semibold">💰 Who Gets the Money?</p>
+            <p className="mb-3">
+              When you buy a stock here, <strong>the company gets the money</strong>. You are investing directly into the business.
+            </p>
+        
+            <p className="mb-3 font-semibold">🛍️ Two Ways to Sell Stocks</p>
+            
+            <p className="mb-2 font-medium">1. Public Offering</p>
+            <ul className="list-disc pl-5 space-y-1 mb-4">
+              <li>Anyone (including you!) can buy the stock</li>
+              <li>Comes with more regulation</li>
+              <li>
+                Requires an{" "}
+                <span
+                  title="Initial Public Offering: when a company sells shares to the public for the first time"
+                  className="underline decoration-dotted cursor-help text-blue-600"
+                >
+                  IPO
+                </span>
+              </li>
+            </ul>
+        
+            <p className="mb-2 font-medium">2. Private Offering</p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>Only for wealthy individuals or institutions</li>
+              <li>Fewer rules, faster and cheaper</li>
+            </ul>
+          </div>
+        ),
+      },
+      
+    ],
+    // SECTION 1 MODULE 5
+    [
+      {
+        title: "Secondary Market",
+        type: "content",
+        content: (
+          <div>
+            <p><strong>🟢 What Is It?</strong></p>
+            <p>
+              The <strong>Secondary Market</strong> is where existing stocks are bought and sold between investors.
+            </p>
+            <p>🏢 The company doesn’t receive money in these trades.</p>
+        
+            <p><strong>🎟️ A Simple Example</strong></p>
+            <p>
+              Imagine you bought tickets to a concert and can’t go, so you sell them to a friend.
+            </p>
+            <p>
+              That’s like a stock trade in the secondary market. You're not paying the artist again—just reselling the ticket.
+            </p>
+        
+            <p><strong>🔍 Why It Matters</strong></p>
+            <ul>
+              <li>✅ You can buy or sell stocks anytime</li>
+              <li>💲 Helps find the market price of a stock</li>
+              <li>🔁 Keeps the market active and easy to trade in</li>
+            </ul>
+        
+            <p><strong>🛍️ Two Types of Secondary Markets</strong></p>
+        
+            <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap" }}>
+              {/* Dealer Market */}
+              <div style={{ flex: "1", minWidth: "250px", border: "1px solid #ccc", borderRadius: "8px", padding: "1rem" }}>
+                <h4>1. Dealer Market</h4>
+                <ul>
+                  <li>You trade through a middleman called a <strong>market maker</strong></li>
+                  <li>They hold inventory and decide prices</li>
+                  <li><strong>Example:</strong> NASDAQ</li>
+                </ul>
+              </div>
+        
+              {/* Auction Market */}
+              <div style={{ flex: "1", minWidth: "250px", border: "1px solid #ccc", borderRadius: "8px", padding: "1rem" }}>
+                <h4>2. Auction Market</h4>
+                <ul>
+                  <li>Buyers and sellers trade directly</li>
+                  <li>Prices are matched based on highest bid and lowest ask</li>
+                  <li><strong>Example:</strong> NYSE</li>
+                </ul>
               </div>
             </div>
           </div>
         ),
       },
+      
+    ],
+    // SECTION 1 MODULE 6
+    [
       {
-        title: "Quick Check: Income Investing",
+        title: "Going Public with IPO",
+        type: "content",
         content: (
-          <div className="space-y-4">
-            <div className="bg-[#f0d878] bg-opacity-20 p-6 rounded-xl">
-              <h3 className="text-xl font-bold text-[#5a7d53] mb-4">Quick Check</h3>
+          <div style={{ border: "1px solid #ccc", borderRadius: "10px", padding: "1.5rem", maxWidth: "600px" }}>
+            <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>🚀 How Companies Sell Stocks</h3>
+            <p style={{ marginBottom: "1rem" }}>
+              To sell stocks, a company must go public via an <strong>IPO</strong> (Initial Public Offering). The process includes:
+            </p>
+            <ol style={{ paddingLeft: "1.2rem", listStyleType: "decimal", lineHeight: "1.6" }}>
+              <li>🏢 A private company decides to go public to raise money.</li>
+              <li>💼 It works with investment banks to set an initial stock price.</li>
+              <li>🏦 The stock is offered to institutional investors first.</li>
+              <li>📈 Once trading begins, anyone can buy shares on the open market.</li>
+            </ol>
+          </div>
+        ),
+      },
+      
+    ],
 
-              <p className="text-lg font-medium mb-4">
-                Which stock type is best for investors looking for regular income?
+    //SECTION 1 MODULE 7
+
+    [
+      {
+        title: "Common vs Preferred Stock",
+        type: "content",
+        content: (
+          <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap" }}>
+            {/* Common Stock */}
+            <div style={{ flex: "1", minWidth: "280px", border: "1px solid #ccc", borderRadius: "10px", padding: "1rem" }}>
+              <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "0.5rem" }}>📈 Common Stock</h3>
+              <p><strong>What:</strong> The most typical stock</p>
+              <p>
+                <strong>🎯 Perks:</strong>{" "}
+                <span title="Gives shareholders the ability to vote on major company decisions" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                  Voting rights
+                </span>{" "}
+                and potential for{" "}
+                <span title="When a stock increases in value over time" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                  capital appreciation
+                </span>.
               </p>
-
-              <div className="space-y-3">
-                {["Growth stock", "Value stock", "Dividend stock", "Small-cap stock"].map((option, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleQuickCheckAnswer("dividend-stock-income", index)}
-                    className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-300 
-                      ${
-                        quickCheckAnswers["dividend-stock-income"] === index
-                          ? quickCheckFeedback["dividend-stock-income"]
-                            ? "border-green-500 bg-green-50"
-                            : "border-red-500 bg-red-50"
-                          : "border-gray-200 hover:border-[#5a7d53] hover:shadow-sm"
-                      }`}
-                    disabled={quickCheckFeedback["dividend-stock-income"] === true}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span>{option}</span>
-                      {quickCheckAnswers["dividend-stock-income"] === index &&
-                        (quickCheckFeedback["dividend-stock-income"] ? (
-                          <CheckCircle className="h-5 w-5 text-green-500" />
-                        ) : (
-                          <XCircle className="h-5 w-5 text-red-500" />
-                        ))}
-                    </div>
-                  </button>
-                ))}
-              </div>
-
-              {quickCheckAnswers["dividend-stock-income"] !== undefined &&
-                !quickCheckFeedback["dividend-stock-income"] && (
-                  <div className="mt-4 flex justify-center">
-                    <button
-                      onClick={() => resetQuickCheck("dividend-stock-income")}
-                      className="bg-[#5a7d53] text-white px-4 py-2 rounded-lg hover:bg-[#4a6a45] transition-colors"
-                    >
-                      Try Again
-                    </button>
-                  </div>
-                )}
-
-              {quickCheckFeedback["dividend-stock-income"] && (
-                <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
-                  <p className="text-green-800">
-                    <strong>Correct!</strong> Dividend stocks are specifically designed to provide regular income to
-                    investors through consistent dividend payments. They're particularly popular among retirees and
-                    income-focused investors.
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-        ),
-      },
-      {
-        title: "Module 1.2 Review",
-        content: (
-          <div className="space-y-4">
-            <div className="bg-[#f0f9f4] p-5 rounded-lg mb-6">
-              <h4 className="font-bold text-xl text-[#5a7d53] mb-3">Key Takeaways</h4>
-              <ul className="list-disc pl-5 space-y-2">
+              <p><strong>👤 Best for:</strong></p>
+              <ul style={{ paddingLeft: "1.2rem", listStyleType: "disc" }}>
+                <li>Long-term investors</li>
+                <li>Those seeking <span title="Increase in the value of your investment over time" style={{ textDecoration: "underline dotted", cursor: "help" }}>capital appreciation</span></li>
                 <li>
-                  <strong>Common vs. Preferred Stock:</strong> Common stock offers voting rights and growth potential,
-                  while preferred stock provides priority dividends and more stability.
-                </li>
-                <li>
-                  <strong>Market Capitalization:</strong> Large-cap stocks (&gt;$10B) offer stability, while small-cap
-                  stocks ($250M-$2B) provide higher growth potential with more risk.
-                </li>
-                <li>
-                  <strong>Investment Styles:</strong> Value stocks are undervalued with long-term potential, growth
-                  stocks focus on capital appreciation, and dividend stocks generate regular income.
+                  <span title="Comfortable with higher price swings and potential losses for long-term gain" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                    Risk-tolerant
+                  </span>{" "}
+                  investors
                 </li>
               </ul>
             </div>
+        
+            {/* Preferred Stock */}
+            <div style={{ flex: "1", minWidth: "280px", border: "1px solid #ccc", borderRadius: "10px", padding: "1rem" }}>
+              <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "0.5rem" }}>💰 Preferred Stock</h3>
+              <p><strong>What:</strong> A stock with more{" "}
+                <span title="Regular income payments made to shareholders, like interest" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                  yields
+                </span>{" "}
+                and fewer rights
+              </p>
+              <p>
+                <strong>🎯 Perks:</strong> Priority when it comes to receiving dividends, but no{" "}
+                <span title="No ability to vote on major company matters like mergers or board elections" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                  voting rights
+                </span>.
+              </p>
+              <p><strong>👤 Best for:</strong></p>
+              <ul style={{ paddingLeft: "1.2rem", listStyleType: "disc" }}>
+                <li>Medium to long-term investors</li>
+                <li>Those seeking stable income from dividends</li>
+                <li>
+                  <span title="Prefers steady returns with lower volatility and lower risk" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                    Risk-averse
+                  </span>{" "}
+                  individuals
+                </li>
+              </ul>
+            </div>
+          </div>
+        )        
+        ,
+      },
+      
+    ],
 
-            <p className="mb-4">
-              Understanding these different stock types and classifications helps you build a diversified portfolio that
-              matches your investment goals, risk tolerance, and time horizon.
+    //SECTION 1 MODULE 8
+    [
+      {
+        title: "Market Capitalization",
+        type: "content",
+        content: (
+          <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
+            {/* Large Cap */}
+            <div style={{ flex: "1", minWidth: "240px", border: "1px solid #ccc", borderRadius: "10px", padding: "1rem" }}>
+              <h4 style={{ fontSize: "1.1rem", fontWeight: "bold", marginBottom: "0.5rem" }}>🏢 Large Cap</h4>
+              <ul style={{ paddingLeft: "1.2rem", listStyleType: "disc" }}>
+                <li>💰 USD 10 billion or more</li>
+                <li>🏛️ Big, stable companies</li>
+                <li>🛡️ Low risk, steady returns</li>
+                <li>🏭 Typically in established industries</li>
+              </ul>
+            </div>
+        
+            {/* Mid Cap */}
+            <div style={{ flex: "1", minWidth: "240px", border: "1px solid #ccc", borderRadius: "10px", padding: "1rem" }}>
+              <h4 style={{ fontSize: "1.1rem", fontWeight: "bold", marginBottom: "0.5rem" }}>📈 Mid Cap</h4>
+              <ul style={{ paddingLeft: "1.2rem", listStyleType: "disc" }}>
+                <li>💵 USD 2 to 10 billion</li>
+                <li>🏢 Medium-sized companies</li>
+                <li>⚖️ Balanced risk and growth</li>
+                <li>🌱 In growth-oriented industries</li>
+              </ul>
+            </div>
+        
+            {/* Small Cap */}
+            <div style={{ flex: "1", minWidth: "240px", border: "1px solid #ccc", borderRadius: "10px", padding: "1rem" }}>
+              <h4 style={{ fontSize: "1.1rem", fontWeight: "bold", marginBottom: "0.5rem" }}>🌟 Small Cap</h4>
+              <ul style={{ paddingLeft: "1.2rem", listStyleType: "disc" }}>
+                <li>💸 USD 250 million – 2 billion</li>
+                <li>🏗️ Smaller companies</li>
+                <li>🎢 Higher risk, higher potential returns</li>
+                <li>🧪 Often in niche or emerging sectors</li>
+              </ul>
+            </div>
+          </div>
+        )
+        ,
+      },
+      
+    ],
+
+    //SECTION 1 MODULE 9
+    [
+      {
+        title: "Market Cap Categories",
+        type: "content",
+        content: (
+          <div style={{ border: "1px solid #ccc", borderRadius: "10px", padding: "1.5rem", maxWidth: "600px" }}>
+            <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>🚀 How Companies Sell Stocks</h3>
+            <p style={{ marginBottom: "1rem" }}>
+              To sell stocks, a company must go public via an <strong>IPO</strong> (Initial Public Offering). The process includes:
             </p>
+            <ol style={{ paddingLeft: "1.2rem", listStyleType: "decimal", lineHeight: "1.6" }}>
+              <li>🏢 A private company decides to go public to raise money.</li>
+              <li>💼 It works with investment banks to set an initial stock price.</li>
+              <li>🏦 The stock is offered to institutional investors first.</li>
+              <li>📈 Once trading begins, anyone can buy shares on the open market.</li>
+            </ol>
+          </div>
+        ),
+      },
+      
+    ],
 
-            <div className="bg-[#f0d878] bg-opacity-20 p-5 rounded-lg">
-              <div className="flex items-start">
-                <div className="bg-[#f0d878] text-[#5a7d53] p-2 rounded-full mr-3 flex-shrink-0">
-                  <span className="text-xl">📝</span>
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg text-[#5a7d53] mb-1">Ready for the Quiz?</h4>
-                  <p>
-                    Test your knowledge of stock types and classifications with our comprehensive module quiz. The quiz
-                    includes both recall questions to test your memory and application questions to test your
-                    understanding.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        ),
-      },
-    ],
-    // Section 2, Module 1
+    //SECTION 1 MODULE 10
     [
       {
-        title: "Introduction to Investment Vehicles",
+        title: "Divdend, Value, Growth Stocks",
+        type: "content",
         content: (
-          <div className="space-y-4">
-            <p>Content for Section 2, Module 1, Section 1</p>
-            <div className="mt-6 flex justify-center">
-              <img
-                src="/placeholder.svg?height=200&width=300"
-                alt="Investment Vehicles"
-                className="rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-              />
-            </div>
+          <div style={{ border: "1px solid #ccc", borderRadius: "10px", padding: "1.5rem", maxWidth: "600px" }}>
+            <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>🚀 How Companies Sell Stocks</h3>
+            <p style={{ marginBottom: "1rem" }}>
+              To sell stocks, a company must go public via an <strong>IPO</strong> (Initial Public Offering). The process includes:
+            </p>
+            <ol style={{ paddingLeft: "1.2rem", listStyleType: "decimal", lineHeight: "1.6" }}>
+              <li>🏢 A private company decides to go public to raise money.</li>
+              <li>💼 It works with investment banks to set an initial stock price.</li>
+              <li>🏦 The stock is offered to institutional investors first.</li>
+              <li>📈 Once trading begins, anyone can buy shares on the open market.</li>
+            </ol>
           </div>
         ),
       },
+      
     ],
-    // Section 3, Module 1
+  
+    // SECTION 2 MODULE 1
     [
       {
-        title: "Building Your Portfolio",
+        title: "Introduction to Fundamental Analysis I",
+        type: "content",
         content: (
-          <div className="space-y-4">
-            <p>Content for Section 3, Module 1, Section 1</p>
-            <div className="mt-6 flex justify-center">
-              <img
-                src="/placeholder.svg?height=200&width=300"
-                alt="Portfolio Building"
-                className="rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
-              />
-            </div>
+          <div style={{ border: "1px solid #ccc", borderRadius: "10px", padding: "1.5rem", maxWidth: "700px" }}>
+            <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>🔍 Fundamental Analysis</h3>
+            <p style={{ marginBottom: "1rem" }}>
+              Fundamental analysis looks at both the{" "}
+              <span title="Financial data such as revenue, profits, and ratios" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                quantitative
+              </span>{" "}
+              (numbers) and{" "}
+              <span title="Non-financial factors like brand strength, leadership, or market trends" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                qualitative
+              </span>{" "}
+              (story) aspects of a company to help investors determine the{" "}
+              <span title="What the stock is actually worth based on its fundamentals, not market price" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                intrinsic value
+              </span>{" "}
+              of a stock — in other words, to decide if the company is worth more than its current price.
+            </p>
+            <p>
+              This approach is best suited for investors with a{" "}
+              <span title="A time horizon typically ranging from several months to years" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                mid-to-long-term
+              </span>{" "}
+              investment horizon.
+            </p>
           </div>
         ),
       },
+  
+      
     ],
+    //SECTION 2 MODULE 2
+    [
+      {
+        title: "Introduction to Fundamental Analysis II",
+        type: "content",
+        content: (
+          (
+            <div style={{ border: "1px solid #ccc", borderRadius: "10px", padding: "1.5rem", maxWidth: "750px" }}>
+              <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>🧥 Thrift Store Analogy: Understanding Value</h3>
+          
+              <p style={{ marginBottom: "1rem" }}>
+                Think of <strong>Fundamental Analysis</strong> like shopping at a thrift store. You’re not just looking at the price tag—
+                you’re evaluating the item’s <em>quality</em>, <em>brand</em>, and <em>condition</em> to decide if it’s worth more than what the price suggests.
+              </p>
+          
+              <p style={{ marginBottom: "1rem" }}>
+                For example, imagine a vintage leather jacket priced at <strong>$10</strong>. After inspecting it, you realize it’s a
+                high-end brand, in excellent condition, and rare. You’d know this item is{" "}
+                <span title="When something is selling for less than what it's truly worth" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                  undervalued
+                </span>{" "}
+                and likely a great buy.
+              </p>
+          
+              <p style={{ marginBottom: "1rem" }}>
+                Similarly, in the stock market, if the{" "}
+                <span title="What the stock is truly worth based on analysis" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                  fair market value
+                </span>{" "}
+                (or{" "}
+                <span title="Another term for fair market value based on financial fundamentals" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                  intrinsic value
+                </span>
+                ) is higher than the{" "}
+                <span title="The price you see on the stock exchange" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                  market price
+                </span>
+                , the stock is undervalued — and analysts may issue a <strong>buy</strong> recommendation.
+              </p>
+          
+              <p style={{ marginBottom: "1rem" }}>
+                On the other hand, imagine spotting a worn-out t-shirt for <strong>$40</strong> with no brand and little appeal.
+                You’d know it’s{" "}
+                <span title="When something is priced higher than its actual worth" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                  overvalued
+                </span>{" "}
+                and not worth the price. In investing, that would likely lead to a <strong>sell (short)</strong> recommendation.
+              </p>
+          
+              <p style={{ fontStyle: "italic", fontSize: "0.95rem", color: "#555" }}>
+                💡 Note: <strong>Fair market value</strong> is also known as{" "}
+                <span title="The true value of a stock based on analysis of its business fundamentals" style={{ textDecoration: "underline dotted", cursor: "help" }}>
+                  intrinsic value
+                </span>
+                .
+              </p>
+            </div>
+          )
+          
+        ),
+      } 
+    ],
+    //Add more sections as needed
+
   ]
+  
+  // Quiz data matching quizKey format
+  const quizData = {
+    "1.1.mixed": [
+      {
+        
+    question: "What investment strategy best fits a goal of retirement in 30 years?",
+    options: [
+      "Low risk, high liquidity",
+      "Balanced risk, medium liquidity",
+      "Higher risk tolerance, low liquidity",
+      "Short-term savings account",
+    ],
+    correctAnswer: 2,
+    feedback: [
+      "This approach is more suitable for short-term goals. Retirement in 30 years allows for a longer time horizon and more investment risk.",
+      "Balanced risk works well for mid-term goals like college savings, but for a 30-year retirement plan, you can typically afford to take on more risk.",
+      "Correct! A long-term goal like retirement allows for higher risk tolerance and investments that may be less liquid but offer greater growth potential over time.",
+      "A short-term savings account is useful for emergencies or near-future needs—not long-term growth like retirement.",
+    ],
+  },
+  {
+    question: "Which investment strategy fits best for someone buying a house next year?",
+    options: [
+      "Low risk, high liquidity",
+      "Higher risk tolerance, low liquidity",
+      "Balanced risk, medium liquidity",
+      "Investing in real estate stocks",
+    ],
+    correctAnswer: 0,
+    feedback: [
+      "Correct! Since you're planning to use the money in a year, your investment should be easily accessible and low-risk to avoid potential losses.",
+      "This approach is too risky for a short-term goal. There's not enough time to recover from market volatility.",
+      "Balanced risk works better for goals 5–10 years away. In this case, it's safer to prioritize capital preservation.",
+      "Investing in real estate stocks may seem related, but they can be volatile and don't provide the liquidity or safety needed for a short-term goal like buying a house next year.",
+    ],
+  },
+  {
+    question: "You’re saving for your child’s college fund in 10 years. What strategy fits best?",
+    options: [
+      "High risk, low liquidity",
+      "Low risk, high liquidity",
+      "Balanced risk, medium liquidity",
+      "Short-term government bonds",
+    ],
+    correctAnswer: 2,
+    feedback: [
+      "Ten years gives some time to grow, but not enough for very high-risk investments that may fluctuate widely.",
+      "This is better for very short-term or emergency goals. You have more time and can afford moderate risk.",
+      "Correct! A 10-year time horizon allows for a balanced approach—some growth potential, some safety, and moderate liquidity.",
+      "Short-term government bonds are generally lower risk and more appropriate for goals less than 5 years away.",
+    ],
+  },
+  {
+    question: "What strategy is most suitable for building an emergency fund?",
+    options: [
+      "Low risk, high liquidity",
+      "High risk, low liquidity",
+      "Balanced risk, medium liquidity",
+      "Investing in long-term index funds",
+    ],
+    correctAnswer: 0,
+    feedback: [
+      "Correct! Emergency funds need to be safe and accessible, so low risk and high liquidity are key.",
+      "This is too risky and doesn't provide quick access to cash—bad fit for emergencies.",
+      "Balanced risk is still too risky for an emergency fund, which needs to be available immediately and reliably.",
+      "Long-term index funds are great for retirement or wealth-building, but not suitable for emergencies when funds may be needed right away.",
+    ],
+      },
+      /* Quiz questions for Investing Basics */
+    ],
+    "1.2.mixed": [
+      { question: "Which of these is an example of capital appreciation?",
+        options: [
+          "Company pays you SGD 1 per share",
+          "You sell a stock at a higher price than you bought it",
+          "You receive a dividend from the company",
+          "You hold the stock for over 5 years",
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "This is a dividend, not capital appreciation. Capital appreciation happens when the price of your stock increases.",
+          "Correct! Capital appreciation means the stock's value has increased since you bought it, and you gain by selling at a higher price.",
+          "Dividends are payments from company profits, not appreciation of value.",
+          "Holding for a long time doesn't guarantee capital appreciation. The stock has to increase in value.",
+        ],
+      },
+      {
+        question: "What does owning a stock represent?",
+        options: [
+          "You are lending money to the company",
+          "You own a part of the company",
+          "You’re entitled to guaranteed returns",
+          "You work for the company",
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "That describes a bond. Stocks represent ownership, not a loan.",
+          "Correct! When you own a stock, you're a part-owner (shareholder) of the company.",
+          "There are no guaranteed returns with stocks. Values can fluctuate.",
+          "Owning stock does not mean you’re employed by the company—it just makes you a shareholder.",
+        ],
+      },
+      {
+        question: "What is a dividend?",
+        options: [
+          "A payment to stockholders from the company’s profits",
+          "A type of loan you give to a company when buying stock",
+          "The profit you earn from selling a stock",
+          "A penalty for holding a stock too long",
+        ],
+        correctAnswer: 0,
+        feedback: [
+          "Correct! A dividend is a portion of a company’s profits shared with shareholders, usually in cash or additional shares.",
+          "Stocks are not loans—bonds are. Buying stock makes you a part-owner, not a lender.",
+          "That’s capital appreciation, not a dividend.",
+          "There are no penalties for long-term investing. This is incorrect.",
+        ],
+      },
+      {
+        question: "What is an example of capital appreciation?",
+        options: [
+          "You receive a cash payment from the company",
+          "The value of your stock increases over time",
+          "You receive a bonus stock dividend",
+          "The company announces a share buyback",
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "That’s a dividend, not appreciation.",
+          "Correct! Capital appreciation is when the stock's price rises, increasing the value of your investment.",
+          "Stock dividends are additional shares, not necessarily an increase in value.",
+          "A share buyback can affect stock price, but it's not in itself capital appreciation.",
+        ],
+      },
+      /* Quiz questions for what is a stock */
+    ],
+    "1.3.mixed": [
+      {
+        question: "What is the main function of a stock exchange?",
+        options: [
+          "To create new companies",
+          "To match buyers and sellers of stocks via brokers",
+          "To lend money to investors",
+          "To manage company payroll",
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Stock exchanges don’t create companies—they provide a platform for trading shares of existing companies.",
+          "Correct! Stock exchanges act like auction houses, matching buyers and sellers of stocks through online brokers.",
+          "Stock exchanges don’t lend money. That’s a function of banks or lending institutions.",
+          "Payroll is managed internally by companies, not by the exchange.",
+        ],
+      },
+      {
+        question: "Which of the following are the two largest stock exchanges in the world?",
+        options: [
+          "SGX and SSE",
+          "Nasdaq and NYSE",
+          "LSE and TSX",
+          "ASX and BSE",
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "SGX (Singapore) and SSE (Shanghai) are important, but not the largest globally.",
+          "Correct! Nasdaq and NYSE are the two largest stock exchanges in the world, both based in the US.",
+          "The London and Toronto exchanges are large, but not as large as NYSE and Nasdaq.",
+          "ASX (Australia) and BSE (India) are regional leaders, not global ones.",
+        ],
+      },
+      {
+        question: "Which stock exchange is best known for tech companies like Apple, Microsoft, and Tesla?",
+        options: [
+          "NYSE",
+          "Nasdaq",
+          "SGX",
+          "LSE",
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "NYSE is known for more mature, traditional companies.",
+          "Correct! Nasdaq is home to many major tech companies and is known for being tech-focused.",
+          "SGX is Singapore’s exchange and doesn’t specialize in tech.",
+          "LSE (London Stock Exchange) is a major international exchange but not known for tech dominance.",
+        ],
+      },
+      {
+        question: "What is the NYSE best known for?",
+        options: [
+          "Emerging tech startups",
+          "Singapore-based companies",
+          "Mature, traditional, and industrial companies",
+          "Cryptocurrency trading",
+        ],
+        correctAnswer: 2,
+        feedback: [
+          "Tech startups are more commonly listed on Nasdaq.",
+          "Singapore-based companies are typically listed on SGX.",
+          "Correct! The NYSE is known for listing large, established companies in traditional industries.",
+          "Cryptocurrency trading happens on separate crypto exchanges, not the NYSE.",
+        ],
+      },
+      {
+        question: "Which exchange is based in Singapore?",
+        options: [
+          "Nasdaq",
+          "NYSE",
+          "SGX",
+          "SSE",
+        ],
+        correctAnswer: 2,
+        feedback: [
+          "Nasdaq is based in the United States.",
+          "NYSE is also a US-based exchange.",
+          "Correct! SGX stands for Singapore Exchange and is based in Singapore.",
+          "SSE refers to the Shanghai Stock Exchange in China.",
+        ],
+      },
+      /* Quiz questions for Market Cap */
+    ],
+    "1.4.mixed": [
+      {
+        question: "What is the Primary Market?",
+        options: [
+          "Where existing stocks are traded between investors",
+          "Where new stocks are sold for the first time",
+          "Where dividends are distributed"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "That's the Secondary Market, not the Primary Market.",
+          "Correct! The Primary Market is where new stocks are issued and sold for the first time.",
+          "Dividends are part of company profits, not how stocks are initially sold."
+        ]
+      },
+      {
+        question: "Who receives the money when you buy a stock in the Primary Market?",
+        options: [
+          "Another investor",
+          "The government",
+          "The company issuing the stock"
+        ],
+        correctAnswer: 2,
+        feedback: [
+          "That happens in the Secondary Market, not the Primary.",
+          "Governments don’t receive stock sale proceeds unless it's a public enterprise IPO.",
+          "Correct! In the Primary Market, the money goes directly to the company."
+        ]
+      },
+
+      {
+        question: "What does a public offering allow?",
+        options: [
+          "Only private investors can buy the stock",
+          "Anyone can buy the stock",
+          "Only institutions can trade the stock"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "You're thinking of a private offering — not public.",
+          "Correct! Public offerings are open to everyone, including individual investors.",
+          "This applies to private offerings, not public ones."
+        ]
+      },    
+      {
+        question: "What is one requirement for a public offering?",
+        options: [
+          "IPO (Initial Public Offering)",
+          "SEC exemption",
+          "Dividend declaration"
+        ],
+        correctAnswer: 0,
+        feedback: [
+          "Correct! A public offering requires an IPO to be launched.",
+          "That's more typical of private offerings, which avoid some SEC steps.",
+          "Dividends aren't required for stock offerings."
+        ]
+      },
+      {
+        question: "Which is true about private offerings?",
+        options: [
+          "Open to all investors",
+          "Faster and has fewer rules",
+          "Requires an IPO"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "That describes a public offering, not private.",
+          "Correct! Private offerings are typically quicker and less regulated.",
+          "Private offerings don't require IPOs — that's for public offerings."
+        ]
+      }
+      
+      
+      
+    ],
+    "1.5.mixed": [
+      {
+        question: "What is the Secondary Market?",
+        options: [
+          "Where new stocks are issued for the first time",
+          "Where stocks are bought and sold between investors",
+          "Where companies raise money directly"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "That's the Primary Market, not the Secondary Market.",
+          "Correct! The Secondary Market is where investors trade existing stocks with each other.",
+          "In the Secondary Market, the company doesn't receive money — investors trade with one another."
+        ]
+      },
+      {
+        question: "Who receives the money when a stock is traded in the Secondary Market?",
+        options: [
+          "The company",
+          "An investor selling the stock",
+          "The stock exchange"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "That only happens in the Primary Market.",
+          "Correct! In the Secondary Market, the seller — another investor — receives the money.",
+          "Exchanges charge fees but do not receive the trade amount."
+        ]
+      },
+      {
+        question: "What is a key function of the Secondary Market?",
+        options: [
+          "Determining the stock’s market price",
+          "Helping companies issue shares",
+          "Providing dividend schedules"
+        ],
+        correctAnswer: 0,
+        feedback: [
+          "Correct! Ongoing trading helps determine what investors are willing to pay — the market price.",
+          "That happens in the Primary Market during issuance.",
+          "Dividends are decided by companies, not market structure."
+        ]
+      },
+      {
+        question: "How is an Auction Market different from a Dealer Market?",
+        options: [
+          "An aution market involves trading through a middleman",
+          "In an auction market, buyers and sellers trade directly",
+          "In an auction market, prices are set by the company"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "That's how Dealer Markets work (via market makers).",
+          "Correct! In Auction Markets like the NYSE, buyers and sellers are matched directly.",
+          "Prices are determined by the market — not the company."
+        ]
+      }           
+
+      
+    ],
+    "1.6.mixed": [
+      {
+        question: "What does a company need to do to sell stocks?",
+        options: [
+          "Open a bank account",
+          "Go public via an IPO",
+          "Buy other companies"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Opening a bank account is not part of the stock offering process.",
+          "Correct! A company must go public through an IPO to sell its shares to the public.",
+          "Buying other companies is unrelated to going public or selling shares."
+        ]
+      },
+      {
+        question: "What does a company need to do to sell stocks?",
+        options: [
+          "Open a bank account",
+          "Go public via an IPO",
+          "Buy other companies"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Opening a bank account is not part of the stock offering process.",
+          "Correct! A company must go public through an IPO to sell its shares to the public.",
+          "Buying other companies is unrelated to going public or selling shares."
+        ]
+      },
+      {
+        question: "Who is offered the stock first during an IPO?",
+        options: [
+          "Anyone who wants to buy it",
+          "Institutional investors",
+          "Local government"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Public investors can buy after trading opens, but institutional investors get first access.",
+          "Correct! Institutional investors are typically offered shares first in an IPO.",
+          "Local governments aren’t involved in the distribution of stock during an IPO."
+        ]
+      },
+      {
+        question: "What is the main reason a company decides to go public?",
+        options: [
+          "To make its products more popular",
+          "To avoid paying taxes",
+          "To raise money"
+        ],
+        correctAnswer: 2,
+        feedback: [
+          "Going public may increase visibility, but the main goal is funding.",
+          "Companies still pay taxes after going public.",
+          "Correct! The primary reason for going public is to raise capital for growth."
+        ]
+      }
+        
+    ],
+    "1.7.mixed": [
+      {
+        question: "What is the key perk of Common Stock?",
+        options: [
+          "Priority dividends",
+          "Voting rights and potential for growth",
+          "Guaranteed fixed returns",
+          "No voting rights"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "That’s a perk of Preferred Stock, not Common Stock.",
+          "Correct! Common stockholders usually have voting rights and the potential for capital appreciation.",
+          "Common Stock doesn't offer fixed returns — returns depend on performance.",
+          "Incorrect. Common stock usually comes with voting rights."
+        ]
+      },
+      {
+        question: "Who is Preferred Stock best suited for?",
+        options: [
+          "Long-term investors looking for growth",
+          "Investors seeking more stable income through dividends",
+          "Those looking to vote on company decisions",
+          "Short-term traders looking for quick profits"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Preferred Stock is better for income than long-term growth.",
+          "Correct! It offers steady dividend income and is ideal for stability-focused investors.",
+          "Preferred Stock usually doesn’t come with voting rights.",
+          "Preferred Stock is not meant for short-term trading or speculation."
+        ]
+      },
+      {
+        question: "What is the main difference between Common Stock and Preferred Stock?",
+        options: [
+          "Preferred Stock gives voting rights, Common Stock does not",
+          "Preferred Stock offers priority in dividends, Common Stock does not",
+          "Common Stock guarantees fixed income",
+          "Preferred Stock is riskier than Common Stock"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Common Stock has voting rights, not Preferred.",
+          "Correct! Preferred shareholders receive dividends before Common shareholders.",
+          "There’s no fixed income in Common Stock — it depends on company performance.",
+          "Preferred Stock is typically less risky because of steady dividend payments."
+        ]
+      },
+      {
+        question: "Which of the following is true about the time horizon of Preferred Stock?",
+        options: [
+          "Preferred Stock is best for short-term investors",
+          "Preferred Stock is best for medium to long-term investors seeking stability",
+          "Preferred Stock is only for day traders",
+          "Preferred Stock has no time horizon"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Preferred Stock is not designed for short-term gains.",
+          "Correct! It suits medium to long-term investors who value steady income and lower volatility.",
+          "Preferred Stock is not used for day trading — it’s not volatile enough.",
+          "All investments have a time horizon depending on the goal. This is too vague to be true."
+        ]
+      },
+      {
+        question: "Who would benefit most from investing in Common Stock?",
+        options: [
+          "Someone looking for immediate income",
+          "Someone wanting to vote on company decisions and accept more risk for potential growth",
+          "Someone avoiding risk and seeking stable returns",
+          "Someone seeking fixed, regular payouts"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Immediate income is more aligned with Preferred Stock.",
+          "Correct! Common Stock appeals to investors willing to take on more risk in exchange for growth and voting rights.",
+          "Common Stock is not for risk-averse investors — it’s more volatile.",
+          "That’s the domain of Preferred Stock, not Common."
+        ]
+      }
+      
+    ],
+    "1.8.mixed": [
+      {
+        question: "What does market capitalization measure?",
+        options: [
+          "The company's revenue",
+          "The value of all outstanding shares",
+          "The company's net income"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Revenue is important, but market cap is based on share price and shares outstanding.",
+          "Correct! Market cap is the total value of a company’s outstanding shares (share price × number of shares).",
+          "Net income relates to company profitability, not its total market value."
+        ]
+      },
+      {
+        question: "If a company has 1 million shares at $50 each, what's its market cap?",
+        options: [
+          "$50 million",
+          "$1 million",
+          "$5 million"
+        ],
+        correctAnswer: 0,
+        feedback: [
+          "Correct! 1 million shares × $50 = $50 million market cap.",
+          "That would be the case if shares were $1 each — not $50.",
+          "That math doesn’t add up — double-check your multiplication."
+        ]
+      },
+      {
+        question: "Market capitalization helps investors understand:",
+        options: [
+          "Product quality",
+          "Company size & risk",
+          "Employee salaries"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Product quality is subjective and not part of market cap calculation.",
+          "Correct! Market cap indicates how big a company is, and larger firms are often seen as less risky.",
+          "Salaries aren't related to a company's market cap directly."
+        ]
+      },
+      {
+        question: "A company’s stock price goes up. What happens to its market cap?",
+        options: [
+          "It depends on revenue",
+          "It goes down",
+          "It increases"
+        ],
+        correctAnswer: 2,
+        feedback: [
+          "Revenue doesn’t directly impact market cap — share price does.",
+          "That’s the opposite — market cap rises when share price rises.",
+          "Correct! Market cap increases because it’s calculated as share price × number of shares."
+        ]
+      },
+      
+    ],
+    "1.9.mixed": [
+      {
+        question: "Small cap stocks are always safer.",
+        options: [
+          "True",
+          "False"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Small cap stocks are generally riskier due to higher volatility and less predictable performance.",
+          "Correct! Small cap stocks often come with higher risk — they can grow fast, but also swing wildly in value."
+        ]
+      },
+      {
+        question: "Small cap has over USD 10 billion market cap.",
+        options: [
+          "True",
+          "False"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "That describes large cap — not small cap. Small caps are typically under $2 billion.",
+          "Correct! Small caps are usually between $250 million and $2 billion, not over $10 billion."
+        ]
+      },
+      {
+        question: "If you’re someone who avoids risk in investment, what category of stock might you pick?",
+        options: [
+          "Large cap stock",
+          "Small cap stock"
+        ],
+        correctAnswer: 0,
+        feedback: [
+          "Correct! Large cap stocks are usually more stable and less volatile — great for risk-averse investors.",
+          "Small caps tend to be riskier and more volatile, which doesn’t suit a conservative strategy."
+        ]
+      },
+      {
+        question: "Company A makes plant-based dog food and has a market cap of $500 million. What category of market capitalization does it fall into?",
+        options: [
+          "Small Cap",
+          "Large Cap",
+          "Mid Cap"
+        ],
+        correctAnswer: 0,
+        feedback: [
+          "Correct! $500 million falls in the small cap range ($250M–$2B).",
+          "Large cap starts at $10 billion and above — this company is much smaller.",
+          "Mid cap is typically $2–10 billion, which is still above this company's value."
+        ]
+      },
+      {
+        question: "If you’re someone who is seeking growth in value of stock and can accept volatility of stock prices, what category of stock might you pick?",
+        options: [
+          "Large cap",
+          "Small Cap"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Large cap stocks are stable but generally offer slower growth.",
+          "Correct! Small caps are more volatile but can offer high growth potential."
+        ]
+      }
+      
+      
+    ],
+    "1.10.mixed": [
+      {
+        question: "Which stock type usually pays regular income?",
+        options: [
+          "Value",
+          "Growth",
+          "Dividend"
+        ],
+        correctAnswer: 2,
+        feedback: [
+          "Value stocks can sometimes pay dividends, but not always regularly.",
+          "Growth stocks usually reinvest profits instead of paying income.",
+          "Correct! Dividend stocks are known for providing regular income to shareholders."
+        ]
+      },
+      {
+        question: "Which stock type has the highest risk and growth potential?",
+        options: [
+          "Value",
+          "Growth",
+          "Dividend"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Value stocks are considered more stable and less volatile.",
+          "Correct! Growth stocks aim for rapid expansion and often carry higher risk.",
+          "Dividend stocks prioritize income, not aggressive growth."
+        ]
+      },
+      {
+        question: "You want long-term bargains and are okay waiting. Choose:",
+        options: [
+          "Growth",
+          "Dividend",
+          "Value"
+        ],
+        correctAnswer: 2,
+        feedback: [
+          "Growth stocks are priced for potential, not for bargain-hunting.",
+          "Dividend stocks focus on income, not undervalued opportunities.",
+          "Correct! Value stocks are often undervalued and good for long-term investors willing to wait."
+        ]
+      },
+      {
+        question: "This stock reinvests earnings and skips dividends.",
+        options: [
+          "Growth",
+          "Dividend",
+          "Value"
+        ],
+        correctAnswer: 0,
+        feedback: [
+          "Correct! Growth stocks typically reinvest profits to fuel expansion instead of paying dividends.",
+          "Dividend stocks distribute profits rather than reinvesting them.",
+          "Value stocks may pay dividends, but reinvestment isn’t their defining trait."
+        ]
+      },
+      {
+        question: "Which is best for someone needing steady income now?",
+        options: [
+          "Growth",
+          "Dividend",
+          "Value"
+        ],
+        correctAnswer: 1,
+        feedback: [
+          "Growth stocks don’t usually offer income — they’re about future potential.",
+          "Correct! Dividend stocks provide regular payouts — ideal for income-focused investors.",
+          "Value stocks might pay dividends, but income isn’t their core purpose."
+        ]
+      }      
+      
+    ],
+    "2.1.mixed": [
+      {
+        question: "What does Fundamental Analysis consist of? (You may choose more than one option.)",
+        options: [
+          "Quantitative Analysis",
+          "Qualitative Analysis",
+          "Technical Analysis"
+        ],
+        correctAnswer: [0, 1],
+        hint: (
+          <span title="Fundamental analysis is like inspecting items at a thrift shop to decide their true worth. For stocks, it means scrutinizing a company's financial health, management quality, and market position to see if the stock price really reflects its value." style={{ textDecoration: "underline dotted", cursor: "help" }}>
+            💡 Hint: Think of fundamental analysis like evaluating a hidden gem at a thrift store.
+          </span>
+        ),
+        feedback: {
+          correct: "Fundamental analysis includes both quantitative aspects, like financial statements and ratios, and qualitative aspects, such as management quality and industry position. This comprehensive approach provides a deeper understanding of a company's overall health and potential.",
+          incorrect: [
+            "While quantitative analysis of financial data is a crucial part of fundamental analysis, relying solely on this ignores the qualitative factors like management effectiveness and industry conditions, which are equally important.",
+            "Qualitative analysis helps in understanding the company's strategic positioning, but without financial metrics like earnings and debt, the analysis is incomplete.",
+            "Technical analysis is a separate discipline that focuses on price trends and trading volumes, not business fundamentals."
+          ]
+        }
+      },
+
+      {
+        question: "What does Fundamental Analysis help you determine?",
+        options: [
+          "The popularity of the stock on social media",
+          "The intrinsic value of a stock",
+          "The short-term volatility of the stock",
+          "The CEO's performance"
+        ],
+        correctAnswer: 1,
+        hint: (
+          <span title="Fundamental analysis helps you assess whether a stock’s price reflects its true business value." style={{ textDecoration: "underline dotted", cursor: "help" }}>
+            💡 Hint: Think long-term value, not short-term hype.
+          </span>
+        ),
+        feedback: [
+          "The number of times a stock is mentioned on social media doesn’t reflect its financial worth or business fundamentals.",
+          "Correct! Fundamental analysis helps determine a stock's intrinsic value — what it's actually worth based on company performance.",
+          "Short-term volatility refers to quick price fluctuations, which is typically the focus of technical analysis, not fundamental.",
+          "A CEO is important, but fundamental analysis goes far beyond one person — it covers earnings, debt, and overall company outlook."
+        ]
+      },
+
+      {
+        question: "If the fair market value exceeds the market price, is the stock undervalued or overvalued?",
+        options: ["Undervalued", "Overvalued"],
+        correctAnswer: 0,
+        hint: (
+          <span title="Fair market value is what a stock is actually worth. Market price is what it's selling for. If something is worth more than the price, it's undervalued." style={{ textDecoration: "underline dotted", cursor: "help" }}>
+            💡 Hint: Think of a high-quality jacket at a low thrift price.
+          </span>
+        ),
+        feedback: [
+          "Correct! If a stock is priced lower than its fair market value, it's a good deal — it's undervalued.",
+          "Overvalued would mean the stock costs more than it's worth. If the market price is lower than the fair value, it's actually undervalued."
+        ]
+      },
+
+      {
+        question: "If a stock is overvalued, should you exercise a buy or short decision?",
+        options: ["Buy", "Short"],
+        correctAnswer: 1,
+        feedback: [
+          "Buying an overvalued stock means paying more than it’s worth — it’s risky and may lead to losses when the price corrects.",
+          "Correct! If a stock is overvalued, shorting may be profitable if you expect its price to fall to reflect its true value."
+        ]
+      }     
+    ],
+    "2.2.mixed": [
+      {
+        question: "If the market price exceeds the fair market value, is the stock undervalued or overvalued?",
+        options: [
+          "Undervalued",
+          "Overvalued"
+        ],
+        correctAnswer: 1,
+        hint: (
+          <span title="Fair market value = what the item is usually worth. Market price = current selling price. Undervalued = priced below its real worth. Overvalued = priced above its real worth." style={{ textDecoration: "underline dotted", cursor: "help" }}>
+            📌 Hint: Hover to review key definitions
+          </span>
+        ),
+        feedback: [
+          // Incorrect: User chooses "Undervalued"
+          "Undervalued would mean that the stock is priced below its real value, which is not the case here. The term doesn't apply when the stock's price is higher than its intrinsic value, which indicates an overvaluation, not undervaluation.",
+          // Correct: User chooses "Overvalued"
+          "Correct! This option correctly states that the stock price is higher than what the company's financial health and market position justify. When investors pay more than the fair market value, they may not get a return that matches their investment."
+        ]
+      },
+      {
+        question: "If a stock is undervalued, should you exercise a buy or short decision?",
+        options: [
+          "Buy",
+          "Short"
+        ],
+        correctAnswer: 0,
+        feedback: [
+          // Correct answer: Buy
+          "Correct! Buying undervalued stocks is generally seen as a good investment because you’re purchasing something for less than its true value.",
+          // Incorrect answer: Short
+          "Shorting a stock is betting on its price decrease, but if a stock is undervalued, it means it's priced below its true value, suggesting it will likely increase. Shorting an undervalued stock risks losses if its price corrects upward to reflect its intrinsic value. Thus, shorting is not advisable for undervalued stocks."
+        ]
+      }
+    ],
+  }
+  
 
   // Define quiz data with detailed feedback for each option
-  const quizData = {
+ /* const quizData = {
     // Module 1.1 Quiz
-    "1.1.mixed": [
+    "1.1": [
       {
         question: "What should be the first step in investment planning?",
         options: [
@@ -1410,7 +1865,7 @@ const CourseContent = () => {
       },
     ],
   }
-
+    */
   // Get the current quiz based on module and quiz type
   const getCurrentQuiz = () => {
     const quizKey = `${currentStep}.${currentModule}.${quizType}`
@@ -1441,7 +1896,7 @@ const CourseContent = () => {
       currentStep === 1
         ? currentModule === 1
           ? moduleContent[0]
-          : moduleContent[1]
+          : moduleContent[currentModule - 1]
         : moduleContent[currentStep - 1]
           ? moduleContent[currentStep - 1][currentModule - 1] || []
           : [],
@@ -1464,6 +1919,7 @@ const CourseContent = () => {
 
   const handleCompleteModule = () => {
     // Mark this module as completed in localStorage
+    
     const savedProgress = localStorage.getItem("courseProgress")
     const progress = savedProgress
       ? JSON.parse(savedProgress)
@@ -1484,30 +1940,43 @@ const CourseContent = () => {
       }
 
       // Update state
-      setCompletedModules({
-        ...completedModules,
+      setCompletedModules((prev) => ({
+        ...prev,
         [`${currentStep}.${currentModule}`]: true,
-      })
+      }))
+
+      progress.completedModules[`${currentStep}.${currentModule}`] = true
 
       // Navigate to the quiz for this module
       navigate(`/course-content?step=${currentStep}&module=${currentModule}&type=quiz&quizType=${quizType}`)
     } else if (contentType === "quiz" && quizScore >= 80) {
-      // If quiz is passed, mark it as completed
       const quizKey = `${currentStep}.${currentModule}.${quizType}`
+      const moduleKey = `${currentStep}.${currentModule}`
+    
       progress.completedQuizzes = {
         ...progress.completedQuizzes,
         [quizKey]: true,
       }
-
-      // Update state
+    
+      progress.completedModules = {
+        ...progress.completedModules,
+        [moduleKey]: true,
+      }
+    
       setCompletedQuizzes({
         ...completedQuizzes,
         [quizKey]: true,
       })
-
+    
+      setCompletedModules({
+        ...completedModules,
+        [moduleKey]: true,
+      })
+    
       // Navigate back to courses
       navigate(`/courses`)
     }
+    
 
     // Save updated progress
     localStorage.setItem("courseProgress", JSON.stringify(progress))
@@ -1715,21 +2184,25 @@ const CourseContent = () => {
     return <div className="min-h-screen flex items-center justify-center">Loading...</div>
   }
 
+  const stepModuleCounts = {
+  1: 6,
+  2: 1,
+ }
+
   const goToNextModule = () => {
     // Navigate to the next module or section
-    if (currentModule < moduleContent[currentStep - 1]?.length) {
-      // Go to next module in current section
+    const totalModules = stepModuleCounts[currentStep] || 0
+
+    if (currentModule < totalModules) {
       navigate(`/course-content?step=${currentStep}&module=${currentModule + 1}&type=content`)
-    } else if (currentStep < moduleContent.length) {
-      // Go to first module in next section
+    } else if (currentStep < Object.keys(stepModuleCounts).length) {
       navigate(`/course-content?step=${currentStep + 1}&module=1&type=content`)
     } else {
-      // If we're at the last module of the last section, go back to courses
       navigate("/courses")
     }
   }
 
-  const handleGoToNext = () => {
+  /*const handleGoToNext = () => {
     if (contentType === "content") {
       if (currentContentIndex < moduleContent[currentModuleIndex].length - 1) {
         setCurrentContentIndex(currentContentIndex + 1)
@@ -1772,6 +2245,27 @@ const CourseContent = () => {
         goToNextModule()
       }
     }
+  }
+  */
+  const handleGoToNext = () => {
+    if (contentType === "content") {
+      const moduleKey = `${currentStep}.${currentModule}`
+      const updatedCompletedModules = {
+        ...completedModules,
+        [moduleKey]: true,
+      }
+      setCompletedModules(updatedCompletedModules)
+    
+      const savedProgress = localStorage.getItem("courseProgress")
+      const progress = savedProgress ? JSON.parse(savedProgress) : {}
+      progress.completedModules = updatedCompletedModules
+      localStorage.setItem("courseProgress", JSON.stringify(progress))
+    
+      goToNextModule()
+    }
+    
+    
+
   }
 
   return (

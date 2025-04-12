@@ -8,7 +8,7 @@ import "./styles.css"
 import Login from "./pages/login.js"
 import Signup from "./pages/signup.js"
 import Contact from "./pages/contactus.js"
-import Courses from "./pages/courses.js"
+import Courses from "./pages/Courses.js"
 import CourseContent from "./pages/coursecontent.js"
 import UserProfile from "./components/userprofile.js"
 import Terms from "./pages/terms.js"
@@ -22,7 +22,7 @@ import "./styles.css"
 
 function App() {
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router> 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<div>About Page</div>} />

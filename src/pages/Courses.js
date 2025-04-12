@@ -1,5 +1,5 @@
 "use client"
-
+import { useLocation } from "react-router-dom"
 import { useState, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import {
@@ -26,6 +26,7 @@ const Courses = () => {
   const [expandedSection, setExpandedSection] = useState(null)
   const [currentModuleIndex, setCurrentModuleIndex] = useState(0)
   const [quizAnswers, setQuizAnswers] = useState({})
+  const location = useLocation()
 
   // Check if user is logged in
   useEffect(() => {
@@ -65,7 +66,7 @@ const Courses = () => {
         )
       }
     }
-  }, [navigate])
+  }, [location])
 
   // Save progress when it changes
   useEffect(() => {
@@ -103,39 +104,153 @@ const Courses = () => {
       modules: [
         {
           id: 1,
-          title: "What is the Stock Market?",
+          title: "Start with your Why", //module 1.1.1
           duration: "3 mins",
           type: "content",
         },
         {
           id: "1q",
-          title: "Module 1.1: Quiz",
+          title: "Start with your Why: Quiz",
           type: "quiz",
           quizType: "mixed",
           relatedModuleId: 1,
         },
         {
           id: 2,
-          title: "Types of Stocks",
+          title: "What is a Stock?",
           duration: "3 mins",
           type: "content",
         },
         {
-          id: "2q-recall",
-          title: "Module 1.2: Recall Quiz",
+          id: "2q",
+          title: "What is a stock: Recall Quiz", //1.1.2
           type: "quiz",
-          quizType: "recall",
+          quizType: "mixed",
           relatedModuleId: 2,
           description: "Test your knowledge of stock types and classifications",
         },
+        //{
+          //id: "2q-apply",
+          //title: "Module 1.2: Application Quiz",
+          //type: "quiz",
+          //quizType: "application",
+          //relatedModuleId: 2,
+          //description: "Apply your knowledge to real-world scenarios",
+        //},
         {
-          id: "2q-apply",
-          title: "Module 1.2: Application Quiz",
-          type: "quiz",
-          quizType: "application",
-          relatedModuleId: 2,
-          description: "Apply your knowledge to real-world scenarios",
+          id: 3,
+          title: "Meet the Markets",
+          duration: "3 mins",
+          type: "content",
         },
+        {
+          id: "3q",
+          title: "Meet the Markets: Quiz",
+          type: "quiz",
+          quizType: "mixed",
+          relatedModuleId: 3,
+          description: "NYSE, Nasdaq, SGX- what's the diff?",
+        
+        },
+        {
+          id: 4,
+          title: "Primary Market", //1.1.4
+          duration: "3 mins",
+          type: "content",
+        },
+        {
+          id: "4q",
+          title: "Primary Market: Quiz",
+          type: "quiz",
+          quizType: "mixed",
+          relatedModuleId: 4,
+          description: "Primary Market",
+        },
+        {
+          id: 5,
+          title: "Secondary Market",
+          duration: "3 mins",
+          type: "content",
+        },
+        {
+          id: "5q",
+          title: "Secondary Market: Quiz",
+          type: "quiz",
+          quizType: "mixed",
+          relatedModuleId: 5,
+          description: "Secondary Market",
+        },
+        {
+          id: 6,
+          title: "Going Public: IPO",
+          duration: "3 mins",
+          type: "content",
+        },
+        {
+          id: "6q",
+          title: "Going Public: IPO Quiz",
+          type: "quiz",
+          quizType: "mixed",
+          relatedModuleId: 6,
+          description: "Test your knowledge!",
+        },
+        {
+          id: 7,
+          title: "Common vs Preferred Stock",
+          duration: "3 mins",
+          type: "content",
+        },
+        {
+          id: "7q",
+          title: "Common vs Preferred Stock Quiz",
+          type: "quiz",
+          quizType: "mixed",
+          relatedModuleId: 7,
+          description: "Test your knowledge!",
+        },
+        {
+          id: 8,
+          title: "Market Capitalization",
+          duration: "3 mins",
+          type: "content",
+        },
+        {
+          id: "8q",
+          title: "Market Capitalization",
+          type: "quiz",
+          quizType: "mixed",
+          relatedModuleId: 8,
+          description: "Test your knowledge!",
+        },
+        {
+          id: 9,
+          title: "Market Cap Categories",
+          duration: "3 mins",
+          type: "content",
+        },
+        {
+          id: "9q",
+          title: "Market Cap Categories Quiz",
+          type: "quiz",
+          quizType: "mixed",
+          relatedModuleId: 9,
+          description: "Test your knowledge!",
+        },
+        {
+          id: 10,
+          title: "Divdend, Value, Growth Stocks",
+          duration: "3 mins",
+          type: "content",
+        },
+        {
+          id: "10q",
+          title: "Divdend, Value, Growth Stocks Quiz",
+          type: "quiz",
+          quizType: "mixed",
+          relatedModuleId: 10,
+          description: "Test your knowledge!",
+        },
+
       ],
     },
     {
@@ -144,26 +259,26 @@ const Courses = () => {
       modules: [
         {
           id: 1,
-          title: "Understanding Financial Statements",
+          title: "Introduction to Fundamental Analysis I",
           duration: "5 mins",
           type: "content",
         },
         {
           id: "1q",
-          title: "Financial Statements Quiz",
+          title: "Intro to FA I Quiz",
           type: "quiz",
           quizType: "mixed",
           relatedModuleId: 1,
         },
         {
           id: 2,
-          title: "Key Financial Ratios",
+          title: "Introduction to Fundamental Analysis II",
           duration: "4 mins",
           type: "content",
         },
         {
           id: "2q",
-          title: "Financial Ratios Quiz",
+          title: "Intro to FA II Quiz",
           type: "quiz",
           quizType: "mixed",
           relatedModuleId: 2,
@@ -337,9 +452,11 @@ const Courses = () => {
 
     return completedContentCount + completedQuizCount
   }
+  
+  const isModuleUnlocked = () => true
 
   // Check if a module is unlocked (previous module and its quiz are completed)
-  const isModuleUnlocked = (sectionId, moduleIndex) => {
+  /*const isModuleUnlocked = (sectionId, moduleIndex) => {
     const section = steps.find((s) => s.id === sectionId)
     if (!section) return false
 
@@ -384,11 +501,12 @@ const Courses = () => {
 
     // If previous item is quiz, check if it's completed
     if (prevModule.type === "quiz") {
-      return isQuizCompleted(sectionId, prevModule.relatedModuleId, prevModule.quizType)
+      //return isQuizCompleted(sectionId, prevModule.relatedModuleId, prevModule.quizType)
     }
 
     return false
   }
+    */
 
   // Update the isNextStep function to correctly identify the next step in the learning path
   const isNextStep = (sectionId, moduleIndex) => {
