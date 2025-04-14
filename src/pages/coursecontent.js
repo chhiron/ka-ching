@@ -102,7 +102,16 @@ const CourseContent = () => {
           // If quiz is already completed and we're in normal mode, show the completion screen
           else if (quizMode === "normal") {
             setQuizCompleted(true)
-            setQuizScore(progress.quizScores[quizKey] || 80)
+            const hasAnswers = progress.quizAnswers && progress.quizAnswers[quizKey] //to be double triple sure
+            //setQuizScore(progress.quizScores[quizKey] || 80) maybe this is the error
+            const storedScore = progress.quizScores[quizKey]
+            if (storedScore !== undefined && hasAnswers) {
+              setQuizCompleted(true)
+              setQuizScore(storedScore)
+            }
+            else if (storedScore !== undefined) {
+              setQuizScore(storedScore)
+            }
           }
         }
       }
@@ -2312,9 +2321,13 @@ const CourseContent = () => {
                                 )
                               }
                               // Otherwise, navigate to next module or next section
-                              else if (currentModule < moduleContent[currentStep - 1].length) {
+                              /*else if (currentModule < moduleContent[currentStep - 1].length) {
                                 navigate(`/course-content?step=${currentStep}&module=${currentModule + 1}&type=content`)
-                              } else if (currentStep < moduleContent.length) {
+                              } */ // commenting out this might have been the one to cause issues
+                              else if (currentModule < stepModuleCounts[currentStep]) {
+                                navigate(`/course-content?step=${currentStep}&module=${currentModule + 1}&type=content`)
+                              } //added this based on chatgpt suggestion
+                              else if (currentStep < moduleContent.length) {
                                 navigate(`/course-content?step=${currentStep + 1}&module=1&type=content`)
                               } else {
                                 navigate(`/courses`)
