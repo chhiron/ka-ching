@@ -2,6 +2,11 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html", "*.{js,ts,jsx,tsx,mdx}"],
   theme: {
+    extend: {
+      colors: {
+        'leafy-green': '#396534',
+      },
+    },
     container: {
       center: true,
       padding: "2rem",
@@ -79,4 +84,3 @@ module.exports = {
   },
   plugins: [require("tailwindcss-animate")],
 }
-
