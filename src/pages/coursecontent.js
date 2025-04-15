@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useState, useEffect, useRef } from "react"
@@ -243,27 +244,85 @@ const CourseContent = () => {
   <div>
     <h3 className="text-lg font-semibold">⏳ Time Affects Strategy</h3>
     <p>
-      Short-term vs. long-term goals need different plans. A 30-year goal lets you take more <span title="Risk refers to the possibility that your investment loses value." className="text-blue-600 tooltip">risk</span>. 
-      A 1-year goal? Keep it stable and <span title="Liquidity is how easily an asset can be turned into cash." className="text-blue-600 tooltip">liquid</span>.
+      Short-term vs. long-term goals need different plans. A 30-year goal lets you take more {" "}
+          <span className="text-blue-600 tooltip-wrapper">
+            risk
+            <div className="tooltip-box">
+              <p className="tooltip-text font-medium mb-1">Risk = chance you lose money.</p>
+              <ul className="list-none pl-4 m-0 space-y-1">
+                <li>Buying from a thrift shop: A branded tee for $5? Might be real (win!) or fake (loss).</li>
+                <li>It’s a gamble 🎲—you could score big 💰 or waste your cash 💸</li>
+              <p className="tooltip-text font-medium mb-1">That’s risk. The bigger the deal, the bigger the risk.</p>
+              </ul>
+            </div>
+          </span>
+        
+        . A 1-year goal? Keep it stable and {" "}
+          <span className="text-blue-600 tooltip-wrapper">
+            liquid
+            <div className="tooltip-box">
+              <p className="tooltip-text font-medium mb-1">Liquidity = how fast you can sell for cash.</p>
+              <ul className="list-none pl-4 m-0 space-y-1">
+                <li>💸 Cash? Instant</li>
+                <li>🎮 Console? Takes a bit</li>
+                <li>🎨 Art? Might take a looooong while</li>
+              </ul>
+            </div>
+          </span>
+          .
     </p>
   </div>
 
   <div>
     <h3 className="text-lg font-semibold">⚠️ Risk Over Time</h3>
     <p>
-      The longer you invest, the more ups and downs your money can handle. <span title="Risk refers to the possibility that your investment loses value." className="text-blue-600 tooltip">Risk</span> evens out over time—so don’t fear it if you’re in for the long haul.
+      The longer you invest, the more ups and downs your money can handle. {" "}
+      <span className="text-blue-600 tooltip-wrapper">
+            Risk
+            <div className="tooltip-box">
+              <p className="tooltip-text font-medium mb-1">Risk = chance you lose money.</p>
+              <ul className="list-none pl-4 m-0 space-y-1">
+                <li>Buying from a thrift shop: A branded tee for $5? Might be real (win!) or fake (loss).</li>
+                <li>It’s a gamble 🎲—you could score big 💰 or waste your cash 💸</li>
+              <p className="tooltip-text font-medium mb-1">That’s risk. The bigger the deal, the bigger the risk.</p>
+              </ul>
+            </div>
+          </span>
+      {" "} evens out over time—so don’t fear it if you’re in for the long haul.
     </p>
   </div>
 
   <div>
     <h3 className="text-lg font-semibold">💧 Liquidity = Access</h3>
     <p>
-    <span title="Liquidity, in simple terms, refers to how quickly and easily you can convert something into cash without losing its value. 
-        For example, cash is the most liquid asset because you can use it immediately.  
-        However, things like real estate may take longer to sell and could be harder to convert to cash without potentially losing value." className="text-blue-600 tooltip"> Liquidity</span> means how fast you can turn your investment into cash.
-      If you need the money soon, choose something easy to access. 
+      <span className="text-blue-600 tooltip-wrapper">
+            Liquidity
+            <div className="tooltip-box">
+              <p className="tooltip-text font-medium mb-1">Liquidity = how fast you can sell for cash.</p>
+              <ul className="list-none pl-4 m-0 space-y-1">
+                <li>💸 Cash? Instant</li>
+                <li>🎮 Console? Takes a bit</li>
+                <li>🎨 Art? Might take a looooong while</li>
+              </ul>
+            </div>
+          </span>
+      {" "} means how fast you can turn your investment into cash. If you need the money soon, choose something easy to access. 
     </p>
   </div>
+      <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-1-1.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
 </div>
 
         
@@ -279,26 +338,40 @@ const CourseContent = () => {
           <div className="space-y-4">
             <p className="mb-3">
               A{" "}
-              <span title="Part ownership in a company" className="underline dotted cursor-help">
+              <span title="A stock is a tiny slice of ownership in a company. Owning stock means you're a part-owner and share in its profits (or losses)! 📈" className="text-blue-600 tooltip">
                 stock
               </span>{" "}
               is a part ownership in a company.
             </p>
             <p className="mb-3">
               You can earn from stocks through{" "}
-              <span title="When a stock increases in value" className="underline dotted cursor-help">
+              <span title="Capital appreciation is when your investment grows in value over time—basically, buying low, selling high, and pocketing the difference! 🚀" className="text-blue-600 tooltip">
                 capital appreciation
               </span>{" "}
               or{" "}
-              <span title="Earnings paid to shareholders" className="underline dotted cursor-help">
+              <span title="Dividends are like little bonus payments companies give shareholders as a 'thank you' for owning their stock! 💸" className="text-blue-600 tooltip">
                 dividends
               </span>
               .
             </p>
             <p className="mb-3 font-semibold">Why do companies sell stock?</p>
             <p className="mb-3">To raise money and grow their business.</p>
-            <p className="mb-3">Selling shares helps fund things like expansion, research, or paying off debt.</p>
-          </div>
+            <p className="mb-3">Selling <span title="Shares are units of stock. Imagine a pizza: the pizza is the stock, and each slice is a share. The more slices (shares) you have, the bigger your piece of the company! 🍕" className="text-blue-600 tooltip">shares</span> helps fund things like expansion, research, or paying off debt.</p>
+      <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-1-2.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>    
+      </div>
         ),
       },
     ],
@@ -310,8 +383,31 @@ const CourseContent = () => {
         content: (
           <div className="space-y-4">
             <p className="mb-3">
-              Stock markets, also known as stock exchanges, are like an auction house — matching buyers and sellers via
-              online brokers.
+              Stock markets, also known as {" "}
+              <span className="text-blue-600 tooltip-wrapper">
+                stock exchangers
+                <div className="tooltip-box">
+                  <p className="tooltip-text font-medium mb-1">Stock exchange = the thrift shop for stocks.</p>
+                  <ul className="list-none pl-4 m-0 space-y-1">
+                    <li>It’s where people buy and sell shares, like how folks trade clothes or sneakers at a thrift shop.</li>
+                    <li>You list it, someone buys it, prices go up or down based on demand.</li>
+                  <p className="tooltip-text font-medium mb-1">It’s basically Carousell—but for companies. 📱📈</p>
+                  </ul>
+                </div>
+              </span>
+              {" "} stock exchanges, are like an auction house — matching buyers and sellers via {" "}
+              <span className="text-blue-600 tooltip-wrapper">
+                online brokers
+                <div className="tooltip-box">
+                  <p className="tooltip-text font-medium mb-1">Online brokers = your stock shopping app.</p>
+                  <ul className="list-none pl-4 m-0 space-y-1">
+                    <li>Just like how you use Carousell to buy sneakers, you use apps like them to buy shares.</li>
+                    <li>They help you find stocks, place orders, and handle all the boring money stuff behind the scenes. 🛒📈</li>
+                  <p className="tooltip-text font-medium mb-1">You shop, they connect you to the stock market.</p>
+                  </ul>
+                </div>
+              </span>
+              .
             </p>
             <p className="mb-3">There are many stock exchanges around the world.</p>
             <p className="mb-3">
@@ -326,6 +422,20 @@ const CourseContent = () => {
             <p className="mb-3">
               <strong>SGX:</strong> Singapore Stock Exchange.
             </p>
+      <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-1-3.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
           </div>
         ),
       },
@@ -356,12 +466,18 @@ const CourseContent = () => {
               <li>Comes with more regulation</li>
               <li>
                 Requires an{" "}
-                <span
-                  title="Initial Public Offering: when a company sells shares to the public for the first time"
-                  className="underline decoration-dotted cursor-help text-blue-600"
-                >
-                  IPO
-                </span>
+                <span className="text-blue-600 tooltip-wrapper">
+                IPO
+                <div className="tooltip-box">
+                  <p className="tooltip-text font-medium mb-1">IPO = a company’s first time selling shares to the public.</p>
+                  <ul className="list-none pl-4 m-0 space-y-1">
+                    <li>Like when a streetwear brand goes from underground to officially selling in stores. 🧢🔥</li>
+                    <li>Before IPO = private, invite-only vibes.</li>
+                    <li>After IPO = open to everyone. You can now buy a piece of the brand. 🛒📈</li>
+                  <p className="tooltip-text font-medium mb-1">It’s their stock market debut.</p>
+                  </ul>
+                </div>
+              </span>
               </li>
             </ul>
 
@@ -370,89 +486,129 @@ const CourseContent = () => {
               <li>Only for wealthy individuals or institutions</li>
               <li>Fewer rules, faster and cheaper</li>
             </ul>
+      <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-1-4.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
           </div>
         ),
       },
     ],
     // SECTION 1 MODULE 5
     [
-      {
-        title: "Secondary Market",
-        type: "content",
-        content: (
-          <div>
-            <p>
-              <strong>🟢 What Is It?</strong>
-            </p>
-            <p>
-              The <strong>Secondary Market</strong> is where existing stocks are bought and sold between investors.
-            </p>
-            <p>🏢 The company doesn't receive money in these trades.</p>
+  {
+    title: "Secondary Market",
+    type: "content",
+    content: (
+      <div className="space-y-4 leading-relaxed text-base">
+        <p><strong>🟢 What Is It?</strong></p>
+        <p>The <strong>Secondary Market</strong> is where existing stocks are bought and sold between investors.</p>
+        <p>🏢 The company doesn't receive money in these trades.</p>
 
-            <p>
-              <strong>🎟️ A Simple Example</strong>
-            </p>
-            <p>Imagine you bought tickets to a concert and can't go, so you sell them to a friend.</p>
-            <p>
-              That's like a stock trade in the secondary market. You're not paying the artist again—just reselling the
-              ticket.
-            </p>
+        <p><strong>🎟️ A Simple Example</strong></p>
+        <p>Imagine you bought tickets to a concert and can't go, so you sell them to a friend.</p>
+        <p>
+          That's like a stock trade in the secondary market. You're not paying the artist again—just reselling the
+          ticket.
+        </p>
 
-            <p>
-              <strong>🔍 Why It Matters</strong>
-            </p>
-            <ul>
-              <li>✅ You can buy or sell stocks anytime</li>
-              <li>💲 Helps find the market price of a stock</li>
-              <li>🔁 Keeps the market active and easy to trade in</li>
-            </ul>
+        <p><strong>🔍 Why It Matters</strong></p>
+        <ul className="list-disc list-inside space-y-1 pl-4">
+          <li>✅ You can buy or sell stocks anytime</li>
+          <li>💲 Helps find the market price of a stock</li>
+          <li>🔁 Keeps the market active and easy to trade in</li>
+        </ul>
 
-            <p>
-              <strong>🛍️ Two Types of Secondary Markets</strong>
-            </p>
+        <p><strong>🛍️ Two Types of Secondary Markets</strong></p>
 
-            <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap" }}>
-              {/* Dealer Market */}
-              <div
-                style={{ flex: "1", minWidth: "250px", border: "1px solid #ccc", borderRadius: "8px", padding: "1rem" }}
-              >
-                <h4>1. Dealer Market</h4>
-                <ul>
-                  <li>
-                    You trade through a middleman called a <strong>market maker</strong>
-                  </li>
-                  <li>They hold inventory and decide prices</li>
-                  <li>
-                    <strong>Example:</strong> NASDAQ
-                  </li>
-                </ul>
+        <div className="flex flex-row flex-wrap justify-center gap-4 px-4 md:px-8">
+  <div className="flip-card flex-1 min-w-[340px] max-w-[48%]">
+          {/* Flip Card: Dealer Market */}
+          <div className="flip-card">
+            <div className="flip-card-inner">
+              <div className="flip-card-front">
+                <h4 className="font-semibold text-center">1. Dealer Market</h4>
               </div>
-
-              {/* Auction Market */}
-              <div
-                style={{ flex: "1", minWidth: "250px", border: "1px solid #ccc", borderRadius: "8px", padding: "1rem" }}
-              >
-                <h4>2. Auction Market</h4>
-                <ul>
-                  <li>Buyers and sellers trade directly</li>
-                  <li>Prices are matched based on highest bid and lowest ask</li>
-                  <li>
-                    <strong>Example:</strong> NYSE
+              <div className="flip-card-back">
+                <ul className="space-y-1 text-sm">
+                  <li>You trade through a middleman called a {" "}
+                  <span className="text-blue-600 tooltip-wrapper">
+                    <strong>market maker</strong>
+                    <div className="tooltip-box">
+                      <p className="tooltip-text font-medium mb-1">Market maker = the middleman who keeps the stock market moving.</p>
+                      <ul className="list-none pl-4 m-0 space-y-1">
+                        <li>Imagine you’re at a thrift shop. You want to sell a hoodie, but no buyer’s around.</li>
+                        <li>Boom! A market maker steps in, buys it from you instantly, then resells it later.</li>
+                        <li>They always show up to buy or sell, so trading stays fast and smooth. 🧥⚡</li>
+                      </ul>
+                      <p className="tooltip-text font-medium mb-1">No buyers? No problem. Market maker’s got your back.</p>
+                    </div>
+                  </span>
+                  .
                   </li>
+                  <li>They hold inventory and decide prices.</li>
+                  <li><strong>Example:</strong> NASDAQ</li>
                 </ul>
               </div>
             </div>
           </div>
-        ),
-      },
-    ],
+      
+
+        {/* Flip Card: Auction Market */}
+       <div className="flip-card flex-1 min-w-[340px] max-w-[48%]">
+          <div className="flip-card">
+          <div className="flip-card-inner">
+            <div className="flip-card-front">
+              <h4 className="font-semibold text-center">2. Auction Market</h4>
+            </div>
+            <div className="flip-card-back">
+              <ul className="space-y-1 text-sm">
+                <li>Buyers and sellers trade directly</li>
+                <li>Prices are matched based on highest bid and lowest ask</li>
+                <li><strong>Example:</strong> NYSE</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      </div>
+      <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-1-5.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
+      </div>
+    ),
+  },
+],
+
     // SECTION 1 MODULE 6
     [
       {
         title: "Going Public with IPO",
         type: "content",
         content: (
-          <div style={{ border: "1px solid #ccc", borderRadius: "10px", padding: "1.5rem", maxWidth: "600px" }}>
+          <div className="space-y-4 leading-relaxed text-base">
             <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>
               🚀 How Companies Sell Stocks
             </h3>
@@ -463,9 +619,36 @@ const CourseContent = () => {
             <ol style={{ paddingLeft: "1.2rem", listStyleType: "decimal", lineHeight: "1.6" }}>
               <li>🏢 A private company decides to go public to raise money.</li>
               <li>💼 It works with investment banks to set an initial stock price.</li>
-              <li>🏦 The stock is offered to institutional investors first.</li>
+              <li>🏦 The stock is offered to {" "}
+              <span className="text-blue-600 tooltip-wrapper">
+                    institutional investors
+                    <div className="tooltip-box">
+                      <p className="tooltip-text font-medium mb-1">Institutional investors = the big players with deep pockets.</p>
+                      <ul className="list-none pl-4 m-0 space-y-1">
+                        <li>Not your average student on a budget — we’re talking banks, insurance companies, hedge funds. 🏦💼</li>
+                        <li>At the thrift shop, while you're buying one shirt, they’re buying the entire rack.</li>
+                        <li>They move markets because they trade in huge amounts.</li>
+                      </ul>
+                      <p className="tooltip-text font-medium mb-1">Big money. Big moves. Not your typical shopper.</p>
+                    </div>
+                  </span>
+                  </li>
               <li>📈 Once trading begins, anyone can buy shares on the open market.</li>
             </ol>
+      <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-1-6.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
           </div>
         ),
       },
@@ -478,101 +661,158 @@ const CourseContent = () => {
         title: "Common vs Preferred Stock",
         type: "content",
         content: (
-          <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap" }}>
-            {/* Common Stock */}
-            <div
-              style={{ flex: "1", minWidth: "280px", border: "1px solid #ccc", borderRadius: "10px", padding: "1rem" }}
-            >
-              <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "0.5rem" }}>📈 Common Stock</h3>
-              <p>
-                <strong>What:</strong> The most typical stock
-              </p>
-              <p>
-                <strong>🎯 Perks:</strong>{" "}
-                <span
-                  title="Gives shareholders the ability to vote on major company decisions"
-                  style={{ textDecoration: "underline dotted", cursor: "help" }}
-                >
-                  Voting rights
-                </span>{" "}
-                and potential for{" "}
-                <span
-                  title="When a stock increases in value over time"
-                  style={{ textDecoration: "underline dotted", cursor: "help" }}
-                >
-                  capital appreciation
-                </span>
-                .
-              </p>
-              <p>
-                <strong>👤 Best for:</strong>
-              </p>
-              <ul style={{ paddingLeft: "1.2rem", listStyleType: "disc" }}>
-                <li>Long-term investors</li>
-                <li>
-                  Those seeking{" "}
-                  <span
-                    title="Increase in the value of your investment over time"
-                    style={{ textDecoration: "underline dotted", cursor: "help" }}
-                  >
-                    capital appreciation
-                  </span>
-                </li>
-                <li>
-                  <span
-                    title="Comfortable with higher price swings and potential losses for long-term gain"
-                    style={{ textDecoration: "underline dotted", cursor: "help" }}
-                  >
-                    Risk-tolerant
-                  </span>{" "}
-                  investors
-                </li>
+        <div className="flex flex-row flex-wrap justify-center gap-4 px-4 md:px-8">
+  <div className="flip-card flex-1 min-w-[340px] max-w-[48%]">
+  {/* Flip Card: Common Stock */}
+  <div className="flip-card">
+    <div className="flip-card-inner">
+      <div className="flip-card-front">
+        <h4 className="font-semibold text-center">📈 Common Stock</h4>
+      </div>
+      <div className="flip-card-back text-[#396534]">
+        <p><strong>What:</strong> The most typical stock</p>
+        <p>
+          <strong>🎯 Perks:</strong>{" "}
+          <span className="text-blue-600 tooltip-wrapper">
+            Voting rights
+            <div className="tooltip-box">
+              <p className="tooltip-text font-medium mb-1">Voting rights = your say in how the company’s run.</p>
+              <ul className="list-none pl-4 m-0 space-y-1">
+                <li>Own shares? Congrats, you get a vote on big decisions. 🗳️</li>
+                <li>More shares = more pizza 🍕 = more votes.</li>
+              </ul>
+              <p className="tooltip-text font-medium">It’s like being in a group chat where your opinion matters.</p>
+            </div>
+          </span>{" "}
+          and potential for{" "}
+          <span className="text-blue-600 tooltip-wrapper">
+            capital appreciation
+            <div className="tooltip-box">
+              <p className="tooltip-text font-medium mb-1">Capital appreciation = your stock going up in value. 📈</p>
+              <ul className="list-none pl-4 m-0 space-y-1">
+                <li>Buy at $100, now worth $150. That $50 gain is appreciation. 💰</li>
               </ul>
             </div>
+          </span>
+        </p>
+        <p><strong>👤 Best for:</strong></p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Long-term investors</li>
+          <li>Those seeking{" "}
+            <span className="text-blue-600 tooltip-wrapper">
+              capital appreciation
+              <div className="tooltip-box">
+                <p className="tooltip-text font-medium mb-1">Capital appreciation = your stock going up in value. 📈</p>
+                <ul className="list-none pl-4 m-0 space-y-1">
+                  <li>Buy at $100, now worth $150. That $50 gain is appreciation. 💰</li>
+                </ul>
+              </div>
+            </span>
+          </li>
+          <li>
+            <span className="text-blue-600 tooltip-wrapper">
+              Risk-tolerant
+              <div className="tooltip-box">
+                <p className="tooltip-text font-medium mb-1">Risk-tolerant = chill with taking Ls for bigger Ws. 🎢</p>
+                <ul className="list-none pl-4 m-0 space-y-1">
+                  <li>You're okay with ups & downs, like flipping crypto or thrift finds.</li>
+                </ul>
+                <p className="tooltip-text font-medium">High risk? No panic. You’re built for it.</p>
+              </div>
+            </span>{" "}
+            investors
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-            {/* Preferred Stock */}
-            <div
-              style={{ flex: "1", minWidth: "280px", border: "1px solid #ccc", borderRadius: "10px", padding: "1rem" }}
-            >
-              <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "0.5rem" }}>💰 Preferred Stock</h3>
-              <p>
-                <strong>What:</strong> A stock with more{" "}
-                <span
-                  title="Regular income payments made to shareholders, like interest"
-                  style={{ textDecoration: "underline dotted", cursor: "help" }}
-                >
-                  yields
-                </span>{" "}
-                and fewer rights
-              </p>
-              <p>
-                <strong>🎯 Perks:</strong> Priority when it comes to receiving dividends, but no{" "}
-                <span
-                  title="No ability to vote on major company matters like mergers or board elections"
-                  style={{ textDecoration: "underline dotted", cursor: "help" }}
-                >
-                  voting rights
-                </span>
-                .
-              </p>
-              <p>
-                <strong>👤 Best for:</strong>
-              </p>
-              <ul style={{ paddingLeft: "1.2rem", listStyleType: "disc" }}>
-                <li>Medium to long-term investors</li>
-                <li>Those seeking stable income from dividends</li>
-                <li>
-                  <span
-                    title="Prefers steady returns with lower volatility and lower risk"
-                    style={{ textDecoration: "underline dotted", cursor: "help" }}
-                  >
-                    Risk-averse
-                  </span>{" "}
-                  individuals
-                </li>
+  {/* Flip Card: Preferred Stock */}
+  <div className="flip-card flex-1 min-w-[340px] max-w-[48%]">
+              <div className="flip-card">
+    <div className="flip-card-inner">
+      <div className="flip-card-front">
+        <h4 className="font-semibold text-center">💰 Preferred Stock</h4>
+      </div>
+      <div className="flip-card-back text-[#396534]">
+        <p><strong>What:</strong> A stock with more{" "}
+          <span className="text-blue-600 tooltip-wrapper">
+            yields
+            <div className="tooltip-box">
+              <p className="tooltip-text font-medium mb-1">Yields = money you earn from holding an investment. 💸</p>
+              <ul className="list-none pl-4 m-0 space-y-1">
+                <li>Like a vending machine that spits out coins every month. 🥤💰</li>
               </ul>
             </div>
-          </div>
+          </span>{" "}
+          and fewer rights
+        </p>
+        <p><strong>🎯 Perks:</strong> Priority for{" "}
+          <span className="text-blue-600 tooltip-wrapper">
+            dividends
+            <div className="tooltip-box">
+              <p className="tooltip-text font-medium mb-1">Dividends = your share of company profits. 🍕</p>
+              <ul className="list-none pl-4 m-0 space-y-1">
+                <li>Company earns? You get a slice. Passive income, baby.</li>
+              </ul>
+            </div>
+          </span>, but no{" "}
+          <span className="text-blue-600 tooltip-wrapper">
+            voting rights
+            <div className="tooltip-box">
+              <p className="tooltip-text font-medium mb-1">Voting rights = your say in how the company’s run.</p>
+              <ul className="list-none pl-4 m-0 space-y-1">
+                <li>No seat at the shareholder table = no votes. 🗳️🚫</li>
+              </ul>
+            </div>
+          </span>.
+        </p>
+        <p><strong>👤 Best for:</strong></p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Medium to long-term investors</li>
+          <li>Those seeking stable income from{" "}
+            <span className="text-blue-600 tooltip-wrapper">
+              dividends
+              <div className="tooltip-box">
+                <p className="tooltip-text font-medium mb-1">Dividends = your share of company profits. 🍕</p>
+              </div>
+            </span>
+          </li>
+          <li>
+            <span className="text-blue-600 tooltip-wrapper">
+              Risk-averse
+              <div className="tooltip-box">
+                <p className="tooltip-text font-medium mb-1">Risk-averse = not vibing with losing money. 🚫💸</p>
+                <ul className="list-none pl-4 m-0 space-y-1">
+                  <li>You’d rather sleep well than take big chances.</li>
+                </ul>
+              </div>
+            </span>{" "}
+            individuals
+          </li>
+        </ul>
+      </div>
+    </div>
+      </div>
+  </div>
+</div>
+<div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-1-7.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
+</div>
+
+      
         ),
       },
     ],
@@ -583,13 +823,27 @@ const CourseContent = () => {
         title: "Market Capitalization",
         type: "content",
         content: (
-          <div style={{ border: "1px solid #ccc", borderRadius: "10px", padding: "1.5rem", maxWidth: "600px" }}>
+          <div>
             <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>📊 Market Capitalization</h3>
             <p>
               Market Capitalization is another way stocks are categorised. <br />
               <strong>Market Capitalization = Total value of a company’s shares held by investors</strong> <br />
               (Owned by investors: retail, institutional, or insiders)
             </p>
+            <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-1-8.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
           </div>
         ),
       },
@@ -634,6 +888,20 @@ const CourseContent = () => {
                 <li>🎢 Higher risk, volatile, high returns</li>
                 <li>🧪 In small niche industry</li>
               </ul>
+            </div>
+            <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-1-9.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
             </div>
           </div>
         ),
@@ -680,6 +948,20 @@ const CourseContent = () => {
                 <li>📈 No dividends, only capital appreciation</li>
               </ul>
             </div>
+            <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-1-10.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
           </div>
         ),
       },
@@ -695,42 +977,75 @@ const CourseContent = () => {
         title: "Introduction to Fundamental Analysis I",
         type: "content",
         content: (
-          <div style={{ border: "1px solid #ccc", borderRadius: "10px", padding: "1.5rem", maxWidth: "700px" }}>
+          <div>
             <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>🔍 Fundamental Analysis</h3>
             <p style={{ marginBottom: "1rem" }}>
               Fundamental analysis looks at both the{" "}
-              <span
-                title="Financial data such as revenue, profits, and ratios"
-                style={{ textDecoration: "underline dotted", cursor: "help" }}
-              >
-                quantitative
-              </span>{" "}
+              <span className="text-blue-600 tooltip-wrapper">
+            quantitative
+            <div className="tooltip-box">
+              <p className="tooltip-text font-medium mb-1">Quantitative analysis = using numbers to make money moves. 📊💰</p>
+              <ul className="list-none pl-4 m-0 space-y-1">
+                <li>It’s like analyzing sneaker resale prices with spreadsheets to decide what to flip.</li>
+                <li>But here, it's stock prices, trends, ratios, and data models.</li>
+              </ul>
+              <p className="tooltip-text font-medium">Nothing is based on vibes or guessing. Just cold, hard numbers. 🧠💻</p>
+            </div>
+          </span>{" "}
               (numbers) and{" "}
-              <span
-                title="Non-financial factors like brand strength, leadership, or market trends"
-                style={{ textDecoration: "underline dotted", cursor: "help" }}
-              >
-                qualitative
-              </span>{" "}
+              <span className="text-blue-600 tooltip-wrapper">
+            qualitative
+            <div className="tooltip-box">
+              <p className="tooltip-text font-medium mb-1">Qualitative analysis = judging stocks by the vibe, not the numbers. 🔍✨</p>
+              <ul className="list-none pl-4 m-0 space-y-1">
+                <li>You’re looking at the brand, CEO, business model, and customer loyalty — like asking,</li>
+                <li>“Is this company cool? Do people trust it? Is the team solid?”</li>
+              </ul>
+              <p className="tooltip-text font-medium">Less numbers, more vibe checks. 🧠🫶</p>
+            </div>
+          </span>{" "}
               (story) aspects of a company to help investors determine the{" "}
-              <span
-                title="What the stock is actually worth based on its fundamentals, not market price"
-                style={{ textDecoration: "underline dotted", cursor: "help" }}
-              >
-                intrinsic value
-              </span>{" "}
-              of a stock — in other words, to decide if the company is worth more than its current price.
+              <span className="text-blue-600 tooltip-wrapper">
+            intrinsic value
+            <div className="tooltip-box">
+              <p className="tooltip-text font-medium mb-1">Intrinsic value = what something’s really worth. 💎</p>
+              <ul className="list-none pl-4 m-0 space-y-1">
+                <li>Like finding a rare Supreme tee at a thrift shop for $10.</li>
+                <li>It may look cheap, but you know it’s worth way more. 🧢🔥</li>
+              </ul>
+              <p className="tooltip-text font-medium">It’s the true value, not the price tag.</p>
+            </div>
+          </span>{" "}
+              of a stock. In other words, to decide if the company is worth more than its current price.
             </p>
             <p>
               This approach is best suited for investors with a{" "}
-              <span
-                title="A time horizon typically ranging from several months to years"
-                style={{ textDecoration: "underline dotted", cursor: "help" }}
-              >
-                mid-to-long-term
-              </span>{" "}
+              <span className="text-blue-600 tooltip-wrapper">
+            mid-to-long term
+            <div className="tooltip-box">
+              <p className="tooltip-text font-medium mb-1">Mid-to-long term = not a quick flip, but not forever either. ⏳📈</p>
+              <ul className="list-none pl-4 m-0 space-y-1">
+                <li>Think: months to years. Like holding a stock till you graduate university or even get your first BTO. 🎓🏠</li>
+              </ul>
+              <p className="tooltip-text font-medium">It’s the slow grind — steady growth, bigger goals.</p>
+            </div>
+          </span>{" "}
               investment horizon.
             </p>
+            <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-2-1.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
           </div>
         ),
       },
@@ -742,7 +1057,7 @@ const CourseContent = () => {
         title: "Introduction to Fundamental Analysis II",
         type: "content",
         content: (
-          <div style={{ border: "1px solid #ccc", borderRadius: "10px", padding: "1.5rem", maxWidth: "750px" }}>
+          <div>
             <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>
               🧥 Thrift Store Analogy: Understanding Value
             </h3>
@@ -756,70 +1071,139 @@ const CourseContent = () => {
             <p style={{ marginBottom: "1rem" }}>
               For example, imagine a vintage leather jacket priced at <strong>$10</strong>. After inspecting it, you
               realize it's a high-end brand, in excellent condition, and rare. You'd know this item is{" "}
-              <span
-                title="When something is selling for less than what it's truly worth"
-                style={{ textDecoration: "underline dotted", cursor: "help" }}
-              >
-                undervalued
-              </span>{" "}
+              <span className="text-blue-600 tooltip-wrapper">
+            undervalued
+            <div className="tooltip-box">
+              <p className="tooltip-text font-medium mb-1">Undervalued means that a stock is being sold for less than what it's actually worth. </p>
+              <ul className="list-none pl-4 m-0 space-y-1">
+                <li>It's like finding a really good deal on something valuable at a garage sale.</li>
+                 <li>It's priced lower than its true value.</li>
+              </ul>
+              <p className="tooltip-text font-medium">Price tag is less than the true value!</p>
+            </div>
+          </span>{" "}
               and likely a great buy.
             </p>
 
             <p style={{ marginBottom: "1rem" }}>
               Similarly, in the stock market, if the{" "}
-              <span
-                title="What the stock is truly worth based on analysis"
-                style={{ textDecoration: "underline dotted", cursor: "help" }}
-              >
-                fair market value
-              </span>{" "}
+              <span className="text-blue-600 tooltip-wrapper">
+            fair market value
+            <div className="tooltip-box">
+              <p className="tooltip-text font-medium mb-1">Fair market value measures what the item is usually worth. </p>
+              <ul className="list-none pl-4 m-0 space-y-1">
+                <li>It is also known as intrinsic value.</li>
+              </ul>
+            </div>
+          </span>{" "}
               (or{" "}
-              <span
-                title="Another term for fair market value based on financial fundamentals"
-                style={{ textDecoration: "underline dotted", cursor: "help" }}
-              >
-                intrinsic value
-              </span>
+              <span className="text-blue-600 tooltip-wrapper">
+            intrinsic value
+            <div className="tooltip-box">
+              <p className="tooltip-text font-medium mb-1">Intrinsic value = what something’s really worth. 💎</p>
+              <ul className="list-none pl-4 m-0 space-y-1">
+                <li>Like finding a rare Supreme tee at a thrift shop for $10.</li>
+                <li>It may look cheap, but you know it’s worth way more. 🧢🔥</li>
+              </ul>
+              <p className="tooltip-text font-medium">It’s the true value, not the price tag.</p>
+            </div>
+          </span>
               ) is higher than the{" "}
-              <span
-                title="The price you see on the stock exchange"
-                style={{ textDecoration: "underline dotted", cursor: "help" }}
-              >
-                market price
-              </span>
+              <span className="text-blue-600 tooltip-wrapper">
+            market price
+            <div className="tooltip-box">
+              <p className="tooltip-text font-medium mb-1">This is the price you see on the stock exchange.</p>
+              <ul className="list-none pl-4 m-0 space-y-1">
+                <li>Like finding a rare Supreme tee at a thrift shop for $10.</li>
+                <li>It may look cheap, but you know it’s worth way more. 🧢🔥</li>
+              </ul>
+              <p className="tooltip-text font-medium">It’s the true value, not the price tag.</p>
+            </div>
+          </span>
               , the stock is undervalued — and analysts may issue a <strong>buy</strong> recommendation.
             </p>
 
             <p style={{ marginBottom: "1rem" }}>
               On the other hand, imagine spotting a worn-out t-shirt for <strong>$40</strong> with no brand and little
               appeal. You'd know it's{" "}
-              <span
-                title="When something is priced higher than its actual worth"
-                style={{ textDecoration: "underline dotted", cursor: "help" }}
-              >
-                overvalued
-              </span>{" "}
+              <span className="text-blue-600 tooltip-wrapper">
+            overvalued
+            <div className="tooltip-box">
+              <p className="tooltip-text font-medium mb-1">Undervalued means that a stock is being sold for less than what it's actually worth.</p>
+              <ul className="list-none pl-4 m-0 space-y-1">
+                <li>It's like paying more for a used car than you would for a new one.</li>
+                <li>It's priced above its true value.</li>
+              </ul>
+              <p className="tooltip-text font-medium">It’s the true value, not the price tag.</p>
+            </div>
+          </span>{" "}
               and not worth the price. In investing, that would likely lead to a <strong>sell (short)</strong>{" "}
               recommendation.
             </p>
 
             <p style={{ fontStyle: "italic", fontSize: "0.95rem", color: "#555" }}>
-              💡 Note: <strong>Fair market value</strong> is also known as{" "}
-              <span
-                title="The true value of a stock based on analysis of its business fundamentals"
-                style={{ textDecoration: "underline dotted", cursor: "help" }}
-              >
-                intrinsic value
-              </span>
+              💡 Note: <strong>Fair market value</strong> is also known as {" "}
+              <span className="text-blue-600 tooltip-wrapper">
+            intrinsic value
+            <div className="tooltip-box">
+              <p className="tooltip-text font-medium mb-1">Intrinsic value = what something’s really worth. 💎</p>
+              <ul className="list-none pl-4 m-0 space-y-1">
+                <li>Like finding a rare Supreme tee at a thrift shop for $10.</li>
+                <li>It may look cheap, but you know it’s worth way more. 🧢🔥</li>
+              </ul>
+              <p className="tooltip-text font-medium">It’s the true value, not the price tag.</p>
+            </div>
+          </span>
               .
             </p>
+            <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-2-2.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
           </div>
         ),
       },
     ],
+    [
+      {title: "Company Valuation",
+        type: "content",
+        content: (
+          <div>
+            <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>
+              Coming Soon!
+            </h3>
+      <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-2-3.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
+                </div>
+),
+  },
+      ],
     //Add more sections as needed
   ]
 ]
+
 
   // Quiz data matching quizKey format
   const quizData = {
