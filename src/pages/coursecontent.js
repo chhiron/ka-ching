@@ -165,35 +165,6 @@ const CourseContent = () => {
 
   // Handle quick check answer selection
   const handleQuickCheckAnswer = (questionId, selectedOption) => {
-    setQuickCheckAnswers({
-      ...quickCheckAnswers,
-      [questionId]: selectedOption,
-    })
-
-    // Check if answer is correct
-    const isCorrect = quickCheckQuestions[questionId].correctAnswer === selectedOption
-
-    setQuickCheckFeedback({
-      ...quickCheckFeedback,
-      [questionId]: isCorrect,
-    })
-
-    if (!isCorrect && heartsSystem) {
-      // Use the heartsRef to lose a heart
-      if (heartsRef.current && typeof heartsRef.current.loseHeart === "function") {
-        heartsRef.current.loseHeart()
-      }
-    }
-
-    // If correct, show a small confetti effect
-    if (isCorrect) {
-      confetti({
-        particleCount: 30,
-        spread: 50,
-        origin: { y: 0.6, x: 0.5 },
-        colors: ["#5a7d53", "#f0d878", "#85bb65"],
-      })
-    }
   }
 
   // Reset quick check answer
@@ -249,18 +220,54 @@ const CourseContent = () => {
 
   // Content sections for each module
   const moduleContent = [
+//Section 1
+    [
+    
     // SECTION 1 MODULE 1
     [
       {
         title: "Start with your Why",
         type: "content",
-        content: (
-          <div className="space-y-4">
-            <p className="mb-3">Beginners often focus on what to invest in, but first, identify why.</p>
-            <p className="mb-3">Different goals have different time horizons.</p>
-            <p className="mb-3">Time horizons affect risk tolerance: longer = more risk, shorter = less risk.</p>
-            <p className="mb-3">Different goals also affect liquidity: longer = less liquid, shorter = more liquid</p>
-          </div>
+        content:(<div className="space-y-6 text-base leading-relaxed">
+          <p className="text-sm text-gray-600 italic">
+            💡 Hover over the <span className="text-blue-600 underline decoration-dotted">blue underlined</span> terms for quick explanations.
+            </p>
+            <div>
+    <h3 className="text-lg font-semibold">🎯 Start with Why</h3>
+    <p>
+      Don’t start with what to invest in—start with <strong>why</strong>. Is it for a house? Retirement? An emergency?
+      Your goal shapes everything else.
+    </p>
+  </div>
+
+  <div>
+    <h3 className="text-lg font-semibold">⏳ Time Affects Strategy</h3>
+    <p>
+      Short-term vs. long-term goals need different plans. A 30-year goal lets you take more
+      <span title="Risk refers to the possibility that your investment loses value." className="text-blue-600 underline decoration-dotted"> risk</span>. 
+      A 1-year goal? Keep it stable and 
+      <span title="Liquidity is how easily an asset can be turned into cash." className="text-blue-600 underline decoration-dotted"> liquid</span>.
+    </p>
+  </div>
+
+  <div>
+    <h3 className="text-lg font-semibold">⚠️ Risk Over Time</h3>
+    <p>
+      The longer you invest, the more ups and downs your money can handle.
+      <span title="Risk refers to the possibility that your investment loses value." className="text-blue-600 underline decoration-dotted"> Risk</span> evens out over time—so don’t fear it if you’re in for the long haul.
+    </p>
+  </div>
+
+  <div>
+    <h3 className="text-lg font-semibold">💧 Liquidity = Access</h3>
+    <p>
+      Liquidity means how fast you can turn your investment into cash.
+      If you need the money soon, choose something easy to access.
+    </p>
+  </div>
+</div>
+
+        
         ),
       },
     ],
@@ -678,8 +685,11 @@ const CourseContent = () => {
         ),
       },
     ],
-
-
+  ],
+          
+    //Section 2
+    
+    [ 
     // SECTION 2 MODULE 1
     [
       {
@@ -726,6 +736,7 @@ const CourseContent = () => {
         ),
       },
     ],
+          
     //SECTION 2 MODULE 2
     [
       {
@@ -809,6 +820,7 @@ const CourseContent = () => {
     ],
     //Add more sections as needed
   ]
+]
 
   // Quiz data matching quizKey format
   const quizData = {
@@ -1516,7 +1528,7 @@ const CourseContent = () => {
 
   const currentStepData = {
     id: currentStep,
-    title: currentStep === 1 ? "Introduction to Stock Market Basics" : `Section ${currentStep}`,
+    title: currentStep === 1 ? "Introduction to Stock Market Basics" : `Section ${currentStep}`, //The linkage problem is here cos 1 and 2 are hard coded but 3 onwards is dynamic and it doesnt work
     modules: [
       {
         id: currentModule,
@@ -1532,7 +1544,10 @@ const CourseContent = () => {
     ],
   }
 
-  const currentModuleData = {
+  
+
+
+  /*const currentModuleData = {
     ...currentStepData.modules[0],
     contentSections:
       currentStep === 1
@@ -1542,7 +1557,31 @@ const CourseContent = () => {
         : moduleContent[currentStep - 1]
           ? moduleContent[currentStep - 1][currentModule - 1] || []
           : [],
-  }
+  } */ // this is the old one, chat says this might be causing problems
+
+/* const currentModuleData = {
+  ...currentStepData.modules[0],
+  contentSections:
+    currentStep === 1
+      ? moduleContent[currentModule - 1] || []
+      : [moduleContent[currentStep - 1][currentModule - 1]] || [],
+} */ //made module data appear in 2.1 but 1.2 was appearing in 2.1
+
+const currentModuleData = {
+  ...currentStepData.modules[0],
+  contentSections:
+    moduleContent[currentStep - 1]?.[currentModule - 1] || [],
+} //updated
+
+console.log("=== Current Step and Module ===")
+console.log("Step:", currentStep)
+console.log("Module:", currentModule)
+
+console.log("=== Selected Content ===")
+console.log("moduleContent[step-1][module-1]:", moduleContent[currentStep - 1]?.[currentModule - 1])
+
+console.log("=== Full currentModuleData ===")
+console.log(currentModuleData)
 
   // Get the content after defining currentModuleData
   const currentQuiz = currentModuleData.quiz
@@ -2335,12 +2374,12 @@ const CourseContent = () => {
                             }}
                             className="flex items-center bg-[#85bb65] text-white font-bold py-2 px-6 rounded-lg transition-all duration-300 hover:bg-[#75a758] transform hover:scale-105"
                           >
-                            Next Step <ChevronRight className="ml-1" />
+                            Complete Module <ChevronRight className="ml-1" />
                           </button>
                         ) : (
                           <button
                             onClick={handleCompleteModule}
-                            className="flex items-center bg-[#5a7d53] text-white font-bold py-2 px-6 rounded-lg transition-all duration-300 hover:bg-[#4a6a45] transform hover:scale-105 animate-pulse"
+                            className="flex items-center bg-[#85bb65] text-white font-bold py-2 px-6 rounded-lg transition-all duration-300 hover:bg-[#75a758] transform hover:scale-105"
                           >
                             Complete Module <ChevronRight className="ml-1" />
                           </button>
