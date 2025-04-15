@@ -12,39 +12,29 @@ const Pricing = () => {
   // Define standardized feature texts
   const featureTexts = {
     moduleAccess: {
-      free: "Limited Module Access",
+      free: "Full Module Access",
       paid: "Full Module Access",
     },
     ads: {
       free: "No Ads",
       paid: "No Ads",
     },
-    practice: {
-      standard: "Personalised Practice",
-    },
+
     hearts: {
-      free: "Unimited Hearts",
+      free: "Unlimited Hearts",
       paid: "Unlimited Hearts",
     },
-    tracking: {
-      free: "Basic Progress Tracking",
-      paid: "Advanced Progress Tracking",
-    },
-    simulations: {
-      free: "1 Investment Simulation/week",
-      paid: "Unlimited Investment Simulations",
-    },
+
     community: {
       free: "Community Access with Experts",
-      paid: "Community Access with Experts",
+      paid: "Unlimited Access to Expert Community",
+      mid: "Read-only Access to Expert Community "
     },
-    support: {
-      standard: "Priority Support",
-    },
+
   }
 
   // All features in order
-  const allFeatures = ["moduleAccess", "ads", "practice", "hearts", "tracking", "simulations", "community", "support"]
+  const allFeatures = ["moduleAccess", "ads", "hearts",  "community"]
 
   // Features for each plan
   const plans = [
@@ -53,26 +43,26 @@ const Pricing = () => {
       name: "Free",
       subtext: <span>&nbsp;</span>,
       price: `$0`,
-      period: "forever",
+      period: "1 month access",
       icon: <Sparkles className="h-6 w-6" />,
       color: "#5a7d53",
       secondaryColor: "#f0f9f4",
       features: {
         moduleAccess: { text: featureTexts.moduleAccess.free, included: true },
         ads: { text: featureTexts.ads.free, included: false },
-        practice: { text: featureTexts.practice.standard, included: false },
+
         hearts: { text: featureTexts.hearts.free, included: false },
-        tracking: { text: featureTexts.tracking.free, included: true },
-        simulations: { text: featureTexts.simulations.free, included: true },
+
+        
         community: { text: featureTexts.community.free, included: false },
-        support: { text: featureTexts.support.standard, included: false },
+       
       },
     },
     {
       id: "monthly",
-      name: "Advanced",
-      subtext: "(Monthly)",
-      price: `S$9.99`,
+      name: "Plus",
+      subtext: <span>&nbsp;</span>,
+      price: `S$4.99`,
       period: "per month",
       popular: true,
       icon: <Zap className="h-6 w-6" />,
@@ -81,20 +71,19 @@ const Pricing = () => {
       features: {
         moduleAccess: { text: featureTexts.moduleAccess.paid, included: true },
         ads: { text: featureTexts.ads.paid, included: true },
-        practice: { text: featureTexts.practice.standard, included: true },
+
         hearts: { text: featureTexts.hearts.paid, included: true },
-        tracking: { text: featureTexts.tracking.paid, included: true },
-        simulations: { text: featureTexts.simulations.paid, included: true },
-        community: { text: featureTexts.community.paid, included: true },
-        support: { text: featureTexts.support.standard, included: true },
+        
+        community: { text: featureTexts.community.mid, included: true },
+       
       },
     },
     {
       id: "annual",
-      name: "Advanced",
-      subtext: "(Annual)",
-      price: `S$99.99`,
-      period: "per year",
+      name: "Max",
+      subtext: <span>&nbsp;</span>,
+      price: `S$9.99`,
+      period: "per month",
       bestValue: true,
       icon: <Shield className="h-6 w-6" />,
       color: "#06D6A0",
@@ -102,12 +91,10 @@ const Pricing = () => {
       features: {
         moduleAccess: { text: featureTexts.moduleAccess.paid, included: true },
         ads: { text: featureTexts.ads.paid, included: true },
-        practice: { text: featureTexts.practice.standard, included: true },
         hearts: { text: featureTexts.hearts.paid, included: true },
-        tracking: { text: featureTexts.tracking.paid, included: true },
-        simulations: { text: featureTexts.simulations.paid, included: true },
+        
         community: { text: featureTexts.community.paid, included: true },
-        support: { text: featureTexts.support.standard, included: true },
+       
       },
     },
   ]
