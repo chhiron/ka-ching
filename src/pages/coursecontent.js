@@ -357,7 +357,7 @@ const CourseContent = () => {
             <p className="mb-3 font-semibold">Why do companies sell stock?</p>
             <p className="mb-3">To raise money and grow their business.</p>
             <p className="mb-3">Selling <span title="Shares are units of stock. Imagine a pizza: the pizza is the stock, and each slice is a share. The more slices (shares) you have, the bigger your piece of the company! 🍕" className="text-blue-600 tooltip">shares</span> helps fund things like expansion, research, or paying off debt.</p>
-      <<div style={{ marginTop: "2rem" }}>
+      <div style={{ marginTop: "2rem" }}>
   <img
     src={require("./Module-1-2.png")}
     style={{
