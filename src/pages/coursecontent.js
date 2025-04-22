@@ -222,7 +222,7 @@ const CourseContent = () => {
   // Content sections for each module
   const moduleContent = [
 //Section 1
-    [
+  [
     
     // SECTION 1 MODULE 1
     [
@@ -970,7 +970,7 @@ const CourseContent = () => {
           
     //Section 2
     
-    [ 
+  [ 
     // SECTION 2 MODULE 1
     [
       {
@@ -1174,17 +1174,26 @@ const CourseContent = () => {
         ),
       },
     ],
+
+      //SECTION 2 MODULE 3
     [
-      {title: "Company Valuation",
+      {
+        title: "Understanding Financial Statements",
         type: "content",
         content: (
           <div>
             <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>
-              Coming Soon!
+              🗂️ Understanding Financial Statements: A Company's Financial Story
             </h3>
-      <div style={{ marginTop: "2rem"}}>
+
+            <p style={{ marginBottom: "1rem" }}>
+              Think of <strong>financial statements</strong> like a detailed diary that tells the complete financial story of a company.
+              Just as a diary reveals personal experiences, financial statements reveal a company's <em>financial health</em>, <em>performance</em> and <em>portential</em>.
+            </p>
+
+            <div style={{ marginTop: "2rem"}}>
               <img
-                src="/Module-2-3.png"
+                src="/Module-2-3-1.png"
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -1196,13 +1205,930 @@ const CourseContent = () => {
                 }}
               />
             </div>
-                </div>
-),
-  },
-      ],
+          </div>
+        ),
+      },
+
+      {
+        title: "Understanding Financial Statements",
+        type: "content",
+        content: (
+          <div>
+            <h3 style={{fontSize: "1.2rem", fontWeight: "bold", marginBottom:"1rem"}}>
+              📑 Understanding Financial Statements: What Are the Different Kinds of Financial Statements?
+            </h3>
+
+            <p style={{marginBottom: "1rem"}}>
+                Or, you could also view financial statements like a company's report card. They provide a snapshot of a company's financial performance, helping investors understand how well the business is doing.
+                There are three core financial statements that work together to paint a complete picture:
+                <ol>
+                  <li>
+                    <span className="text-blue-600 tooltip-wrapper">
+                      💵<strong>Income Statement</strong>
+                      <div className="tooltip-box">
+                        <p className="tooltip-text font-medium mb-1">
+                          It shows how much the company made (revenue) and how much they spent (expenses), telling you if they're winning or losing money over a period of time.
+                        </p>
+                      </div>
+                    </span>
+                    : The Profit Story
+                  </li>
+
+                  <li>
+                    <span className="text-blue-600 tooltip-wrapper">
+                      📷<strong>Balance Sheet</strong>
+                      <div className="tooltip-box">
+                        <p className="tooltip-text font-medium mb-1">
+                          It shows what the <strong>company owns</strong> (assets), what they <strong>owe</strong> (liabilities), and what is <strong>left over for the owners</strong> (equity). It's the company's financial health in one page.
+                        </p>
+                      </div>
+                    </span>
+                    : The Financial Snapshot
+                  </li>
+
+                  <li>
+                    <span className="text-blue-600 tooltip-wrapper">
+                      🏃‍➡️<strong>Cash Flow Statement</strong>
+                      <div className="tooltip-box">
+                        <p className="tooltip-text font-medium mb-1">
+                          It shows how cash enters (from sales) and how it leaves (for bills, investments, etc.). It tells you if the company is staying liquid or running out of cash.
+                        </p>
+                      </div>
+                    </span>
+                    : The Money Movement Tracker
+                  </li>
+                </ol>
+            </p>
+          </div>
+        ),
+      },
+    ],
+    
+    //Section 2 Module 4
+    [
+      {
+        title: "Introduction to Income Statements",
+        type: "content",
+        content: (
+          <div>
+            <h3 style={{fontSize: "1.2rem", fontWeight: "bold", marginBottom:"1rem"}}>
+              📑 Income Statements
+            </h3>
+            <p style={{ marginBottom: "1rem" }}>
+            The income statement is like the <strong>receipt</strong> from your thrift store shopping spree. It lists how much the store made (revenue) and what it spent to get the items (expenses). 
+            Subtracting expenses from revenue, gives the store's profit —  the final amount the shop earned.
+            </p>
+
+            <p>
+              The income statement shows:
+              <ul>
+                <li>
+                  <strong>Total Revenue</strong>: How much the company earned
+                </li>
+                <li>
+                  <strong>Expenses</strong>: What the company spent
+                </li>
+                <li>
+                  <strong>Net Income</strong>: Profit or less
+                </li>
+              </ul>
+            </p>
+          </div>
+        ),
+      },
+    
+      {
+        title: "Introduction to Income Statements",
+        type: "content",
+        content: (
+          <div>
+            <h3 style={{fontSize: "1.2rem", fontWeight: "bold", marginBottom:"1rem"}}>
+              📑 Income Statements
+            </h3>
+            <p>
+            For example, if the thrift store <strong>earns $100</strong> from selling clothes but <strong>spent $60</strong> buying them, the store has <strong>$40 left</strong> over, which is the <strong>gross profit</strong>. 
+            That is the shop's profit after its cost of acquiring new items. 
+            </p>
+
+            <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-2-4-1.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
+
+            <p>
+              <em>Note</em>: In the income statement, values  with brackets around them indicate that they are negative values. 
+              <br/>
+              As such, the '($60)' shown here indicates '-$60'.
+            </p>
+
+          </div>
+        ),
+      },
+
+      {
+        title: "Introduction to the Balance Sheet",
+        type: "content",
+        content: (
+          <div>
+            <h3 style={{fontSize: "1.2rem", fontWeight: "bold", marginBottom:"1rem"}}>
+              📑 Balance Sheet
+            </h3>
+            <p>
+              The balance sheet is like a <strong>financial selfie</strong> of the company at a specific moment. 
+              It reveals:
+              <ul>
+                <li>
+                  <strong>Assets</strong> (what the company owns, such as inventory or real estate)
+                </li>
+                <li>
+                  <strong>Liabilities</strong> (what the company owes, like loans to buy new inventory or outstanding bills)
+                </li>
+                <li>
+                  <strong>Shareholder's equity</strong> (the company's net worth, after subtracting debts from assets)
+                </li>
+              </ul>
+            </p>
+
+            <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-2-4-2.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
+
+            <p>
+              Think of the balance sheet like a snapshot of your thrift store's inventory and debts. 
+              <br/>For example, the store may <strong>own $50,000</strong> worth of inventory but <strong>owe $20,000</strong> to a supplier for that stock.
+              <br/>The <strong>remaining $30,000</strong> is the store's equity, which represents the store's value after its debts are paid off.
+              <br/>
+              <br/>This also translates to the following for the thrift shop:
+              <ul>
+                <li>
+                  Assests - $50,000
+                </li>
+                <li>
+                  Liabilities (i.e., Debt) - $20,000
+                </li>
+                <li>
+                  Equity - $30,000
+                </li>
+              </ul>
+              <br/>Take note of the following formula: <strong>Assets (A) = Liabilities (L) + Equity (E)</strong>
+            </p>
+
+          </div>
+        ),
+      },
+
+      {
+        title: "Introduction to the Cash Flow Statement",
+        type: "content",
+        content: (
+          <div>
+            <h3 style={{fontSize: "1.2rem", fontWeight: "bold", marginBottom:"1rem"}}>
+              📑 Cash Flow Statement
+            </h3>
+            <p>
+              This statement shows how cash moves in and out of the business.
+              <br/>It's like tracking how cash flows in and out of a thrift store:
+              <ul>
+                <li>
+                  <strong>Operating activities</strong> (money coming from sales, going out to pay expenses)
+                </li>
+                <li>
+                  <strong>Investing activities</strong> (money spent on new inventory or equipment)
+                </li>
+                <li>
+                  <strong>Financing activities</strong> (money from investors or loans to help with purchases)
+                </li>
+              </ul>
+              <br/>
+              <br/>Think of it like watching how cash flows in and out of the thrift store's register - how much the store earns from selling items and how much it spends on new stock or paying off loans.
+            </p>
+
+            <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-2-4-3.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
+
+          </div>
+        ),
+      },
+
+      {
+        title: "Why These Statements Matter",
+        type: "content",
+        content: (
+          <div>
+            <h3 style={{fontSize: "1.2rem", fontWeight: "bold", marginBottom:"1rem"}}>
+              📑 Why These Statements Matter
+            </h3>
+            <p>
+              Just like you'd inspect a used item before buying it at a thrift store, investors use these statements to understand a company's financial health. 
+              <br/>They help answer critical questions:
+              <ul>
+                <li>
+                  <strong>Income statement</strong> → Is the company profitable?
+                </li>
+                <li>
+                  <strong>Balance sheet</strong> → Is the company able to pay its bills?
+                </li>
+                <li>
+                  <strong>Cash flow statement</strong> → Is the company growing or struggling?
+                </li>
+              </ul>
+              <br/>
+              <br/><strong>Pro Tip: Look Beyond the Numbers</strong>
+              <br/>Numbers tell a story, but don't just stare at them. Ask:
+              <ol>
+                <li>
+                  Are revenues growing consistently, like the store's sales over the past few seasons?
+                </li>
+                <li>
+                  Are expenses under control, like how much the store is spending on inventory relative to its sales?
+                </li>
+                <li>
+                  Does the company generate enough cash to keep buying new items to sell?
+                </li>
+              </ol>
+              <br/>We will go through how to interpret the numbers to answer these questions in the following modules!
+            </p>
+
+            <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-2-4-4.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
+
+          </div>
+        ),
+      },
+    ],
+
+    //Section 2 Module 5
+    [
+      {
+        title: "Income Statement",
+        type: "content",
+        content: (
+          <div>
+            <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>
+              📃 The Income Statement
+            </h3>
+
+            <p style={{ marginBottom: "1rem" }}>
+              Recall that the income statement is a record that reveals how a company turns its sales into profits. 
+              <br/>It's like shopping at a thrift store where the items they sell (<strong>revenue</strong>) are transformed into <strong>net income</strong> (<em>could be proft or loss</em>) after subtracting the cost of buying those items (<strong>expenses</strong>).
+            </p>
+            
+            <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-2-5-1.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
+
+          </div>
+        ),
+      },
+
+      {
+        title: "Income Statement",
+        type: "content",
+        content: (
+          <div>
+            <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>
+              📃 The Income Statement's Key Characters
+            </h3>
+
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>Revenue:</strong> Total earnings from selling items (before subtracting expenses).
+            </p>
+            
+            <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-2-5-2.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
+          </div>
+        ),
+      },
+    
+      {
+        title: "Income Statement",
+        type: "content",
+        content: (
+          <div>
+            <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>
+              📃 The Income Statement's Key Characters
+            </h3>
+
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>Expenses:</strong> How much money a business spent during a reporting period.
+            </p>
+
+            <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-2-5-3.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
+          </div>
+        ),
+      },
+
+      {
+        title: "Income Statement",
+        type: "content",
+        content: (
+          <div>
+            <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>
+              📃 The Income Statement's Key Characters
+            </h3>
+
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>Cost of goods sold (COGS):</strong> The total costs associated with component parts of whatever product or service a company makes and sells.
+              <br/>
+              <br/>In other words, COGS equates to how much it costs to acquire those items.
+              <br/><em>For example, if the store buys vintage jackets at $5 each, that $5 is the COGS.</em>
+            </p>
+
+            <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-2-5-3.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
+          </div>
+        ),
+      },
+
+      {
+        title: "Income Statement",
+        type: "content",
+        content: (
+          <div>
+            <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>
+              📃 The Income Statement's Key Characters
+            </h3>
+
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>Gross Profit:</strong> Revenue minus costs of goods sold ( 
+              <span className="text-blue-600 tooltip-wrapper">
+                <strong>COGS</strong>
+                  <div className="tooltip-box">
+                    <p className="tooltip-text font-medium mb-1">
+                    How much it costs to acquire item to be sold.
+                    <br/>🧥For example, 
+                    <br/>If the store buys vintage jackets at $5 each, COGS = $5.
+                    </p>
+                  </div>
+              </span>
+              ).
+              <br/>
+              <br/><em>For example, if the store earned $100 selling jackets and spent $40 on them, the gross profit would be $60.</em>
+            </p>
+
+            <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-2-5-4.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
+          </div>
+        ),
+      },
+
+      {
+        title: "Income Statement",
+        type: "content",
+        content: (
+          <div>
+            <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>
+              📃 The Income Statement's Key Characters
+            </h3>
+
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>Operating Income:</strong> {" "}
+              <span className="text-blue-600 tooltip-wrapper">
+                Gross profit
+                  <div className="tooltip-box">
+                    <p className="tooltip-text font-medium mb-1">
+                    Revenue minus costs of goods sold (COGS). 
+                    <br/> COGS refers to how much it costs to acquire the item to be sold.
+                    </p>
+                  </div>
+              </span>
+              {" "} minus {" "}
+              <span className="text-blue-600 tooltip-wrapper">
+                operating expenses
+                  <div className="tooltip-box">
+                    <p className="tooltip-text font-medium mb-1">
+                    Comprises of the <strong>costs of the business</strong> like rent, employee wages, or adveritising costs to attract customers.
+                    </p>
+                  </div>
+              </span>
+              .
+              <br/> For example, if the store's{" "}
+              <span className="text-blue-600 tooltip-wrapper">
+                gross profit
+                  <div className="tooltip-box">
+                    <p className="tooltip-text font-medium mb-1">
+                    Revenue minus costs of goods sold (COGS). 
+                    <br/> COGS refers to how much it costs to acquire the item to be sold.
+                    </p>
+                  </div>
+              </span>
+              {" "}is $60 but it spent $20 on rent and wages, the operating income is {" "}
+              <span className="text-blue-600 tooltip-wrapper">
+                $40
+                  <div className="tooltip-box">
+                    <p className="tooltip-text font-medium mb-1">
+                    Operating Income 
+                    <br/>= Gross Profit - Operating Expenses
+                    <br/>= $60 - $20
+                    <br/>= $40
+                    </p>
+                  </div>
+              </span>
+              .
+            </p>
+
+            <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-2-5-5.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
+          </div>
+        ),
+      },
+      {
+        title: "Income Statement",
+        type: "content",
+        content: (
+          <div>
+            <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>
+              📃 The Income Statement's Key Characters
+            </h3>
+
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>Income before taxes:</strong> {" "}
+              <span className="text-blue-600 tooltip-wrapper">
+                <strong>Operating income</strong>
+                  <div className="tooltip-box">
+                    <p className="tooltip-text font-medium mb-1">
+                    Revenue minus costs of goods sold (COGS). 
+                    <br/> COGS refers to how much it costs to acquire the item to be sold.
+                    </p>
+                  </div>
+              </span>
+              {" "} minus {" "}
+              <span className="text-blue-600 tooltip-wrapper">
+                <strong>non-operating expenses</strong>
+                  <div className="tooltip-box">
+                    <p className="tooltip-text font-medium mb-1">
+                    The things the business pays for that is not part of its day-to-day hustle.
+                    <br/>Things like interest on loans, currency losses, or one-off lawsuit costs. 
+                    <br/>Essentially, money that is spent on "side quests", not the main game of selling its product or service. 
+                    </p>
+                  </div>
+              </span>
+              .
+            </p>
+
+            <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-2-5-6.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
+          </div>
+        ),
+      },
+
+      {
+        title: "Income Statement",
+        type: "content",
+        content: (
+          <div>
+            <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>
+              📃 The Income Statement's Key Characters
+            </h3>
+
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>Net income:</strong> Income after taxes.
+              <br/>What the store keeps after all expesnses are deducted including interest and taxes.
+            </p>
+
+            <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-2-5-7.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
+          </div>
+        ),
+      },
+
+      {
+        title: "Income Statement",
+        type: "content",
+        content: (
+          <div>
+            <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>
+              📃 The Income Statement's Key Characters
+            </h3>
+
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>Earnings per share (EPS):</strong> Net income divided by the total number of outstanding shares.
+            </p>
+
+            <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-2-5-8.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
+          </div>
+        ),
+      },
+
+      {
+        title: "Income Statement",
+        type: "content",
+        content: (
+          <div>
+            <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>
+              📃 The Income Statement's Key Characters
+            </h3>
+
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>EBITDA:</strong> Earnings before interest, depreciation, taxes, and amortization.
+            </p>
+
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>Amortization:</strong> It is like spreading the cost of a thrift store purchases over time. 
+              <br/>⏳If you buy a jacket for $100 and plan to use it for 5 years, instead of counting the full $100 as a cost right away, you divide it by 5. 
+              <br/>⌛So, each year, you count $20 as the cost of the jacket, reflecting its use over time. 
+              <br/>👧It's a little like girl math for assets like equipment or patents that a company has. 
+            </p>
+
+            <p style={{ marginBottom: "1rem" }}>
+              <strong>Depreciation:</strong> It is the value lost by assets, such as inventory, equipment, and property, over time. 
+              <br/>It is similar to amortization, but it applies to <strong>physical assets</strong> that lost value over time, like a car or a piece of equipment. 
+              <br/>
+              <br/>For example, if you buy a vintage leather jacket for $100, it might lose value each year as it gets worn and aged. 
+              <br/>📉Instead of spreading the full cost over its life (like amortization), you track the decline in value each year.
+              <br/>
+              <br/>💸Say the jacket loses $20 in value each year.
+              <br/>After 1 year, it is worth $80.
+              <br/>After 2 years, it is worth $60, and so on.
+              <br/>This is depreciation - accounting for the loss in value of an asset over time.
+            </p>
+
+            <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-2-5-9.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
+          </div>
+        ),
+      },
+    ],
+    //Section 2 Module 6
+    [
+      {
+        title: "Income Statement",
+        type: "content",
+        content: (
+          <div>
+            <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>
+              📃 What These Characters Mean
+            </h3>
+
+            <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-2-6-1.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
+
+            <p style={{ marginBottom: "1rem" }}>
+              During the reporting period, the company brought in <strong>$4.4 billion in total sales</strong>.
+              <br/>To generate these sales, it <strong>spent around $2.7 billion</strong>, leaving them with a solid <strong>$1.6 billion in gross profit</strong>.
+              <br/> 
+              <br/>However, there are still other expenses to consider.
+              <br/>The company spent about <strong>$560.4 million on selling and operating costs</strong>, and
+              <br/><strong>$293.7 million on general administrative expenses</strong>.
+              <br/>After covering these costs, the company was left with <strong>$765.2 million in operating income</strong>.
+              <br/>
+              <br/>But that's not the end of the story!
+              <br/>The company had additional financial adjustments, including a <strong>$257.6 million income tax</strong>.
+              <br/>After factoring in these changes, the company finished the period with a <strong>net income of $483.2 million</strong>.
+              <br/>
+              <br/>Using these figures, you could calculate figures like <em>earnings per share</em> which will help you make better investment decisions. 
+              <br/>We will cover these in a later topic, <em>"key financial ratios"</em> to show you what each of these figures mean to you as an investor, as well as, how they are derived. 
+            </p>
+
+          </div>
+        ),
+      },
+
+      {
+        title: "Income Statement",
+        type: "content",
+        content: (
+          <div>
+            <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>
+              🚩 Red Flags to Look Out For
+            </h3>
+
+            <p style={{ marginBottom: "1rem" }}>
+              After reading the income statement, take note if your conclusion contains any of the following three points.
+              <ol>
+                <li>
+                  <strong>Declining revenues over multiple periods:</strong>
+                  <br/>Imagine the thrift store's sales have been dropping steadily.
+                  <br/>Last year, it made $10,000 in sales, and the year before that, it made $12,000, but this year, it only made $8,000.
+                  <br/>Over time, the store's sales have been decreasing, which suggests fewer customers or less demand for its items.
+                </li>
+              </ol>
+            </p>
+
+            <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-2-6-2.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
+          </div>
+        ),
+      },
+      {
+        title: "Income Statement",
+        type: "content",
+        content: (
+          <div>
+            <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>
+              🚩 Red Flags to Look Out For
+            </h3>
+
+            <p style={{ marginBottom: "1rem" }}>
+              After reading the income statement, take note if your conclusion contains any of the following three points.
+              <ol start="2">
+                <li>
+                  <strong>Increasing costs without proportional revenue growth:</strong>
+                  <br/>The <strong>store's expenses are rising</strong>, but <strong>sales aren't keeping up</strong>.
+                  <br/>For instance, the store's <strong>rent increased by 10%</strong> this year, and the <strong>cost of goods is rising</strong> due to tarriffs. 
+                  <br/>However, despite these higher expenses, <strong>sales have only gone down or stayed flat</strong>.
+                  <br/>
+                  <br/>The store is <strong>spending more to operate without generating more revenue</strong>, which impacts profitability.
+                </li>
+              </ol>
+            </p>
+
+            <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-2-6-3.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
+          </div>
+        ),
+      },
+
+      {
+        title: "Income Statement",
+        type: "content",
+        content: (
+          <div>
+            <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>
+              🚩 Red Flags to Look Out For
+            </h3>
+
+            <p style={{ marginBottom: "1rem" }}>
+              After reading the income statement, take note if your conclusion contains any of the following three points.
+              <ol start="3">
+                <li>
+                  <strong>Negative net income for consecutive years:</strong>
+                  <br/>The store has been <strong>losing money year after year</strong>. 
+                  <br/>For instance, in 2023, its <strong>expenses exceeded revenues by $1,000</strong>, and  
+                  <br/>in 2024, it <strong>lost $2,000</strong>.
+                  <br/>
+                  <br/>This <strong>pattern of negative net income</strong> shows that the store has been consistently unprofitable, indicating financial trouble.
+                </li>
+              </ol>
+            </p>
+
+            <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-2-6-4.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
+          </div>
+        ),
+      },
+
+      {
+        title: "Income Statement",
+        type: "content",
+        content: (
+          <div>
+            <h3 style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "1rem" }}>
+              🚩 Red Flags to Look Out For
+            </h3>
+
+            <p style={{ marginBottom: "1rem" }}>
+              In summary, after reading the income statement, take note if your conclusion contains any of the following three points.
+              <ol>
+                <li>
+                  <strong>Declining revenues over multiple periods:</strong> The store's revenues are declining.
+                </li>
+                <li>
+                  <strong>Increasing costs without proportional revenue growth:</strong> Its costs are rising without enough increase in sales.
+                </li>
+                <li>
+                  <strong>Negative net income for consecutive years:</strong> It has negative net income over multiple years, showing consistent loses.
+                </li>
+              </ol>
+            </p>
+
+            <div style={{ marginTop: "2rem"}}>
+              <img
+                src="/Module-2-6-4.png"
+                style={{
+                  maxWidth: "500px",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                  display: "block",
+                  marginTop: "2rem",
+                  marginLeft: 0
+                }}
+              />
+            </div>
+          </div>
+        ),
+      },
+      
+    ],
     //Add more sections as needed
-  ]
+  ],
 ]
+
 
 
   // Quiz data matching quizKey format
@@ -1956,6 +2882,9 @@ const currentModuleData = {
     moduleContent[currentStep - 1]?.[currentModule - 1] || [],
 } //updated
 
+
+
+
 console.log("=== Current Step and Module ===")
 console.log("Step:", currentStep)
 console.log("Module:", currentModule)
@@ -2272,7 +3201,7 @@ console.log(currentModuleData)
 
   const stepModuleCounts = {
     1: 10, // Updated to match the actual number of modules in section 1
-    2: 2, // Updated to match the actual number of modules in section 2
+    2: 3, // Updated to match the actual number of modules in section 2
   }
 
   const goToNextModule = () => {
