@@ -309,20 +309,20 @@ const CourseContent = () => {
       {" "} means how fast you can turn your investment into cash. If you need the money soon, choose something easy to access. 
     </p>
   </div>
-      <div style={{ marginTop: "2rem"}}>
-              <img
-                src="/Module-1-1.png"
-                style={{
-                  maxWidth: "500px",
-                  height: "auto",
-                  borderRadius: "8px",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-                  display: "block",
-                  marginTop: "2rem",
-                  marginLeft: 0
-                }}
-              />
-            </div>
+  <div style={{ marginTop: "2rem" }}>
+  <img
+    src={require("./Module-1-1.png")}
+    style={{
+      maxWidth: "500px",
+      height: "auto",
+      borderRadius: "8px",
+      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+      display: "block",
+      marginLeft: 0
+    }}
+  />
+</div>
+
 </div>
 
         
@@ -357,20 +357,20 @@ const CourseContent = () => {
             <p className="mb-3 font-semibold">Why do companies sell stock?</p>
             <p className="mb-3">To raise money and grow their business.</p>
             <p className="mb-3">Selling <span title="Shares are units of stock. Imagine a pizza: the pizza is the stock, and each slice is a share. The more slices (shares) you have, the bigger your piece of the company! 🍕" className="text-blue-600 tooltip">shares</span> helps fund things like expansion, research, or paying off debt.</p>
-      <div style={{ marginTop: "2rem"}}>
-              <img
-                src="/Module-1-2.png"
-                style={{
-                  maxWidth: "500px",
-                  height: "auto",
-                  borderRadius: "8px",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-                  display: "block",
-                  marginTop: "2rem",
-                  marginLeft: 0
-                }}
-              />
-            </div>    
+      <<div style={{ marginTop: "2rem" }}>
+  <img
+    src={require("./Module-1-2.png")}
+    style={{
+      maxWidth: "500px",
+      height: "auto",
+      borderRadius: "8px",
+      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+      display: "block",
+      marginLeft: 0
+    }}
+  />
+</div>
+ 
       </div>
         ),
       },
@@ -422,20 +422,20 @@ const CourseContent = () => {
             <p className="mb-3">
               <strong>SGX:</strong> Singapore Stock Exchange.
             </p>
-      <div style={{ marginTop: "2rem"}}>
-              <img
-                src="/Module-1-3.png"
-                style={{
-                  maxWidth: "500px",
-                  height: "auto",
-                  borderRadius: "8px",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-                  display: "block",
-                  marginTop: "2rem",
-                  marginLeft: 0
-                }}
-              />
-            </div>
+            <div style={{ marginTop: "2rem" }}>
+  <img
+    src={require("./Module-1-3.png")}
+    style={{
+      maxWidth: "500px",
+      height: "auto",
+      borderRadius: "8px",
+      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+      display: "block",
+      marginLeft: 0
+    }}
+  />
+</div>
+
           </div>
         ),
       },
@@ -486,20 +486,20 @@ const CourseContent = () => {
               <li>Only for wealthy individuals or institutions</li>
               <li>Fewer rules, faster and cheaper</li>
             </ul>
-      <div style={{ marginTop: "2rem"}}>
-              <img
-                src="/Module-1-4.png"
-                style={{
-                  maxWidth: "500px",
-                  height: "auto",
-                  borderRadius: "8px",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-                  display: "block",
-                  marginTop: "2rem",
-                  marginLeft: 0
-                }}
-              />
-            </div>
+            <div style={{ marginTop: "2rem" }}>
+  <img
+    src={require("./Module-1-4.png")}
+    style={{
+      maxWidth: "500px",
+      height: "auto",
+      borderRadius: "8px",
+      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+      display: "block",
+      marginLeft: 0
+    }}
+  />
+</div>
+
           </div>
         ),
       },
@@ -583,20 +583,20 @@ const CourseContent = () => {
       </div>
     </div>
       </div>
-      <div style={{ marginTop: "2rem"}}>
-              <img
-                src="/Module-1-5.png"
-                style={{
-                  maxWidth: "500px",
-                  height: "auto",
-                  borderRadius: "8px",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-                  display: "block",
-                  marginTop: "2rem",
-                  marginLeft: 0
-                }}
-              />
-            </div>
+      <div style={{ marginTop: "2rem" }}>
+  <img
+    src={require("./Module-1-5.png")}
+    style={{
+      maxWidth: "500px",
+      height: "auto",
+      borderRadius: "8px",
+      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+      display: "block",
+      marginLeft: 0
+    }}
+  />
+</div>
+
       </div>
     ),
   },
@@ -635,20 +635,20 @@ const CourseContent = () => {
                   </li>
               <li>📈 Once trading begins, anyone can buy shares on the open market.</li>
             </ol>
-      <div style={{ marginTop: "2rem"}}>
-              <img
-                src="/Module-1-6.png"
-                style={{
-                  maxWidth: "500px",
-                  height: "auto",
-                  borderRadius: "8px",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-                  display: "block",
-                  marginTop: "2rem",
-                  marginLeft: 0
-                }}
-              />
-            </div>
+            <div style={{ marginTop: "2rem" }}>
+  <img
+    src={require("./Module-1-6.png")}
+    style={{
+      maxWidth: "500px",
+      height: "auto",
+      borderRadius: "8px",
+      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+      display: "block",
+      marginLeft: 0
+    }}
+  />
+</div>
+
           </div>
         ),
       },
@@ -796,20 +796,20 @@ const CourseContent = () => {
       </div>
   </div>
 </div>
-<div style={{ marginTop: "2rem"}}>
-              <img
-                src="/Module-1-7.png"
-                style={{
-                  maxWidth: "500px",
-                  height: "auto",
-                  borderRadius: "8px",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-                  display: "block",
-                  marginTop: "2rem",
-                  marginLeft: 0
-                }}
-              />
-            </div>
+<div style={{ marginTop: "2rem" }}>
+  <img
+    src={require("./Module-1-7.png")}
+    style={{
+      maxWidth: "500px",
+      height: "auto",
+      borderRadius: "8px",
+      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+      display: "block",
+      marginLeft: 0
+    }}
+  />
+</div>
+
 </div>
 
       
@@ -830,20 +830,20 @@ const CourseContent = () => {
               <strong>Market Capitalization = Total value of a company’s shares held by investors</strong> <br />
               (Owned by investors: retail, institutional, or insiders)
             </p>
-            <div style={{ marginTop: "2rem"}}>
-              <img
-                src="/Module-1-8.png"
-                style={{
-                  maxWidth: "500px",
-                  height: "auto",
-                  borderRadius: "8px",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-                  display: "block",
-                  marginTop: "2rem",
-                  marginLeft: 0
-                }}
-              />
-            </div>
+            <div style={{ marginTop: "2rem" }}>
+  <img
+    src={require("./Module-1-8.png")}
+    style={{
+      maxWidth: "500px",
+      height: "auto",
+      borderRadius: "8px",
+      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+      display: "block",
+      marginLeft: 0
+    }}
+  />
+</div>
+
           </div>
         ),
       },
@@ -889,20 +889,20 @@ const CourseContent = () => {
                 <li>🧪 In small niche industry</li>
               </ul>
             </div>
-            <div style={{ marginTop: "2rem"}}>
-              <img
-                src="/Module-1-9.png"
-                style={{
-                  maxWidth: "500px",
-                  height: "auto",
-                  borderRadius: "8px",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-                  display: "block",
-                  marginTop: "2rem",
-                  marginLeft: 0
-                }}
-              />
-            </div>
+            <div style={{ marginTop: "2rem" }}>
+  <img
+    src={require("./Module-1-9.png")}
+    style={{
+      maxWidth: "500px",
+      height: "auto",
+      borderRadius: "8px",
+      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+      display: "block",
+      marginLeft: 0
+    }}
+  />
+</div>
+
           </div>
         ),
       },
@@ -948,20 +948,20 @@ const CourseContent = () => {
                 <li>📈 No dividends, only capital appreciation</li>
               </ul>
             </div>
-            <div style={{ marginTop: "2rem"}}>
-              <img
-                src="/Module-1-10.png"
-                style={{
-                  maxWidth: "500px",
-                  height: "auto",
-                  borderRadius: "8px",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-                  display: "block",
-                  marginTop: "2rem",
-                  marginLeft: 0
-                }}
-              />
-            </div>
+            <div style={{ marginTop: "2rem" }}>
+  <img
+    src={require("./Module-1-10.png")}
+    style={{
+      maxWidth: "500px",
+      height: "auto",
+      borderRadius: "8px",
+      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+      display: "block",
+      marginLeft: 0
+    }}
+  />
+</div>
+
           </div>
         ),
       },
@@ -1032,20 +1032,20 @@ const CourseContent = () => {
           </span>{" "}
               investment horizon.
             </p>
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-1.png"
+                src={require("./Module-2-1.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
             </div>
+
           </div>
         ),
       },
@@ -1156,16 +1156,15 @@ const CourseContent = () => {
           </span>
               .
             </p>
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-2.png"
+                src={require("./Module-2-2.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -1191,16 +1190,15 @@ const CourseContent = () => {
               Just as a diary reveals personal experiences, financial statements reveal a company's <em>financial health</em>, <em>performance</em> and <em>portential</em>.
             </p>
 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-3-1.png"
+                src={require("./Module-2-3-1.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -1310,16 +1308,15 @@ const CourseContent = () => {
             That is the shop's profit after its cost of acquiring new items. 
             </p>
 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-4-1.png"
+                src={require("./Module-2-4-1.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -1359,16 +1356,15 @@ const CourseContent = () => {
               </ul>
             </p>
 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-4-2.png"
+                src={require("./Module-2-4-2.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -1424,16 +1420,15 @@ const CourseContent = () => {
               <br/>Think of it like watching how cash flows in and out of the thrift store's register - how much the store earns from selling items and how much it spends on new stock or paying off loans.
             </p>
 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-4-3.png"
+                src={require("./Module-2-4-3.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -1482,16 +1477,15 @@ const CourseContent = () => {
               <br/>We will go through how to interpret the numbers to answer these questions in the following modules!
             </p>
 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-4-4.png"
+                src={require("./Module-2-4-4.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -1518,16 +1512,15 @@ const CourseContent = () => {
               <br/>It's like shopping at a thrift store where the items they sell (<strong>revenue</strong>) are transformed into <strong>net income</strong> (<em>could be proft or loss</em>) after subtracting the cost of buying those items (<strong>expenses</strong>).
             </p>
             
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-5-1.png"
+                src={require("./Module-2-5-1.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -1550,16 +1543,15 @@ const CourseContent = () => {
               <strong>Revenue:</strong> Total earnings from selling items (before subtracting expenses).
             </p>
             
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-5-2.png"
+                src={require("./Module-2-5-2.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -1581,16 +1573,15 @@ const CourseContent = () => {
               <strong>Expenses:</strong> How much money a business spent during a reporting period.
             </p>
 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-5-3.png"
+                src={require("./Module-2-5-3.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -1615,16 +1606,15 @@ const CourseContent = () => {
               <br/><em>For example, if the store buys vintage jackets at $5 each, that $5 is the COGS.</em>
             </p>
 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-5-4.png"
+                src={require("./Module-2-5-4.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -1659,16 +1649,15 @@ const CourseContent = () => {
               <br/><em>For example, if the store earned $100 selling jackets and spent $40 on them, the gross profit would be $60.</em>
             </p>
 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-5-5.png"
+                src={require("./Module-2-5-5.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -1732,16 +1721,15 @@ const CourseContent = () => {
               .
             </p>
 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-5-6.png"
+                src={require("./Module-2-5-6.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -1783,16 +1771,15 @@ const CourseContent = () => {
               .
             </p>
 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-5-7.png"
+                src={require("./Module-2-5-7.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -1815,16 +1802,15 @@ const CourseContent = () => {
               <br/>What the store keeps after all expesnses are deducted including interest and taxes.
             </p>
 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-5-8.png"
+                src={require("./Module-2-5-8.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -1846,16 +1832,15 @@ const CourseContent = () => {
               <strong>Earnings per share (EPS):</strong> Net income divided by the total number of outstanding shares.
             </p>
 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-5-9.png"
+                src={require("./Module-2-5-9.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -1897,16 +1882,15 @@ const CourseContent = () => {
               <br/>This is depreciation - accounting for the loss in value of an asset over time.
             </p>
 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-5-10.png"
+                src={require("./Module-2-5-10.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -1926,16 +1910,15 @@ const CourseContent = () => {
               📃 What These Characters Mean
             </h3>
 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-6-1.png"
+                src={require("./Module-2-6-1.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -1983,16 +1966,15 @@ const CourseContent = () => {
               </ol>
             </p>
 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-6-2.png"
+                src={require("./Module-2-6-2.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -2023,16 +2005,15 @@ const CourseContent = () => {
               </ol>
             </p>
 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-6-3.png"
+                src={require("./Module-2-6-3.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -2064,16 +2045,15 @@ const CourseContent = () => {
               </ol>
             </p>
 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-6-4.png"
+                src={require("./Module-2-6-4.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -2106,16 +2086,15 @@ const CourseContent = () => {
               </ol>
             </p>
 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-6-4.png"
+                src={require("./Module-2-6-5.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -2137,16 +2116,15 @@ const CourseContent = () => {
               👷🏻Coming Soon!
             </h3>
 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-3.png"
+                src={require("./Module-2-3.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -2168,16 +2146,15 @@ const CourseContent = () => {
               👷🏻Coming Soon!
             </h3>
 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-3.png"
+                src={require("./Module-2-3.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -2199,16 +2176,15 @@ const CourseContent = () => {
               👷🏻Coming Soon!
             </h3>
 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-3.png"
+                src={require("./Module-2-3.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -2230,16 +2206,15 @@ const CourseContent = () => {
               👷🏻Coming Soon!
             </h3>
 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-3.png"
+                src={require("./Module-2-3.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -2261,16 +2236,15 @@ const CourseContent = () => {
               👷🏻Coming Soon!
             </h3>
 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-3.png"
+                src={require("./Module-2-3.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -2292,16 +2266,15 @@ const CourseContent = () => {
               👷🏻Coming Soon!
             </h3>
 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-3.png"
+                src={require("./Module-2-3.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -2323,16 +2296,15 @@ const CourseContent = () => {
               👷🏻Coming Soon!
             </h3>
 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-3.png"
+                src={require("./Module-2-3.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
@@ -2354,16 +2326,15 @@ const CourseContent = () => {
               👷🏻Coming Soon!
             </h3>
 
-            <div style={{ marginTop: "2rem"}}>
+            <div style={{ marginTop: "2rem" }}>
               <img
-                src="/Module-2-3.png"
+                src={require("./Module-2-3.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
                   borderRadius: "8px",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                   display: "block",
-                  marginTop: "2rem",
                   marginLeft: 0
                 }}
               />
