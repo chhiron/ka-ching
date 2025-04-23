@@ -311,7 +311,7 @@ const CourseContent = () => {
   </div>
   <div style={{ marginTop: "2rem" }}>
   <img
-    src={require("./Module-1-1.png")}
+    src={require("../Module-1-1.png")}
     style={{
       maxWidth: "500px",
       height: "auto",
@@ -359,7 +359,7 @@ const CourseContent = () => {
             <p className="mb-3">Selling <span title="Shares are units of stock. Imagine a pizza: the pizza is the stock, and each slice is a share. The more slices (shares) you have, the bigger your piece of the company! 🍕" className="text-blue-600 tooltip">shares</span> helps fund things like expansion, research, or paying off debt.</p>
       <div style={{ marginTop: "2rem" }}>
   <img
-    src={require("./Module-1-2.png")}
+    src={require("../Module-1-2.png")}
     style={{
       maxWidth: "500px",
       height: "auto",
@@ -424,7 +424,7 @@ const CourseContent = () => {
             </p>
             <div style={{ marginTop: "2rem" }}>
   <img
-    src={require("./Module-1-3.png")}
+    src={require("../Module-1-3.png")}
     style={{
       maxWidth: "500px",
       height: "auto",
@@ -488,7 +488,7 @@ const CourseContent = () => {
             </ul>
             <div style={{ marginTop: "2rem" }}>
   <img
-    src={require("./Module-1-4.png")}
+    src={require("../Module-1-4.png")}
     style={{
       maxWidth: "500px",
       height: "auto",
@@ -585,7 +585,7 @@ const CourseContent = () => {
       </div>
       <div style={{ marginTop: "2rem" }}>
   <img
-    src={require("./Module-1-5.png")}
+    src={require("../Module-1-5.png")}
     style={{
       maxWidth: "500px",
       height: "auto",
@@ -637,7 +637,7 @@ const CourseContent = () => {
             </ol>
             <div style={{ marginTop: "2rem" }}>
   <img
-    src={require("./Module-1-6.png")}
+    src={require("../Module-1-6.png")}
     style={{
       maxWidth: "500px",
       height: "auto",
@@ -798,7 +798,7 @@ const CourseContent = () => {
 </div>
 <div style={{ marginTop: "2rem" }}>
   <img
-    src={require("./Module-1-7.png")}
+    src={require("../Module-1-7.png")}
     style={{
       maxWidth: "500px",
       height: "auto",
@@ -832,7 +832,7 @@ const CourseContent = () => {
             </p>
             <div style={{ marginTop: "2rem" }}>
   <img
-    src={require("./Module-1-8.png")}
+    src={require("../Module-1-8.png")}
     style={{
       maxWidth: "500px",
       height: "auto",
@@ -891,7 +891,7 @@ const CourseContent = () => {
             </div>
             <div style={{ marginTop: "2rem" }}>
   <img
-    src={require("./Module-1-9.png")}
+    src={require("../Module-1-9.png")}
     style={{
       maxWidth: "500px",
       height: "auto",
@@ -950,7 +950,7 @@ const CourseContent = () => {
             </div>
             <div style={{ marginTop: "2rem" }}>
   <img
-    src={require("./Module-1-10.png")}
+    src={require("../Module-1-10.png")}
     style={{
       maxWidth: "500px",
       height: "auto",
@@ -1034,7 +1034,7 @@ const CourseContent = () => {
             </p>
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-1.png")}
+                src={require("../Module-2-1.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -1158,7 +1158,7 @@ const CourseContent = () => {
             </p>
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-2.png")}
+                src={require("../Module-2-2.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -1192,7 +1192,7 @@ const CourseContent = () => {
 
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-3-1.png")}
+                src={require("../Module-2-3-1.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -1310,7 +1310,7 @@ const CourseContent = () => {
 
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-4-1.png")}
+                src={require("../Module-2-4-1.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -1358,7 +1358,7 @@ const CourseContent = () => {
 
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-4-2.png")}
+                src={require("../Module-2-4-2.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -1422,7 +1422,7 @@ const CourseContent = () => {
 
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-4-3.png")}
+                src={require("../Module-2-4-3.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -1479,7 +1479,7 @@ const CourseContent = () => {
 
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-4-4.png")}
+                src={require("../Module-2-4-4.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -1514,7 +1514,7 @@ const CourseContent = () => {
             
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-5-1.png")}
+                src={require("../Module-2-5-1.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -1545,7 +1545,7 @@ const CourseContent = () => {
             
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-5-2.png")}
+                src={require("../Module-2-5-2.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -1575,7 +1575,7 @@ const CourseContent = () => {
 
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-5-3.png")}
+                src={require("../Module-2-5-3.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -1608,7 +1608,7 @@ const CourseContent = () => {
 
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-5-4.png")}
+                src={require("../Module-2-5-4.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -1651,7 +1651,7 @@ const CourseContent = () => {
 
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-5-5.png")}
+                src={require("../Module-2-5-5.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -1723,7 +1723,7 @@ const CourseContent = () => {
 
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-5-6.png")}
+                src={require("../Module-2-5-6.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -1773,7 +1773,7 @@ const CourseContent = () => {
 
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-5-7.png")}
+                src={require("../Module-2-5-7.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -1804,7 +1804,7 @@ const CourseContent = () => {
 
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-5-8.png")}
+                src={require("../Module-2-5-8.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -1834,7 +1834,7 @@ const CourseContent = () => {
 
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-5-9.png")}
+                src={require("../Module-2-5-9.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -1884,7 +1884,7 @@ const CourseContent = () => {
 
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-5-10.png")}
+                src={require("../Module-2-5-10.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -1912,7 +1912,7 @@ const CourseContent = () => {
 
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-6-1.png")}
+                src={require("../Module-2-6-1.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -1968,7 +1968,7 @@ const CourseContent = () => {
 
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-6-2.png")}
+                src={require("../Module-2-6-2.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -2007,7 +2007,7 @@ const CourseContent = () => {
 
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-6-3.png")}
+                src={require("../Module-2-6-3.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -2047,7 +2047,7 @@ const CourseContent = () => {
 
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-6-4.png")}
+                src={require("../Module-2-6-4.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -2088,7 +2088,7 @@ const CourseContent = () => {
 
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-6-5.png")}
+                src={require("../Module-2-6-5.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -2118,7 +2118,7 @@ const CourseContent = () => {
 
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-3.png")}
+                src={require("../Module-2-3.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -2148,7 +2148,7 @@ const CourseContent = () => {
 
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-3.png")}
+                src={require("../Module-2-3.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -2178,7 +2178,7 @@ const CourseContent = () => {
 
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-3.png")}
+                src={require("../Module-2-3.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -2208,7 +2208,7 @@ const CourseContent = () => {
 
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-3.png")}
+                src={require("../Module-2-3.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -2238,7 +2238,7 @@ const CourseContent = () => {
 
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-3.png")}
+                src={require("../Module-2-3.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -2268,7 +2268,7 @@ const CourseContent = () => {
 
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-3.png")}
+                src={require("../Module-2-3.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -2298,7 +2298,7 @@ const CourseContent = () => {
 
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-3.png")}
+                src={require("../Module-2-3.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
@@ -2328,7 +2328,7 @@ const CourseContent = () => {
 
             <div style={{ marginTop: "2rem" }}>
               <img
-                src={require("./Module-2-3.png")}
+                src={require("../Module-2-3.png")}
                 style={{
                   maxWidth: "500px",
                   height: "auto",
